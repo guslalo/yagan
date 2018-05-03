@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+/* Estilos Globales*/
+body {
+    font-family: 'Open Sans', sans-serif;
+    height: 100%;
+}
+html {
+    font-size:0.95rem;
+    height: 100%;
+}
+html, body, .wrapGeneral, app-root {
+    min-height: 100vh;
+}/* You can add global styles to this file, and also import other style files */
+a {
+    color: inherit;
+    &:hover{
+        text-decoration:none;
+        color: inherit;
+    }
+}
+img {
+    &:focus {
+        outline: none;
+      }
+}
+
+ul{
+    li {
+        list-style: none;
+    }
+}
