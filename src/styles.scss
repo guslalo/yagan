@@ -10,9 +10,9 @@ html {
 html, body, .wrapGeneral, app-root {
     min-height: 100vh;
 }/* You can add global styles to this file, and also import other style files */
-$primaryColor:rgba(100, 142, 61, 1) !important;
-$primaryBorder:rgb(100, 142, 61) !important;
-$btnSecondaryColor:rgba(184, 216, 122, 1) !important;
+$primaryColor:rgba(23, 89, 216, 1)!important;
+$primaryBorder:rgba(23, 89, 216, 1) !important;
+$btnSecondaryColor:rgba(23, 89, 216, 1) !important;
 a {
     color: inherit;
     &:hover{
@@ -64,7 +64,8 @@ header {
 }
 .btn-secondary{
     background-color: $btnSecondaryColor;
-    
+    color: #ffffff !important;
+    border-color: $btnSecondaryColor;   
 }
 
 
@@ -184,7 +185,7 @@ footer {
         padding-left: 0px;
         li{
             &.title{
-                color: rgba(184, 216, 122, 1);
+                color: $primaryColor;
                 font-size: 16px;
                 font-weight: bold;
             }
