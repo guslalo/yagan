@@ -65,7 +65,10 @@ header {
 .btn-secondary{
     background-color: $btnSecondaryColor;
     color: #ffffff !important;
-    border-color: $btnSecondaryColor;   
+    border-color: $btnSecondaryColor;
+    &:hover{
+        opacity:0.88;
+    }   
 }
 
 
@@ -99,6 +102,11 @@ header {
 
 .h2 {
     margin: 20px 0px 20px 0px !important;
+    a {
+        margin: 20px 0px 20px 0px !important;
+        line-height: 1.2 !important;
+        font-size: 18px !important;
+    }
 }
 .categorias {
 
@@ -110,18 +118,17 @@ header {
         height: 297px;
         figure{
             overflow: hidden;
+            background: #1759d8;
+
             & img {
-                -webkit-transform: rotate(0) scale(1);
-                transform: rotate(0) scale(1);
+                opacity: 1;
                 -webkit-transition: .3s ease-in-out;
                 transition: .3s ease-in-out;
             }
-            &:hover img {
-	
-                -webkit-transform: rotate(15deg) scale(1.4);
-                transform: rotate(15deg) scale(1.4);
-                
-            }
+          
+        }
+        &:hover img {
+            opacity: .6;
         }
         img{
             position: relative;
@@ -184,6 +191,10 @@ footer {
     ul {
         padding-left: 0px;
         li{
+            img {
+                width: 60%;
+                max-width: 150px;
+            }
             &.title{
                 color: $primaryColor;
                 font-size: 16px;
@@ -214,6 +225,21 @@ text-align: left;
             position: relative;
             z-index: 1;
             width: 100%;
+        }
+        .tiempo {
+            position: absolute;
+            z-index: 2;
+            top: 10px;
+            left: 10px;
+            i {
+                color: #ffffff;
+                font-size: 20px;
+            }
+            span{
+                color: #ffffff;
+                position: relative;
+                top: -5px;
+            }
         }
         h3{
             position: absolute;
@@ -256,4 +282,15 @@ text-align: left;
 	100% {
 		left: 125%;
 	}
+ }
+
+.menusidebar {
+    background-color:rgba(32, 32, 32, 1);
+    ul{
+        li{
+            a {
+
+            }
+        }
+    }
 }
