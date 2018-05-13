@@ -58,8 +58,6 @@ header {
     }
 }
 
-
-
 .btn-primary {
     background-color: $primaryColor;
 }
@@ -71,7 +69,6 @@ header {
         opacity:0.88;
     }   
 }
-
 
 #carrusel-home {
     img {
@@ -92,6 +89,53 @@ header {
         bottom:10%;
         h4{
             font-size:47px;
+        }
+    }
+    .carousel-item {
+        text-align: center;
+    }
+}
+#exampleModal2 {
+    .modal-dialog{
+        max-width:650px;
+    }
+    .modal-body {
+        padding: 0px 0px;
+    }
+    h5 {
+        text-align: center;
+        font-size: 32px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+    bar-rating {
+        display: inline-block;
+        .br {
+            margin: 0px 0px 0px 10px;
+        }
+    }
+    .textos{
+        padding: 20px;
+        max-width:520px;
+        display: inline-block;
+    }
+    .carousel-indicators li {
+       background-color: #f2f2f2;
+       &.active {
+        background-color:#1759d8;
+       }
+    }
+    .carousel-indicators{
+        margin-bottom: -20px;
+    }
+    .modal-footer {
+        margin-top: 30px;
+    }
+
+    .ver {
+        a {
+            color: #1759d8;
+            font-weight: 600;
         }
     }
 }
@@ -296,6 +340,14 @@ text-align: left;
  }
 .breadcrumb {
     background: none;
+    padding-left: 0px;
+    font-size: 18px;
+    margin-top: 10px;
+    .breadcrumb-item{
+        &.active{
+            font-weight: 600;
+        }
+    }
 }
 .gris2 {
     background: rgba(231, 236, 239, 1);
@@ -364,7 +416,8 @@ text-align: left;
         padding:20px 0px 10px 20px;
         margin-bottom: 0px;
         li{
-            padding-left:10px; 
+            padding-left:10px;
+            margin-bottom: 5px;
             &.title {
                 padding-left:0px; 
                 font-size: 20px;
@@ -385,3 +438,154 @@ text-align: left;
         }
     }
 }
+
+.resena{
+    .textos {
+        h6 {
+            font-weight: bold;
+            margin-bottom: 10px;
+            margin-top:15px;
+        }
+        p {
+            font-style: italic;
+            font-size: 14px;
+        }
+    }
+}
+
+.barraVerde{
+    background: #1759d8;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.nav-tabs {
+    display: inline-block;
+    width: auto;
+  
+    li {
+        display: inline-block;
+        width:150px;
+     
+        a {
+            color: #ffffff;
+            font-weight: bold;
+            height: 50px;
+            line-height:35px;
+            &:hover {
+                outline: none;
+                border-color:#648e3d !important;
+                border-bottom-color:#ffffff !important;
+            }
+         
+        }
+    }
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    background-color:transparent;
+    border:none;
+    border-bottom:5px solid #fff;
+    outline: none;
+    color:#fff;
+}
+.aportar {
+    .font-weigth-bold{
+        font-weight: bold;
+        font-size: 18px;
+    }
+}
+.blanco {
+    background: #ffffff;
+    position: relative;
+    z-index: 3;
+    padding: 50px 0px;
+}
+.masTours {
+    h3 {
+        width: 100%;
+    }
+}
+#exampleModal3{
+    .modal-body {
+        padding-bottom:45px;
+    }
+    .modal-dialog{
+        max-width: 650px;
+    }
+    h2{
+        width: 100%;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    .carousel-indicators {
+        bottom: -38px;
+    }
+    .carousel-indicators li {
+        background-color: #f2f2f2;
+        &.active {
+         background-color:#1759d8;
+        }
+     }
+}
+.ruta {
+    overflow: hidden;
+    /*padding-bottom:150px !important;*/
+    .fila {
+        height:130px;
+        position: relative;
+        width: 100px;
+        &:last-child{
+            border-left: solid #e7ecef 10px;
+            border-right: solid #e7ecef 10px;
+          height: 100%;
+          left: -4px;
+          width: 17px;
+          i {
+            left: -26px;
+          }
+        }        
+        i {
+            color: #ffffff;
+            background: #1759d8;
+            border-radius:50%;
+            padding:7px;
+            position: relative;
+            left: -20px;
+            top: -18px;
+        }
+        &.ubicacion{
+            border-top:4px solid #1759d8;
+            i {background: #71b1ff; }
+        }
+        
+    }
+    .fila:nth-child(4n+1) {
+        left: -100px;
+        width: 100px;
+        i{
+            left:80px;
+        }
+    }
+    .linea {
+        border-left:4px solid #1759d8;
+        flex:none;
+        width: 50px;
+        margin-left: 80px;
+        margin-top: 100px;
+        margin-right: 38px;
+    }
+    .right{
+      
+        .card {
+            margin-top:165px;
+        }
+    }
+    .left{
+        margin-left:100px;
+        .card {
+            margin-bottom:100px;
+        }
+    }
+}
+

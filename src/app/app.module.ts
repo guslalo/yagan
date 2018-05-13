@@ -9,6 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ExperienciasComponent } from './components/experiencias/experiencias.component';
 import { MejorSandwichComponent } from './components/mejor-sandwich/mejor-sandwich.component';
 import { BarRatingModule  } from "ngx-bar-rating";
+import { RutaDosComponent } from './components/ruta-dos/ruta-dos.component';
 
 
 
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
    data: { title: 'Experienciass | Yagan' }
   },
   { path: 'home', component: HomeComponent,   data: { title: 'Home' } },
+  { path: 'ruta', component: RutaDosComponent,   data: { title: 'ruta' } },
   { path: 'los-mejores-sandwich-de-santiago', component: MejorSandwichComponent,   data: { title: 'Los mejores sandwitch de santiago' } },
   //{ path: 'hero/:id',      component: HeroDetailComponent },
   /*{
@@ -38,7 +40,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     ExperienciasComponent,
-    MejorSandwichComponent
+    MejorSandwichComponent,
+    RutaDosComponent
   ],
   imports: [
     BrowserModule,
