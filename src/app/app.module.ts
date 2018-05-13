@@ -7,6 +7,10 @@ import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ExperienciasComponent } from './components/experiencias/experiencias.component';
+import { MejorSandwichComponent } from './components/mejor-sandwich/mejor-sandwich.component';
+import { BarRatingModule  } from "ngx-bar-rating";
+
+
 
 const appRoutes: Routes = [
   { path: 'experiencias',
@@ -14,6 +18,7 @@ const appRoutes: Routes = [
    data: { title: 'Experienciass | Yagan' }
   },
   { path: 'home', component: HomeComponent,   data: { title: 'Home' } },
+  { path: 'los-mejores-sandwich-de-santiago', component: MejorSandwichComponent,   data: { title: 'Los mejores sandwitch de santiago' } },
   //{ path: 'hero/:id',      component: HeroDetailComponent },
   /*{
     path: 'heroes',
@@ -32,14 +37,18 @@ const appRoutes: Routes = [
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    ExperienciasComponent
+    ExperienciasComponent,
+    MejorSandwichComponent
   ],
   imports: [
     BrowserModule,
+ 
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: false }//<-- debugging purposes only
-    )
+      { enableTracing: false },//<-- debugging purposes only
+    ),
+    BarRatingModule
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]
