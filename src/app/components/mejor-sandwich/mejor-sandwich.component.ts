@@ -12,6 +12,7 @@ export class MejorSandwichComponent implements OnInit {
   cssRate = 1;
   faoRate = 5.6;
   faoRated = false;
+  rate:any;
 
   onFaoRate(e) {
     this.faoRated = true;
