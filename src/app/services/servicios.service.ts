@@ -19,4 +19,10 @@ export class ServiciosService {
     //return this.http.get('https://jsonplaceholder.typicode.com/posts');
   }
 
+  getCategory(): Observable<any>{
+    return this.http.get('http://yagan.dev21.cl/core/api/category/');
+    //return this.http.get('https://jsonplaceholder.typicode.com/posts');
+  }
+
+
 }

@@ -58,20 +58,9 @@
                   
               
             </ul>
-            <ul>
+            <ul><!-- -->
                 <li class="title">Categorías</li>
-                <li><a href="javascript:;">Todas</a></li>
-                <li><a href="javascript:;">Relajo</a></li>
-                <li><a href="javascript:;">Aventuras</a></li>
-                <li><a href="javascript:;">Cultura</a></li>
-                <li><a href="javascript:;">Naturaleza</a></li>
-                <li><a href="javascript:;">Gastronomía</a></li>
-                <li><a href="javascript:;">Productos locales</a></li>
-                <li><a href="javascript:;">Deporte</a></li>
-                <li><a href="javascript:;">Vida nocturnaProductos locales</a></li>
-                <li><a href="javascript:;">Deporte</a></li>
-                <li><a href="javascript:;">Tradiciones y raíces</a></li>
-                <li><a href="javascript:;">Familiar</a></li>
+                <li *ngFor="let item of categorys"><a href="javascript:;">{{item.name}}</a></li>
                     
               </ul>
     </div><!--/box menu -->
