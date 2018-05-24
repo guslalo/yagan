@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle('home | Yagan');
+   // $("body").hide();
   }
 
 }
