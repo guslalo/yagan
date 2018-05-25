@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'
 
+import { HttpClientModule, HttpHeaders } from "@angular/common/http";
+import { ServiciosService } from './services/servicios.service';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -10,6 +13,7 @@ import { ExperienciasComponent } from './components/experiencias/experiencias.co
 import { MejorSandwichComponent } from './components/mejor-sandwich/mejor-sandwich.component';
 import { BarRatingModule  } from "ngx-bar-rating";
 import { RutaDosComponent } from './components/ruta-dos/ruta-dos.component';
+
 
 
 
@@ -45,7 +49,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
- 
+    HttpClientModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false },//<-- debugging purposes only
@@ -53,7 +57,7 @@ const appRoutes: Routes = [
     BarRatingModule
  
   ],
-  providers: [],
+  providers: [ServiciosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
