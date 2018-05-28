@@ -1,12 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { HttpClient} from "@angular/common/http";
 import { ServiciosService } from '../../services/servicios.service';
-
-interface category{
-  name: string;
-}
+import { Experience, Category } from '../../models/models';
 
 @Component({
   selector: 'app-experiencias',
@@ -15,38 +12,53 @@ interface category{
   providers:[ServiciosService]
 })
 
-
-
 export class ExperienciasComponent implements OnInit {
-public category:Array<any>;
 
-categorys: category[] = [];
+
+ //Arrays Experiences and Category
+ Experiences: Experience[] = [];
+ Category: Category[] = [];
 
   constructor( private http : HttpClient,  private ServiciosService: ServiciosService, private router: Router, private titleService: Title) {  }
 
   ngOnInit() {
-    this.titleService.setTitle('Experiencias | gustavo');
+    this.titleService.setTitle('Experiencias | Yagan');
     window.scrollTo(0, 0);
 
-    this.ServiciosService.getCategory().subscribe( 
+     //get experiencias  
+     this.ServiciosService.getExperience().subscribe( 
       data => {
-        //console.log(data)
-        for(let item of data){
-          
-          this.categorys.push(item);
-          
-        }
-        console.log(this.categorys );
-        //this.category.push(data);
-        //console.log(this.category)
-      
+        for(let item of data){ 
+          this.Experiences.push(item);
+        } 
       },
       error => {
-        //console.log(<any>error);
+        console.log(<any>error);
+      }
+    ); 
+
+    //get categorias  
+    this.ServiciosService.getCategory().subscribe( 
+      data => {
+        for(let item of data){ 
+          this.Category.push(item);
+        } 
+      },
+      error => {
+        console.log(<any>error);
       }
     ); 
     
   }
+ 
+  public idCategory = null;
 
+  //@Output() idCategoryOutput = new EventEmitter();
+ 
+  captureId(id){
+    this.idCategory = id;
+    /*this.idCategoryOutput.emit(this.idCategory);*/
+    console.log("categoria", id);
+  }
 
 }

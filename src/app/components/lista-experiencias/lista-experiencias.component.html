@@ -1,0 +1,8 @@
+<div class="row experiencias" id="categoria{{idCategoriaRecibido}}">
+  <div *ngFor="let item of Experiences" id="{{item.id}}" class="col-12 col-md-4 categoria" routerLink="/los-mejores-sandwich-de-santiago">
+    <figure>
+      <img src="assets/img/experiencias/5.png"/> <!-- [src]="item.image"-->
+    </figure>
+    <h3>{{item.title}}</h3>
+  </div>      
+</div> <!--categorias -->

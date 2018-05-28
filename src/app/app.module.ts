@@ -13,6 +13,11 @@ import { ExperienciasComponent } from './components/experiencias/experiencias.co
 import { MejorSandwichComponent } from './components/mejor-sandwich/mejor-sandwich.component';
 import { BarRatingModule  } from "ngx-bar-rating";
 import { RutaDosComponent } from './components/ruta-dos/ruta-dos.component';
+import { SandwichComponent } from './components/experiencias/sandwich/sandwich.component';
+import { ListaExperienciasComponent } from './components/lista-experiencias/lista-experiencias.component';
+import { ExperienciasDelMesComponent } from './components/experiencias-del-mes/experiencias-del-mes.component';
+
+import { AgmCoreModule } from '@agm/core';
 
 
 
@@ -45,7 +50,10 @@ const appRoutes: Routes = [
     FooterComponent,
     ExperienciasComponent,
     MejorSandwichComponent,
-    RutaDosComponent
+    RutaDosComponent,
+    SandwichComponent,
+    ListaExperienciasComponent,
+    ExperienciasDelMesComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +62,10 @@ const appRoutes: Routes = [
       appRoutes,
       { enableTracing: false },//<-- debugging purposes only
     ),
-    BarRatingModule
+    BarRatingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDziIQaJhEYq3IRQ7TuNJo5Q9RIuDOQenc'
+    })
  
   ],
   providers: [ServiciosService],

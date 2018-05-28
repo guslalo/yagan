@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";//, HttpHeaders, HttpParams
 //import { Observable } from 'rxjs/Observable';
 import { Observable } from 'rxjs/Rx';
+
+
  
  const url = 'http://yagan.dev21.cl/'
 
@@ -16,7 +18,6 @@ export class ServiciosService {
 //
   getExperience(): Observable<any>{
     return this.http.get('http://yagan.dev21.cl/experience/api/experience/');
-    //return this.http.get('https://jsonplaceholder.typicode.com/posts');
   }
 
   getCategory(): Observable<any>{
@@ -24,5 +25,9 @@ export class ServiciosService {
     //return this.http.get('https://jsonplaceholder.typicode.com/posts');
   }
 
+  //experienciaClick
+  getExperienceId(id:any): Observable<any>{
+    return this.http.get('http://yagan.dev21.cl/experience/api/experience/'+id+'/');
+  }
 
 }

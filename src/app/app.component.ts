@@ -10,8 +10,15 @@ import * as $ from 'jquery';
 })
 export class AppComponent implements OnInit {
   title = 'app';
+
+ 
   ngOnInit() {
-    //$('body [data-toggle="tooltip"]').tooltip()
+    
+  }
+  idExperiencia = "NULL"
+
+  idRecibido(id){
+    this.idExperiencia = id;
   }
 }
 

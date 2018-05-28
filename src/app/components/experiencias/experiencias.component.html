@@ -1,72 +1,55 @@
 <div class="container-fluid p-0 h-100">
 
-    <div id="carrusel-home" class="carousel slide" data-ride="carousel" >
-        <ol class="carousel-indicators" style="display:none;" >
-          <li data-target="#carrusel-home" data-slide-to="0" class="active"></li>
-          <li data-target="#carrusel-home" data-slide-to="1"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="assets/img/cores/experiencias.png">
-            <div class="carousel-caption d-none d-md-block">
-              <h4>Experiencias</h4> 
-            </div>
-          </div>
+  <div id="carrusel-home" class="carousel slide" data-ride="carousel" >
+    <ol class="carousel-indicators" style="display:none;" >
+      <li data-target="#carrusel-home" data-slide-to="0" class="active"></li>
+      <li data-target="#carrusel-home" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="assets/img/cores/experiencias.png">
+        <div class="carousel-caption d-none d-md-block">
+          <h4>Experiencias</h4> 
+        </div>
       </div>
+    </div>
   </div><!--/slide home-->
 
   <!--box body -->
   <div class="container">
     <div class="row">
-    <!--box menu -->
-    <div class="col-3 menusidebar">
-      <ul>
-        <li class="title">Tipo</li>
-        <li><a href="javascript:;" class="active">Todas</a></li>
-        <li><a href="javascript:;">Rutas</a></li>
-        <li><a href="javascript:;">Experiencias</a></li>
-        
-
-
-      </ul>
-      <ul>
+      <!--box menu -->
+      <div class="col-3 menusidebar">
+        <ul>
+          <li class="title">Tipo</li>
+          <li><a href="javascript:;" class="active">Todas</a></li>
+          <li><a href="javascript:;">Rutas</a></li>
+          <li><a href="javascript:;">Experiencias</a></li>
+        </ul>
+        <ul>
           <li class="title">Región</li>
           <li><a href="javascript:;">Todas</a></li>
           <li><a href="javascript:;">III Región - Atacama</a></li>
           <li><a href="javascript:;">RM - Metropolitana</a></li>
           <li><a href="javascript:;">IV Región - Valparaísotem</a></li>
           <li><a href="javascript:;">X Región - Los Lagos</a></li>
-
         </ul>
         <ul>
-            <li class="title">Duración</li>
-            <li><a href="javascript:;">Todas</a></li>
-            <li><a href="javascript:;">Medio día</a></li>
-            <li><a href="javascript:;"> Un día</a></li>
-            <li><a href="javascript:;">2 días</a></li>
-            <li><a href="javascript:;">3 días o más</a></li>
-                
-            
-          </ul>
-          <ul>
-              <li class="title">Duración</li>
-              <li><a href="javascript:;">Todas</a></li>
-              <li><a href="javascript:;">Medio día</a></li>
-              <li><a href="javascript:;"> Un día</a></li>
-              <li><a href="javascript:;">2 días</a></li>
-              <li><a href="javascript:;">3 días o más</a></li>
-                  
-              
-            </ul>
-            <ul><!-- -->
-                <li class="title">Categorías</li>
-                <li *ngFor="let item of categorys"><a href="javascript:;">{{item.name}}</a></li>
-                    
-              </ul>
-    </div><!--/box menu -->
-    
+          <li class="title">Duración</li>
+          <li><a href="javascript:;">Todas</a></li>
+          <li><a href="javascript:;">Medio día</a></li>
+          <li><a href="javascript:;"> Un día</a></li>
+          <li><a href="javascript:;">2 días</a></li>
+          <li><a href="javascript:;">3 días o más</a></li> 
+        </ul>
+        <ul><!-- -->
+          <li class="title">Categorías</li>
+          <li *ngFor="let item of Category" id="{{item.id}}"><a href="javascript:;" (click)="captureId(item.id)">{{item.name}}</a></li>    
+        </ul>
+      </div><!--/box menu  (idCategoryOutput)="captureId($event)"-->
+      
 
-    <div class="col gris2">
+      <div class="col gris2">
         <div class="row">
           <div class="col-12">
           <nav aria-label="breadcrumb">
@@ -76,49 +59,13 @@
             </ol>
           </nav></div>
         </div>
-        <!-- -->
-            <div class="row experiencias">
-              <div class="col-12 col-md-4 categoria" routerLink="/los-mejores-sandwich-de-santiago">
-                <figure>
-                  <img src="assets/img/experiencias/5.png" />
-                </figure>
-                <h3>Mejor Sandwich de Santiago</h3>
-              </div>
-              <div class="col-12 col-md-4 categoria" routerLink="/los-mejores-sandwich-de-santiago">
-                <figure>
-                    <img src="assets/img/experiencias/1.png" /></figure>
-                <h3>Mejores bares</h3>
-              </div>
-              <div class="col-12 col-md-4 categoria" routerLink="/los-mejores-sandwich-de-santiago">
-                  <figure>
-                      <img src="assets/img/experiencias/3.png" /></figure>
-                <h3>Restaurantes temáticos</h3>
-              </div>
-              <div class="col-12 col-md-4 categoria" routerLink="/los-mejores-sandwich-de-santiago">
-                  <figure>
-                      <img src="assets/img/experiencias/4.png" /></figure>
-                  <h3>Terrazas</h3>
-                </div>
-                <div class="col-12 col-md-4 categoria" routerLink="/los-mejores-sandwich-de-santiago">
-                    <figure>
-                        <img src="assets/img/experiencias/6.png" /></figure>
-                    <h3>Shopping</h3>
-                  </div>
-                  <div class="col-12 col-md-4 categoria" routerLink="/los-mejores-sandwich-de-santiago">
-                    <figure>
-                        <img src="assets/img/experiencias/2.png" /></figure>
-                    <h3>Mercados</h3>
-                  </div>
-                  
-            
-            </div> <!--categorias -->
-     
-        <!-- -->
+
+        <!--experiencias -->
+        <app-lista-experiencias [idCategoriaRecibido]="idCategory"></app-lista-experiencias><!-- experiencias-->
+
       </div>      
 
-  </div><!--/box body -->
-
-
+    </div><!--/box body -->
   </div>
 
 
