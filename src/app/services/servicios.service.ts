@@ -10,24 +10,28 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class ServiciosService {
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {  }
 
-    //console.log(this.getExperience);
-
-  }
-//
+  //
   getExperience(): Observable<any>{
-    return this.http.get('http://yagan.dev21.cl/experience/api/experience/');
+    return this.http.get(url+'experience/api/experience/');
   }
 
   getCategory(): Observable<any>{
-    return this.http.get('http://yagan.dev21.cl/core/api/category/');
-    //return this.http.get('https://jsonplaceholder.typicode.com/posts');
+    return this.http.get(url+'core/api/category/');
+  }
+
+  getRuta(id:any): Observable<any>{
+    return this.http.get(url+'route/api/route/'+id+'/');
   }
 
   //experienciaClick
   getExperienceId(id:any): Observable<any>{
-    return this.http.get('http://yagan.dev21.cl/experience/api/experience/'+id+'/');
+    return this.http.get(url+'experience/api/experience/'+id+'/');
   }
+
+
+
+
 
 }

@@ -1,4 +1,4 @@
-<div class="container-fluid p-0 h-100" *ngFor="let item of ExperienceId"><!--*ngFor="let item of data" ngFor="let item of ExperienceId[0]"-->
+<div class="container-fluid p-0 h-100" *ngFor="let item of rutaId"><!--*ngFor="let item of data" ngFor="let item of ExperienceId[0]"-->
 
   <div id="carrusel-home" class="carousel slide" data-ride="carousel" >
     <ol class="carousel-indicators" style="display:none;" >
@@ -69,9 +69,56 @@
                 <div class="tab-pane fade show active pt-5 pb-0" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <div class="container pb-5">
                       <div class="row">
-                        <div class="col-4 left">
+                          <section class="cd-timeline js-cd-timeline">
+                              <div class="cd-timeline__container">
+                                <!--card -->
+                                <div class="cd-timeline__block js-cd-block">
+                                  <div class="cd-timeline__img cd-timeline__img--picture js-cd-img">
+                                    <img src="assets/img/timeline/cd-icon-picture.svg" alt="Picture">
+                                  </div> <!-- cd-timeline__img -->
+                          
+                                  <div class="col-4 card cd-timeline__content js-cd-content">
+                                      <img class="card-img-top" src="assets/img/ruta/1.png" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
+                                      <h5 class="card-title">Lorem ipsum dolor sit amet </h5>
+                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nunc magna, pharetra vel maximus non, placerat ut magna.</p>
+                                    <a href="javascript:;" class="btn"  data-toggle="modal" data-target="#exampleModal3">Ver más</a>
+                                  </div> <!-- cd-timeline__content -->
+                                </div><!--card -->
+                           <!--card -->
+                           <div class="cd-timeline__block js-cd-block">
+                              <div class="cd-timeline__img cd-timeline__img--picture js-cd-img">
+                                <img src="assets/img/timeline/cd-icon-picture.svg" alt="Picture">
+                              </div> <!-- cd-timeline__img -->
+                      
+                              <div class="col-4 card cd-timeline__content js-cd-content">
+                                  <img class="card-img-top" src="assets/img/ruta/1.png" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
+                                  <h5 class="card-title">Lorem ipsum dolor sit amet </h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nunc magna, pharetra vel maximus non, placerat ut magna.</p>
+                                <a href="javascript:;" class="btn"  data-toggle="modal" data-target="#exampleModal3">Ver más</a>
+                              </div> <!-- cd-timeline__content -->
+                            </div><!--card -->
+                             <!--card -->
+                                <div class="cd-timeline__block js-cd-block">
+                                  <div class="cd-timeline__img cd-timeline__img--picture js-cd-img">
+                                    <img src="assets/img/timeline/cd-icon-picture.svg" alt="Picture">
+                                  </div> <!-- cd-timeline__img -->
+                          
+                                  <div class="col-4 card cd-timeline__content js-cd-content">
+                                      <img class="card-img-top" src="assets/img/ruta/1.png" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
+                                      <h5 class="card-title">Lorem ipsum dolor sit amet </h5>
+                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nunc magna, pharetra vel maximus non, placerat ut magna.</p>
+                                    <a href="javascript:;" class="btn"  data-toggle="modal" data-target="#exampleModal3">Ver más</a>
+                             
+                                  </div> <!-- cd-timeline__content -->
+                                </div><!--card -->
+
+                              </div>
+                            </section> <!-- cd-timeline -->
+
+
+                        <div class="col-12 left" style="display:none;">
                             <!--card -->
-                          <div class="card p-4">
+                          <div class="col-4 card p-4">
                               <img class="card-img-top" src="assets/img/ruta/1.png" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
                               <div class="card-body p-0 pt-3">
                                 <h5 class="card-title"> Lorem ipsum dolor sit amet </h5>
@@ -80,7 +127,7 @@
                               </div>
                             </div> <!--card -->
                           <!--card -->
-                          <div class="card p-4">
+                          <div class="col-4 card p-4">
                             <img class="card-img-top" src="assets/img/ruta/1.png" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
                             <div class="card-body p-0 pt-3">
                               <h5 class="card-title"> Lorem ipsum dolor sit amet </h5>
@@ -89,53 +136,33 @@
                             </div>
                           </div> <!--card -->
                         </div>
-                        <div class="col-1 p-0 linea">
+                        <div class="col-1 p-0 linea" style="display:none;">
                           <div class="fila ubicacion" >
                               <i class="material-icons" data-toggle="modal" data-target="#exampleModal2">
                                 room
                               </i>
                           </div>
-                          <div class="fila mensaje">
-                            <i class="material-icons">
-                              straighten
-                              </i>
-                            </div>
                           <div class="fila ubicacion">
                               <i class="material-icons" data-toggle="modal" data-target="#exampleModal2">
                                   room
                                 </i>
-                          </div>
-                          <div class="fila mensaje">
-                              <i class="material-icons" data-toggle="modal" data-target="#exampleModal2">
-                                  straighten
-                                  </i>
                           </div>
                           <div class="fila ubicacion">
                               <i class="material-icons" data-toggle="modal" data-target="#exampleModal2">
                                 room
                               </i>
                           </div>
-                          <div class="fila mensaje">
-                            <i class="material-icons">
-                              straighten
-                              </i>
-                            </div>
+                      
                           <div class="fila ubicacion">
                               <i class="material-icons" data-toggle="modal" data-target="#exampleModal2">
                                   room
                                 </i>
                           </div>
-                          <div class="fila mensaje">
-                              <i class="material-icons">
-                                straighten
-                                </i>
-                              </div>
-                          
           
 
 
                         </div>
-                        <div class="col-4 right">
+                        <div class="col-4 right" style="display:none;">
 
                           <!--card -->
                           <div class="card p-4">
@@ -203,7 +230,7 @@
             
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
-                <agm-map [latitude]="lat" [longitude]="lng">
+                <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
                     <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
                   </agm-map>
 

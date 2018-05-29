@@ -18,6 +18,7 @@ import { ListaExperienciasComponent } from './components/lista-experiencias/list
 import { ExperienciasDelMesComponent } from './components/experiencias-del-mes/experiencias-del-mes.component';
 
 import { AgmCoreModule } from '@agm/core';
+import { RutasDelMesComponent } from './components/rutas-del-mes/rutas-del-mes.component';
 
 
 
@@ -53,7 +54,8 @@ const appRoutes: Routes = [
     RutaDosComponent,
     SandwichComponent,
     ListaExperienciasComponent,
-    ExperienciasDelMesComponent
+    ExperienciasDelMesComponent,
+    RutasDelMesComponent
   ],
   imports: [
     BrowserModule,

@@ -537,7 +537,7 @@ agm-map {
     overflow: hidden;
     /*padding-bottom:150px !important;*/
     .fila {
-        height:130px;
+        height:300px;
         position: relative;
         width: 100px;
         &:last-child{
@@ -560,7 +560,7 @@ agm-map {
             top: -18px;
         }
         &.ubicacion{
-            border-top:4px solid #1759d8;
+            //border-top:4px solid #1759d8;
             i {background: #71b1ff; }
         }
         
@@ -592,5 +592,21 @@ agm-map {
             margin-bottom:100px;
         }
     }
+}
+
+
+
+@media only screen and ( min-width:320px ) and (max-width:480px){
+
+    .categorias{
+        .categoria {
+            h3{
+                font-size: 22px;
+                bottom:18px;
+            }
+        }
+    }
+
+    
 }
 

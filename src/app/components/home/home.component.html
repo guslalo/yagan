@@ -35,7 +35,7 @@
 
       <!--categorias descubre-->
       <div class="row categorias">
-        <div *ngFor="let item of Category" class="col-12 col-sm-6 col-md-4 categoria" routerLink="/experiencias">
+        <div *ngFor="let item of CategoryFilter" class="col-6 col-sm-6 col-md-4 categoria" routerLink="/experiencias">
           <figure>
             <div *ngIf="item.image == null; else otro">
                 <img src="assets/img/default-thumb.png"/>
@@ -60,7 +60,7 @@
             <button class="btn btn-secondary rounded">¡Reserva YA!</button>
           </div>
         </div>
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-4 mt-3 mt-md-0">
             <div class="img"><img src="assets/img/selk.png"></div>
             <div class="textos">
             <button class="btn btn-secondary rounded">COMPRA YA!</button>
@@ -85,8 +85,13 @@
   </div><!--/slide home2-->
 
   <!-- experiencias del mes<h1>{{idExperiencia}}</h1>-->
-  
   <app-experiencias-del-mes (idCategoryOutput)="idRecibido($event)"></app-experiencias-del-mes><!--/experiencias del mes-->
+
+  <!--rutas del mes-->
+  <app-rutas-del-mes></app-rutas-del-mes><!--rutas del mes-->
+
+
+
 
 
 </div>

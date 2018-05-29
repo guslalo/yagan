@@ -15,11 +15,26 @@ export class Experience{
   organization: number;
 }
 
+export class Ruta{
+  id: number;
+  image: string;
+  created: Date;
+  modified: Date;
+  is_removed: boolean;
+  name: string;
+  duration: String;
+  region: string;
+  entry_date: Date;
+  category: number;
+  duration_days: number;
+  organization: number;
+}
 
 export class Category{
-  name: string;
-  category_parent: null;
+  id:number;
   image: string;
+  name: string;
+  category_parent: any;
 }
 
 

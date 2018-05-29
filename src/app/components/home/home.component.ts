@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
   //Arrays Experiences and Category
   Experiences: Experience[] = [];
   Category: Category[] = [];
+  CategoryFilter: Category[] = [];
 
   ngOnInit() {
     //scrollTop
@@ -58,6 +59,8 @@ export class HomeComponent implements OnInit {
         for(let item of data){ 
           this.Category.push(item);
         } 
+        this.CategoryFilter = this.Category.filter(r => r.category_parent == null);
+        console.log(this.CategoryFilter);
       },
       error => {
         console.log(<any>error);

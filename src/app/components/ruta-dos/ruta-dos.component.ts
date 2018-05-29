@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClient} from "@angular/common/http";
 import { ServiciosService } from '../../services/servicios.service';
 import { Observable } from 'rxjs/Rx';
-import { Experience, Category } from '../../models/models';
+import { Experience, Category, Ruta } from '../../models/models';
 
 
 @Component({
@@ -31,12 +31,13 @@ export class RutaDosComponent implements OnInit {
 
   //Arrays Experiences and Category
   Experiences: Experience[] = [];
-  ExperienceId: Experience[] = [];
+  rutaId: Ruta[] = [];
   Category: Category[] = [];
   item:any;
   
   lat: any;
   lng: any;
+  zoom:number = 16;
   
 
   ngOnInit() {
@@ -47,7 +48,7 @@ export class RutaDosComponent implements OnInit {
     window.scrollTo(0, 0);
 
     //get experiencias  
-    /*this.ServiciosService.getExperience().subscribe( 
+    this.ServiciosService.getCategory().subscribe( 
       data => {
         for(let item of data){ 
           this.Experiences.push(item);
@@ -56,24 +57,35 @@ export class RutaDosComponent implements OnInit {
       error => {
         console.log(<any>error);
       }
-    ); */
+    ); /**/
     //get experiencias  
-    this.ServiciosService.getExperienceId(1).subscribe( 
+    this.ServiciosService.getRuta(3).subscribe( 
       data => {
         //console.log(data);
-        this.ExperienceId.push(data);
-        console.log(this.ExperienceId);
-      
-        
-        for(let item of this.ExperienceId){ 
-          this.lat =  + item.latitude;
-          this.lng =  + item.longitude;
+        this.rutaId.push(data);
+        console.log(this.rutaId);
+
+        for(let item of this.rutaId){ 
+         // this.lat =  + item.latitude;
+          //this.lng =  + item.longitude;
         } 
       },
       error => {
         console.log(<any>error);
       }
     ); 
+
+
+    
+
+  }
+
+  //funcion para acceder al dom despues de mostrar data
+  setTime(data){
+    setTimeout(function(){  
+    
+            
+    },0);
 
   }
 
