@@ -18,7 +18,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
 
   @Input() public idExpecienciaRecibida:any;
 
-  @Input() public idRutaRecibida:any;
+
 
   idExperiencia = "NULL"
   idRecibido(id){
@@ -85,20 +85,11 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
         this.ServiciosService.getERutaItem().subscribe( 
           data => {
             
-          this.RutaItem = data.filter(r => r.route == this.id);
-          for(let item of this.RutaItem){ 
-            this.lat =  + item.latitude;
-            this.lng =  + item.longitude;
-          } 
-
-          this.RutaItemClick = data.filter(r => r.id == this.idClick);
-          for(let item of this.RutaItemClick){ 
-            this.lat2 =  + item.latitude;
-            this.long2 =  + item.longitude;
-            console.log(this.lat2);
-          } 
-          /*this.RutaItemClick = data.filter(r => r.id == this.idClick);
-          console.log( this.RutaItemClick)*/
+            this.RutaItem = data.filter(r => r.route == this.id);
+            for(let item of this.RutaItem){ 
+              this.lat =  + item.latitude;
+              this.lng =  + item.longitude;
+            } 
           },
           error => {
             console.log(<any>error);
@@ -123,10 +114,12 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   }
 
 
- public idClick:any = null;
+
+  public idRutaItemRecibida = null;
   captureId(id){
-    console.log(id);
-    this.idClick = id;
+    this.idRutaItemRecibida = id;
+    /*this.idCategoryOutput.emit(this.idCategory);*/
+    console.log("ruta item", id);
   }
 
   //funcion para acceder al dom despues de mostrar data
