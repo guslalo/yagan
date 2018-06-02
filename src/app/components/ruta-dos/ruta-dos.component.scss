@@ -39,7 +39,7 @@ Vertical Timeline - by CodyHouse.co
     left: 18px;
     height: 100%;
     width: 4px;
-    background: #d7e4ed;
+    background: #1759d8;
 }
 @media only screen and (min-width: 1170px) {
     .cd-timeline {
@@ -69,7 +69,7 @@ Vertical Timeline - by CodyHouse.co
 }
 @media only screen and (min-width: 1170px) {
     .cd-timeline__block {
-        margin: 4em 0;
+        margin: -10em 0;
     }
 }
 .cd-timeline__img {
@@ -81,6 +81,14 @@ Vertical Timeline - by CodyHouse.co
     border-radius: 50%;
     -webkit-box-shadow: 0 0 0 4px white, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
     box-shadow: 0 0 0 4px white, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    i {
+        text-align: center;
+        width: 100%;
+        line-height:60px;
+        font-size:32px;
+        color: #ffffff;
+    }
 }
 .cd-timeline__img img {
     display: block;
@@ -93,7 +101,7 @@ Vertical Timeline - by CodyHouse.co
     margin-top: -12px;
 }
 .cd-timeline__img.cd-timeline__img--picture {
-    background: #75ce66;
+    background: #1759d8;
 }
 .cd-timeline__img.cd-timeline__img--movie {
     background: #c03b44;
@@ -156,6 +164,20 @@ Vertical Timeline - by CodyHouse.co
     border-radius: 0.25em;
     -webkit-box-shadow: 0 3px 0 #d7e4ed;
     box-shadow: 0 3px 0 #d7e4ed;
+    .btn {
+        text-align: left;
+        padding-left: 0px;
+    }
+    .card-img-top {
+        margin-bottom: 13px;
+    }
+    .card-text {
+        max-height:195px;
+        overflow: hidden;
+        p:first-child{
+            font-weight: bold
+        }
+    }
 }
 .cd-timeline__content:after {
     /* clearfix */

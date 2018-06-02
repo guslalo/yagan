@@ -31,7 +31,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent,   data: { title: 'Home' } },
   { path: 'ruta', component: RutaDosComponent,   data: { title: 'ruta' } },
   { path: 'los-mejores-sandwich-de-santiago', component: MejorSandwichComponent,   data: { title: 'Los mejores sandwitch de santiago' } },
-  //{ path: 'hero/:id',      component: HeroDetailComponent },
+  { path: 'ruta/:id', component: RutaDosComponent },
   /*{
     path: 'heroes',
     component: ,

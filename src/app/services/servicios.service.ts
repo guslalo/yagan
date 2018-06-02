@@ -4,8 +4,7 @@ import { HttpClient } from "@angular/common/http";//, HttpHeaders, HttpParams
 import { Observable } from 'rxjs/Rx';
 
 
- 
- const url = 'http://yagan.dev21.cl/'
+const url = 'http://yagan.dev21.cl/'
 
 @Injectable()
 export class ServiciosService {
@@ -24,11 +23,22 @@ export class ServiciosService {
   getRuta(id:any): Observable<any>{
     return this.http.get(url+'route/api/route/'+id+'/');
   }
+  getRutas(): Observable<any>{
+    return this.http.get(url+'route/api/route/');
+  }
 
   //experienciaClick
   getExperienceId(id:any): Observable<any>{
     return this.http.get(url+'experience/api/experience/'+id+'/');
   }
+
+  //experienciaClick
+  getERutaItem(): Observable<any>{
+    return this.http.get(url+'route/api/route_item/');
+  }
+
+
+  
 
 
 

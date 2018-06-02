@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, OnDestroy  } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap  } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 import { HttpClient} from "@angular/common/http";
 import { ServiciosService } from '../../services/servicios.service';
 import { Observable } from 'rxjs/Rx';
-import { Experience, Category, Ruta } from '../../models/models';
+import { Experience, Category, Ruta, RutaItem } from '../../models/models';
 
 
 @Component({
@@ -13,9 +14,11 @@ import { Experience, Category, Ruta } from '../../models/models';
   styleUrls: ['./ruta-dos.component.scss'],
   providers:[ServiciosService]
 })
-export class RutaDosComponent implements OnInit {
+export class RutaDosComponent implements OnInit, OnDestroy  {
 
   @Input() public idExpecienciaRecibida:any;
+
+  @Input() public idRutaRecibida:any;
 
   idExperiencia = "NULL"
   idRecibido(id){
@@ -26,26 +29,82 @@ export class RutaDosComponent implements OnInit {
     private http : HttpClient,  
     private ServiciosService: ServiciosService, 
     private router: Router, 
+    private route: ActivatedRoute,
     private titleService: Title
   ){ }
 
   //Arrays Experiences and Category
   Experiences: Experience[] = [];
   rutaId: Ruta[] = [];
+  rutas: Ruta[] = [];
+  rutaName: Ruta[] = [];
+  
   Category: Category[] = [];
+  RutaItem: RutaItem[] = [];
+  RutaItemClick: RutaItem[] = [];
   item:any;
   
   lat: any;
   lng: any;
+
+  lat2:any;
+  long2:any;
   zoom:number = 16;
+
+
+  id: number;
+  private sub: any;
   
 
   ngOnInit() {
     //title
-    this.titleService.setTitle('Ruta experiencia| Yagan');
-
+    this.titleService.setTitle('Rutas | Yagan');  
     //scrollTop
     window.scrollTo(0, 0);
+
+    this.sub = this.route.params.subscribe(params => {
+        this.id = +params['id']; // (+) converts string 'id' to a number
+        //get getRutas  
+        this.ServiciosService.getRutas().subscribe( 
+          data => {
+          
+
+            this.rutas = data.filter(r => r.id == this.id);
+            //this.rutaName = data.filter(r2 => r2.name);
+            //console.log(this.rutaName)
+
+            //title
+            
+          },
+          error => {
+            console.log(<any>error);
+          }
+        ); 
+
+        //get ruta item 
+        this.ServiciosService.getERutaItem().subscribe( 
+          data => {
+            
+          this.RutaItem = data.filter(r => r.route == this.id);
+          for(let item of this.RutaItem){ 
+            this.lat =  + item.latitude;
+            this.lng =  + item.longitude;
+          } 
+
+          this.RutaItemClick = data.filter(r => r.id == this.idClick);
+          for(let item of this.RutaItemClick){ 
+            this.lat2 =  + item.latitude;
+            this.long2 =  + item.longitude;
+            console.log(this.lat2);
+          } 
+          /*this.RutaItemClick = data.filter(r => r.id == this.idClick);
+          console.log( this.RutaItemClick)*/
+          },
+          error => {
+            console.log(<any>error);
+          }
+        ); 
+    });
 
     //get experiencias  
     this.ServiciosService.getCategory().subscribe( 
@@ -57,27 +116,17 @@ export class RutaDosComponent implements OnInit {
       error => {
         console.log(<any>error);
       }
-    ); /**/
-    //get experiencias  
-    this.ServiciosService.getRuta(3).subscribe( 
-      data => {
-        //console.log(data);
-        this.rutaId.push(data);
-        console.log(this.rutaId);
-
-        for(let item of this.rutaId){ 
-         // this.lat =  + item.latitude;
-          //this.lng =  + item.longitude;
-        } 
-      },
-      error => {
-        console.log(<any>error);
-      }
-    ); 
-
+    );
 
     
 
+  }
+
+
+ public idClick:any = null;
+  captureId(id){
+    console.log(id);
+    this.idClick = id;
   }
 
   //funcion para acceder al dom despues de mostrar data
@@ -87,6 +136,10 @@ export class RutaDosComponent implements OnInit {
             
     },0);
 
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
 }

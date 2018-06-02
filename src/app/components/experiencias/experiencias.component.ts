@@ -18,6 +18,7 @@ export class ExperienciasComponent implements OnInit {
  //Arrays Experiences and Category
  Experiences: Experience[] = [];
  Category: Category[] = [];
+ CategoryFilter: Category[] = [];
 
   constructor( private http : HttpClient,  private ServiciosService: ServiciosService, private router: Router, private titleService: Title) {  }
 
@@ -43,6 +44,8 @@ export class ExperienciasComponent implements OnInit {
         for(let item of data){ 
           this.Category.push(item);
         } 
+
+        this.CategoryFilter = this.Category.filter(r => r.category_parent == null);
       },
       error => {
         console.log(<any>error);

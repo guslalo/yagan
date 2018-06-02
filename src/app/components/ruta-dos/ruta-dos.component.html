@@ -1,4 +1,4 @@
-<div class="container-fluid p-0 h-100" *ngFor="let item of rutaId"><!--*ngFor="let item of data" ngFor="let item of ExperienceId[0]"-->
+<div class="container-fluid p-0 h-100" *ngFor="let item of rutas"><!--*ngFor="let item of data" ngFor="let item of ExperienceId[0]"-->
 
   <div id="carrusel-home" class="carousel slide" data-ride="carousel" >
     <ol class="carousel-indicators" style="display:none;" >
@@ -9,7 +9,7 @@
         <div class="carousel-item active">
           <img src="assets/img/atacama.png">
           <div class="carousel-caption d-none d-md-block">
-            <h4>{{item.title}}</h4> 
+            <h4>{{item.name}}</h4> 
           </div>
         </div>
     </div>
@@ -23,8 +23,7 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item"><a href="javascript:;">Aventura</a></li>
-                <li class="breadcrumb-item active" aria-current="page"> Atacama inolvidable </li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="javascript:;">{{item.name}}</a></li>
               </ol>         
             </nav>
           </div>
@@ -35,10 +34,10 @@
             <img [src]="item.image" class="img-fluid">
         </div>
         <div class="col pl-4 resena">
-          <div class="col-12 pl-0"><img src="assets/img/turismo.png"> </div><!-- {{idExperiencia}} -->
+          <div class="col-12 pl-0" style="display: none;"><img src="assets/img/turismo.png"> </div><!-- {{idExperiencia}} -->
           <div class="textos">
-              <h6>{{item.title}}</h6>
-              <p>{{item.description}}</p>
+              <h6>{{item.name}}</h6>
+              <div [innerHTML]="item.description"></div>
           </div>
           <div class="web">
             <a href="j{{item.web_site}}" target="_blank">{{item.web_site}}</a>
@@ -70,121 +69,23 @@
                   <div class="container pb-5">
                       <div class="row">
                           <section class="cd-timeline js-cd-timeline">
+                              <!--ruta item -->
                               <div class="cd-timeline__container">
-                                <!--card -->
-                                <div class="cd-timeline__block js-cd-block">
-                                  <div class="cd-timeline__img cd-timeline__img--picture js-cd-img">
-                                    <img src="assets/img/timeline/cd-icon-picture.svg" alt="Picture">
+                                <div *ngFor="let item of RutaItem" id="{{item.id}}" class="cd-timeline__block js-cd-block" (click)="captureId(item.id)">
+                                  <div class="cd-timeline__img cd-timeline__img--picture js-cd-img" data-toggle="modal" data-target="#exampleModal2">
+                                    <i class="material-icons">
+                                      location_on
+                                    </i>
                                   </div> <!-- cd-timeline__img -->
-                          
-                                  <div class="col-4 card cd-timeline__content js-cd-content">
-                                      <img class="card-img-top" src="assets/img/ruta/1.png" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
-                                      <h5 class="card-title">Lorem ipsum dolor sit amet </h5>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nunc magna, pharetra vel maximus non, placerat ut magna.</p>
+                                  <div class="col-9 col-md-4 card cd-timeline__content js-cd-content">
+                                    <img class="card-img-top" [src]="item.image" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
+                                    <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
+                                    <div [innerHTML]="item.description" class="card-text "></div>
                                     <a href="javascript:;" class="btn"  data-toggle="modal" data-target="#exampleModal3">Ver más</a>
                                   </div> <!-- cd-timeline__content -->
                                 </div><!--card -->
-                           <!--card -->
-                           <div class="cd-timeline__block js-cd-block">
-                              <div class="cd-timeline__img cd-timeline__img--picture js-cd-img">
-                                <img src="assets/img/timeline/cd-icon-picture.svg" alt="Picture">
-                              </div> <!-- cd-timeline__img -->
-                      
-                              <div class="col-4 card cd-timeline__content js-cd-content">
-                                  <img class="card-img-top" src="assets/img/ruta/1.png" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
-                                  <h5 class="card-title">Lorem ipsum dolor sit amet </h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nunc magna, pharetra vel maximus non, placerat ut magna.</p>
-                                <a href="javascript:;" class="btn"  data-toggle="modal" data-target="#exampleModal3">Ver más</a>
-                              </div> <!-- cd-timeline__content -->
-                            </div><!--card -->
-                             <!--card -->
-                                <div class="cd-timeline__block js-cd-block">
-                                  <div class="cd-timeline__img cd-timeline__img--picture js-cd-img">
-                                    <img src="assets/img/timeline/cd-icon-picture.svg" alt="Picture">
-                                  </div> <!-- cd-timeline__img -->
-                          
-                                  <div class="col-4 card cd-timeline__content js-cd-content">
-                                      <img class="card-img-top" src="assets/img/ruta/1.png" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
-                                      <h5 class="card-title">Lorem ipsum dolor sit amet </h5>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nunc magna, pharetra vel maximus non, placerat ut magna.</p>
-                                    <a href="javascript:;" class="btn"  data-toggle="modal" data-target="#exampleModal3">Ver más</a>
-                             
-                                  </div> <!-- cd-timeline__content -->
-                                </div><!--card -->
-
-                              </div>
-                            </section> <!-- cd-timeline -->
-
-
-                        <div class="col-12 left" style="display:none;">
-                            <!--card -->
-                          <div class="col-4 card p-4">
-                              <img class="card-img-top" src="assets/img/ruta/1.png" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
-                              <div class="card-body p-0 pt-3">
-                                <h5 class="card-title"> Lorem ipsum dolor sit amet </h5>
-                                <p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nunc magna, pharetra vel maximus non, placerat ut magna. </p>
-                                <a href="javascript:;" class="btn"  data-toggle="modal" data-target="#exampleModal3">+ Ver más</a>
-                              </div>
-                            </div> <!--card -->
-                          <!--card -->
-                          <div class="col-4 card p-4">
-                            <img class="card-img-top" src="assets/img/ruta/1.png" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
-                            <div class="card-body p-0 pt-3">
-                              <h5 class="card-title"> Lorem ipsum dolor sit amet </h5>
-                              <p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nunc magna, pharetra vel maximus non, placerat ut magna. </p>
-                              <a href="javascript:;" class="btn" data-toggle="modal" data-target="#exampleModal3">+ Ver más</a>
-                            </div>
-                          </div> <!--card -->
-                        </div>
-                        <div class="col-1 p-0 linea" style="display:none;">
-                          <div class="fila ubicacion" >
-                              <i class="material-icons" data-toggle="modal" data-target="#exampleModal2">
-                                room
-                              </i>
-                          </div>
-                          <div class="fila ubicacion">
-                              <i class="material-icons" data-toggle="modal" data-target="#exampleModal2">
-                                  room
-                                </i>
-                          </div>
-                          <div class="fila ubicacion">
-                              <i class="material-icons" data-toggle="modal" data-target="#exampleModal2">
-                                room
-                              </i>
-                          </div>
-                      
-                          <div class="fila ubicacion">
-                              <i class="material-icons" data-toggle="modal" data-target="#exampleModal2">
-                                  room
-                                </i>
-                          </div>
-          
-
-
-                        </div>
-                        <div class="col-4 right" style="display:none;">
-
-                          <!--card -->
-                          <div class="card p-4">
-                              <img class="card-img-top" src="assets/img/ruta/images.duckduckgo_2.png" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
-                              <div class="card-body p-0 pt-3">
-                                <h5 class="card-title"> Lorem ipsum dolor sit amet </h5>
-                                <p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nunc magna, pharetra vel maximus non, placerat ut magna. </p>
-                                <a href="javascript:;" class="btn" data-toggle="modal" data-target="#exampleModal3">+ Ver más</a>
-                              </div>
-                            </div> <!--card -->
-
-                            <!--card -->
-                          <div class="card p-4">
-                              <img class="card-img-top" src="assets/img/ruta/images.duckduckgo_3.png" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
-                              <div class="card-body p-0 pt-3">
-                                <h5 class="card-title"> Lorem ipsum dolor sit amet </h5>
-                                <p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nunc magna, pharetra vel maximus non, placerat ut magna. </p>
-                                <a href="javascript:;" class="btn" data-toggle="modal" data-target="#exampleModal3">+ Ver más</a>
-                              </div>
-                            </div> <!--card -->
-
-                        </div>
+                              </div><!--/ruta item -->
+                            </section>
                       </div>
                     </div>
 
@@ -196,14 +97,14 @@
                           </div>
 
                           <div class="row experiencias masTours">
-                              <div  class="col-3 categoria ">
+                              <div  class="col-6 col-md-3 categoria ">
                                 <figure >
                                   <img src="assets/img/ruta/cruceandino-01-m.png">
                                   
                                 </figure>
                                 <h3 class="text-center"> Cruce andino </h3>
                               </div>
-                              <div  class="col-3 categoria">
+                              <div  class="col-6 col-md-3 categoria">
                                 <figure >
                                 <img  src="assets/img/ruta/xconchatoro-01-m.jpg.pagespeed.ic.ngQeLtLgmh.png">
                                 
@@ -211,12 +112,12 @@
                                 
                                 <h3  class="text-center"> Viña Concha y Toro </h3>
                               </div>
-                              <div class="col-3 categoria">
+                              <div class="col-6 col-md-3 categoria">
                                   <figure >
                                 <img  src="assets/img/ruta/xosornopetrohue-01-m.jpg.pagespeed.ic.QMrC4INxEP.png"></figure>
                                 <h3 > Volcán Osorno y Saltos del Petrohué </h3>
                               </div>
-                              <div class="col-3 categoria">
+                              <div class="col-6 col-md-3 categoria">
                                   <figure >
                                   <img  src="assets/img/ruta/eco-02-s.png"></figure>
                                   <h3> Eco Aventura Petrohué </h3>
@@ -231,12 +132,11 @@
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
                 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-                  </agm-map>
+                  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                </agm-map>
 
                   
                 <div class="container aportar pb-5">
-                 
                         <div class="row pt-5">
                             <div class="col-12">
                               <p class="text-center font-weigth-bold"> ¿Quieres aportar a esta ruta?</p>
@@ -298,7 +198,10 @@
 
         </div>
         <div class="modal-body">
-            <img src="assets/img/ruta/mapa.png">
+            
+            <agm-map  [latitude]="lat2" [longitude]="long2">
+                <agm-marker [latitude]="lat2" [longitude]="long2"></agm-marker>
+              </agm-map>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

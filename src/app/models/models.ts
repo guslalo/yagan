@@ -30,6 +30,19 @@ export class Ruta{
   organization: number;
 }
 
+export class RutaItem{
+  id: Number;
+  image: any;
+  created: Date;
+  modified: Date;
+  is_removed: Boolean;
+  description: String;
+  latitude: String;
+  longitude: String;
+  entry_date: String;
+  route:number
+}
+
 export class Category{
   id:number;
   image: string;
