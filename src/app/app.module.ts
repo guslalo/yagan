@@ -21,6 +21,7 @@ import { AgmCoreModule } from '@agm/core';
 import { RutasDelMesComponent } from './components/rutas-del-mes/rutas-del-mes.component';
 import { MapaItemComponent } from './components/ruta-dos/mapa-item/mapa-item.component';
 import { DetalleItemComponent } from './components/ruta-dos/detalle-item/detalle-item.component';
+import { ExperienciaDetalleComponent } from './components/experiencias/experiencia-detalle/experiencia-detalle.component';
 
 
 
@@ -34,9 +35,10 @@ const appRoutes: Routes = [
   { path: 'ruta', component: RutaDosComponent,   data: { title: 'ruta' } },
   { path: 'los-mejores-sandwich-de-santiago', component: MejorSandwichComponent,   data: { title: 'Los mejores sandwitch de santiago' } },
   { path: 'ruta/:id', component: RutaDosComponent },
+  { path: 'experiencia/:id', component: ExperienciaDetalleComponent },
   /*{
     path: 'heroes',
-    component: ,
+    component: ,|
     data: { title: 'Heroes List' }
   },
   { path: '',
@@ -59,7 +61,8 @@ const appRoutes: Routes = [
     ExperienciasDelMesComponent,
     RutasDelMesComponent,
     MapaItemComponent,
-    DetalleItemComponent
+    DetalleItemComponent,
+    ExperienciaDetalleComponent
   ],
   imports: [
     BrowserModule,

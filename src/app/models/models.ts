@@ -50,4 +50,10 @@ export class Category{
   category_parent: any;
 }
 
+export class Marker {
+	latitude: number;
+	longitude: number;
+	label?: string;
+	draggable: boolean;
+}
 

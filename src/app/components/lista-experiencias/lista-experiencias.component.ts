@@ -26,7 +26,7 @@ export class ListaExperienciasComponent implements OnInit {
 
   ngOnInit() {
      //get experiencias  
-     this.ServiciosService.getRuta(3).subscribe( 
+     this.ServiciosService.getRuta(3 ).subscribe( 
       data => {
         //console.log(data);
         this.rutaId.push(data);

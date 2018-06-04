@@ -3,40 +3,25 @@ import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, ParamMap  } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { HttpClient} from "@angular/common/http";
-import { ServiciosService } from '../../services/servicios.service';
+import { ServiciosService } from '../../../services/servicios.service';
 import { Observable } from 'rxjs/Rx';
-import { Experience, Category, Ruta, RutaItem, Marker } from '../../models/models';
+import { Experience, Category, Ruta, RutaItem, Marker } from '../../../models/models';
 
 
 @Component({
-  selector: 'app-ruta-dos',
-  templateUrl: './ruta-dos.component.html',
-  styleUrls: ['./ruta-dos.component.scss'],
+  selector: 'app-experiencia-detalle',
+  templateUrl: './experiencia-detalle.component.html',
+  styleUrls: ['./experiencia-detalle.component.scss'],
   providers:[ServiciosService]
 })
-export class RutaDosComponent implements OnInit, OnDestroy  {
+export class ExperienciaDetalleComponent implements OnInit {
 
   @Input() public idExpecienciaRecibida:any;
-
-
-
-  idExperiencia = "NULL"
-  idRecibido(id){
-    this.idExperiencia = id;
-  }
-   //constructor
-   constructor(
-    private http : HttpClient,  
-    private ServiciosService: ServiciosService, 
-    private router: Router, 
-    private route: ActivatedRoute,
-    private titleService: Title
-  ){ }
 
   //Arrays Experiences and Category
   Experiences: Experience[] = [];
   rutaId: Ruta[] = [];
-  rutas: Ruta[] = [];
+  experienciaDetalle: Ruta[] = [];
   rutaName: Ruta[] = [];
   markers: Marker[] = [];
   lugar: Marker[] = [];
@@ -59,42 +44,30 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
 
 
   id: number;
-  private sub: any;/*
-  markers: marker[] = [
-	  {
-		  lat: 51.673858,
-		  lng: 7.815982,
-		  label: 'A',
-		  draggable: true
-	  },
-	  {
-		  lat: 51.373858,
-		  lng: 7.215982,
-		  label: 'B',
-		  draggable: false
-	  },
-	  {
-		  lat: 51.723858,
-		  lng: 7.895982,
-		  label: 'C',
-		  draggable: true
-	  }
-  ]*/
+  private sub: any;
+
+  constructor(
+    private http : HttpClient,  
+    private ServiciosService: ServiciosService, 
+    private router: Router, 
+    private route: ActivatedRoute,
+    private titleService: Title
+  ) { }
 
   ngOnInit() {
     //title
-    this.titleService.setTitle('Rutas | Yagan');  
+    this.titleService.setTitle('Experiencias | Yagan');  
     //scrollTop
     window.scrollTo(0, 0);
 
     this.sub = this.route.params.subscribe(params => {
         this.id = +params['id']; // (+) converts string 'id' to a number
         //get getRutas  
-        this.ServiciosService.getRutas().subscribe( 
+        this.ServiciosService.getExperience().subscribe( 
           data => {
           
 
-            this.rutas = data.filter(r => r.id == this.id);
+            this.experienciaDetalle = data.filter(r => r.id == this.id);
            
             //this.rutaName = data.filter(r2 => r2.name);
             //console.log(this.rutaName)
@@ -149,32 +122,4 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
 
   }
 
-
-
-  public idRutaItemRecibida = null;
-  captureId(id){
-    this.idRutaItemRecibida = id;
-    /*this.idCategoryOutput.emit(this.idCategory);*/
-    console.log("ruta item", id);
-  }
-
-  //funcion para acceder al dom despues de mostrar data
-  setTime(data){
-    setTimeout(function(){  
-    
-            
-    },0);
-
-  }
-
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
-
-}
-interface marker {
-	lat: number;
-	lng: number;
-	label?: string;
-	draggable: boolean;
 }

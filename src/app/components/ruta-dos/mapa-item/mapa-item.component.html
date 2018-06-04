@@ -14,9 +14,11 @@
 
       </div>
       <div class="modal-body"><!-- *ngFor="let item of RutaItem"--> 
-        <agm-map  [latitude]="lat2" [longitude]="lng2">
+        <agm-map  [latitude]="lat2" [longitude]="lng2" [zoom]="zoom">
           <agm-marker [latitude]="lat2" [longitude]="lng2"></agm-marker>
         </agm-map>
+
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
