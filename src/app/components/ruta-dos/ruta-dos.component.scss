@@ -160,6 +160,7 @@ Vertical Timeline - by CodyHouse.co
 .cd-timeline__content {
     position: relative;
     margin-left: 60px;
+    min-height: 55px;
     background: white;
     border-radius: 0.25em;
     -webkit-box-shadow: 0 3px 0 #d7e4ed;
@@ -167,12 +168,14 @@ Vertical Timeline - by CodyHouse.co
     .btn {
         text-align: left;
         padding-left: 0px;
+        color: rgba(23, 89, 216, 1);
     }
     .card-img-top {
         margin-bottom: 13px;
     }
     .card-text {
         max-height:195px;
+        min-height: 55px;
         overflow: hidden;
         p:first-child{
             font-weight: bold
@@ -239,6 +242,7 @@ Vertical Timeline - by CodyHouse.co
     .cd-timeline__content {
         margin-left: 0;
         padding: 1.6em;
+        min-height: 53px;
         width: 45%;
         /* Force Hardware Acceleration */
         -webkit-transform: translateZ(0);
@@ -353,5 +357,33 @@ Vertical Timeline - by CodyHouse.co
     100% {
         -webkit-transform: translateX(0);
         transform: translateX(0);
+    }
+}
+
+#container {
+    width: 100% !important; 
+    padding: 0;
+    background:#fff;flex: 0 0 100%;
+}
+
+.items {
+    width: 100% !important; 
+    height:auto;flex: 0 0 100%;
+    img {
+        width:100%;
+    }
+}
+.ng2-carouselamos{
+    display: inline-block !important;flex: 0 0 100%;
+}
+#left, #right { 
+    margin: 30px;
+}
+.ng2-carouselamos-wrapper {
+    width: 100% !important; 
+}
+.slides-wrapper{
+    button:focus {
+        outline: none !important;
     }
 }

@@ -37,7 +37,7 @@ export class ExperienciaDetalleComponent implements OnInit {
   latitude: any;
   longitude: any;
   
-
+  idRutaItemRecibida:any;
   lat2:any;
   long2:any;
   zoom:number = 16;

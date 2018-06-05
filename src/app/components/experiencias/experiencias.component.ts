@@ -3,7 +3,7 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { HttpClient} from "@angular/common/http";
 import { ServiciosService } from '../../services/servicios.service';
-import { Experience, Category } from '../../models/models';
+import { Experience, Category, Ruta } from '../../models/models';
 
 @Component({
   selector: 'app-experiencias',
@@ -13,12 +13,13 @@ import { Experience, Category } from '../../models/models';
 })
 
 export class ExperienciasComponent implements OnInit {
-
+  idCategoriaRecibido:any;
 
  //Arrays Experiences and Category
  Experiences: Experience[] = [];
  Category: Category[] = [];
  CategoryFilter: Category[] = [];
+ rutas: Ruta[] = [];
 
   constructor( private http : HttpClient,  private ServiciosService: ServiciosService, private router: Router, private titleService: Title) {  }
 
@@ -51,6 +52,26 @@ export class ExperienciasComponent implements OnInit {
         console.log(<any>error);
       }
     ); 
+
+    this.ServiciosService.getRutas().subscribe( 
+      data => {
+      
+
+        this.rutas = data;
+      
+       
+       
+        //this.rutaName = data.filter(r2 => r2.name);
+        //console.log(this.rutaName)
+
+        //title
+        
+      },
+      error => {
+        console.log(<any>error);
+      }
+    ); 
+
     
   }
  
@@ -64,4 +85,12 @@ export class ExperienciasComponent implements OnInit {
     console.log("categoria", id);
   }
 
+  /*onRedCheckboxChange(evt) {
+    // your filterObject would look like this:
+    // { blue: true, red: false, green: false }
+    this.filterObject.red = evt.checked;
+    this.myService.filterData(this.filterObject);
+  }*/
+
 }
+

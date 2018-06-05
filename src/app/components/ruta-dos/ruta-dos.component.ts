@@ -5,7 +5,8 @@ import { switchMap } from 'rxjs/operators';
 import { HttpClient} from "@angular/common/http";
 import { ServiciosService } from '../../services/servicios.service';
 import { Observable } from 'rxjs/Rx';
-import { Experience, Category, Ruta, RutaItem, Marker } from '../../models/models';
+import { Experience, Category, Ruta, RutaItem, Marker, ItemDetail } from '../../models/models';
+
 
 
 @Component({
@@ -81,7 +82,11 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
 	  }
   ]*/
 
+  itemDetail: ItemDetail[] = [];
+  itemsDetails: ItemDetail[] = [];
+
   ngOnInit() {
+    
     //title
     this.titleService.setTitle('Rutas | Yagan');  
     //scrollTop
@@ -95,6 +100,8 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
           
 
             this.rutas = data.filter(r => r.id == this.id);
+          
+           
            
             //this.rutaName = data.filter(r2 => r2.name);
             //console.log(this.rutaName)
@@ -111,7 +118,9 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
         this.ServiciosService.getERutaItem().subscribe( 
           data => {
             this.RutaItem = data.filter(r => r.route == this.id);
+            
             this.markers = data;
+           
 
             for(let item of this.markers){ 
               this.latitude =  + item.latitude;
@@ -119,12 +128,14 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
               this.lugar.push(this.latitude, this.longitude);
                
             } 
-            console.log(this.lugar);
+              
+         
+            //console.log(this.lugar);
             
             for(let item of this.RutaItem){ 
               this.lat =  + item.latitude;
               this.lng =  + item.longitude;
-              console.log(this.lat, this.lng);
+              //console.log(this.lat, this.lng);
             } 
           },
           error => {
@@ -145,15 +156,55 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
       }
     );
 
+
+
+    //get experiencias  
+    this.ServiciosService.getERutaItemDetail().subscribe( 
+      data => {
+       
+        this.itemsDetails = data
+      
+        //console.log(this.itemsDetails);
+        // console.log( data.id )
+         /* for(let item of this.itemsDetails){ 
+            //console.log(item.id);
+           
+          } */
+       /* if(data.route_item == this.idItem ){
+       
+          console.log(data.route_item);
+        }*/
+       // this.itemsDetails = data.filter(r => r.route_item);
+
+       /* for(let item of data){
+          console.log(item.name);
+            if(item.id == this.idItem ){
+              this.itemsDetails = item;
+              console.log(this.itemsDetails);
+            }
+        }*/
+       
+        //this.itemDetail = data.filter(r => r.id == this.idItem);
+        
+        
+       // console.log(this.itemDetail);
+      },
+      error => {
+        console.log(<any>error);
+      } 
+    );  
     
 
   }
+  
 
 
 
   public idRutaItemRecibida = null;
+  public idItem = null;
   captureId(id){
     this.idRutaItemRecibida = id;
+    this.idItem = id;
     /*this.idCategoryOutput.emit(this.idCategory);*/
     console.log("ruta item", id);
   }
@@ -161,8 +212,8 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   //funcion para acceder al dom despues de mostrar data
   setTime(data){
     setTimeout(function(){  
-    
-            
+      //$(".owl-carousel").owlCarousel();
+     
     },0);
 
   }
@@ -170,7 +221,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
-
+  
 }
 interface marker {
 	lat: number;

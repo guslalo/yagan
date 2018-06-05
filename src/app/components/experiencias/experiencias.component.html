@@ -1,4 +1,4 @@
-<div class="container-fluid p-0 h-100">
+<div class="container-fluid p-0 h-100 gris2">
 
   <div id="carrusel-home" class="carousel slide" data-ride="carousel" >
     <ol class="carousel-indicators" style="display:none;" >
@@ -20,7 +20,8 @@
     <div class="row">
       <!--box menu -->
       <div class="col-3 menusidebar">
-        <ul>
+        <form>
+         <ul>
           <li class="title">Tipo</li>
           <li><a href="javascript:;" class="active">Todas</a></li>
           <li><a href="javascript:;">Rutas</a></li>
@@ -44,22 +45,45 @@
         </ul>
         <ul><!-- -->
           <li class="title">Categorías</li>
+          <li><a href="javascript:;">Todas</a></li>
           <li *ngFor="let item of CategoryFilter" id="{{item.id}}"><a href="javascript:;" (click)="captureId(item.id)">{{item.name}}</a></li>    
         </ul>
+      </form>
       </div><!--/box menu  (idCategoryOutput)="captureId($event)"-->
       
 
-      <div class="col gris2">
-        <div class="row">
-          <div class="col-12">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Ruta costera Atacama</li>
-            </ol>
-          </nav></div>
-        </div>
+      <div class="col">
+          <div class="row">
+              <div class="col-12">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Rutas</li>
+                </ol>
+              </nav></div>
+            </div>
+          
+        
+        <div class="row experiencias" id="categoria{{idCategoriaRecibido}}">
+          <div *ngFor="let item of rutas" id="{{item.id}}" class="col-12 col-md-4 categoria" >
+            <a [routerLink]="['/ruta', item.id]">
+            <figure>
+              <img [src]="item.image"/> <!-- [src]="item.image" [routerLink]="['/ruta', item.id]"-->
+            </figure>
+            <h3>{{item.name}}</h3>
+          </a>
+          </div>      
+        </div> 
 
+        <div class="row">
+            <div class="col-12">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Experiencias</li>
+              </ol>
+            </nav></div>
+          </div>
         <!--experiencias -->
         <app-lista-experiencias [idCategoriaRecibido]="idCategory"></app-lista-experiencias><!-- experiencias-->
 

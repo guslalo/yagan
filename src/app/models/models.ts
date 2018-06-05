@@ -57,3 +57,14 @@ export class Marker {
 	draggable: boolean;
 }
 
+export class ItemDetail {
+  id: number;
+  image: string;
+  created:Date;
+  modified:Date;
+  is_removed: boolean;
+  name: string;
+  description: string;
+  route_item: number;
+}
+

@@ -77,11 +77,12 @@
                                       location_on
                                     </i>
                                   </div> <!-- cd-timeline__img -->
-                                  <div class="col-9 col-md-4 card cd-timeline__content js-cd-content"  (click)="captureIds(item.id)">
+                                  <div class="col-9 col-md-4 card cd-timeline__content js-cd-content"  (click)="captureId(item.id)">
                                     <img class="card-img-top" [src]="item.image" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
                                     <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
-                                    <div [innerHTML]="item.description" class="card-text "></div>
-                                    <a href="javascript:;" class="btn"  data-toggle="modal" data-target="#exampleModal3">Ver más</a>
+                                    <div [innerHTML]="item.description | truncate : 190" class="card-text "></div> 
+                                   
+                                    <a href="javascript:;" class="btn"  data-toggle="modal" data-target="#exampleModal3">+ Ver más</a>
                                   </div> <!-- cd-timeline__content -->
                                 </div><!--card -->
                               </div><!--/ruta item -->
@@ -213,8 +214,67 @@
  <!-- Modal mapa -->
  <app-mapa-item [idRutaItemRecibida]="idRutaItemRecibida"></app-mapa-item><!-- /Modal mapa -->
 
- <!-- Modal detalle item -->
- <app-detalle-item></app-detalle-item><!-- /Modal detalle item -->
+     <!-- Modal galeria y detalles -->
+     <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>     
+                </div>
+            </div>
+          </div>
+  
+          </div>
+          <div class="modal-body">
+              <div id="container">
+                  <div
+                    ng2-carouselamos
+                    class="slides-wrapper"
+                    [items]="itemsDetails"
+                    [width]="600"
+                    [$prev]="prev"
+                    [$next]="next"
+                    [$item]="item"
+                  >
+                  </div>
+                
+            
+                <ng-template #prev>
+                    <i class="material-icons" id="left" style="font-size:90px;">
+                        keyboard_arrow_left
+                        </i>
+                </ng-template>
+                <ng-template #next>
+                    <i class="material-icons" id="right" style="font-size:90px;">
+                        keyboard_arrow_right
+                        </i>
+                </ng-template>
+                <ng-template #item let-item let-i="index">
+            
+                    <div class="items" *ngIf="item.route_item == idItem">
+                      
+                        <h2>  {{ item.name }}</h2>
+                        <img  [src]="item.image">
+                        <div class="textos">
+                          {{item.description}}
+                        </div>
+                    </div>
+            
+                </ng-template>
+           
+          </div>
+         
+        </div>
+      </div>
+    </div>
+
+ <!-- Modal detalle item 
+ <app-detalle-item [idItem]="idItem"></app-detalle-item>--><!-- /Modal detalle item -->
 
 
 

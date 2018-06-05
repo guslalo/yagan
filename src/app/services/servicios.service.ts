@@ -37,6 +37,13 @@ export class ServiciosService {
     return this.http.get(url+'route/api/route_item/');
   }
 
+  //getERutaItemDetail
+  getERutaItemDetail(): Observable<any>{
+    return this.http.get(url+'route/api/route_item_detail/');
+  }
+
+  
+
 
   
 

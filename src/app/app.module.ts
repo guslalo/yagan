@@ -23,6 +23,9 @@ import { MapaItemComponent } from './components/ruta-dos/mapa-item/mapa-item.com
 import { DetalleItemComponent } from './components/ruta-dos/detalle-item/detalle-item.component';
 import { ExperienciaDetalleComponent } from './components/experiencias/experiencia-detalle/experiencia-detalle.component';
 
+import { TruncateModule } from 'ng2-truncate';
+import { Ng2CarouselamosModule } from 'ng2-carouselamos';
+
 
 
 
@@ -67,6 +70,8 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
+    TruncateModule,
+    Ng2CarouselamosModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false },//<-- debugging purposes only

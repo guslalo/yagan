@@ -15,27 +15,30 @@
   
           </div>
           <div class="modal-body">
-        
-              <div id="carrusel-home3" class="carousel slide" data-ride="carousel">
+           
+              <div id="carrusel-home3" class="carousel slide" data-ride="carousel" >
                   <ol class="carousel-indicators">
                     <li data-target="#carrusel-home3" data-slide-to="0" class="active"></li>
                     <li data-target="#carrusel-home3" data-slide-to="1"></li>
                   </ol>
-                  <div class="carousel-inner">
+                  <div class="carousel-inner" ><!--*ngIf="item.route_item == idItem" [src]="item.image" {{idItem}}-->
                     <div class="carousel-item active">
-                      <h2> Título lugar </h2>
-                      <img src="assets/img/ruta/playa.jpg">
+                      <h2> {{idItem}} </h2>
+                      <img>
                       <div class="textos">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nunc magna, pharetra vel maximus non, placerat ut magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nunc magna, pharetra vel maximus non, placerat ut magna. 
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                          
+                          nunc magna, pharetra vel maximus non, placerat ut magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nunc magna, pharetra vel maximus non, placerat ut magna. 
                       </div>
                     </div>
+                   
                     <div class="carousel-item">
                         <h2> Título lugar </h2>
                       <img src="assets/img/ruta/playa.jpg">
                       <div class="textos">
                           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nunc magna, pharetra vel maximus non, placerat ut magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nunc magna, pharetra vel maximus non, placerat ut magna.                  
                       </div>         
-                    </div>
+                    </div> <!-- -->
                     
                     <a class="carousel-control-prev" href="#carrusel-home3" role="button" data-slide="prev">
                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>

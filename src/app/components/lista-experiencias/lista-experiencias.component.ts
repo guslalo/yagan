@@ -15,6 +15,8 @@ export class ListaExperienciasComponent implements OnInit {
  Experiences: Experience[] = [];
  rutaId: Ruta[] = [];
  Category: Category[] = [];
+
+ subacategorias: Category[] = [];
  RutaItem: RutaItem[] = [];
  RutaItemClick: RutaItem[] = [];
  item:any;
@@ -26,11 +28,11 @@ export class ListaExperienciasComponent implements OnInit {
 
   ngOnInit() {
      //get experiencias  
-     this.ServiciosService.getRuta(3 ).subscribe( 
+     this.ServiciosService.getCategory().subscribe( 
       data => {
         //console.log(data);
-        this.rutaId.push(data);
-        //console.log(this.rutaId);
+        //this.subacategorias.push(data);
+        this.subacategorias = data.filter(r => r.category_parent != null);
 
         for(let item of this.rutaId){ 
          // this.lat =  + item.latitude;
