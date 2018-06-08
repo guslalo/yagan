@@ -7,8 +7,6 @@ import { ServiciosService } from '../../services/servicios.service';
 import { Observable } from 'rxjs/Rx';
 import { Experience, Category, Ruta, RutaItem, Marker, ItemDetail } from '../../models/models';
 
-
-
 @Component({
   selector: 'app-ruta-dos',
   templateUrl: './ruta-dos.component.html',
@@ -18,8 +16,6 @@ import { Experience, Category, Ruta, RutaItem, Marker, ItemDetail } from '../../
 export class RutaDosComponent implements OnInit, OnDestroy  {
 
   @Input() public idExpecienciaRecibida:any;
-
-
 
   idExperiencia = "NULL"
   idRecibido(id){
@@ -53,11 +49,9 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   latitude: any;
   longitude: any;
   
-
   lat2:any;
   long2:any;
   zoom:number = 16;
-
 
   id: number;
   private sub: any;/*
@@ -117,21 +111,16 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
         //get ruta item 
         this.ServiciosService.getERutaItem().subscribe( 
           data => {
-            this.RutaItem = data.filter(r => r.route == this.id);
-            
+            this.RutaItem = data.filter(r => r.route == this.id);    
             this.markers = data;
            
-
             for(let item of this.markers){ 
               this.latitude =  + item.latitude;
               this.longitude =  + item.longitude;
-              this.lugar.push(this.latitude, this.longitude);
-               
+              this.lugar.push(this.latitude, this.longitude);    
             } 
-              
-         
-            //console.log(this.lugar);
-            
+               
+            //console.log(this.lugar); 
             for(let item of this.RutaItem){ 
               this.lat =  + item.latitude;
               this.lng =  + item.longitude;
@@ -156,14 +145,10 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
       }
     );
 
-
-
     //get experiencias  
     this.ServiciosService.getERutaItemDetail().subscribe( 
-      data => {
-       
+      data => {     
         this.itemsDetails = data
-      
         //console.log(this.itemsDetails);
         // console.log( data.id )
          /* for(let item of this.itemsDetails){ 
@@ -182,11 +167,8 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
               this.itemsDetails = item;
               console.log(this.itemsDetails);
             }
-        }*/
-       
-        //this.itemDetail = data.filter(r => r.id == this.idItem);
-        
-        
+        }*/ 
+        //this.itemDetail = data.filter(r => r.id == this.idItem);  
        // console.log(this.itemDetail);
       },
       error => {
@@ -194,7 +176,6 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
       } 
     );  
     
-
   }
   
 
@@ -212,8 +193,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   //funcion para acceder al dom despues de mostrar data
   setTime(data){
     setTimeout(function(){  
-      //$(".owl-carousel").owlCarousel();
-     
+      //$(".owl-carousel").owlCarousel(); 
     },0);
 
   }

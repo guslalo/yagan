@@ -39,7 +39,6 @@ item:any;
         //console.log(data);
         this.rutas = data
         //console.log(this.rutas);
-
         for(let item of this.rutaId){ 
          // this.lat =  + item.latitude;
           //this.lng =  + item.longitude;
