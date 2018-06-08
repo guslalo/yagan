@@ -6,12 +6,12 @@
       <li data-target="#carrusel-home" data-slide-to="1"></li>
     </ol>
     <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="assets/img/atacama.png">
-          <div class="carousel-caption d-none d-md-block">
-            <h4>{{item.name}}</h4> 
-          </div>
+      <div class="carousel-item active">
+        <img src="assets/img/atacama.png">
+        <div class="carousel-caption d-none d-md-block">
+          <h4>{{item.name}}</h4> 
         </div>
+      </div>
     </div>
   </div><!--/slide home-->
 
@@ -19,25 +19,27 @@
   <div class="container-fluid">
     <div class="container">
       <div class="row">
-          <div class="col-12">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a href="javascript:;">{{item.name}}</a></li>
-              </ol>         
-            </nav>
-          </div>
+        <div class="col-12">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page"><a href="javascript:;">{{item.name}}</a></li>
+            </ol>         
+          </nav>
+        </div>
       </div>
 
       <div class="row">
         <div class="col-12 col-md-3">
-            <img [src]="item.image" class="img-fluid">
+          <img [src]="item.image" class="img-fluid">
         </div>
         <div class="col pl-4 resena">
-          <div class="col-12 pl-0" style="display: none;"><img src="assets/img/turismo.png"> </div><!-- {{idExperiencia}} -->
+          <div class="col-12 pl-0" style="display: none;">
+            <img src="assets/img/turismo.png"> 
+          </div><!-- {{idExperiencia}} -->
           <div class="textos">
-              <h6>{{item.name}}</h6>
-              <div [innerHTML]="item.description"></div>
+            <h6>{{item.name}}</h6>
+            <div [innerHTML]="item.description"></div>
           </div>
           <div class="web">
             <a href="j{{item.web_site}}" target="_blank">{{item.web_site}}</a>
@@ -50,160 +52,137 @@
 
   <div class="container-fluid gris2 p-0 ">
     <div class="barraVerde justify-content-md-center">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-          
-            <li class="nav-item">
-              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Ruta</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Mapa</a>
-            </li>
-          </ul>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Ruta</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Mapa</a>
+        </li>
+      </ul>
     </div>
       
-
     <div class="container-fluid p-0  ruta">
-        <div class="tab-content" id="myTabContent">
-        
-                <div class="tab-pane fade show active pt-5 pb-0" id="home" role="tabpanel" aria-labelledby="home-tab">
-                  <div class="container pb-5">
-                      <div class="row">
-                          <section class="cd-timeline js-cd-timeline">
-                              <!--ruta item -->
-                              <div class="cd-timeline__container">
-                                <div *ngFor="let item of RutaItem" id="{{item.id}}" class="cd-timeline__block js-cd-block">
-                                  <div class="cd-timeline__img cd-timeline__img--picture js-cd-img" data-toggle="modal" data-target="#exampleModal2"  (click)="captureId(item.id)">
-                                    <i class="material-icons">
-                                      location_on
-                                    </i>
-                                  </div> <!-- cd-timeline__img -->
-                                  <div class="col-9 col-md-4 card cd-timeline__content js-cd-content"  (click)="captureId(item.id)">
-                                    <img class="card-img-top" [src]="item.image" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
-                                    <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
-                                    <div [innerHTML]="item.description | truncate : 190" class="card-text "></div> 
-                                   
-                                    <a href="javascript:;" class="btn"  data-toggle="modal" data-target="#exampleModal3">+ Ver más</a>
-                                  </div> <!-- cd-timeline__content -->
-                                </div><!--card -->
-                              </div><!--/ruta item -->
-                            </section>
-                      </div>
-                    </div>
-
-                    <div class="container-fluid blanco">
-                        <div class="container">
-                          <div class="row">
-                            <div class="col-12">
-                            <h2 class="h2 text-center">Más tours de este operador</h2></div>
-                          </div>
-
-                          <div class="row experiencias masTours">
-                              <div  class="col-6 col-md-3 categoria ">
-                                <figure >
-                                  <img src="assets/img/ruta/cruceandino-01-m.png">
-                                  
-                                </figure>
-                                <h3 class="text-center"> Cruce andino </h3>
-                              </div>
-                              <div  class="col-6 col-md-3 categoria">
-                                <figure >
-                                <img  src="assets/img/ruta/xconchatoro-01-m.jpg.pagespeed.ic.ngQeLtLgmh.png">
-                                
-                              </figure>
-                                
-                                <h3  class="text-center"> Viña Concha y Toro </h3>
-                              </div>
-                              <div class="col-6 col-md-3 categoria">
-                                  <figure >
-                                <img  src="assets/img/ruta/xosornopetrohue-01-m.jpg.pagespeed.ic.QMrC4INxEP.png"></figure>
-                                <h3 > Volcán Osorno y Saltos del Petrohué </h3>
-                              </div>
-                              <div class="col-6 col-md-3 categoria">
-                                  <figure >
-                                  <img  src="assets/img/ruta/eco-02-s.png"></figure>
-                                  <h3> Eco Aventura Petrohué </h3>
-                                </div>
-                               
-                            </div>
-                          
-                        </div>
-                    </div>
-                </div>
-            
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-
-                <!--<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-                  <agm-marker [latitude]="lat" [longitude]="lng"> </agm-marker>
-                </agm-map>-->
-
-                <agm-map 
-                [latitude]="latitude"
-                [longitude]="longitude"
-                [zoom]="zoom"
-                [disableDefaultUI]="true"
-                [zoomControl]="false"
-                (mapClick)="mapClicked($event)">
-              
-                <agm-marker 
-                    *ngFor="let m of lugar; let i = index"
-                    (markerClick)="clickedMarker(m.label, i)"
-                    [latitude]="m.latitude"
-                    [longitude]="m.longitude"
-                    [label]="m.label"
-                    [markerDraggable]="m.draggable"
-                    (dragEnd)="markerDragEnd(m, $event)">
-        
-                  
-                </agm-marker>
-                
-                <agm-circle [latitude]="latitude + 0.3" [longitude]="longitude" 
-                    [radius]="5000"
-                    [fillColor]="'red'"
-                    [circleDraggable]="true"
-                    [editable]="true">
-                </agm-circle>
-              
-        
-                </agm-map>
-
-                  
-                <div class="container aportar pb-5">
-                        <div class="row pt-5">
-                            <div class="col-12">
-                              <p class="text-center font-weigth-bold"> ¿Quieres aportar a esta ruta?</p>
-                             
-                            </div>
-                        
-                            <div class="col-12"> 
-                              <p  class="text-center">Escríbenos y envíanos tus aportes, comentarios o lugares que faltan </p>
-                              
-                            </div>
-                        </div>
-                        <div class="row justify-content-md-center">
-                        <div class="col-4">
-                            <form>
-                                <div class="form-group">
-                                  <label for="formGroupExampleInput text-left"> Email </label>
-                                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                  <label for="formGroupExampleInput2  text-left"> Mensaje </label>
-                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-block">Enviar</button>
-                                </div>
-                              </form>
-                        </div>
-                        
-                    </div>
-                </div>
-               
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active pt-5 pb-0" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <div class="container pb-5">
+              <div class="row">
+                  <section class="cd-timeline js-cd-timeline">
+                      <!--ruta item -->
+                      <div class="cd-timeline__container">
+                        <div *ngFor="let item of RutaItem" id="{{item.id}}" class="cd-timeline__block js-cd-block">
+                          <div class="cd-timeline__img cd-timeline__img--picture js-cd-img" data-toggle="modal" data-target="#exampleModal2"  (click)="captureId(item.id)">
+                            <i class="material-icons">
+                              location_on
+                            </i>
+                          </div> <!-- cd-timeline__img -->
+                          <div class="col-9 col-md-4 card cd-timeline__content js-cd-content"  (click)="captureId(item.id)">
+                            <img class="card-img-top" [src]="item.image" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
+                            <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
+                            <div [innerHTML]="item.description | truncate : 190" class="card-text "></div> 
+                            
+                            <a href="javascript:;" class="btn"  data-toggle="modal" data-target="#exampleModal3">+ Ver más</a>
+                          </div> <!-- cd-timeline__content -->
+                        </div><!--card -->
+                      </div><!--/ruta item -->
+                    </section>
+              </div>
             </div>
-          </div>
+
+            <div class="container-fluid blanco">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-12">
+                    <h2 class="h2 text-center">Más tours de este operador</h2></div>
+                  </div>
+
+                  <div class="row experiencias masTours">
+                      <div  class="col-6 col-md-3 categoria ">
+                        <figure >
+                          <img src="assets/img/ruta/cruceandino-01-m.png">
+                          
+                        </figure>
+                        <h3 class="text-center"> Cruce andino </h3>
+                      </div>
+                      <div  class="col-6 col-md-3 categoria">
+                        <figure >
+                        <img  src="assets/img/ruta/xconchatoro-01-m.jpg.pagespeed.ic.ngQeLtLgmh.png">
+                        
+                      </figure>
+                        
+                        <h3  class="text-center"> Viña Concha y Toro </h3>
+                      </div>
+                      <div class="col-6 col-md-3 categoria">
+                          <figure >
+                        <img  src="assets/img/ruta/xosornopetrohue-01-m.jpg.pagespeed.ic.QMrC4INxEP.png"></figure>
+                        <h3 > Volcán Osorno y Saltos del Petrohué </h3>
+                      </div>
+                      <div class="col-6 col-md-3 categoria">
+                          <figure >
+                          <img  src="assets/img/ruta/eco-02-s.png"></figure>
+                          <h3> Eco Aventura Petrohué </h3>
+                        </div>
+                        
+                    </div>
+                  
+                </div>
+            </div>
+        </div>           
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <agm-map 
+          [latitude]="latitude"
+          [longitude]="longitude"
+          [zoom]="zoom"
+          [disableDefaultUI]="true"
+          [zoomControl]="false"
+          (mapClick)="mapClicked($event)">
+            <agm-marker 
+                *ngFor="let m of lugar; let i = index"
+                (markerClick)="clickedMarker(m.label, i)"
+                [latitude]="m.latitude"
+                [longitude]="m.longitude"
+                [label]="m.label"
+                [markerDraggable]="m.draggable"
+                (dragEnd)="markerDragEnd(m, $event)">
+            </agm-marker>     
+            <agm-circle [latitude]="latitude + 0.3" [longitude]="longitude" 
+                [radius]="5000"
+                [fillColor]="'red'"
+                [circleDraggable]="true"
+                [editable]="true">
+            </agm-circle>
+          </agm-map>   
+          <div class="container aportar pb-5">
+              <div class="row pt-5">
+                  <div class="col-12">
+                    <p class="text-center font-weigth-bold"> ¿Quieres aportar a esta ruta?</p>
+                  </div>
+                  <div class="col-12"> 
+                    <p  class="text-center">Escríbenos y envíanos tus aportes, comentarios o lugares que faltan </p> 
+                  </div>
+              </div>
+              <div class="row justify-content-md-center">
+                <div class="col-4">
+                  <form>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput text-left"> Email </label>
+                      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                    </div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2  text-left"> Mensaje </label>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+                    </div>
+                  </form>
+                </div> 
+              </div>
+          </div>  
+        </div>
+      </div>
     </div>
   </div>
-
 
 </div>
 
@@ -231,42 +210,36 @@
   
           </div>
           <div class="modal-body">
-              <div id="container">
-                  <div
-                    ng2-carouselamos
-                    class="slides-wrapper"
-                    [items]="itemsDetails"
-                    [width]="600"
-                    [$prev]="prev"
-                    [$next]="next"
-                    [$item]="item"
-                  >
-                  </div>
-                
+            <div id="container">
+              <div
+                ng2-carouselamos
+                class="slides-wrapper"
+                [items]="itemsDetails"
+                [width]="600"
+                [$prev]="prev"
+                [$next]="next"
+                [$item]="item">
+              </div>
             
-                <ng-template #prev>
-                    <i class="material-icons" id="left" style="font-size:90px;">
-                        keyboard_arrow_left
-                        </i>
-                </ng-template>
+              <ng-template #prev>
+                <i class="material-icons" id="left" style="font-size:90px;">
+                  keyboard_arrow_left
+                </i>
+              </ng-template>
                 <ng-template #next>
-                    <i class="material-icons" id="right" style="font-size:90px;">
-                        keyboard_arrow_right
-                        </i>
+                  <i class="material-icons" id="right" style="font-size:90px;">
+                    keyboard_arrow_right
+                  </i>
                 </ng-template>
                 <ng-template #item let-item let-i="index">
-            
-                    <div class="items" *ngIf="item.route_item == idItem">
-                      
-                        <h2>  {{ item.name }}</h2>
-                        <img  [src]="item.image">
-                        <div class="textos">
-                          {{item.description}}
-                        </div>
+                  <div class="items" *ngIf="item.route_item == idItem">
+                    <h2>  {{ item.name }}</h2>
+                    <img  [src]="item.image">
+                    <div class="textos">
+                      {{item.description}}
                     </div>
-            
+                  </div>
                 </ng-template>
-           
           </div>
          
         </div>
