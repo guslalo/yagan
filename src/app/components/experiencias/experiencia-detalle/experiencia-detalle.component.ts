@@ -87,9 +87,9 @@ export class ExperienciaDetalleComponent implements OnInit {
             this.markers = data;
 
             for(let item of this.markers){ 
-              this.latitude =  + item.latitude;
-              this.longitude =  + item.longitude;
-              this.lugar.push(this.latitude, this.longitude);
+              this.latitude =  + item.lat;
+              this.longitude =  + item.lng;/**/
+              //this.lugar.push(this.latitude, this.longitude);
                
             } 
             console.log(this.lugar);

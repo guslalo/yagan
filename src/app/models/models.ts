@@ -28,6 +28,7 @@ export class Ruta{
   category: number;
   duration_days: number;
   organization: number;
+ 
 }
 
 export class RutaItem{
@@ -51,10 +52,10 @@ export class Category{
 }
 
 export class Marker {
-	latitude: number;
-	longitude: number;
-	label?: string;
-	draggable: boolean;
+  lat: number;
+  lng:number;
+	label: string;
+  draggable: boolean;
 }
 
 export class ItemDetail {

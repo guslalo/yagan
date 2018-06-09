@@ -6,6 +6,7 @@ import { HttpClient} from "@angular/common/http";
 import { ServiciosService } from '../../services/servicios.service';
 import { Observable } from 'rxjs/Rx';
 import { Experience, Category, Ruta, RutaItem, Marker, ItemDetail } from '../../models/models';
+import { MouseEvent } from '@agm/core';
 
 @Component({
   selector: 'app-ruta-dos',
@@ -35,49 +36,87 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   rutaId: Ruta[] = [];
   rutas: Ruta[] = [];
   rutaName: Ruta[] = [];
-  markers: Marker[] = [];
+
   lugar: Marker[] = [];
+
+
+  lat2:any;
+  long2:any;
+
+
+  id: number;
+  private sub: any;
+  
   
   Category: Category[] = [];
   RutaItem: RutaItem[] = [];
   RutaItemClick: RutaItem[] = [];
   item:any;
   
-  lat: any;
+  /*lat: any;
   lng: any;
+    zoom:number = 16;
+  */
 
-  latitude: any;
-  longitude: any;
+  /*latitude: any;
+  longitude: any;*/
   
-  lat2:any;
-  long2:any;
-  zoom:number = 16;
+ 
+  
+  //markers:any;
+  
+  // google maps zoom level
+  zoom: number = 11;
+  
+  // initial center position for the map
+  lat: number =  -27.360043;
+  lng: number = -70.343646;
 
-  id: number;
-  private sub: any;/*
-  markers: marker[] = [
-	  {
-		  lat: 51.673858,
-		  lng: 7.815982,
+  clickedMarker(label: string, index: number) {
+    console.log(`clicked the marker: ${label || index}`)
+  }
+ /* 
+  */
+  
+  markerDragEnd(m: Marker, $event: MouseEvent) {
+    console.log('dragEnd', m, $event);
+  }
+  //markers: Marker[] = [];
+    markers: Marker[] = [
+	{
+		  lat: -27.360043,
+		  lng: -70.343646,
 		  label: 'A',
 		  draggable: true
 	  },
 	  {
-		  lat: 51.373858,
-		  lng: 7.215982,
+		  lat: -27.361828,
+		  lng: -70.340268,
 		  label: 'B',
 		  draggable: false
 	  },
 	  {
-		  lat: 51.723858,
-		  lng: 7.895982,
+		  lat: -27.361572,
+		  lng: -70.344672,
 		  label: 'C',
 		  draggable: true
 	  }
-  ]*/
+  ]/**/
 
-  itemDetail: ItemDetail[] = [];
-  itemsDetails: ItemDetail[] = [];
+  /*
+  mapClicked($event: MouseEvent) {
+    this.markers.push({
+      lat: $event.coords.lat,
+      lng: $event.coords.lng,
+      draggable: true
+    });
+  }*/
+
+  
+ 
+
+  /*itemDetail: ItemDetail[] = [];
+  itemsDetails: ItemDetail[] = [];*/
 
   ngOnInit() {
     
@@ -94,6 +133,8 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
           
 
             this.rutas = data.filter(r => r.id == this.id);
+
+       
           
            
            
@@ -101,6 +142,32 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
             //console.log(this.rutaName)
 
             //title
+                    this.ServiciosService.getERutaItem().subscribe( 
+                      data => {
+                        this.RutaItem = data.filter(r => r.route == this.id);    
+                      
+                        /*this.markers = data;*/
+                        
+                        //this.markers = data.filter(r => r.route == this.id);   
+                        //console.log(this.markers); 
+                        //for(let item of this.markers){ 
+                        //this.lat =  + item.lat;
+                          //this.lng =  + item.lng;
+                          /*this.lugar.push(this.latitude, this.longitude);  */
+                        // console.log(item.lat, item.lng);  
+                        //} 
+                          
+                        //console.log(this.lugar); 
+                        /*for(let item of this.RutaItem){ 
+                          this.lat =  + item.latitude;
+                          this.lng =  + item.longitude;
+                      
+                        } */
+                      },
+                      error => {
+                        console.log(<any>error);
+                      }
+            ); 
             
           },
           error => {
@@ -113,19 +180,21 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
           data => {
             this.RutaItem = data.filter(r => r.route == this.id);    
             this.markers = data;
+            
            
-            for(let item of this.markers){ 
-              this.latitude =  + item.latitude;
-              this.longitude =  + item.longitude;
-              this.lugar.push(this.latitude, this.longitude);    
-            } 
+            //for(let item of this.markers){ 
+             //this.lat =  + item.lat;
+              //this.lng =  + item.lng;
+               /*this.lugar.push(this.latitude, this.longitude);  */
+             // console.log(item.lat, item.lng);  
+            //} 
                
             //console.log(this.lugar); 
-            for(let item of this.RutaItem){ 
+            /*for(let item of this.RutaItem){ 
               this.lat =  + item.latitude;
               this.lng =  + item.longitude;
-              //console.log(this.lat, this.lng);
-            } 
+           
+            } */
           },
           error => {
             console.log(<any>error);
@@ -148,7 +217,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
     //get experiencias  
     this.ServiciosService.getERutaItemDetail().subscribe( 
       data => {     
-        this.itemsDetails = data
+        //this.itemsDetails = data
         //console.log(this.itemsDetails);
         // console.log( data.id )
          /* for(let item of this.itemsDetails){ 
@@ -203,9 +272,4 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   }
   
 }
-interface marker {
-	lat: number;
-	lng: number;
-	label?: string;
-	draggable: boolean;
-}
+// just an interface for type safety.

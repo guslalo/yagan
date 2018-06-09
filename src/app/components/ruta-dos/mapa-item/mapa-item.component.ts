@@ -16,10 +16,13 @@ export class MapaItemComponent implements OnInit, OnDestroy, OnChanges {
   lat2: any;
   lng2: any;
   zoom: number = 13;
+  
+  public currentLocation: {
+    latitude: 47.024629,
+    longitude: 28.832407
+  };
 
-
-  constructor(  private http : HttpClient,  
-    private ServiciosService: ServiciosService) { }
+  constructor(  private http : HttpClient, private ServiciosService: ServiciosService) { }
 
   ngOnInit() {
        //get ruta item 

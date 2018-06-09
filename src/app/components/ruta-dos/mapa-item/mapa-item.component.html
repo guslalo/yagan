@@ -14,9 +14,17 @@
 
       </div>
       <div class="modal-body"><!-- *ngFor="let item of RutaItem"--> 
+        
         <agm-map  [latitude]="lat2" [longitude]="lng2" [zoom]="zoom">
           <agm-marker [latitude]="lat2" [longitude]="lng2"></agm-marker>
         </agm-map>
+
+       <!--
+      <agm-map [latitude]="currentLocation.latitude" [longitude]="currentLocation.longitude">
+          <agm-marker *ngFor="let point of markers;" [latitude]="point.latitude" [longitude]="point.longitude">
+ 
+          </agm-marker>
+      </agm-map>-->
 
 
       </div>
