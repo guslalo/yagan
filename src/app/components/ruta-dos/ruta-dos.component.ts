@@ -102,7 +102,6 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
 		  draggable: true
 	  }
   ]/**/
-
   /*
   mapClicked($event: MouseEvent) {
     this.markers.push({

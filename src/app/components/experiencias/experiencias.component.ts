@@ -18,6 +18,7 @@ export class ExperienciasComponent implements OnInit {
  //Arrays Experiences and Category
  Experiences: Experience[] = [];
  Category: Category[] = [];
+ SubCategory: Category[] = [];
  CategoryFilter: Category[] = [];
  rutas: Ruta[] = [];
 
@@ -47,6 +48,7 @@ export class ExperienciasComponent implements OnInit {
         } 
 
         this.CategoryFilter = this.Category.filter(r => r.category_parent == null);
+        this.SubCategory = this.Category.filter(r => r.category_parent != null);
       },
       error => {
         console.log(<any>error);

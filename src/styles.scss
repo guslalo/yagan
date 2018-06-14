@@ -283,7 +283,8 @@ agm-map {
         img{
             position: relative;
             z-index: 1;
-            width: 100%;
+            width:auto;
+            min-width:285px;
             height: 210px;//mientras
         }
         .tiempo {

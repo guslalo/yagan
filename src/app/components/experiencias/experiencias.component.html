@@ -65,8 +65,8 @@
           
         
         <div class="row experiencias" id="categoria{{idCategoriaRecibido}}">
-          <div *ngFor="let item of rutas" id="{{item.id}}" class="col-12 col-md-4 categoria" >
-            <a [routerLink]="['/ruta', item.id]">
+          <div *ngFor="let item of SubCategory" id="{{item.id}}" class="col-12 col-md-4 categoria" >
+            <a [routerLink]="['/ruta', item.category_parent]">
             <figure>
               <img [src]="item.image"/> <!-- [src]="item.image" [routerLink]="['/ruta', item.id]"-->
             </figure>
@@ -75,6 +75,7 @@
           </div>      
         </div> 
 
+        <!--experiencias 
         <div class="row">
             <div class="col-12">
             <nav aria-label="breadcrumb">
@@ -84,8 +85,8 @@
               </ol>
             </nav></div>
           </div>
-        <!--experiencias -->
-        <app-lista-experiencias [idCategoriaRecibido]="idCategory"></app-lista-experiencias><!-- experiencias-->
+        
+        <app-lista-experiencias [idCategoriaRecibido]="idCategory"></app-lista-experiencias> experiencias-->
 
       </div>      
 

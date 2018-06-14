@@ -52,8 +52,8 @@ export class Category{
 }
 
 export class Marker {
-  lat: number;
-  lng:number;
+  lat: any;
+  lng:any;
 	label: string;
   draggable: boolean;
 }
