@@ -56,22 +56,38 @@
         <div class="row experiencias">
           <!--todas las subcategorias-->
           <div *ngFor="let item of SubCategory" id="{{item.id}}" class="col-12 col-md-4 categoria">
-            <a [routerLink]="['/ruta', item.id]">
+            <a *ngIf="item.type == 'route'; else templateSubcategory" [routerLink]="['/ruta', item.id]">
               <figure>
                 <img [src]="item.image"/>
               </figure>
               <h3>{{item.name}}</h3>
             </a>
+            <ng-template #templateSubcategory>
+              <a [routerLink]="['/experiencia', item.id]">
+                <figure>
+                  <img [src]="item.image"/>
+                </figure>
+                <h3>{{item.name}}</h3>
+              </a>
+            </ng-template>
           </div><!--/todas las subcategorias-->     
 
           <!--subcategoria filtrada por ID padre-->
           <div *ngFor="let item of SubCategoryFilter" id="{{item.id}}" class="col-12 col-md-4 categoria">
-            <a [routerLink]="['/ruta', item.id]">
+            <a *ngIf="item.type == 'route'; else templateSubcategory" [routerLink]="['/ruta', item.id]">
               <figure>
                 <img [src]="item.image"/>
               </figure>
               <h3>{{item.name}}</h3>
             </a>
+            <ng-template #templateSubcategory>
+              <a [routerLink]="['/experiencia', item.id]">
+                <figure>
+                  <img [src]="item.image"/>
+                </figure>
+                <h3>{{item.name}}</h3>
+              </a>
+            </ng-template>
           </div><!--/subcategoria filtrada por ID padre-->  
         </div><!--/rutas y experiencias box-->    
       </div>      

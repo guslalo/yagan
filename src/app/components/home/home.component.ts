@@ -56,11 +56,7 @@ export class HomeComponent implements OnInit {
     //get categorias  
     this.ServiciosService.getCategory().subscribe( 
       data => {
-        for(let item of data){ 
-          this.Category.push(item);
-        } 
-        this.CategoryFilter = this.Category.filter(r => r.category_parent == null);
-       // console.log(this.CategoryFilter);
+        this.CategoryFilter = data.filter(r => r.category_parent == null);
       },
       error => {
         console.log(<any>error);
@@ -70,7 +66,6 @@ export class HomeComponent implements OnInit {
     //get categorias  
     this.ServiciosService.subcategoria().subscribe( 
       data => {
-        console.log(data);
         this.subCategory = data;
       },
       error => {

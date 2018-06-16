@@ -15,7 +15,7 @@ export class ServiciosService {
     return this.http.get(url+'core/api/category/');
   }
 
-  getSubCategory(id:number): Observable<any>{
+  getSubCategoryFilter(id:number): Observable<any>{
     return this.http.get(url+'core/api/subcategory/?category_parent='+id);
   }
 
@@ -32,6 +32,10 @@ export class ServiciosService {
   getDuracion(): Observable<any>{
     return this.http.get(url+'core/api/duraton_day/');
   }
+
+
+
+
 
 
 
