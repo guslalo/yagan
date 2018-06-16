@@ -78,7 +78,7 @@ constructor( private http : HttpClient,  private ServiciosService: ServiciosServ
   getSubCategoryFilter(){
     this.ServiciosService.getSubCategory(this.id).subscribe( 
       data => {
-        this.SubCategoryFilter = data.childs;
+        this.SubCategoryFilter = data;
         console.log(this.SubCategoryFilter);
       },
       error => {

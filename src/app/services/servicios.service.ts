@@ -16,7 +16,7 @@ export class ServiciosService {
   }
 
   getSubCategory(id:number): Observable<any>{
-    return this.http.get(url+'core/api/category/'+id+'/');
+    return this.http.get(url+'core/api/subcategory/?category_parent='+id);
   }
 
   subcategoria():Observable<any>{
