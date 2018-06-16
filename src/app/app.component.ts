@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+//import * as owlCarousel from 'owl.carousel2';
 
 
-//declare var $:any;
+declare var owlCarousel:any;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, OnDestroy  } from '@angular/core';
+import { Component, OnInit, Input, Output, OnDestroy , OnChanges, DoCheck, SimpleChanges } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, ParamMap  } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
@@ -6,7 +6,12 @@ import { HttpClient} from "@angular/common/http";
 import { ServiciosService } from '../../../services/servicios.service';
 import { Observable } from 'rxjs/Rx';
 import { Experience, Category, Ruta, RutaItem, ItemDetail } from '../../../models/models';
+import { FormsModule } from '@angular/forms';
 
+import { CarouselOptions, ScreenResolutionMap, MergefitMap    } from 'ng2-owl-carousel2';
+//import * as owlCarousel from 'owl.carousel2';
+
+declare var owlCarousel:any;
 
 @Component({
   selector: 'app-detalle-item',
@@ -14,53 +19,79 @@ import { Experience, Category, Ruta, RutaItem, ItemDetail } from '../../../model
   styleUrls: ['./detalle-item.component.scss'],
   providers:[ServiciosService]
 })
-export class DetalleItemComponent implements OnInit {
+export class DetalleItemComponent implements OnInit, OnChanges, DoCheck {
   itemDetail: ItemDetail[] = [];
   itemsDetails: ItemDetail[] = [];
   @Input() public idItem:any;
+
+  carouselOptions: CarouselOptions;  
+  ScreenResolutionMap : ScreenResolutionMap;
+  SimpleChanges:any;
 
   constructor(
     private http : HttpClient,  
     private ServiciosService: ServiciosService, 
     private router: Router, 
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute) {
 
+      this.carouselOptions = new CarouselOptions();
+
+    //first parameter of the constructor is the resolution of the screen and second one is to enable or disable Merge fit option
+    let mappings: Array<MergefitMap> =[
+      new MergefitMap(678, true),
+      new MergefitMap(500, true)
+    ] ;
+  /*
+    this.carouselOptions.enableMouseScroll(true)
+                        .mergeFit(mappings);*/
+      
    
-  ngOnInit() {
-       //get experiencias  
-       this.ServiciosService.getERutaItemDetail().subscribe( 
-        data => {
-         
-          this.itemsDetails = data.filter(r => r.id == this.idItem);
-          //console.log(this.itemsDetails);
-          // console.log( data.id )
-           /* for(let item of this.itemsDetails){ 
-              //console.log(item.id);
-             
-            } */
-         /* if(data.route_item == this.idItem ){
-         
-            console.log(data.route_item);
-          }*/
-         // this.itemsDetails = data.filter(r => r.route_item);
+      this.carouselOptions.enableMouseScroll(true)
+                         
 
-         /* for(let item of data){
-            console.log(item.name);
-              if(item.id == this.idItem ){
-                this.itemsDetails = item;
+     }
+     onItemSelect(carouselItem:any):void{
+      //this carousel item can be used anywhere
+      }
+
+    ngOnChanges(changes: SimpleChanges) {
+      console.log(changes);
+        if(this.idItem != null) {
+           //get experiencias  
+            this.ServiciosService.getERutaItemId(this.idItem).subscribe( 
+              data => {
+                this.itemsDetails = [];
+                this.itemsDetails.push(data.route_item_detail); 
+            
+                //console.log(this.itemsDetails);
                 console.log(this.itemsDetails);
-              }
-          }*/
-         
-          //this.itemDetail = data.filter(r => r.id == this.idItem);
-          
-          
-         // console.log(this.itemDetail);
-        },
-        error => {
-          console.log(<any>error);
-        } 
-      );
-  }
+               
+                this.setTime();
+              },
+              error => {
+                console.log(<any>error);
+              } 
+            );
+        }
+       
+    }
+    ngDoCheck(){
 
+    }
+
+   ngOnInit(){
+    
+   }
+   carrusel(){
+   
+   }
+ 
+
+ 	 setTime(){
+    setTimeout(function(){  
+  
+     
+    },550);
+  }
+   
 }

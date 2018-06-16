@@ -23,8 +23,8 @@ $(document).ready(function(){
 					
 				}
 			}
-		})
-	
+		});
+	//console.log("listo");
 	
 	},500);
 	

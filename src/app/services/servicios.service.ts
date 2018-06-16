@@ -34,6 +34,28 @@ export class ServiciosService {
   }
 
 
+  getRuta(id:any): Observable<any>{
+    return this.http.get(url+'route/api/route/'+id+'/');
+  }
+  //experienciaClick
+  getERutaItemId(id:any): Observable<any>{
+    return this.http.get(url+'route/api/route_item/'+id+'/');
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -45,9 +67,6 @@ export class ServiciosService {
   }
 
 
-  getRuta(id:any): Observable<any>{
-    return this.http.get(url+'route/api/route/'+id+'/');
-  }
   getRutas(): Observable<any>{
     return this.http.get(url+'route/api/route/');
   }

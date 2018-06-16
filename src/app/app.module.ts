@@ -25,6 +25,7 @@ import { ExperienciaDetalleComponent } from './components/experiencias/experienc
 
 import { TruncateModule } from 'ng2-truncate';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
+import { Ng2OwlCarouselComponent } from "ng2-owl-carousel2";
 
 
 
@@ -68,13 +69,13 @@ const appRoutes: Routes = [
     RutasDelMesComponent,
     MapaItemComponent,
     DetalleItemComponent,
-    ExperienciaDetalleComponent
+    ExperienciaDetalleComponent,
+    Ng2OwlCarouselComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     TruncateModule,
-    Ng2CarouselamosModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false },//<-- debugging purposes only

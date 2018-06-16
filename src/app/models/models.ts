@@ -44,19 +44,21 @@ export class Experience{
   organization: number;
 }
 
-export class Ruta{
+export class Ruta{ 
   id: number;
   image: string;
   created: Date;
   modified: Date;
   is_removed: boolean;
-  name: string;
-  duration: String;
-  region: string;
-  entry_date: Date;
+  name:  string;
+  description:  string;
+  duration:Date;
+  region:  string;
+  entry_date:Date;
   category: number;
   duration_days: number;
   organization: number;
+  route_item:RutaItem[];
  
 }
 
@@ -70,15 +72,8 @@ export class RutaItem{
   latitude: String;
   longitude: String;
   entry_date: String;
-  route:number
-}
-
-
-export class Marker {
-  lat: any;
-  lng:any;
-	label: string;
-  draggable: boolean;
+  route:number;
+  route_item_detail:ItemDetail[];
 }
 
 export class ItemDetail {
@@ -91,4 +86,31 @@ export class ItemDetail {
   description: string;
   route_item: number;
 }
+
+/*
+
+"route_item_detail": [
+  {
+      "id": 24,
+      "image": "http://yagan.dev21.cl//media/images/2018/06/orig/2943-bahia-inglesa-matias-daza.jpg",
+      "created": "2018-06-04T21:25:02.279327-04:00",
+      "modified": "2018-06-04T21:25:02.290539-04:00",
+      "is_removed": false,
+      "name": "playa",
+      "description": "",
+      "route_item": 6
+  }
+],
+    
+*/
+
+
+export class Marker {
+  lat: any;
+  lng:any;
+	label: string;
+  draggable: boolean;
+}
+
+
 

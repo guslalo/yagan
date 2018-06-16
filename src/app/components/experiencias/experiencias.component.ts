@@ -44,7 +44,6 @@ constructor( private http : HttpClient,  private ServiciosService: ServiciosServ
      //get regiones  
     this.ServiciosService.getRegiones().subscribe( 
       data => {
-        console.log(data);
         this.region = data;
       },
       error => {
@@ -98,19 +97,7 @@ constructor( private http : HttpClient,  private ServiciosService: ServiciosServ
     ); 
   }
 
-  public idCategory = null;
-
-  captureId(id){
-    this.idCategory = id;
-    /*this.idCategoryOutput.emit(this.idCategory);*/
-    console.log("categoria", id);
-  }
-  /*onRedCheckboxChange(evt) {
-    // your filterObject would look like this:
-    // { blue: true, red: false, green: false }
-    this.filterObject.red = evt.checked;
-    this.myService.filterData(this.filterObject);
-  }*/
+ 
 
 }
 

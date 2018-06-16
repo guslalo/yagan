@@ -14,42 +14,46 @@
           </div>
   
           </div>
-          <div class="modal-body">
-           
-              <div id="carrusel-home3" class="carousel slide" data-ride="carousel" >
-                  <ol class="carousel-indicators">
-                    <li data-target="#carrusel-home3" data-slide-to="0" class="active"></li>
-                    <li data-target="#carrusel-home3" data-slide-to="1"></li>
-                  </ol>
-                  <div class="carousel-inner" ><!--*ngIf="item.route_item == idItem" [src]="item.image" {{idItem}}-->
-                    <div class="carousel-item active">
-                      <h2> {{idItem}} </h2>
-                      <img>
-                      <div class="textos">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                          
-                          nunc magna, pharetra vel maximus non, placerat ut magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nunc magna, pharetra vel maximus non, placerat ut magna. 
-                      </div>
-                    </div>
-                   
-                    <div class="carousel-item">
-                        <h2> Título lugar </h2>
-                      <img src="assets/img/ruta/playa.jpg">
-                      <div class="textos">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nunc magna, pharetra vel maximus non, placerat ut magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nunc magna, pharetra vel maximus non, placerat ut magna.                  
-                      </div>         
-                    </div> <!-- -->
-                    
-                    <a class="carousel-control-prev" href="#carrusel-home3" role="button" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carrusel-home3" role="button" data-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
-                    </a>
+          <div class="modal-body" >
+            <ng2-owl-carousel2 (onItemSelect)="onItemSelect($event)"
+              useAttributeSelector="true" loop="false"
+              [options]="carouselOptions" class="owl-carousel">
+       
+             <div carousel-item>
+               dssds
+             </div>
+              <div carousel-item>
+                  123
+              </div>
+                <div carousel-item>
+                   S6
                 </div>
-            </div><!--/slide home-->
+              <!--If attribute selector is  false
+              <carousel-item *ngFor="let item of your">
+              //your item template here
+              <carousel-item>
+              -->     
+              
+          </ng2-owl-carousel2>
+          
+
+
+              <div class=" carruselItemDetail">
+                  <div *ngFor="let item of itemsDetails[0]"> 
+                    <div>
+                      <img [src]="item.image"> 
+                    </div>
+                    <h4>
+                        {{item.name}}
+                    </h4>
+                  </div>
+               
+              </div>
+              
+          
+            
+
+              
           </div>
          
         </div>
