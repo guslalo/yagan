@@ -1,3 +1,32 @@
+export class Category{
+  id:number;
+  image: string;
+  name: string;
+  category_parent: any;
+}
+
+export class subCategory{
+  id:number;
+  name: string;
+  category_parent: any;
+  image: string;
+  date: Date;
+  type:string; 
+}
+
+export class Region{
+  code:string;
+  name:string;
+}
+
+export class Duracion{
+  id:number;
+  name:string;
+}
+
+
+
+
 export class Experience{
   id: number;
   created: Date;
@@ -44,21 +73,6 @@ export class RutaItem{
   route:number
 }
 
-export class Category{
-  id:number;
-  image: string;
-  name: string;
-  category_parent: any;
-}
-
-export class subCategory{
-  id:number;
-  name: string;
-  category_parent: any;
-  image: string;
-  date: Date;
-  type:string; 
-}
 
 export class Marker {
   lat: any;

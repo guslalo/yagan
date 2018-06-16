@@ -25,7 +25,12 @@ export class ServiciosService {
 
   //getERutaItemDetail
   getRegiones(): Observable<any>{
-  return this.http.get(url+'route/api/region/');
+    return this.http.get(url+'core/api/region/');
+  }
+
+  //get duracion
+  getDuracion(): Observable<any>{
+    return this.http.get(url+'core/api/duraton_day/');
   }
 
 

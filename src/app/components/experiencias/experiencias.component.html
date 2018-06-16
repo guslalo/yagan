@@ -24,18 +24,12 @@
         <ul>
           <li class="title">Región</li>
           <li><a href="javascript:;">Todas</a></li>
-          <li><a href="javascript:;">III Región - Atacama</a></li>
-          <li><a href="javascript:;">RM - Metropolitana</a></li>
-          <li><a href="javascript:;">IV Región - Valparaísotem</a></li>
-          <li><a href="javascript:;">X Región - Los Lagos</a></li>
+          <li *ngFor="let item of region"><a href="javascript:;">{{ item.code}} - {{item.name}}</a></li>
         </ul>
         <ul>
           <li class="title">Duración</li>
           <li><a href="javascript:;">Todas</a></li>
-          <li><a href="javascript:;">Medio día</a></li>
-          <li><a href="javascript:;"> Un día</a></li>
-          <li><a href="javascript:;">2 días</a></li>
-          <li><a href="javascript:;">3 días o más</a></li> 
+          <li *ngFor="let item of duracion"><a href="javascript:;" id="{{item.id}}">{{ item.name}}</a></li>
         </ul>
         <ul><!-- -->
           <li class="title">Categorías</li>

@@ -20,6 +20,7 @@ export class SandwichComponent implements OnInit {
  constructor(private http : HttpClient,  private ServiciosService: ServiciosService, private router: Router, private titleService: Title) {  }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
   }
 
 }

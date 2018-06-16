@@ -3,7 +3,7 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { HttpClient} from "@angular/common/http";
 import { ServiciosService } from '../../services/servicios.service';
-import { Category, Ruta } from '../../models/models';
+import { Category, Region, Duracion } from '../../models/models';
 
 @Component({
   selector: 'app-experiencias',
@@ -18,6 +18,8 @@ export class ExperienciasComponent implements OnInit {
  SubCategory: Category[] = [];
  SubCategoryFilter: Category[] = [];
  CategoryFilter: Category[] = [];
+ region: Region[] = [];
+ duracion: Duracion[] = [];
 
 
  id: number;
@@ -33,6 +35,27 @@ constructor( private http : HttpClient,  private ServiciosService: ServiciosServ
     this.ServiciosService.getCategory().subscribe( 
       data => {
         this.CategoryFilter = data.filter(r => r.category_parent == null);
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
+    
+     //get regiones  
+    this.ServiciosService.getRegiones().subscribe( 
+      data => {
+        console.log(data);
+        this.region = data;
+      },
+      error => {
+        console.log(<any>error);
+      }
+    ); 
+
+    //get duracion  
+    this.ServiciosService.getDuracion().subscribe( 
+      data => {
+        this.duracion = data;
       },
       error => {
         console.log(<any>error);
