@@ -66,9 +66,9 @@ constructor( private http : HttpClient,  private ServiciosService: ServiciosServ
 
   //get SubCategory  
   getsubCategory(){ 
-    this.ServiciosService.getCategory().subscribe( 
+    this.ServiciosService.subcategoria().subscribe( 
       data => {
-        this.SubCategory = data.filter(r => r.category_parent != null);
+        this.SubCategory = data;
       },
       error => {
         console.log(<any>error);

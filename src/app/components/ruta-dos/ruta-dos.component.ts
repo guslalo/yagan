@@ -112,9 +112,6 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   }*/
 
 
-
-  /*itemDetail: ItemDetail[] = [];
-  itemsDetails: ItemDetail[] = [];*/
   SubCategoryFilter: Category[] = [];
   ngOnInit() {
     
@@ -126,9 +123,6 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
     this.sub = this.route.params.subscribe(params => {
         this.id = +params['id']; // (+) converts string 'id' to a number
         
-
-
-
         //get getRutas  
         this.ServiciosService.getRutas().subscribe( 
           data => {
@@ -205,36 +199,6 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
       }
     );
 
-    //get experiencias  
-    this.ServiciosService.getERutaItemDetail().subscribe( 
-      data => {     
-        //this.itemsDetails = data
-        //console.log(this.itemsDetails);
-        // console.log( data.id )
-         /* for(let item of this.itemsDetails){ 
-            //console.log(item.id);
-           
-          } */
-       /* if(data.route_item == this.idItem ){
-       
-          console.log(data.route_item);
-        }*/
-       // this.itemsDetails = data.filter(r => r.route_item);
-
-       /* for(let item of data){
-          console.log(item.name);
-            if(item.id == this.idItem ){
-              this.itemsDetails = item;
-              console.log(this.itemsDetails);
-            }
-        }*/ 
-        //this.itemDetail = data.filter(r => r.id == this.idItem);  
-       // console.log(this.itemDetail);
-      },
-      error => {
-        console.log(<any>error);
-      } 
-    );  
     
   }
   
