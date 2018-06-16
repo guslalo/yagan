@@ -20,13 +20,17 @@
       "prefix": "app",
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "styles.scss"
+        "styles.scss",
+        "../node_modules/owl.carousel/dist/assets/owl.carousel.min.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/popper.js/dist/umd/popper.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
-        "assets/js/timeline.js"
+        "assets/js/timeline.js",
+        "../node_modules/owl.carousel/dist/owl.carousel.min.js",
+        "assets/js/funciones.js"
+        
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

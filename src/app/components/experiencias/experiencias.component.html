@@ -21,12 +21,6 @@
       <!--box menu -->
       <div class="col-3 menusidebar">
         <form>
-         <ul>
-          <li class="title">Tipo</li>
-          <li><a href="javascript:;" class="active">Todas</a></li>
-          <li><a href="javascript:;">Rutas</a></li>
-          <li><a href="javascript:;">Experiencias</a></li>
-        </ul>
         <ul>
           <li class="title">Región</li>
           <li><a href="javascript:;">Todas</a></li>
@@ -52,42 +46,40 @@
       </div><!--/box menu  (idCategoryOutput)="captureId($event)"-->
       
 
-      <div class="col">
-          <div class="row">
-              <div class="col-12">
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Rutas</li>
-                </ol>
-              </nav></div>
-            </div>
-          
-        
-        <div class="row experiencias" id="categoria{{idCategoriaRecibido}}">
-          <div *ngFor="let item of SubCategory" id="{{item.id}}" class="col-12 col-md-4 categoria" >
-            <a [routerLink]="['/ruta', item.category_parent]">
-            <figure>
-              <img [src]="item.image"/> <!-- [src]="item.image" [routerLink]="['/ruta', item.id]"-->
-            </figure>
-            <h3>{{item.name}}</h3>
-          </a>
-          </div>      
-        </div> 
-
-        <!--experiencias 
+      <div class="col fondoblanco">
         <div class="row">
-            <div class="col-12">
+          <div class="col-12">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Experiencias</li>
+                <li class="breadcrumb-item active" aria-current="page">Rutas y experiencias</li>
               </ol>
-            </nav></div>
+            </nav>
           </div>
-        
-        <app-lista-experiencias [idCategoriaRecibido]="idCategory"></app-lista-experiencias> experiencias-->
+        </div>
 
+        <!--rutas y experiencias box-->    
+        <div class="row experiencias">
+          <!--todas las subcategorias-->
+          <div *ngFor="let item of SubCategory" id="{{item.id}}" class="col-12 col-md-4 categoria">
+            <a [routerLink]="['/ruta', item.id]">
+              <figure>
+                <img [src]="item.image"/>
+              </figure>
+              <h3>{{item.name}}</h3>
+            </a>
+          </div><!--/todas las subcategorias-->     
+
+          <!--subcategoria filtrada por ID padre-->
+          <div *ngFor="let item of SubCategoryFilter" id="{{item.id}}" class="col-12 col-md-4 categoria">
+            <a [routerLink]="['/ruta', item.id]">
+              <figure>
+                <img [src]="item.image"/>
+              </figure>
+              <h3>{{item.name}}</h3>
+            </a>
+          </div><!--/subcategoria filtrada por ID padre-->  
+        </div><!--/rutas y experiencias box-->    
       </div>      
 
     </div><!--/box body -->

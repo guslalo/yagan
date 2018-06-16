@@ -5,7 +5,8 @@ import { HttpClient} from "@angular/common/http";
 import { ServiciosService } from '../../services/servicios.service';
 //import { Observable } from 'rxjs/Observable';
 import { Observable } from 'rxjs/Rx';
-import { Experience, Category } from '../../models/models';
+import { Category, subCategory } from '../../models/models';
+import { CarouselOptions } from 'ng2-owl-carousel2';
 
 @Component({
   selector: 'app-home',
@@ -15,44 +16,46 @@ import { Experience, Category } from '../../models/models';
 })
 
 export class HomeComponent implements OnInit {
-  idExperiencia = "NULL"
+  idExperiencia = "NULL";
+
+  carouselOptions: CarouselOptions;  
 
   idRecibido(id){
     this.idExperiencia = id;
   }
-  
+  items=[1,2,3,4];
   //constructor
   constructor(
     private http : HttpClient,  
     private ServiciosService: ServiciosService, 
     private router: Router, 
     private titleService: Title
-  ){ }
+  ){ 
+    
+    this.carouselOptions = new CarouselOptions();
+    this.carouselOptions.enableMouseScroll(true)
+                        .directionLeftToRight(true)
+                        .enableAutoPlay(true)          
+   
+  }
+  onItemSelect(carouselItem:any):void{
+  }
+
+
 
   //Arrays Experiences and Category
-  Experiences: Experience[] = [];
+  subCategory: subCategory[] = [];
   Category: Category[] = [];
   CategoryFilter: Category[] = [];
 
   ngOnInit() {
+   
     //scrollTop
     window.scrollTo(0, 0);
 
     //title
     this.titleService.setTitle('Descubre experiencias y vive tu propio Chile | Yagan');
    
-    //get experiencias  
-    this.ServiciosService.getExperience().subscribe( 
-      data => {
-        for(let item of data){ 
-          this.Experiences.push(item);
-        } 
-      },
-      error => {
-        console.log(<any>error);
-      }
-    ); 
-
     //get categorias  
     this.ServiciosService.getCategory().subscribe( 
       data => {
@@ -60,12 +63,25 @@ export class HomeComponent implements OnInit {
           this.Category.push(item);
         } 
         this.CategoryFilter = this.Category.filter(r => r.category_parent == null);
-        console.log(this.CategoryFilter);
+       // console.log(this.CategoryFilter);
       },
       error => {
         console.log(<any>error);
       }
     ); 
+
+    //get categorias  
+    this.ServiciosService.subcategoria().subscribe( 
+      data => {
+        console.log(data);
+        this.subCategory = data;
+      },
+      error => {
+        console.log(<any>error);
+      }
+    ); 
+
+  
     
   }
 

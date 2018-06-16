@@ -1,4 +1,4 @@
-<div  class="general container-fluid">
+<div  class="general container-fluid pb-md-0">
     <div class="container p-0 p-md">
       <div class="row">
         <div class="col"> 
@@ -10,17 +10,13 @@
       </div>
       <!--experiencias item -->
       <div class="row experiencias">
-        <div *ngFor="let item of Experiences" id="{{item.id}}" class="col-12 col-sm-6 col-md-3 categoria" (click)="captureId(item.id)"><!-- -->
+        <div *ngFor="let item of subCategory | slice:0:4; let i=index" id="{{item.id}}" class="col-12 col-sm-6 col-md-3 categoria" (click)="captureId(item.id)"><!-- -->
           <a [routerLink]="['/experiencia', item.id]">
             <figure>
               <img [src]="item.image"/>
-              <div class="tiempo">
-                <i class="material-icons">query_builder</i>
-                <span>{{item.created | date:"shortDate"}}</span>
-              </div>
             </figure>
           </a>
-          <h3>{{item.title}}</h3>
+          <h3>{{item.name}}</h3>
         </div>
       </div><!--/experiencias item-->
     </div>

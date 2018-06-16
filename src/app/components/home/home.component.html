@@ -35,38 +35,49 @@
 
       <!--categorias descubre-->
       <div class="row categorias">
-        <div *ngFor="let item of CategoryFilter" class="col-6 col-sm-6 col-md-4 categoria" routerLink="/experiencias">
-          <figure>
-            <div *ngIf="item.image == null; else otro">
-                <img src="assets/img/default-thumb.png"/>
-            </div>
-            <ng-template #otro> <img [src]="item.image"/></ng-template>
-            <h3>{{item.name}}</h3>
-          </figure> 
+        <div *ngFor="let item of CategoryFilter" class="col-6 col-sm-6 col-md-4 categoria" (click)="captureId(item.id)">
+          <a [routerLink]="['/rutas-experiencias', item.id]">
+            <figure>
+              <div *ngIf="item.image == null; else otro">
+                  <img src="assets/img/default-thumb.png"/>
+              </div>
+              <ng-template #otro> <img [src]="item.image"/></ng-template>
+              <h3>{{item.name}}</h3>
+            </figure>
+          </a> 
         </div>
       </div><!--/categorias descubre-->
 
+  
       <!--recomendados -->
       <div class="row">
         <div class="col-12">
           <h2 class="h2">Recomendados</h2>
         </div>
       </div>
-      <div  class="row recomendados">
-        <div class="col-12 col-md-8">
-          <div class="img"><img src="assets/img/alfonso.png" class="img-fluid"></div>
-          <div class="textos">
-            <h3>Sorpréndete con<br> con Atacama Suites</h3>
-            <button class="btn btn-secondary rounded">¡Reserva YA!</button>
-          </div>
-        </div>
-        <div class="col-12 col-md-4 mt-3 mt-md-0">
-            <div class="img"><img src="assets/img/selk.png"></div>
+      <div class="owl-carousel">
+        <div class="row recomendados">
+          <div class="col-12 col-md-4 mt-3 mt-md-0">
+            <div class="img"><img src="assets/img/alfonso.png" class="img-fluid"></div>
             <div class="textos">
-            <button class="btn btn-secondary rounded">COMPRA YA!</button>
+              <h3>Sorpréndete con<br> con Atacama Suites</h3>
+              <button class="btn btn-secondary rounded">¡Reserva YA!</button>
+            </div>
           </div>
-        </div>
-      </div><!--recomendados -->
+          <div class="col-12 col-md-4 mt-3 mt-md-0">
+              <div class="img"><img src="assets/img/selk.png"></div>
+              <div class="textos">
+              <button class="btn btn-secondary rounded">COMPRA YA!</button>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 mt-3 mt-md-0">
+              <div class="img"><img src="assets/img/selk.png"></div>
+              <div class="textos">
+              <button class="btn btn-secondary rounded">COMPRA YA!</button>
+            </div>
+          </div>
+        </div><!--recomendados -->
+      </div>
     </div>
   </div>
 

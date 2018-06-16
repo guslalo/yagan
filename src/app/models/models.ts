@@ -51,6 +51,15 @@ export class Category{
   category_parent: any;
 }
 
+export class subCategory{
+  id:number;
+  name: string;
+  category_parent: any;
+  image: string;
+  date: Date;
+  type:string; 
+}
+
 export class Marker {
   lat: any;
   lng:any;

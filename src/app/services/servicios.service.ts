@@ -11,14 +11,30 @@ export class ServiciosService {
 
   constructor(private http: HttpClient) {  }
 
+  getCategory(): Observable<any>{
+    return this.http.get(url+'core/api/category/');
+  }
+
+  getSubCategory(id:number): Observable<any>{
+    return this.http.get(url+'core/api/category/'+id+'/');
+  }
+
+  subcategoria():Observable<any>{
+    return this.http.get(url+'core/api/subcategory/');
+  }
+
+  //getERutaItemDetail
+  getRegiones(): Observable<any>{
+  return this.http.get(url+'route/api/region/');
+  }
+
+
+
   //
   getExperience(): Observable<any>{
     return this.http.get(url+'experience/api/experience/');
   }
 
-  getCategory(): Observable<any>{
-    return this.http.get(url+'core/api/category/');
-  }
 
   getRuta(id:any): Observable<any>{
     return this.http.get(url+'route/api/route/'+id+'/');

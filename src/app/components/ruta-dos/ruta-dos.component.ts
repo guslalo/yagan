@@ -111,12 +111,11 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
     });
   }*/
 
-  
- 
+
 
   /*itemDetail: ItemDetail[] = [];
   itemsDetails: ItemDetail[] = [];*/
-
+  SubCategoryFilter: Category[] = [];
   ngOnInit() {
     
     //title
@@ -126,46 +125,39 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
 
     this.sub = this.route.params.subscribe(params => {
         this.id = +params['id']; // (+) converts string 'id' to a number
+        
+
+
+
         //get getRutas  
         this.ServiciosService.getRutas().subscribe( 
           data => {
-          
-
             this.rutas = data.filter(r => r.id == this.id);
-
-       
-          
-           
-           
-            //this.rutaName = data.filter(r2 => r2.name);
-            //console.log(this.rutaName)
-
-            //title
-                    this.ServiciosService.getERutaItem().subscribe( 
-                      data => {
-                        this.RutaItem = data.filter(r => r.route == this.id);    
-                      
-                        /*this.markers = data;*/
-                        
-                        //this.markers = data.filter(r => r.route == this.id);   
-                        //console.log(this.markers); 
-                        //for(let item of this.markers){ 
-                        //this.lat =  + item.lat;
-                          //this.lng =  + item.lng;
-                          /*this.lugar.push(this.latitude, this.longitude);  */
-                        // console.log(item.lat, item.lng);  
-                        //} 
-                          
-                        //console.log(this.lugar); 
-                        /*for(let item of this.RutaItem){ 
-                          this.lat =  + item.latitude;
-                          this.lng =  + item.longitude;
-                      
-                        } */
-                      },
-                      error => {
-                        console.log(<any>error);
-                      }
+              //this.rutaName = data.filter(r2 => r2.name);
+              //title
+              this.ServiciosService.getERutaItem().subscribe( 
+                data => {
+                  this.RutaItem = data.filter(r => r.route == this.id);      
+                  /*this.markers = data;*/
+                  //this.markers = data.filter(r => r.route == this.id);   
+                  //console.log(this.markers); 
+                  //for(let item of this.markers){ 
+                  //this.lat =  + item.lat;
+                    //this.lng =  + item.lng;
+                    /*this.lugar.push(this.latitude, this.longitude);  */
+                  // console.log(item.lat, item.lng);  
+                  //} 
+                    
+                  //console.log(this.lugar); 
+                  /*for(let item of this.RutaItem){ 
+                    this.lat =  + item.latitude;
+                    this.lng =  + item.longitude;
+                
+                  } */
+                },
+                error => {
+                  console.log(<any>error);
+                }
             ); 
             
           },

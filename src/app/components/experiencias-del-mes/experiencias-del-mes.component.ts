@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient} from "@angular/common/http";
 import { ServiciosService } from '../../services/servicios.service';
 import { Observable } from 'rxjs/Rx';
-import { Experience } from '../../models/models';
+import { subCategory } from '../../models/models';
 
 
 @Component({
@@ -12,33 +12,29 @@ import { Experience } from '../../models/models';
   providers:[ServiciosService]
 })
 export class ExperienciasDelMesComponent implements OnInit {
-
+  subCategory: subCategory[] = [];
   //constructor
   constructor(
     private http : HttpClient,  
     private ServiciosService: ServiciosService, 
   ){ }
 
-  //Arrays Experiences and Category
-  Experiences: Experience[] = [];
+
 
  @Output()
 
   ngOnInit() {
-    //scrollTop
-    window.scrollTo(0, 0);
-   
-    //get experiencias  
-    this.ServiciosService.getExperience().subscribe( 
-      data => {
-        for(let item of data){ 
-          this.Experiences.push(item);
-        } 
-      },
-      error => {
-        console.log(<any>error);
-      }
-    ); 
+
+      //get categorias  
+      this.ServiciosService.subcategoria().subscribe( 
+        data => {
+          this.subCategory = data.filter(r=> r.type == 'subcategory'); 
+        },
+        error => {
+          console.log(<any>error);
+        }
+      ); 
+  
     
   }
 
