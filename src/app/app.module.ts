@@ -25,7 +25,6 @@ import { ExperienciaDetalleComponent } from './components/experiencias/experienc
 
 import { TruncateModule } from 'ng2-truncate';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
-import { Ng2OwlCarouselComponent } from "ng2-owl-carousel2";
 
 
 
@@ -40,7 +39,8 @@ const appRoutes: Routes = [
   { path: 'ruta', component: RutaDosComponent},
   { path: 'ruta/:id', component: RutaDosComponent },
 
-  { path: 'los-mejores-sandwich-de-santiago', component: MejorSandwichComponent},
+  { path: 'experiencias', component: MejorSandwichComponent},
+  { path: 'experiencias/:id', component: MejorSandwichComponent},
 
   /*{
     path: 'heroes',
@@ -68,8 +68,7 @@ const appRoutes: Routes = [
     RutasDelMesComponent,
     MapaItemComponent,
     DetalleItemComponent,
-    ExperienciaDetalleComponent,
-    Ng2OwlCarouselComponent
+    ExperienciaDetalleComponent
   ],
   imports: [
     BrowserModule,

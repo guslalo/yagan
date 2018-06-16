@@ -6,7 +6,6 @@ import { ServiciosService } from '../../services/servicios.service';
 //import { Observable } from 'rxjs/Observable';
 import { Observable } from 'rxjs/Rx';
 import { Category, subCategory } from '../../models/models';
-import { CarouselOptions } from 'ng2-owl-carousel2';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +17,7 @@ import { CarouselOptions } from 'ng2-owl-carousel2';
 export class HomeComponent implements OnInit {
   idExperiencia = "NULL";
 
-  carouselOptions: CarouselOptions;  
+
 
   idRecibido(id){
     this.idExperiencia = id;
@@ -32,10 +31,8 @@ export class HomeComponent implements OnInit {
     private titleService: Title
   ){ 
     
-    this.carouselOptions = new CarouselOptions();
-    this.carouselOptions.enableMouseScroll(true)
-                        .directionLeftToRight(true)
-                        .enableAutoPlay(true)          
+
+          
    
   }
   onItemSelect(carouselItem:any):void{
