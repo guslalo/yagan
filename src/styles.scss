@@ -412,8 +412,9 @@ agm-map {
     margin-bottom:5px;
 }
 
-.carruselItemDetail {
-    overflow: hidden;
+owl-carousel {
+    display: inline-block;
+    width: 100%;
     img{
         height: 400px;
         width: auto;

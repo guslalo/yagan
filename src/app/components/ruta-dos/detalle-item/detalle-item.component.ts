@@ -8,7 +8,6 @@ import { Observable } from 'rxjs/Rx';
 import { Experience, Category, Ruta, RutaItem, ItemDetail } from '../../../models/models';
 import { FormsModule } from '@angular/forms';
 
-import { CarouselOptions, ScreenResolutionMap, MergefitMap    } from 'ng2-owl-carousel2';
 //import * as owlCarousel from 'owl.carousel2';
 
 declare var owlCarousel:any;
@@ -24,9 +23,6 @@ export class DetalleItemComponent implements OnInit, OnChanges, DoCheck {
   itemsDetails: ItemDetail[] = [];
   @Input() public idItem:any;
 
-  carouselOptions: CarouselOptions;  
-  ScreenResolutionMap : ScreenResolutionMap;
-  SimpleChanges:any;
 
   constructor(
     private http : HttpClient,  
@@ -34,25 +30,10 @@ export class DetalleItemComponent implements OnInit, OnChanges, DoCheck {
     private router: Router, 
     private route: ActivatedRoute) {
 
-      this.carouselOptions = new CarouselOptions();
-
-    //first parameter of the constructor is the resolution of the screen and second one is to enable or disable Merge fit option
-    let mappings: Array<MergefitMap> =[
-      new MergefitMap(678, true),
-      new MergefitMap(500, true)
-    ] ;
-  /*
-    this.carouselOptions.enableMouseScroll(true)
-                        .mergeFit(mappings);*/
-      
-   
-      this.carouselOptions.enableMouseScroll(true)
+    
                          
 
      }
-     onItemSelect(carouselItem:any):void{
-      //this carousel item can be used anywhere
-      }
 
     ngOnChanges(changes: SimpleChanges) {
       console.log(changes);

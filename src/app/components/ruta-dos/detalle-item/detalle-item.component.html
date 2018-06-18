@@ -15,43 +15,23 @@
   
           </div>
           <div class="modal-body" >
-            <ng2-owl-carousel2 (onItemSelect)="onItemSelect($event)"
-              useAttributeSelector="true" loop="false"
-              [options]="carouselOptions" class="owl-carousel">
-       
-             <div carousel-item>
-               dssds
-             </div>
-              <div carousel-item>
-                  123
-              </div>
-                <div carousel-item>
-                   S6
+     <!--If images array is dynamically changing pass this array to [items] input -->
+     <!-- classes to be attached along with owl-carousel class   <div class="item" *ngFor="let item of itemsDetails[0]">
+                  <img [src]="item.image"> 
+                </div>-->
+            <owl-carousel
+                [options]="{
+                  items: 1, 
+                  dots: true, 
+                  navigation:true, 
+                  autoplay:true
+                 }" [items]="itemsDetails[0]" [carouselClasses]="['owl-theme', 'sliding']">
+                <div class="item" *ngFor="let item of itemsDetails[0]">
+                  <img [src]="item.image"> 
+                  <h4>{{item.name}}</h4>
                 </div>
-              <!--If attribute selector is  false
-              <carousel-item *ngFor="let item of your">
-              //your item template here
-              <carousel-item>
-              -->     
-              
-          </ng2-owl-carousel2>
-          
+            </owl-carousel>
 
-
-              <div class=" carruselItemDetail">
-                  <div *ngFor="let item of itemsDetails[0]"> 
-                    <div>
-                      <img [src]="item.image"> 
-                    </div>
-                    <h4>
-                        {{item.name}}
-                    </h4>
-                  </div>
-               
-              </div>
-              
-          
-            
 
               
           </div>
