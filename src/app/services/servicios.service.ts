@@ -43,48 +43,48 @@ export class ServiciosService {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   //
   getExperience(): Observable<any>{
     return this.http.get(url+'experience/api/experience/');
   }
 
 
+   //experienciaClick
+   getExperienceId(id:any): Observable<any>{
+    return this.http.get(url+'core/api/category/'+id+'/');
+  }
+
+   //getERutaItemDetail
+   getExperienceModal(id:any): Observable<any>{
+    return this.http.get(url+'experience/api/experience/'+id+'/');
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   getRutas(): Observable<any>{
     return this.http.get(url+'route/api/route/');
   }
 
-  //experienciaClick
-  getExperienceId(id:any): Observable<any>{
-    return this.http.get(url+'experience/api/experience/'+id+'/');
-  }
+ 
 
   //experienciaClick
   getERutaItem(): Observable<any>{
     return this.http.get(url+'route/api/route_item/');
   }
 
-  //getERutaItemDetail
-  getERutaItemDetail(): Observable<any>{
-    return this.http.get(url+'route/api/route_item_detail/');
-  }
+ 
 
   
 

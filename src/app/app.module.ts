@@ -28,6 +28,8 @@ import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 
 import { OwlModule } from 'ngx-owl-carousel';
 
+import { DetalleItemExperienciaComponent } from './components/mejor-sandwich/detalle-item-experiencia/detalle-item-experiencia.component';
+
 
 
 
@@ -70,7 +72,8 @@ const appRoutes: Routes = [
     RutasDelMesComponent,
     MapaItemComponent,
     DetalleItemComponent,
-    ExperienciaDetalleComponent
+    ExperienciaDetalleComponent,
+    DetalleItemExperienciaComponent
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,6 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { HttpClient} from "@angular/common/http";
 import { ServiciosService } from '../../services/servicios.service';
-//import { Observable } from 'rxjs/Observable';
 import { Observable } from 'rxjs/Rx';
 import { Category, subCategory } from '../../models/models';
 
