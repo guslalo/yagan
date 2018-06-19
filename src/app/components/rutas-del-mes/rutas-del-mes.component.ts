@@ -26,6 +26,7 @@ subCategoryRuta: subCategory[] = [];
 
 
 
+
   ngOnInit() {
 
      //get categorias  

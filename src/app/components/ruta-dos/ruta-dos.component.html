@@ -94,36 +94,18 @@
             <div class="container">
               <div class="row">
                 <div class="col-12">
-                <h2 class="h2 text-center">Más tours de este operador</h2></div>
+                <h2 class="h2 text-center">Más rutas de la Región</h2></div>
               </div>
 
               <div class="row experiencias masTours">
-                <div  class="col-6 col-md-3 categoria ">
-                  <figure >
-                    <img src="assets/img/ruta/cruceandino-01-m.png">
-                    
-                  </figure>
-                  <h3 class="text-center"> Cruce andino </h3>
-                </div>
-                <div  class="col-6 col-md-3 categoria">
-                  <figure >
-                  <img  src="assets/img/ruta/xconchatoro-01-m.jpg.pagespeed.ic.ngQeLtLgmh.png">
-                  
-                </figure>
-                  
-                  <h3  class="text-center"> Viña Concha y Toro </h3>
-                </div>
-                <div class="col-6 col-md-3 categoria">
+                <div *ngFor="let item of masRutas | slice:0:4; let i=index" class="col-6 col-md-3 categoria">
+                  <a [routerLink]="['/ruta', item.id]" (click)="scrollTop();">
                     <figure >
-                  <img  src="assets/img/ruta/xosornopetrohue-01-m.jpg.pagespeed.ic.QMrC4INxEP.png"></figure>
-                  <h3 > Volcán Osorno y Saltos del Petrohué </h3>
-                </div>
-                <div class="col-6 col-md-3 categoria">
-                  <figure >
-                  <img  src="assets/img/ruta/eco-02-s.png"></figure>
-                  <h3> Eco Aventura Petrohué </h3>
-                </div>
-                    
+                      <img [src]="item.image">
+                    </figure>
+                    <h3 class="text-center">{{item.name}}</h3>
+                  </a>
+                </div>    
               </div>
               
             </div>

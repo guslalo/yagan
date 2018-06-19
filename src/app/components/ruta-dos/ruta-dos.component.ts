@@ -5,7 +5,7 @@ import { switchMap } from 'rxjs/operators';
 import { HttpClient} from "@angular/common/http";
 import { ServiciosService } from '../../services/servicios.service';
 import { Observable } from 'rxjs/Rx';
-import { Experience, Category, Ruta, RutaItem, Marker, ItemDetail } from '../../models/models';
+import { Experience, Category, Ruta, RutaItem, Marker, ItemDetail, subCategory } from '../../models/models';
 import { MouseEvent } from '@agm/core';
 
 @Component({
@@ -22,6 +22,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   idRecibido(id){
     this.idExperiencia = id;
   }
+
    //constructor
    constructor(
     private http : HttpClient,  
@@ -37,25 +38,24 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   rutas: Ruta[] = [];
   RutaItemDetail: ItemDetail[] = [];
 
-
   ruta: Ruta[] = [];
   rutaName: Ruta[] = [];
 
   lugar: Marker[] = [];
 
-
   lat2:any;
   long2:any;
 
-
   id: number;
   private sub: any;
-  
   
   Category: Category[] = [];
   RutaItem: RutaItem[] = [];
   RutaItemClick: RutaItem[] = [];
   item:any;
+  subCategoryRuta: subCategory[] = [];
+
+  regionRutaId:string;
   
   /*lat: any;
   lng: any;
@@ -64,8 +64,6 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
 
   /*latitude: any;
   longitude: any;*/
-  
- 
   
   //markers:any;
   
@@ -81,7 +79,6 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   }
  /* 
   */
-  
   markerDragEnd(m: Marker, $event: MouseEvent) {
     console.log('dragEnd', m, $event);
   }
@@ -114,50 +111,67 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
       draggable: true
     });
   }*/
-
-
-  SubCategoryFilter: Category[] = [];
+   url:string = 'ruta/';
+  masRutas: Category[] = [];
+  scrollTop(){
+    window.scrollTo(0, 0);
+  }
   ngOnInit() {
     
     //title
     this.titleService.setTitle('Rutas | Yagan');  
     //scrollTop
     window.scrollTo(0, 0);
-
+    
     this.sub = this.route.params.subscribe(params => {
         this.id = +params['id']; // (+) converts string 'id' to a number
-        
-
-        //getRuta
+        //getRuta ID
         this.ServiciosService.getRuta(this.id).subscribe( 
-            data => {
-              //console.log(data);   
+            data => { 
+              this.regionRutaId = data.id;
+              
+              this.RutaItem = [];
+              this.ruta = [];
+              this.masRutas = [];
+
               this.ruta.push(data);
               
-              //console.log(this.ruta); 
               for(let item of data.route_item)  {
                 //this.markers = data;
                 this.RutaItem.push(item); 
-              }
+              }   
+
+              //get getRuta misma region  
+              this.ServiciosService.subcategoria().subscribe( 
+                data => {
+                
+                  for(let item of data.filter(r=> r.type == 'route')){
+                    if(item.id != this.regionRutaId ){
+                      //this.router.navigate([url]);
+                      
+                      this.masRutas.push(item);
+                 
+                      this.scrollTop();
+                     
+                    }
+                  }
+                 //this.router.navigate([this.url]);
+                },
+                error => {
+                  console.log(<any>error);
+                }
+              ); 
               
             },
             error => {
-              //console.log(<any>error);
+              console.log(<any>error);
             }
         ); 
-
-     
-
     });
 
-   
-
-    
+ 
   }
   
-
-
-
   public idRutaItemRecibida = null;
   public idItem = null;
   captureId(id){
@@ -180,4 +194,4 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   }
   
 }
-// just an interface for type safety.
+

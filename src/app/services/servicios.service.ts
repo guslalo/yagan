@@ -15,15 +15,19 @@ export class ServiciosService {
     return this.http.get(url+'core/api/category/');
   }
 
+
+
+  
+  //obxserbable subategoria filrrada por ID
   getSubCategoryFilter(id:number): Observable<any>{
     return this.http.get(url+'core/api/subcategory/?category_parent='+id);
   }
-
+  //get todas las subcategorias
   subcategoria():Observable<any>{
     return this.http.get(url+'core/api/subcategory/');
   }
 
-  //getERutaItemDetail
+  //get REGIONES
   getRegiones(): Observable<any>{
     return this.http.get(url+'core/api/region/');
   }
@@ -33,28 +37,28 @@ export class ServiciosService {
     return this.http.get(url+'core/api/duraton_day/');
   }
 
-
+  //obserbable ruta parametro ID
   getRuta(id:any): Observable<any>{
     return this.http.get(url+'route/api/route/'+id+'/');
   }
-  //experienciaClick
+
+  //Obserbable ruta item parametro ID
   getERutaItemId(id:any): Observable<any>{
     return this.http.get(url+'route/api/route_item/'+id+'/');
   }
 
-
-  //
+  //get experiencia
   getExperience(): Observable<any>{
     return this.http.get(url+'experience/api/experience/');
   }
 
 
-   //experienciaClick
+   //Observable caregoria parametro ID
    getExperienceId(id:any): Observable<any>{
     return this.http.get(url+'core/api/category/'+id+'/');
   }
 
-   //getERutaItemDetail
+   //get experiencia Observable ID
    getExperienceModal(id:any): Observable<any>{
     return this.http.get(url+'experience/api/experience/'+id+'/');
   }

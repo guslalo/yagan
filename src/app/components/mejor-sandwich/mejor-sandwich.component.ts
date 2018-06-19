@@ -6,14 +6,12 @@ import { ServiciosService } from '../../services/servicios.service';
 import { Observable } from 'rxjs/Rx';
 import { Category, subCategory, Ruta } from '../../models/models';
 
-
 @Component({
   selector: 'app-mejor-sandwich',
   templateUrl: './mejor-sandwich.component.html',
   styleUrls: ['./mejor-sandwich.component.scss'],
   providers:[ServiciosService]
 })
-
 
 export class MejorSandwichComponent implements OnInit {
   CategoryFilter: Category[] = [];
@@ -51,7 +49,6 @@ export class MejorSandwichComponent implements OnInit {
   
   captureId(id){
     this.idItem = id;
-
     console.log("ruta item", id);
   }
 
@@ -62,23 +59,19 @@ export class MejorSandwichComponent implements OnInit {
     this.titleService.setTitle('Experiencias | Yagan');
 
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id']; // (+) converts string 'id' to a number
+      this.id = +params['id'];
       console.log(this.id);
-
-      //getRuta
+      //getExperienceId
       this.ServiciosService.getExperienceId(this.id).subscribe( 
         data => {
           console.log(data);   
           this.experiencia.push(data);
-
         },
         error => {
-          //console.log(<any>error);
+          console.log(<any>error);
         }
       ); 
-
     });
-
   }
 
 }

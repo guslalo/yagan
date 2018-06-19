@@ -31,7 +31,7 @@
           <li><a href="javascript:;">Todas</a></li>
           <li *ngFor="let item of duracion"><a href="javascript:;" id="{{item.id}}">{{ item.name}}</a></li>
         </ul>
-        <ul><!-- -->
+        <ul>
           <li class="title">Categorías</li>
           <li><a routerLink="/rutas-experiencias">Todas</a></li>
           <li *ngFor="let item of CategoryFilter" id="{{item.id}}"><a [routerLink]="['/rutas-experiencias', item.id]" routerLinkActive="active">{{item.name}}</a></li>    
