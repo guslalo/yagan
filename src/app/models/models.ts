@@ -71,6 +71,8 @@ export class RutaItem{
   description: String;
   latitude: String;
   longitude: String;
+  label: string;
+  draggable: boolean;
   entry_date: String;
   route:number;
   route_item_detail:ItemDetail[];
@@ -103,11 +105,22 @@ export class ItemDetail {
 ],
     
 */
-
-
+/*
 export class Marker {
-  lat: any;
-  lng:any;
+  id: Number;
+  created: Date;
+  modified: Date;
+  description: String;
+  latitude: any;
+  longitude: any;
+  label: string;
+  draggable: boolean;
+  entry_date: String;
+}/**/
+/**/
+export class Marker {
+  latitude: any;
+  longitude:any;
 	label: string;
   draggable: boolean;
 }

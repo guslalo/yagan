@@ -57,52 +57,36 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
 
   regionRutaId:string;
   
-  /*lat: any;
-  lng: any;
-    zoom:number = 16;
-  */
-
-  /*latitude: any;
-  longitude: any;*/
-  
   //markers:any;
-  
-  // google maps zoom level
-  zoom: number = 11;
-  
-  // initial center position for the map
-  lat: number =  -27.360043;
-  lng: number = -70.343646;
-
-  clickedMarker(label: string, index: number) {
-    console.log(`clicked the marker: ${label || index}`)
-  }
- /* 
-  */
-  markerDragEnd(m: Marker, $event: MouseEvent) {
-    console.log('dragEnd', m, $event);
-  }
-  //markers: Marker[] = [];
-    markers: Marker[] = [
-	{
-		  lat: -27.360043,
-		  lng: -70.343646,
+  markers: Marker[] = [];
+  /*markers: Marker[] = [
+  	  {
+		  latitude: -27.360043,
+		  longitude: -70.343646,
 		  label: 'A',
 		  draggable: true
 	  },
 	  {
-		  lat: -27.361828,
-		  lng: -70.340268,
-		  label: 'B',
-		  draggable: false
-	  },
-	  {
-		  lat: -27.361572,
-		  lng: -70.344672,
+		  latitude: -27.361572,
+		  longitude: -70.344672,
 		  label: 'C',
 		  draggable: true
-	  }
-  ]/**/
+    }]*/
+
+  //google maps zoom level
+  zoom: number = 11;
+  
+  ap
+
+
+  clickedMarker(label: string, index: number) {
+    console.log(`clicked the marker: ${label || index}`)
+  }
+ 
+  markerDragEnd(m: Marker, $event: MouseEvent) {
+    console.log('dragEnd', m, $event);
+  }
+ 
   /*
   mapClicked($event: MouseEvent) {
     this.markers.push({
@@ -111,65 +95,70 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
       draggable: true
     });
   }*/
-   url:string = 'ruta/';
+
+  //url:string = 'ruta/';
   masRutas: Category[] = [];
+  allMarkers: Marker[] = [];
+
   scrollTop(){
     window.scrollTo(0, 0);
   }
-  ngOnInit() {
-    
+  
+  
+  // initial center position for the m
+  latitude: number =  -27.360043;
+  longitude: number = -70.343646;
+
+  ngOnInit() {  
+    console.log(this.markers);
     //title
     this.titleService.setTitle('Rutas | Yagan');  
     //scrollTop
     window.scrollTo(0, 0);
     
     this.sub = this.route.params.subscribe(params => {
-        this.id = +params['id']; // (+) converts string 'id' to a number
-        //getRuta ID
-        this.ServiciosService.getRuta(this.id).subscribe( 
-            data => { 
-              this.regionRutaId = data.id;
-              
-              this.RutaItem = [];
-              this.ruta = [];
-              this.masRutas = [];
+      this.id = +params['id']; // (+) converts string 'id' to a number
+      //getRuta ID
+      this.ServiciosService.getRuta(this.id).subscribe( 
+        data => { 
+          this.regionRutaId = data.id;    
+          this.RutaItem = [];
+          this.ruta = [];
+          this.masRutas = [];
+          this.allMarkers = [];
 
-              this.ruta.push(data);
-              
-              for(let item of data.route_item)  {
-                //this.markers = data;
-                this.RutaItem.push(item); 
-              }   
-
-              //get getRuta misma region  
-              this.ServiciosService.subcategoria().subscribe( 
-                data => {
-                
-                  for(let item of data.filter(r=> r.type == 'route')){
-                    if(item.id != this.regionRutaId ){
-                      //this.router.navigate([url]);
-                      
-                      this.masRutas.push(item);
-                 
-                      this.scrollTop();
-                     
-                    }
-                  }
-                 //this.router.navigate([this.url]);
-                },
-                error => {
-                  console.log(<any>error);
+          this.ruta.push(data);
+          
+          for(let item of data.route_item)  {
+            item.latitude = +item.latitude
+            item.longitude = +item.longitude
+            //this.markers = data;
+            this.RutaItem.push(item);
+            this.allMarkers.push(item);
+             
+          }   
+          console.log(this.allMarkers);    
+          //get getRuta misma region  
+          this.ServiciosService.subcategoria().subscribe( 
+            data => {
+              for(let item of data.filter(r=> r.type == 'route')){
+                if(item.id != this.regionRutaId ){
+                  //this.router.navigate([url]);   
+                  this.masRutas.push(item);
+                  this.scrollTop();  
                 }
-              ); 
-              
+              }
             },
             error => {
               console.log(<any>error);
             }
-        ); 
+          );  
+        },
+        error => {
+          console.log(<any>error);
+        }
+      ); 
     });
-
- 
   }
   
   public idRutaItemRecibida = null;
@@ -178,15 +167,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
     this.idRutaItemRecibida = id;
     this.idItem = id;
     /*this.idCategoryOutput.emit(this.idCategory);*/
-    console.log("ruta item", id);
-  }
-
-  //funcion para acceder al dom despues de mostrar data
-  setTime(data){
-    setTimeout(function(){  
-      //$(".owl-carousel").owlCarousel(); 
-    },0);
-
+    //console.log("ruta item", id);
   }
 
   ngOnDestroy() {

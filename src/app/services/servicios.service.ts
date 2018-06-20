@@ -54,12 +54,12 @@ export class ServiciosService {
 
 
    //Observable caregoria parametro ID
-   getExperienceId(id:any): Observable<any>{
+  getExperienceId(id:any): Observable<any>{
     return this.http.get(url+'core/api/category/'+id+'/');
   }
 
    //get experiencia Observable ID
-   getExperienceModal(id:any): Observable<any>{
+  getExperienceModal(id:any): Observable<any>{
     return this.http.get(url+'experience/api/experience/'+id+'/');
   }
 

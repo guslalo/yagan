@@ -62,9 +62,11 @@
         </li>
       </ul>
     </div>
-      
+    
+    <!--box tabs-->
     <div class="container-fluid p-0  ruta">
       <div class="tab-content" id="myTabContent">
+        <!--tab-->
         <div class="tab-pane fade show active pt-5 pb-0" id="home" role="tabpanel" aria-labelledby="home-tab">
           <div class="container pb-5">
             <div class="row">
@@ -90,13 +92,14 @@
             </div>
           </div>
 
+          <!--masRutas box-->
           <div class="container-fluid blanco">
             <div class="container">
               <div class="row">
                 <div class="col-12">
                 <h2 class="h2 text-center">Más rutas de la Región</h2></div>
               </div>
-
+              <!--masRutas-->
               <div class="row experiencias masTours">
                 <div *ngFor="let item of masRutas | slice:0:4; let i=index" class="col-6 col-md-3 categoria">
                   <a [routerLink]="['/ruta', item.id]" (click)="scrollTop();">
@@ -106,73 +109,62 @@
                     <h3 class="text-center">{{item.name}}</h3>
                   </a>
                 </div>    
-              </div>
-              
+              </div><!--/masRutas-->  
             </div>
-          </div>
-        </div>           
+          </div><!--/masRutas box-->
+        </div><!--/tab-->
+        <!--tab-->
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
           <agm-map 
-            [latitude]="lat"
-            [longitude]="lng"
+            [latitude]="latitude"
+            [longitude]="longitude"
             [zoom]="zoom"
             [disableDefaultUI]="false"
-            [zoomControl]="false"
+            [zoomControl]="true"
             (mapClick)="mapClicked($event)">
 
             <agm-marker 
-                *ngFor="let m of markers; let i = index"
+                *ngFor="let m of allMarkers; let i = index"
                 (markerClick)="clickedMarker(m.label, i)"
-                [latitude]="m.lat"
-                [longitude]="m.lng"
-                [label]="m.label"
-                [markerDraggable]="m.draggable"
+                [latitude]="m.latitude"
+                [longitude]="m.longitude"
                 (dragEnd)="markerDragEnd(m, $event)">
-                
-              <agm-info-window>
+         
+              <!--<agm-info-window>
                 <strong>test</strong>
-              </agm-info-window>
-              
+              </agm-info-window>-->
             </agm-marker>
-            
-            <agm-circle [latitude]="lat + 0.3" [longitude]="lng" 
-                [radius]="5000"
-                [fillColor]="'red'"
-                [circleDraggable]="true"
-                [editable]="true">
-            </agm-circle>
           </agm-map> 
           <div class="container aportar pb-5">
-              <div class="row pt-5">
-                  <div class="col-12">
-                    <p class="text-center font-weigth-bold"> ¿Quieres aportar a esta ruta?</p>
-                  </div>
-                  <div class="col-12"> 
-                    <p  class="text-center">Escríbenos y envíanos tus aportes, comentarios o lugares que faltan </p> 
-                  </div>
+            <div class="row pt-5">
+              <div class="col-12">
+                <p class="text-center font-weigth-bold"> ¿Quieres aportar a esta ruta?</p>
               </div>
-              <div class="row justify-content-md-center">
-                <div class="col-4">
-                  <form>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput text-left"> Email </label>
-                      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
-                    </div>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput2  text-left"> Mensaje </label>
-                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">Enviar</button>
-                    </div>
-                  </form>
-                </div> 
+              <div class="col-12"> 
+                <p  class="text-center">Escríbenos y envíanos tus aportes, comentarios o lugares que faltan </p> 
               </div>
+            </div>
+            <div class="row justify-content-md-center">
+              <div class="col-12 col-md-4">
+                <form>
+                  <div class="form-group">
+                    <label for="formGroupExampleInput text-left"> Email </label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                  </div>
+                  <div class="form-group">
+                    <label for="formGroupExampleInput2  text-left"> Mensaje </label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+                  <div class="form-group">
+                      <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+                  </div>
+                </form>
+              </div> 
+            </div>
           </div>  
-        </div>
-
+        </div><!--/tab-->
       </div>
-    </div>
+    </div><!--/box tabs-->
   </div>
 
 
