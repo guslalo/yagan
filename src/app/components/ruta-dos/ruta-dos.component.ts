@@ -74,7 +74,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
     }]*/
 
   //google maps zoom level
-  zoom: number = 11;
+  zoom: number = 8;
   
   ap
 
@@ -106,8 +106,14 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   
   
   // initial center position for the m
-  latitude: number =  -27.360043;
-  longitude: number = -70.343646;
+
+  
+  latitude2: number; //=  -27.360043;
+  longitude2: number;// = -70.343646;
+
+
+  private changeLat: number;
+  private changeLng: number;
 
   ngOnInit() {  
     console.log(this.markers);
@@ -132,6 +138,9 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
           for(let item of data.route_item)  {
             item.latitude = +item.latitude
             item.longitude = +item.longitude
+
+            this.latitude2= item.latitude
+            this.longitude2= item.longitude
             //this.markers = data;
             this.RutaItem.push(item);
             this.allMarkers.push(item);
@@ -160,7 +169,14 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
       ); 
     });
   }
-  
+
+/*
+  centerChange(event: any) {
+    if (event) {
+      this.changeLat = event.lat;
+      this.changeLng = event.lng;
+    }
+  }*/
   public idRutaItemRecibida = null;
   public idItem = null;
   captureId(id){
