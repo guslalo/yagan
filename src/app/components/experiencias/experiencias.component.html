@@ -20,6 +20,15 @@
     <div class="row">
       <!--box menu -->
       <div class="col-12 col-md-3 menusidebar">
+        <div class="sidebarMobile">
+          <ul>
+            <li class="title">Filtros
+                <i class="material-icons">
+                    expand_more
+                    </i>
+            </li>
+          </ul>
+        </div>
         <form>
         <ul>
           <li class="title">Región</li>
@@ -55,7 +64,7 @@
         <!--rutas y experiencias box-->    
         <div class="row experiencias">
           <!--todas las subcategorias-->
-          <div *ngFor="let item of SubCategory" id="{{item.id}}" class="col-12 col-md-4 categoria">
+          <div *ngFor="let item of SubCategory" id="{{item.id}}" class="col-6 col-md-4 categoria">
             <a *ngIf="item.type == 'route'; else templateSubcategory" [routerLink]="['/ruta', item.id]">
               <figure>
                 <img [src]="item.image"/>
@@ -73,7 +82,7 @@
           </div><!--/todas las subcategorias-->     
 
           <!--subcategoria filtrada por ID padre-->
-          <div *ngFor="let item of SubCategoryFilter" id="{{item.id}}" class="col-12 col-md-4 categoria">
+          <div *ngFor="let item of SubCategoryFilter" id="{{item.id}}" class="col-6 col-md-4 categoria">
             <a *ngIf="item.type == 'route'; else templateSubcategory" [routerLink]="['/ruta', item.id]">
               <figure>
                 <img [src]="item.image"/>

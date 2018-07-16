@@ -648,10 +648,48 @@ owl-carousel {
         }
     }
 }
-
+.sidebarMobile {
+    display:none;
+}
 
 
 @media only screen and ( min-width:320px ) and (max-width:480px){
+    .fondoblanco {
+        padding-right:14px;
+    }
+    .sidebarMobile {
+        display:block;
+        i {
+            position: absolute;
+            right:15px;
+            top: 22px;
+        }
+    }
+    .menusidebar {
+       // height: 60px;
+        //overflow: hidden;
+        padding: 0px;
+        form {
+            display:none;
+        }
+        ul{
+           
+            /*
+            li {
+                display:none;
+            }
+            li {
+                
+                &:first-child {
+                    display: block;
+                }
+                display: none;
+            }
+           // display: none;
+        */
+        }
+    }
+
 
     .categorias{
         .categoria {
@@ -676,13 +714,20 @@ owl-carousel {
             font-size: 25px;
         }
     }
-
+    .experiencias .categoria {
+        min-height:auto;
+        padding-right: 5px;
+            &.categoria:nth-child(2n+2){
+                padding-right: 15px;
+                padding-left:5px;  
+            }
+    }
     .experiencias .categoria img {
         position: relative;
         z-index: 1;
         width: 100%;
-        min-width: 285px;
-        height: 210px;
+        min-width: 0;
+        height: auto;
         width: 100%;
     }
 

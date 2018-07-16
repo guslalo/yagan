@@ -31,6 +31,11 @@ constructor( private http : HttpClient,  private ServiciosService: ServiciosServ
 
   ngOnInit() {
     this.titleService.setTitle('Rutas y experiencias | Yagan');
+    
+	$(".menusidebar .sidebarMobile").click(function(){
+		$(".menusidebar").find("form").slideToggle();
+		//$(this).css("height","auto");
+	})
     window.scrollTo(0, 0);
 
     //get categorias  
