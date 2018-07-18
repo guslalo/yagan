@@ -4,7 +4,8 @@ import { HttpClient } from "@angular/common/http";//, HttpHeaders, HttpParams
 import { Observable } from 'rxjs/Rx';
 
 
-const url = 'http://yagan.dev21.cl/'
+//const url = 'http://yagan.dev21.cl/'
+const url = 'http://administrator.yagan.world/' 
 
 @Injectable()
 export class ServiciosService {
