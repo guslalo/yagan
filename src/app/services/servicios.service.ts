@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";//, HttpHeaders, HttpParams
-//import { Observable } from 'rxjs/Observable';
 import { Observable } from 'rxjs/Rx';
 
 
@@ -16,9 +15,6 @@ export class ServiciosService {
     return this.http.get(url+'core/api/category/');
   }
 
-
-
-  
   //obxserbable subategoria filrrada por ID
   getSubCategoryFilter(id:number): Observable<any>{
     return this.http.get(url+'core/api/subcategory/?category_parent='+id);
@@ -53,13 +49,12 @@ export class ServiciosService {
     return this.http.get(url+'experience/api/experience/');
   }
 
-
-   //Observable caregoria parametro ID
+  //Observable caregoria parametro ID
   getExperienceId(id:any): Observable<any>{
     return this.http.get(url+'core/api/category/'+id+'/');
   }
 
-   //get experiencia Observable ID
+  //get experiencia Observable ID
   getExperienceModal(id:any): Observable<any>{
     return this.http.get(url+'experience/api/experience/'+id+'/');
   }
