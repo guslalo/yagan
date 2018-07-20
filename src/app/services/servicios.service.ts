@@ -59,6 +59,13 @@ export class ServiciosService {
     return this.http.get(url+'experience/api/experience/'+id+'/');
   }
 
+   //getSlide
+   getSlide(): Observable<any>{
+    return this.http.get(url+'cms/api/slide/');
+  }
+
+  
+
 
 
 

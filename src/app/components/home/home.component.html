@@ -1,6 +1,5 @@
 
 <div class="container-fluid p-0">
-  
   <!-- slide home-->
   <div id="carrusel-home" class="carousel slide" data-ride="carousel" >
     <ol class="carousel-indicators" style="display:none;" >
@@ -8,10 +7,10 @@
       <li data-target="#carrusel-home" data-slide-to="1"></li>
     </ol>
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="assets/img/jumbotron.png">
+      <div class="carousel-item active" *ngFor="let item of slide">       
+        <img  [src]="item.image">
         <div class="carousel-caption d-none d-md-block">
-          <h4>Descubre experiencias<br> y vive tu propio Chile</h4> 
+          <h4 [innerHTML]="item.description"></h4>
         </div>
       </div>
       <a style="display:none;" class="carousel-control-prev" href="#carrusel-home" role="button" data-slide="prev">

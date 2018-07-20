@@ -6,6 +6,7 @@ import { ServiciosService } from '../../services/servicios.service';
 import { Observable } from 'rxjs/Rx';
 import { Category, subCategory } from '../../models/models';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,6 +16,7 @@ import { Category, subCategory } from '../../models/models';
 
 export class HomeComponent implements OnInit {
   idExperiencia = "NULL";
+  public slide:any;
 
 
 
@@ -66,6 +68,25 @@ export class HomeComponent implements OnInit {
     this.ServiciosService.subcategoria().subscribe( 
       data => {
         this.subCategory = data;
+      },
+      error => {
+        console.log(<any>error);
+      }
+    ); 
+
+
+    //get categorias  
+    this.ServiciosService.getSlide().subscribe( 
+      data => {
+        let slideGeneral =  data[0].banner_set;
+        this.slide = slideGeneral.filter(r => r.id == 1);
+        console.log(this.slide);
+       /*for (let item of data[0].banner_set){
+          if(item.id == 1){
+            let slideHome = item;
+            console.log(slideHome);
+          }
+        } */
       },
       error => {
         console.log(<any>error);
