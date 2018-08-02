@@ -87,6 +87,7 @@ export class ItemDetail {
   name: string;
   description: string;
   route_item: number;
+  video_url:string;
 }
 
 /*

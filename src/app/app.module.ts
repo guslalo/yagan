@@ -31,6 +31,7 @@ import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 import { OwlModule } from 'ngx-owl-carousel';
 
 import { DetalleItemExperienciaComponent } from './components/mejor-sandwich/detalle-item-experiencia/detalle-item-experiencia.component';
+import { VerMasComponent } from './components/ruta-dos/ver-mas/ver-mas.component';
 
 
 
@@ -75,7 +76,8 @@ const appRoutes: Routes = [
     MapaItemComponent,
     DetalleItemComponent,
     ExperienciaDetalleComponent,
-    DetalleItemExperienciaComponent
+    DetalleItemExperienciaComponent,
+    VerMasComponent
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { HttpClient} from "@angular/common/http";
 import { ServiciosService } from '../../services/servicios.service';
-import { Observable } from 'rxjs/Rx';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Category, subCategory } from '../../models/models';
 
 
@@ -15,8 +15,10 @@ import { Category, subCategory } from '../../models/models';
 })
 
 export class HomeComponent implements OnInit {
-  idExperiencia = "NULL";
+  public idExperiencia = "NULL";
   public slide:any;
+  public slideHome:any;
+  public safeURL:SafeResourceUrl;
 
 
 
@@ -29,7 +31,8 @@ export class HomeComponent implements OnInit {
     private http : HttpClient,  
     private ServiciosService: ServiciosService, 
     private router: Router, 
-    private titleService: Title
+    private titleService: Title,
+    public sanitizer:DomSanitizer
   ){ 
     
 
@@ -78,15 +81,23 @@ export class HomeComponent implements OnInit {
     //get categorias  
     this.ServiciosService.getSlide().subscribe( 
       data => {
-        let slideGeneral =  data[0].banner_set;
-        this.slide = slideGeneral.filter(r => r.id == 1);
-        console.log(this.slide);
-       /*for (let item of data[0].banner_set){
-          if(item.id == 1){
-            let slideHome = item;
-            console.log(slideHome);
+        let slideGeneral =  data;
+        this.slide = slideGeneral.filter(r => r.name == "SlideHome");
+        for(let item of this.slide){
+          this.slideHome = item.banner_set;
+          console.log(this.slideHome);
+
+          for(let item2 of  this.slideHome){
+            if(item2.url_video != null){
+              let rutaCompleta = item2.url_video;
+              let codigo = rutaCompleta.split("=");
+              console.log(codigo[1]);
+              this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/'+codigo[1]+'?rel=0&amp;controls=0&amp;showinfo=0');
+            }
           }
-        } */
+     
+        }
+ 
       },
       error => {
         console.log(<any>error);

@@ -42,12 +42,12 @@ export class MapaItemComponent implements OnInit, OnDestroy, OnChanges {
       this.RutaItem = data.filter(r => r.id == this.idRutaItemRecibida);
       // console.log( data.id )
         for(let item of this.RutaItem){ 
-          console.log(item.id);
+          //console.log(item.id);
          // this.MarkersArray.push(this.lat2 , this.lng2);
           this.lat2 =  + item.latitude;
           this.lng2 =  + item.longitude;
           //this.zoom = 1;
-          console.log(  this.lat2 , this.lng2 );
+          //console.log(  this.lat2 , this.lng2 );
         } 
       },
       error => {

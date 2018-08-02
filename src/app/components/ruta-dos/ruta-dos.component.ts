@@ -115,7 +115,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   private changeLng: number;
 
   ngOnInit() {  
-    console.log(this.markers);
+    //console.log(this.markers);
     //title
     this.titleService.setTitle('Rutas | Yagan');  
     //scrollTop
@@ -145,7 +145,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
             this.allMarkers.push(item);
              
           }   
-          console.log(this.allMarkers);    
+          //console.log(this.allMarkers);    
           //get getRuta misma region  
           this.ServiciosService.subcategoria().subscribe( 
             data => {
@@ -178,12 +178,18 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   }*/
   public idRutaItemRecibida = null;
   public idItem = null;
+  public idItem2 = null;
   captureId(id){
     this.idRutaItemRecibida = id;
     this.idItem = id;
     /*this.idCategoryOutput.emit(this.idCategory);*/
     //console.log("ruta item", id);
   }
+  verMas(id){ 
+    this.idItem2 = id;
+    //console.log(this.idItem2);
+  }
+  
 
   ngOnDestroy() {
     this.sub.unsubscribe();

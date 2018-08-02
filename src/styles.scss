@@ -429,6 +429,12 @@ owl-carousel {
     h4 {
         text-align: center;
         margin-top: 10px;
+        font-weight: normal;
+    }
+    h5 {
+        text-align: center;
+        margin-top: 10px;
+        font-weight: normal;
     }
 }
 
@@ -466,7 +472,19 @@ owl-carousel {
                  0px 0px 12px rgba(0,0,0,0.05);
 }
 
-
+.imagen-carrusel {
+    position: relative;
+    .textoh4{
+        position: absolute;
+        z-index: 2;
+        top: 0px;
+        color: #fff;
+        width: 100%;
+        text-align: center;
+        top: 42%;
+        font-size:30px;
+    }
+}
 .menusidebar {
     background-color:rgba(32, 32, 32, 1);
     -webkit-box-shadow: 0 5px 0 0 #202020;
@@ -569,7 +587,14 @@ owl-carousel {
 #exampleModal3{
     .modal-body {
         padding-bottom:45px;
+        &::before {
+            border-right: 1px solid #FFF;
+        }
     }
+    .modal-body::before {
+        border-right: 1px solid #FFF;
+    }
+
     .modal-dialog{
         max-width: 650px;
     }

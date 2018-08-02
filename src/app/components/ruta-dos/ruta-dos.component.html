@@ -83,8 +83,7 @@
                       <img class="card-img-top" [src]="item.image" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
                       <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
                       <div [innerHTML]="item.description | truncate : 190" class="card-text "></div> 
-                      
-                      <a href="javascript:;" class="btn"  data-toggle="modal" data-target="#exampleModal3">+ Ver más</a>
+                      <a href="javascript:;" class="btn"  data-toggle="modal" data-target="#modalVerMas" (click)="verMas(item)">+ Ver más</a>
                     </div> <!-- cd-timeline__content -->
                   </div><!--card -->
                 </div><!--/ruta item -->
@@ -97,7 +96,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-12">
-                <h2 class="h2 text-center">Más rutas de la Región</h2></div>
+                <h2 class="h2 text-center">Otras rutas por descubrir</h2></div>
               </div>
               <!--masRutas-->
               <div class="row experiencias masTours">
@@ -176,6 +175,10 @@
 
  <!-- Modal detalle item -->
  <app-detalle-item [idItem]="idItem"></app-detalle-item><!-- /Modal detalle item -->
+
+<!-- ver mas -->
+<app-ver-mas [idItem2]="idItem2"></app-ver-mas>
+
 
 
 
