@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router'
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxTypeaheadModule } from 'ngx-typeahead';
 
 import { HttpClientModule, HttpHeaders } from "@angular/common/http";
 import { ServiciosService } from './services/servicios.service';
@@ -80,6 +82,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     TruncateModule,
     OwlModule,
+    FormsModule, ReactiveFormsModule,
+    NgxTypeaheadModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false },//<-- debugging purposes only

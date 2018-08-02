@@ -111,7 +111,6 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   latitude2: number; //=  -27.360043;
   longitude2: number;// = -70.343646;
 
-
   private changeLat: number;
   private changeLng: number;
 

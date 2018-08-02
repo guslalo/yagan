@@ -31,6 +31,7 @@ constructor( private http : HttpClient,  private ServiciosService: ServiciosServ
 
   ngOnInit() {
     this.titleService.setTitle('Rutas y experiencias | Yagan');
+    console.log(JSON.parse(localStorage.getItem('buscador')));
     
 	$(".menusidebar .sidebarMobile").click(function(){
 		$(".menusidebar").find("form").slideToggle();
@@ -79,6 +80,19 @@ constructor( private http : HttpClient,  private ServiciosService: ServiciosServ
     });    
 
   }
+
+  //get busqueda 
+  buscarExperiencia(){
+    this.ServiciosService.buscarExperiencia(JSON.parse(localStorage.getItem('buscador'))).subscribe( 
+      data => {
+        this.SubCategoryFilter = data;
+      },
+      error => {
+        console.log(<any>error);
+      }
+    ); 
+  }
+
 
   //get getSubCategoryFilter  
   getSubCategoryFilter(){
