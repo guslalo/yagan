@@ -63,6 +63,25 @@
 
         <!--rutas y experiencias box-->    
         <div class="row experiencias mt-3">
+           <!--todas las subcategorias-->
+           <div *ngFor="let item of resultados" id="{{item.id}}" class="col-6 col-md-4 categoria">
+              <a *ngIf="item.type == 'route'; else templateSubcategory" [routerLink]="['/ruta', item.id]">
+                <figure>
+                  <img [src]="item.image"/>
+                </figure>
+                <h3>{{item.name}}</h3>
+              </a>
+              <ng-template #templateSubcategory>
+                <a [routerLink]="['/experiencias', item.id]">
+                  <figure>
+                    <img [src]="item.image"/>
+                  </figure>
+                  <h3>{{item.name}}</h3>
+                </a>
+              </ng-template>
+            </div><!--/todas las subcategorias-->   
+
+
           <!--todas las subcategorias-->
           <div *ngFor="let item of SubCategory" id="{{item.id}}" class="col-6 col-md-4 categoria">
             <a *ngIf="item.type == 'route'; else templateSubcategory" [routerLink]="['/ruta', item.id]">

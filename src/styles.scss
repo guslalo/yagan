@@ -486,9 +486,9 @@ owl-carousel {
     }
 }
 .menusidebar {
-    background-color:rgba(32, 32, 32, 1);
-    -webkit-box-shadow: 0 5px 0 0 #202020;
-    box-shadow: 0 5px 0 0 #202020;
+    background-color:#1759d8;
+    -webkit-box-shadow: 0 2px 0 0 #202020;
+    box-shadow: 0 2px 0 0 #202020;
     padding-bottom:80px;
     ul{
         padding:20px 0px 10px 20px;
@@ -722,12 +722,13 @@ owl-carousel {
             }
         }
     }
-    #iframeVideo {
-        height: auto;
+    .iframeVideo {
+        height: auto !important;
+        min-height: 300px;
         width: 100%;
     }
     .imagen-carrusel .textoh4 {
-        top: 15%;
+        top: 37%;
         font-size: 22px;
     }
     #carrusel-home .carousel-caption h4 {
@@ -750,6 +751,15 @@ owl-carousel {
 
         height: auto;
     }
+    owl-carousel h5 {
+        font-size: 15px;
+    }
+    .owl-carousel .owl-item img {
+        width: auto;
+        height: 300px;
+        
+    }
+    
 
     .cd-timeline__img {
         i {

@@ -5,7 +5,7 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { HttpClient} from "@angular/common/http";
 import { ServiciosService } from '../../services/servicios.service';
-import { Category, Region, Duracion } from '../../models/models';
+import { Category, Region, Duracion,subCategory } from '../../models/models';
 
 @Component({
   selector: 'app-experiencias',
@@ -22,21 +22,20 @@ export class ExperienciasComponent implements OnInit {
  CategoryFilter: Category[] = [];
  region: Region[] = [];
  duracion: Duracion[] = [];
+ public resultados:subCategory;
 
 
- id: number;
+ id: any;
  private sub: any;
 
 constructor( private http : HttpClient,  private ServiciosService: ServiciosService, private router: Router, private titleService: Title,  private route: ActivatedRoute) {  }
 
   ngOnInit() {
     this.titleService.setTitle('Rutas y experiencias | Yagan');
-    console.log(JSON.parse(localStorage.getItem('buscador')));
     
-	$(".menusidebar .sidebarMobile").click(function(){
-		$(".menusidebar").find("form").slideToggle();
-		//$(this).css("height","auto");
-	})
+    $(".menusidebar .sidebarMobile").click(function(){
+      $(".menusidebar").find("form").slideToggle();
+    })
     window.scrollTo(0, 0);
 
     //get categorias  
@@ -71,27 +70,26 @@ constructor( private http : HttpClient,  private ServiciosService: ServiciosServ
     
     //recibe por ruting parametro ID
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id'];// (+) converts string 'id' to a number
+      //localStorage.removeItem('resultados');
+      this.id = params['id'];
       if(!this.id){
         this.getsubCategory();
-      }else {
-        this.getSubCategoryFilter();
+      }else{
+        if(this.id === 'resultado'){
+          this.resultados = JSON.parse(localStorage.getItem('resultados'));
+          console.log(this.resultados);
+
+        }else
+        {
+          this.id = +params['id'];// (+) converts string 'id' to a number
+          this.getSubCategoryFilter();
+        } 
       }
     });    
 
   }
 
-  //get busqueda 
-  buscarExperiencia(){
-    this.ServiciosService.buscarExperiencia(JSON.parse(localStorage.getItem('buscador'))).subscribe( 
-      data => {
-        this.SubCategoryFilter = data;
-      },
-      error => {
-        console.log(<any>error);
-      }
-    ); 
-  }
+  
 
 
   //get getSubCategoryFilter  

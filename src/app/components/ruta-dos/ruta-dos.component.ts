@@ -136,13 +136,11 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
           for(let item of data.route_item)  {
             item.latitude = +item.latitude
             item.longitude = +item.longitude
-
             this.latitude2= item.latitude
             this.longitude2= item.longitude
             //this.markers = data;
             this.RutaItem.push(item);
-            this.allMarkers.push(item);
-             
+            this.allMarkers.push(item);     
           }   
           //console.log(this.allMarkers);    
           //get getRuta misma region  
