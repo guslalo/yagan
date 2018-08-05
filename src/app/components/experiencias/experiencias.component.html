@@ -50,7 +50,7 @@
       
 
       <div class="col fondoblanco">
-        <div class="row">
+        <div class="row d-none d-md-block">
           <div class="col-12">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
@@ -62,7 +62,7 @@
         </div>
 
         <!--rutas y experiencias box-->    
-        <div class="row experiencias">
+        <div class="row experiencias mt-3">
           <!--todas las subcategorias-->
           <div *ngFor="let item of SubCategory" id="{{item.id}}" class="col-6 col-md-4 categoria">
             <a *ngIf="item.type == 'route'; else templateSubcategory" [routerLink]="['/ruta', item.id]">

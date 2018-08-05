@@ -43,7 +43,6 @@ export class DetalleItemComponent implements OnInit, OnChanges {
             if(item.video_url != null){
               let rutaCompleta = item.video_url;
               let codigo = rutaCompleta.split("=");
-              //console.log(codigo[1]);
               this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/'+codigo[1]);
             }
           }

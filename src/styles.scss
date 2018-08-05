@@ -676,9 +676,76 @@ owl-carousel {
 .sidebarMobile {
     display:none;
 }
+.iconMenu{
+    display: none;
+}
 
 
 @media only screen and ( min-width:320px ) and (max-width:480px){
+    .general {
+        padding-bottom: 5px;
+    }
+    .menusidebar {
+        background-color: #1759d8;
+        ul li.title {
+            font-size:15px;
+        }
+    }
+    header {
+        padding-top:15px;
+    }
+    .menu {
+        padding:0px;
+        background:#1759d8;
+        margin:15px 0px;
+        display: none;
+        ul {
+            width: 100%;
+            margin-bottom: 0px;
+            li{
+                width: 100%;
+                border-bottom: 1px solid #ffffff; 
+                a {
+                    display: block;
+                    margin-left: 0px;
+                    width: 100%;
+                    padding:5px 15px !important;
+                    color:#ffffff !important;;
+                }
+            }
+        }
+    }
+    .logo{
+        a {
+            img {
+                width:80px;
+            }
+        }
+    }
+    #iframeVideo {
+        height: auto;
+        width: 100%;
+    }
+    .imagen-carrusel .textoh4 {
+        top: 15%;
+        font-size: 22px;
+    }
+    #carrusel-home .carousel-caption h4 {
+        font-size: 22px;
+    }
+    #carrusel-home .carousel-caption {
+        bottom: 8%;
+    }
+    .iconMenu {
+        display: block;
+        position: absolute;
+        right: 10px;
+        top:15px;
+        cursor: pointer;
+        i {
+            color:#1759d8;
+        }
+    }
     owl-carousel img {
 
         height: auto;
@@ -694,10 +761,11 @@ owl-carousel {
     }
     .sidebarMobile {
         display:block;
+        
         i {
             position: absolute;
             right:15px;
-            top: 22px;
+            top:17px;
         }
     }
     .menusidebar {
@@ -708,7 +776,7 @@ owl-carousel {
             display:none;
         }
         ul{
-           
+            padding: 20px 0px 10px 20px;
             /*
             li {
                 display:none;
@@ -746,12 +814,22 @@ owl-carousel {
 
     h2 {
         &.h2 {
-            font-size: 25px;
+            font-size: 20px;
+        }
+    }
+    .experiencias {
+        figure{
+            overflow: hidden;
         }
     }
     .experiencias .categoria {
         min-height:auto;
         padding-right: 5px;
+        overflow: hidden;
+        h3 {
+            font-size: 14px;
+        }
+        
             &.categoria:nth-child(2n+2){
                 padding-right: 15px;
                 padding-left:5px;  
@@ -760,15 +838,42 @@ owl-carousel {
     .experiencias .categoria img {
         position: relative;
         z-index: 1;
-        width: 100%;
+        width:auto;
         min-width: 0;
-        height: auto;
-        width: 100%;
+        height: 129px;
     }
 
     footer ul li.title {
         margin-top: 25px;
         margin-bottom:0px;
+    }
+
+    #carrusel-home2 {
+        img {
+            height: 426px;
+            left: -110%;
+            position: relative;
+            width: auto;
+        }
+        .carousel-caption {
+            left:0px;
+            top: 115px;
+            bottom: 0px;
+            width: 100%;
+            padding: 5px 0px;
+            h4 {
+                font-size: 40px;
+            }
+            p {
+                margin-bottom: 0px;
+                line-height: 20px;
+            }
+            .btn.rounded {
+                padding:5px 25px;
+                font-size: 20px;
+                margin-top: 5px;
+            }
+        }
     }
          
 

@@ -5,7 +5,12 @@
         <img src="assets/img/yagan.png">
       </a>
     </div>
-    <div class="col-12 col-md-6 order-1 order-md-2"><!--form buscador-->
+    <div class="iconMenu">
+      <i class="material-icons">
+        menu
+      </i>
+    </div>
+    <div class="col-12 col-md-6 order-1 order-md-2 mt-3"><!--form buscador-->
       <form (ngSubmit)="buscar()">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Buscar" name="buscar" [(ngModel)]="model.buscar">
@@ -14,7 +19,7 @@
           </div>
         </div>
       </form><!--/form buscador--></div>
-    <div class="col-12 col-md order-md-3">
+    <div class="col-12 col-md order-md-3 menu">
       <ul class="pl-0 pl-md">
         <li><a>Acerca de</a></li>
         <li><a class="participa rounded">Participa</a></li>

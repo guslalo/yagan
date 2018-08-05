@@ -12,10 +12,14 @@ export class VerMasComponent implements OnInit {
   constructor() { }
 
   ngOnChanges(){
-   console.log(this.idItem2);
+    if(this.idItem2 != null) {
+      console.log(this.idItem2);
+    }
+   //
   }
 
   ngOnInit() {
+ 
    
   }
 

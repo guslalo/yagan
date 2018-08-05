@@ -76,8 +76,6 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   //google maps zoom level
   zoom: number = 8;
   
-  ap
-
 
   clickedMarker(label: string, index: number) {
     console.log(`clicked the marker: ${label || index}`)
@@ -115,6 +113,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   private changeLng: number;
 
   ngOnInit() {  
+    this.idItem2 = {};
     //console.log(this.markers);
     //title
     this.titleService.setTitle('Rutas | Yagan');  

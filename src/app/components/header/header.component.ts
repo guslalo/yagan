@@ -44,6 +44,9 @@ buscar(){
 // Para recibir
 ngOnInit() {
   localStorage.removeItem('buscador');
+  $(".iconMenu").click(function(){
+    $(".menu").slideToggle("fast");
+  })
  /*
   this.route.queryParams.subscribe(params => {
     console.log(params.region);
