@@ -111,6 +111,13 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
 
   private changeLat: number;
   private changeLng: number;
+  dir = undefined;
+  dir2 = undefined;
+  public marcadores:any;
+  public waypoints: any = []
+  public change(event: any) {
+    this.waypoints = event.request.waypoints;
+  }
 
   ngOnInit() {  
     this.idItem2 = {};
@@ -119,6 +126,8 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
     this.titleService.setTitle('Rutas | Yagan');  
     //scrollTop
     window.scrollTo(0, 0);
+
+    
     
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
@@ -132,17 +141,54 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
           this.allMarkers = [];
 
           this.ruta.push(data);
+         // console.log(data.route_item);
+
+          for(let i=0; i<data.route_item.length; i++) {
+            
+            this.RutaItem.push(data.route_item[i]);
+            this.allMarkers.push(data.route_item[i]);   
+           /*
+            this.dir = {
+              origin: { lat: +data.route_item[i].latitude, lng: +data.route_item[i].longitude },
+              destination: { lat: +data.route_item[i+1].latitude, lng: +data.route_item[i+1].longitude }
+            } */
+            
+         
+          }
+          console.log(this.dir);
           
           for(let item of data.route_item)  {
             item.latitude = +item.latitude
             item.longitude = +item.longitude
             this.latitude2= item.latitude
             this.longitude2= item.longitude
+            let waypoints = [
+              {
+                  location: { lat: +item.latitude, lng:  +item.longitude },
+                  stopover: true,
+              }]
+            this.dir = { 
+              origin: { lat:  +item.latitude, lng: +item.longitude },
+              destination: { lat: +item.latitude+1, lng: +item.longitude+1}
+            }
+
+            this.dir2 = { 
+              origin2: { lat:  +item.latitude, lng: +item.longitude },
+              destination2: { lat: +item.latitude+1, lng: +item.longitude+1}
+            }
+            console.log(this.dir);
+      
             //this.markers = data;
+
+            /*
             this.RutaItem.push(item);
-            this.allMarkers.push(item);     
+            this.allMarkers.push(item);   
+            }*/
+            
           }   
-          //console.log(this.allMarkers);    
+  
+          
+         // console.log(this.allMarkers);    
           //get getRuta misma region  
           this.ServiciosService.subcategoria().subscribe( 
             data => {

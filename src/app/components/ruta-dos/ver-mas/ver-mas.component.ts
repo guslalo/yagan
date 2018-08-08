@@ -13,7 +13,7 @@ export class VerMasComponent implements OnInit {
 
   ngOnChanges(){
     if(this.idItem2 != null) {
-      console.log(this.idItem2);
+      //console.log(this.idItem2);
     }
    //
   }

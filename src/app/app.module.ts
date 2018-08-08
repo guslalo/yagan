@@ -20,6 +20,7 @@ import { ListaExperienciasComponent } from './components/lista-experiencias/list
 import { ExperienciasDelMesComponent } from './components/experiencias-del-mes/experiencias-del-mes.component';
 
 import { AgmCoreModule } from '@agm/core';
+import { AgmDirectionModule } from 'agm-direction';
 import { RutasDelMesComponent } from './components/rutas-del-mes/rutas-del-mes.component';
 import { MapaItemComponent } from './components/ruta-dos/mapa-item/mapa-item.component';
 import { DetalleItemComponent } from './components/ruta-dos/detalle-item/detalle-item.component';
@@ -93,7 +94,8 @@ const appRoutes: Routes = [
     BarRatingModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDziIQaJhEYq3IRQ7TuNJo5Q9RIuDOQenc'
-    })
+    }),
+    AgmDirectionModule      
  
   ],
   providers: [ServiciosService],

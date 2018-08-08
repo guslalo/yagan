@@ -114,6 +114,7 @@
         </div><!--/tab-->
         <!--tab-->
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          
           <agm-map 
             [latitude]="latitude2"
             [longitude]="longitude2"
@@ -129,10 +130,9 @@
                 [latitude]="m.latitude"
                 [longitude]="m.longitude"
                 (dragEnd)="markerDragEnd(m, $event)">
-         
-              <!--(centerChange)="centerChange($event)"<agm-info-window>
-                <strong>test</strong>
-              </agm-info-window>-->
+
+                <agm-direction  [waypoints]="waypoints"></agm-direction>
+            
             </agm-marker>
           </agm-map> 
           <div class="container aportar pb-5">

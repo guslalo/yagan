@@ -24,6 +24,14 @@ export class Duracion{
   name:string;
 }
 
+export class Ubicaciones {
+  ruta:rutaMapa;
+}
+export class rutaMapa{
+  latitude:string;
+  longitude:string;
+}
+
 
 
 
