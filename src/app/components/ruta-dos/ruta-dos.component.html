@@ -131,7 +131,8 @@
                 [longitude]="m.longitude"
                 (dragEnd)="markerDragEnd(m, $event)">
 
-                <agm-direction  [waypoints]="waypoints"></agm-direction>
+              
+                <agm-direction [waypoints]="waypoints" *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
             
             </agm-marker>
           </agm-map> 

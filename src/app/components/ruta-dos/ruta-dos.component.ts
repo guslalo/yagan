@@ -147,6 +147,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
             
             this.RutaItem.push(data.route_item[i]);
             this.allMarkers.push(data.route_item[i]);   
+           
            /*
             this.dir = {
               origin: { lat: +data.route_item[i].latitude, lng: +data.route_item[i].longitude },
@@ -164,19 +165,17 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
             this.longitude2= item.longitude
             let waypoints = [
               {
-                  location: { lat: +item.latitude, lng:  +item.longitude },
+                  location: { lat: +item.latitude , lng:  +item.longitude },
                   stopover: true,
               }]
+              console.log(waypoints);
+          
             this.dir = { 
               origin: { lat:  +item.latitude, lng: +item.longitude },
               destination: { lat: +item.latitude+1, lng: +item.longitude+1}
             }
-
-            this.dir2 = { 
-              origin2: { lat:  +item.latitude, lng: +item.longitude },
-              destination2: { lat: +item.latitude+1, lng: +item.longitude+1}
-            }
-            console.log(this.dir);
+        
+            
       
             //this.markers = data;
 
