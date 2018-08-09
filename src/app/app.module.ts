@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxTypeaheadModule } from 'ngx-typeahead';
@@ -37,30 +37,21 @@ import { VerMasComponent } from './components/ruta-dos/ver-mas/ver-mas.component
 
 
 
-const appRoutes: Routes = [
+const router: Routes = [
 
   { path: 'home', component: HomeComponent},
-
   { path: 'rutas-experiencias',component: ExperienciasComponent},
   { path: 'rutas-experiencias/:id', component: ExperienciasComponent },
-
   { path: 'ruta', component: RutaDosComponent},
   { path: 'ruta/:id', component: RutaDosComponent },
-
   { path: 'experiencias', component: MejorSandwichComponent},
   { path: 'experiencias/:id', component: MejorSandwichComponent},
+  { path: '**', redirectTo:'home', data: { title: 'Yagan' }   }
+];
 
-  /*{
-    path: 'heroes',
-    component: ,|
-    data: { title: 'Heroes List' }
-  },
-  { path: '',
-    redirectTo: '/heroes',
-    pathMatch: 'full'
-  },*/
-  { path: '**', component:HomeComponent, data: { title: 'Yagan' }   }
-];/**/
+export const appRouters: any[] = [];
+export const routing: ModuleWithProviders = RouterModule.forRoot(router);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,10 +78,7 @@ const appRoutes: Routes = [
     OwlModule,
     FormsModule, ReactiveFormsModule,
     NgxTypeaheadModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: false },//<-- debugging purposes only
-    ),
+    routing,
     BarRatingModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDziIQaJhEYq3IRQ7TuNJo5Q9RIuDOQenc'
@@ -98,7 +86,7 @@ const appRoutes: Routes = [
     AgmDirectionModule      
  
   ],
-  providers: [ServiciosService],
+  providers: [ServiciosService, appRouters],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
