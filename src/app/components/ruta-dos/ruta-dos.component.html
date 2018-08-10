@@ -113,7 +113,6 @@
           </div><!--/masRutas box-->
         </div><!--/tab-->
         <!--tab-->
-       
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
           
           <agm-map 
@@ -124,13 +123,15 @@
             [zoomControl]="true"
             [usePanning]="true"
             (mapClick)="mapClicked($event)">
-
-            <agm-direction 
+           
+            <agm-direction
+            [renderOptions]="renderOptions"  
             [waypoints]="waypoints" 
+            [markerOptions]="markerOptions"
             [optimizeWaypoints]="optimizeWaypoints" 
-            [renderOptions]="renderOptions" 
             *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination">
           </agm-direction>
+
           </agm-map> 
           <div class="container aportar pb-5">
             <div class="row pt-5">

@@ -14,6 +14,7 @@ html, body, .wrapGeneral, app-root {
 $primaryColor:rgba(23, 89, 216, 1)!important;
 $primaryBorder:rgba(23, 89, 216, 1) !important;
 $btnSecondaryColor:rgba(23, 89, 216, 1) !important;
+
 a {
     color: inherit;
     &:hover{
@@ -887,5 +888,12 @@ owl-carousel {
     }
          
 
+}
+
+.labels {
+    color: blue;
+    font-size: 14px;
+    position: absolute !important;
+    right: -50px !important;
 }
 

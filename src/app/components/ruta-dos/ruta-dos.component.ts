@@ -7,6 +7,7 @@ import { ServiciosService } from '../../services/servicios.service';
 import { Observable } from 'rxjs/Rx';
 import { Experience, Category, Ruta, RutaItem, Marker, ItemDetail, subCategory } from '../../models/models';
 import { MouseEvent } from '@agm/core';
+import { InfoWindow } from '@agm/core/services/google-maps-types' // option
 
 @Component({
   selector: 'app-ruta-dos',
@@ -74,7 +75,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
     }]*/
 
   //google maps zoom level
-  zoom: number = 8;
+  zoom: number;
   
 
   clickedMarker(label: string, index: number) {
@@ -116,30 +117,30 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   public marcadores:any;
   public waypoints: any = [];
   public optimizeWaypoints: boolean = false;
-  public renderOptions: any = {
-    draggable: true,
-    suppressMarkers: true,
-    suppressInfoWindows: false,
-    markerOptions: { // effect all markers
-        icon:'http://yagan.world/assets/img/pin.png',
-    },
-}
+  public renderOptions: any = {};
+  public markerOptions: any = {};
+  public infoWindow: InfoWindow = undefined;
 
   public change(event: any) {
     this.waypoints = event.request.waypoints;
   }
 
+
+
   ngOnInit() {  
     this.idItem2 = {};
-    //console.log(this.markers);
+
     //title
     this.titleService.setTitle('Rutas | Yagan');  
     //scrollTop
     window.scrollTo(0, 0);
-
-    
+     
+     
+      /**/
     
     this.sub = this.route.params.subscribe(params => {
+    
+       
       this.id = +params['id']; // (+) converts string 'id' to a number
       //getRuta ID
       this.ServiciosService.getRuta(this.id).subscribe( 
@@ -149,37 +150,79 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
           this.ruta = [];
           this.masRutas = [];
           this.allMarkers = [];
-
+          this.zoom == 15;
+      
           this.ruta.push(data);
          // console.log(data.route_item);
+         
+         this.renderOptions = {
+            draggable: false,
+            suppressMarkers: false,
+            suppressInfoWindows: false,
+            InfoWindow:'as',
+            markerOptions: {      
+              icon:{
+                url:'http://yagan.world/assets/img/pin.png',
+                labelOrigin:{x:10, y:-10},
+              },
+              label:{ 
+                text:'ejemplo name',
+              }
+            },
+          } 
 
-          for(let i=0; i<data.route_item.length; i++) {
-            
+        
+          for(let i=0; i<data.route_item.length; i++) {      
             this.RutaItem.push(data.route_item[i]);
-            this.allMarkers.push(data.route_item[i]); 
-    
-          }
+            this.allMarkers.push(data.route_item[i]);  
+  
+          } 
+          /*
+          this.markerOptions = {
+            origin: {
+              icon:'http://yagan.world/assets/img/pin.png',
+            },
+            destination: {
+              icon:'http://yagan.world/assets/img/pin.png',
+                infoWindow: `
+                <h4>Hello<h4>
+                <a href='http://www-e.ntust.edu.tw/home.php' target='_blank'>Taiwan Tech</a>
+                `
+            },
+           } */
           this.dir = {
-            origin: { lat: +data.route_item[0].latitude, lng: +data.route_item[0].longitude },
-            destination: { lat: +data.route_item[data.route_item.length-1].latitude, lng: +data.route_item[data.route_item.length-1].longitude }
+            origin: { 
+              lat: +data.route_item[0].latitude, 
+              lng: +data.route_item[0].longitude,
+               
+            },
+            destination: { 
+              lat: +data.route_item[data.route_item.length-1].latitude,
+               lng: +data.route_item[data.route_item.length-1].longitude
+            }
           }         
-          
+
           console.log(this.dir);
+       
     
           for(let item of data.route_item)  {
             item.latitude = +item.latitude
             item.longitude = +item.longitude
             this.latitude2= item.latitude
             this.longitude2= item.longitude
-           
-            this.waypoints.push({  location: { lat: + item.latitude, lng: +item.longitude }, stopover: true,});
+
+            this.waypoints.push({ 
+              location: { lat: + item.latitude, lng: +item.longitude }, 
+              stopover: true,
+            });
+            
             
           }   
 
           console.log(this.waypoints);
   
           
-          // console.log(this.allMarkers);    
+          console.log(this.allMarkers);    
           //get getRuta misma region  
           this.ServiciosService.subcategoria().subscribe( 
             data => {
