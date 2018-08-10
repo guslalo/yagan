@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, OnDestroy  } from '@angular/core';
+import { Component, OnInit, Input, Output, OnDestroy, ViewEncapsulation  } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, ParamMap  } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
@@ -9,12 +9,14 @@ import { Experience, Category, Ruta, RutaItem, Marker, ItemDetail, subCategory }
 import { MouseEvent } from '@agm/core';
 import { InfoWindow } from '@agm/core/services/google-maps-types' // option
 
+
 @Component({
   selector: 'app-ruta-dos',
   templateUrl: './ruta-dos.component.html',
   styleUrls: ['./ruta-dos.component.scss'],
   providers:[ServiciosService]
 })
+//encapsulation: ViewEncapsulation.None,
 export class RutaDosComponent implements OnInit, OnDestroy  {
 
   @Input() public idExpecienciaRecibida:any;
@@ -163,7 +165,8 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
             markerOptions: {      
               icon:{
                 url:'http://yagan.world/assets/img/pin.png',
-                labelOrigin:{x:10, y:-10},
+                labelOrigin:{x:10, y:-6},
+                labelClass: 'my-custom-class-for-label'
               },
               label:{ 
                 text:'ejemplo name',

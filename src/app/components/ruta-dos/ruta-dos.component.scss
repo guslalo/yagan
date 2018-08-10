@@ -9,6 +9,20 @@ Patterns - reusable parts of our design
         visibility: hidden;
     }
 }
+.my-custom-class-for-label {
+    width: 50px; 
+    height: 20px;
+    background: #ffffff !important;
+    border: 1px solid #eb3a44;
+    border-radius: 5px;
+    background: #fee1d7;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #eb3a44;
+  }
+  
 /* -------------------------------- 
 
 Vertical Timeline - by CodyHouse.co
@@ -388,4 +402,10 @@ Vertical Timeline - by CodyHouse.co
     button:focus {
         outline: none !important;
     }
+}
+
+.labels {
+    background: #ffffff !important;
+    padding: 5px !important;
+    color:red !important;
 }

@@ -1,5 +1,20 @@
 /* Estilos Globales*/
 @import '~ngx-bar-rating/themes/br-default-theme.css';
+
+.my-custom-class-for-label {
+    width: 50px; 
+    height: 20px;
+    background: #ffffff !important;
+    border: 1px solid #eb3a44;
+    border-radius: 5px;
+    background: #fee1d7;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #eb3a44;
+  }
+  
 body {
     font-family: 'Roboto', sans-serif;
     height: 100%;
@@ -891,9 +906,8 @@ owl-carousel {
 }
 
 .labels {
-    color: blue;
-    font-size: 14px;
-    position: absolute !important;
-    right: -50px !important;
+    background: #ffffff !important;
+    padding: 5px !important;
+    color:red !important;
 }
 
