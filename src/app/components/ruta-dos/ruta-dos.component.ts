@@ -114,7 +114,8 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   dir = undefined;
   dir2 = undefined;
   public marcadores:any;
-  public waypoints: any = []
+  public waypoints: any = [];
+
   public change(event: any) {
     this.waypoints = event.request.waypoints;
   }
@@ -146,37 +147,35 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
           for(let i=0; i<data.route_item.length; i++) {
             
             this.RutaItem.push(data.route_item[i]);
-            this.allMarkers.push(data.route_item[i]);   
-           
-           /*
-            this.dir = {
-              origin: { lat: +data.route_item[i].latitude, lng: +data.route_item[i].longitude },
-              destination: { lat: +data.route_item[i+1].latitude, lng: +data.route_item[i+1].longitude }
-            } */
+            this.allMarkers.push(data.route_item[i]); 
+         
+             //this.waypoints[i]={ lat: +data.route_item[i].latitude  , lng: +data.route_item[i].longitude }
+        
+          
             
          
           }
-          console.log(this.dir);
+
+
+          this.dir = {
+            origin: { lat: +data.route_item[0].latitude, lng: +data.route_item[0].longitude },
+            destination: { lat: +data.route_item[data.route_item.length-1].latitude, lng: +data.route_item[data.route_item.length-1].longitude }
+          }
+          //this.waypoints.push({  location: { lat: +data.route_item[1], lng: +data.route_item[1].longitude }, stopover: true,});
+         
           
+          console.log(this.dir);
+
+      
+        
           for(let item of data.route_item)  {
             item.latitude = +item.latitude
             item.longitude = +item.longitude
             this.latitude2= item.latitude
             this.longitude2= item.longitude
-            let waypoints = [
-              {
-                  location: { lat: +item.latitude , lng:  +item.longitude },
-                  stopover: true,
-              }]
-              console.log(waypoints);
+           
+            this.waypoints.push({  location: { lat: + item.latitude, lng: +item.longitude }, stopover: true,});
           
-            this.dir = { 
-              origin: { lat:  +item.latitude, lng: +item.longitude },
-              destination: { lat: +item.latitude+1, lng: +item.longitude+1}
-            }
-        
-            
-      
             //this.markers = data;
 
             /*
@@ -185,6 +184,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
             }*/
             
           }   
+          console.log(this.waypoints);
   
           
          // console.log(this.allMarkers);    
