@@ -161,15 +161,17 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
             draggable: false,
             suppressMarkers: false,
             suppressInfoWindows: false,
+            labelInBackground:true,
             InfoWindow:'as',
             markerOptions: {      
               icon:{
                 url:'http://yagan.world/assets/img/pin.png',
                 labelOrigin:{x:10, y:-6},
-                labelClass: 'my-custom-class-for-label'
+                fillColor:"#ffffff"
               },
               label:{ 
-                text:'ejemplo name',
+                //text:'ejemplo name',
+               
               }
             },
           } 
