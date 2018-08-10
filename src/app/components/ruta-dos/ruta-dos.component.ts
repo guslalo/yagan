@@ -115,6 +115,15 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   dir2 = undefined;
   public marcadores:any;
   public waypoints: any = [];
+  public optimizeWaypoints: boolean = false;
+  public renderOptions: any = {
+    draggable: true,
+    suppressMarkers: true,
+    suppressInfoWindows: false,
+    markerOptions: { // effect all markers
+        icon:'http://yagan.world/assets/img/pin.png',
+    },
+}
 
   public change(event: any) {
     this.waypoints = event.request.waypoints;
@@ -148,26 +157,15 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
             
             this.RutaItem.push(data.route_item[i]);
             this.allMarkers.push(data.route_item[i]); 
-         
-             //this.waypoints[i]={ lat: +data.route_item[i].latitude  , lng: +data.route_item[i].longitude }
-        
-          
-            
-         
+    
           }
-
-
           this.dir = {
             origin: { lat: +data.route_item[0].latitude, lng: +data.route_item[0].longitude },
             destination: { lat: +data.route_item[data.route_item.length-1].latitude, lng: +data.route_item[data.route_item.length-1].longitude }
-          }
-          //this.waypoints.push({  location: { lat: +data.route_item[1], lng: +data.route_item[1].longitude }, stopover: true,});
-         
+          }         
           
           console.log(this.dir);
-
-      
-        
+    
           for(let item of data.route_item)  {
             item.latitude = +item.latitude
             item.longitude = +item.longitude
@@ -175,19 +173,13 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
             this.longitude2= item.longitude
            
             this.waypoints.push({  location: { lat: + item.latitude, lng: +item.longitude }, stopover: true,});
-          
-            //this.markers = data;
-
-            /*
-            this.RutaItem.push(item);
-            this.allMarkers.push(item);   
-            }*/
             
           }   
+
           console.log(this.waypoints);
   
           
-         // console.log(this.allMarkers);    
+          // console.log(this.allMarkers);    
           //get getRuta misma region  
           this.ServiciosService.subcategoria().subscribe( 
             data => {
