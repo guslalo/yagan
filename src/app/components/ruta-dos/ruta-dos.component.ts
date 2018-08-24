@@ -122,6 +122,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   public renderOptions: any = {};
   public markerOptions: any = {};
   public infoWindow: InfoWindow = undefined;
+  public titles:any = [];
 
   public change(event: any) {
     this.waypoints = event.request.waypoints;
@@ -158,6 +159,22 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
       
           this.ruta.push(data);
         // console.log(data.route_item);
+         for(let item of data.route_item)  {
+            item.latitude = +item.latitude
+            item.longitude = +item.longitude
+            this.latitude2= item.latitude
+            this.longitude2= item.longitude
+           
+
+            this.waypoints.push({ 
+              location: { lat: + item.latitude, lng: +item.longitude }, 
+              stopover: true,
+            });
+            this.titles.push(item.title);
+            console.log(this.titles);
+            
+          }   
+
          
          this.renderOptions = {
             draggable: false,
@@ -172,7 +189,8 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
                 fillColor:"#ffffff"
               },
               label:{ 
-                //text:'ejemplo name',
+
+                text: this.titles,
                
               }
             },
@@ -213,21 +231,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
           //console.log(this.dir);
        
     
-          for(let item of data.route_item)  {
-            item.latitude = +item.latitude
-            item.longitude = +item.longitude
-            this.latitude2= item.latitude
-            this.longitude2= item.longitude
-              console.log(item.title);
-
-            this.waypoints.push({ 
-              location: { lat: + item.latitude, lng: +item.longitude }, 
-              stopover: true,
-            });
-            
-            
-          }   
-
+         
           //console.log(this.waypoints);
   
           
