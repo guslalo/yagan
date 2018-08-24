@@ -153,9 +153,11 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
           this.masRutas = [];
           this.allMarkers = [];
           this.zoom == 15;
+
+          
       
           this.ruta.push(data);
-         // console.log(data.route_item);
+        // console.log(data.route_item);
          
          this.renderOptions = {
             draggable: false,
@@ -177,7 +179,8 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
           } 
 
         
-          for(let i=0; i<data.route_item.length; i++) {      
+          for(let i=0; i<data.route_item.length; i++) {   
+           
             this.RutaItem.push(data.route_item[i]);
             this.allMarkers.push(data.route_item[i]);  
   
@@ -207,7 +210,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
             }
           }         
 
-          console.log(this.dir);
+          //console.log(this.dir);
        
     
           for(let item of data.route_item)  {
@@ -215,6 +218,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
             item.longitude = +item.longitude
             this.latitude2= item.latitude
             this.longitude2= item.longitude
+              console.log(item.title);
 
             this.waypoints.push({ 
               location: { lat: + item.latitude, lng: +item.longitude }, 
@@ -224,10 +228,10 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
             
           }   
 
-          console.log(this.waypoints);
+          //console.log(this.waypoints);
   
           
-          console.log(this.allMarkers);    
+          //console.log(this.allMarkers);    
           //get getRuta misma region  
           this.ServiciosService.subcategoria().subscribe( 
             data => {

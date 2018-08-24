@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { HttpClient} from "@angular/common/http";
 import { ServiciosService } from '../../services/servicios.service';
 import { Observable } from 'rxjs/Rx';
-import { subCategory } from '../../models/models';
+import { subCategory, Category} from '../../models/models';
+
 
 @Component({
   selector: 'app-rutas-del-mes',
@@ -23,6 +24,7 @@ export class RutasDelMesComponent implements OnInit {
 
 //Arrays Experiences and Category
 subCategoryRuta: subCategory[] = [];
+SubCategory: Category[] = [];
 
 
 
@@ -33,6 +35,15 @@ subCategoryRuta: subCategory[] = [];
      this.ServiciosService.subcategoria().subscribe( 
       data => {
         this.subCategoryRuta = data.filter(r=> r.type == 'route');     
+      },
+      error => {
+        console.log(<any>error);
+      }
+    ); 
+
+    this.ServiciosService.subcategoria().subscribe( 
+      data => {
+        this.SubCategory = data;
       },
       error => {
         console.log(<any>error);

@@ -2,7 +2,7 @@
         <div class="container p-0 p-md">
           <div class="row">
             <div class="col"> 
-              <h2 class="h2">Rutas del mes</h2>
+              <h2 class="h2">Rutas y experiencias</h2>
             </div>
             <div class="col">
               <h2 class="h2 text-right"><a routerLink="/rutas-experiencias">Ver todo</a></h2>
@@ -10,7 +10,7 @@
           </div>
           <!--rutas item -->
           <div class="row experiencias">
-            <div *ngFor="let item of subCategoryRuta | slice:0:4; let i=index" id="{{item.id}}" class="col-6 col-sm-6 col-md-3 categoria" (click)="captureId(item.id)"><!-- -->
+            <div *ngFor="let item of SubCategory | slice:0:8; let i=index" id="{{item.id}}" class="col-6 col-sm-6 col-md-3 categoria" (click)="captureId(item.id)"><!-- -->
               <a [routerLink]="['/ruta', item.id]">
                 <figure>
                   <img [src]="item.image"/>
