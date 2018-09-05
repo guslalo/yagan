@@ -118,6 +118,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   dir2 = undefined;
   public marcadores:any;
   public waypoints: any = [];
+  public waypointsItem: any = [];
   public optimizeWaypoints: boolean = false;
   public renderOptions: any = {};
   public markerOptions: any = {};
@@ -141,9 +142,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
      
       /**/
     
-    this.sub = this.route.params.subscribe(params => {
-    
-       
+    this.sub = this.route.params.subscribe(params => { 
       this.id = +params['id']; // (+) converts string 'id' to a number
       //getRuta ID
       this.ServiciosService.getRuta(this.id).subscribe( 
@@ -153,11 +152,9 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
           this.ruta = [];
           this.masRutas = [];
           this.allMarkers = [];
-          this.zoom == 15;
-
-          
-      
+          this.zoom == 15;  
           this.ruta.push(data);
+
         // console.log(data.route_item);
          for(let item of data.route_item)  {
             item.latitude = +item.latitude
@@ -165,77 +162,51 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
             this.latitude2= item.latitude
             this.longitude2= item.longitude
            
-
             this.waypoints.push({ 
               location: { lat: + item.latitude, lng: +item.longitude }, 
               stopover: true,
             });
+
             this.titles.push(item.title);
-            console.log(this.titles);
-            
+            console.log(this.titles);   
+            this.waypointsItem.push({
+              icon:'http://yagan.world/assets/img/pin.png',
+              infoWindow: `
+                <h4>HOLA ITEM<h4>
+                <a href='http://www-e.ntust.edu.tw/home.php' target='_blank'>Chile Tech</a>
+                `,
+                label: 'Hola'
+            });       
           }   
 
          
-         this.renderOptions = {
-            draggable: false,
-            suppressMarkers: false,
-            suppressInfoWindows: false,
-            labelInBackground:true,
-            InfoWindow:'as',
-            markerOptions: {      
-              icon:{
-                url:'http://yagan.world/assets/img/pin.png',
-                labelOrigin:{x:10, y:-6},
-                fillColor:"#ffffff"
-              },
-              label:{ 
-
-                text: this.titles,
-               
-              }
-            },
-          } 
-
-        
-          for(let i=0; i<data.route_item.length; i++) {   
-           
+  
+          for(let i=0; i<data.route_item.length; i++) {             
             this.RutaItem.push(data.route_item[i]);
             this.allMarkers.push(data.route_item[i]);  
-  
           } 
-          /*
+
+          
           this.markerOptions = {
-            origin: {
-              icon:'http://yagan.world/assets/img/pin.png',
-            },
-            destination: {
-              icon:'http://yagan.world/assets/img/pin.png',
-                infoWindow: `
-                <h4>Hello<h4>
-                <a href='http://www-e.ntust.edu.tw/home.php' target='_blank'>Taiwan Tech</a>
-                `
-            },
-           } */
+            
+           waypoints: this.waypointsItem
+            
+           } 
           this.dir = {
             origin: { 
               lat: +data.route_item[0].latitude, 
-              lng: +data.route_item[0].longitude,
-               
+              lng: +data.route_item[0].longitude,             
             },
             destination: { 
               lat: +data.route_item[data.route_item.length-1].latitude,
                lng: +data.route_item[data.route_item.length-1].longitude
-            }
+            },
+            waypoints: this.waypointsItem
           }         
+          console.log(this.dir);                   
+          //console.log(this.waypoints);          
+          //console.log(this.allMarkers); 
 
-          //console.log(this.dir);
-       
-    
-         
-          //console.log(this.waypoints);
-  
-          
-          //console.log(this.allMarkers);    
           //get getRuta misma region  
           this.ServiciosService.subcategoria().subscribe( 
             data => {

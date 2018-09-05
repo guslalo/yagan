@@ -523,7 +523,8 @@ owl-carousel {
             a {
                 color: #ffffff;
                 &.active {
-                    color:#1759d8;
+                    color: #000180;
+                    text-decoration: underline;
                 }
                 &:hover{
                     opacity: 0.5;
