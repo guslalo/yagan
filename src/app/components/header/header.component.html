@@ -15,7 +15,7 @@
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Buscar" name="buscar" [(ngModel)]="model.buscar">
           <div class="input-group-append">
-            <button class="btn btn-primary btn-gris" type="submit">Buscar</button>
+            <button id="btnbuscar" class="btn btn-primary btn-gris" type="submit" (click)="buscarbtn()">Buscar</button>
           </div>
         </div>
       </form><!--/form buscador--></div>

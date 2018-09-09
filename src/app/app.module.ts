@@ -6,6 +6,7 @@ import { NgxTypeaheadModule } from 'ngx-typeahead';
 
 import { HttpClientModule, HttpHeaders } from "@angular/common/http";
 import { ServiciosService } from './services/servicios.service';
+import { StorageService } from './services/storage.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -33,6 +34,7 @@ import { OwlModule } from 'ngx-owl-carousel';
 
 import { DetalleItemExperienciaComponent } from './components/mejor-sandwich/detalle-item-experiencia/detalle-item-experiencia.component';
 import { VerMasComponent } from './components/ruta-dos/ver-mas/ver-mas.component';
+
 
 
 
@@ -86,7 +88,7 @@ export const routing: ModuleWithProviders = RouterModule.forRoot(router);
     AgmDirectionModule      
  
   ],
-  providers: [ServiciosService, appRouters],
+  providers: [ServiciosService, StorageService, appRouters],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

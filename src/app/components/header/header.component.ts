@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ParamMap, Router, ActivatedRoute  } from "@angular/router";
 import { ServiciosService } from '../../services/servicios.service';
+import { StorageService } from '../../services/storage.service';
 import { HttpClient} from "@angular/common/http";
 import { subCategory } from '../../models/models';
 
@@ -11,7 +12,12 @@ import { subCategory } from '../../models/models';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router,  private http : HttpClient,  private ServiciosService: ServiciosService,) { }
+  constructor(private router: Router,  private http : HttpClient,  
+    private ServiciosService: ServiciosService,
+    protected StorageService: ServiciosService,
+  ) { }
+
+  @Output() busqueda = new EventEmitter();
 
   public url = 'http://administrator.yagan.world/core/api/subcategory/?string_text=';
   public api = 'http';
@@ -25,10 +31,16 @@ export class HeaderComponent implements OnInit {
     //console.log(this.query);
   }
 
+  @Output() salida = new EventEmitter();
+
   public model: any = {};
 
   public resultados:subCategory;
 
+mensaje: string = 'Este es el hijo header';
+  saludo(value) {
+    this.mensaje = value;
+  }
 //Para mandar
 buscarExperiencia(string_text,region){
   let navigationExtras = {
@@ -41,13 +53,23 @@ buscarExperiencia(string_text,region){
   
 }
 buscar(){
- 
+  //localStorage.removeItem('buscador');
+  //let user: User = { firstName: 'Henri', lastName: 'Bergson' };
+  localStorage.setItem('buscador', JSON.stringify(this.model));
+ // console.log(JSON.parse(localStorage.getItem('buscador')).buscar);
+  //this.localStorage.setItem('buscador', JSON.stringify(this.model)).subscribe(() => {});
+  /*
+  if(localStorage.getItem('buscador')){
+    localStorage.removeItem('buscador');
+  }else {
     localStorage.setItem('buscador', JSON.stringify(this.model));  
-    //console.log(JSON.parse(localStorage.getItem('buscador')));
-    this.query = JSON.parse(localStorage.getItem('buscador')).buscar;
-
-    this.ServiciosService.buscarExperiencia(this.query).subscribe( 
+    console.log(JSON.parse(localStorage.getItem('buscador')).buscar);
+  }*/
+  
+   this.query = JSON.parse(localStorage.getItem('buscador')).buscar;
+    this.ServiciosService.buscarExperiencia(JSON.parse(localStorage.getItem('buscador')).buscar).subscribe( 
       data => {
+        localStorage.removeItem('resultados');
         this.resultados = data;
         localStorage.setItem('resultados', JSON.stringify(this.resultados));
         //console.log(JSON.parse(localStorage.getItem('resultados')));
@@ -55,22 +77,22 @@ buscar(){
       error => {
         console.log(<any>error);
       }
-    ); 
-    
-  
-
-
+    ); /**/
   this.router.navigate(['rutas-experiencias/resultado']);
 
-
-
 }
+buscarbtn(){
+  console.log("ser");
+}
+
 // Para recibir
 ngOnInit() {
   localStorage.removeItem('buscador');
   $(".iconMenu").click(function(){
     $(".menu").slideToggle("fast");
-  })
+  });
+
+
  /*
   this.route.queryParams.subscribe(params => {
     console.log(params.region);

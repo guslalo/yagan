@@ -10,6 +10,8 @@ const url = 'http://administrator.yagan.world/'
 export class ServiciosService {
 
 constructor(private http: HttpClient) {  }
+ 
+
 
   getCategory(): Observable<any>{
     return this.http.get(url+'core/api/category/');
@@ -68,7 +70,6 @@ constructor(private http: HttpClient) {  }
 
   //buscar experiencia
   buscarExperiencia(query:string):Observable<any>{
-    localStorage.removeItem('resultado');
     return this.http.get(url+'core/api/subcategory/?string_text='+query);
   }
  
