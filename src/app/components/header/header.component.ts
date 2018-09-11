@@ -66,7 +66,7 @@ buscar(){
     console.log(JSON.parse(localStorage.getItem('buscador')).buscar);
   }*/
   
-   this.query = JSON.parse(localStorage.getItem('buscador')).buscar;
+  /* this.query = JSON.parse(localStorage.getItem('buscador')).buscar;
     this.ServiciosService.buscarExperiencia(JSON.parse(localStorage.getItem('buscador')).buscar).subscribe( 
       data => {
         localStorage.removeItem('resultados');
@@ -77,8 +77,8 @@ buscar(){
       error => {
         console.log(<any>error);
       }
-    ); /**/
-  this.router.navigate(['rutas-experiencias/resultado']);
+    ); */
+  this.router.navigate(['rutas-experiencias', {q: this.model.buscar}]);
 
 }
 buscarbtn(){

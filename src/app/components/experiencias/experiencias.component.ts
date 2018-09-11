@@ -110,18 +110,25 @@ constructor( private http : HttpClient,
       $(".menusidebar").find("form").slideToggle();
     })
     window.scrollTo(0, 0);
+    this.route.params.subscribe(params => {
 
- 
+      this.ServiciosService.buscarExperiencia(params['q']).subscribe( 
+        data => {
+          this.resultados = data;
+        },
+        error => {
+          console.log(<any>error);
+        }
+      ); 
+    });
 
+    
+    //console.log(this.route.snapshot.queryParams["q"]);
     /*this.localStorage.getItem('buscador').subscribe( data => { 
       //return data;
       console.log(data);
     
      });*/
-
-
-  
-
 
     //get categorias  
     this.ServiciosService.getCategory().subscribe( 
@@ -152,9 +159,12 @@ constructor( private http : HttpClient,
         console.log(<any>error);
       }
     ); 
+
+
+    /**/
     
     //recibe por ruting parametro ID
-    this.sub = this.route.params.subscribe(params => {
+    /*this.sub = this.route.params.subscribe(params => {
       //localStorage.removeItem('resultados');
       this.id = params['id'];
       if(!this.id){
@@ -182,7 +192,7 @@ constructor( private http : HttpClient,
           this.getSubCategoryFilter();
         } 
       }
-    });    
+    });    */
 
   }
 
