@@ -112,18 +112,32 @@ constructor( private http : HttpClient,
     this.route.params.subscribe(params => {
 
       let paramSearch : string;
+      let strTemp : string;
+      let q : string;
+      let cid : string;
+
+      q = (localStorage.getItem('q')=='') ? params['q'] : localStorage.getItem('q');
+      cid = (localStorage.getItem('cid')=='') ? params['cid'] : localStorage.getItem('q');
       paramSearch = "?";
-      if(params['cid']){
-          paramSearch += "category_parent=" + params['cid'];
+
+      if(params['q'] != ''){
+        //this.localStorage.addItem('q','');
+        paramSearch += "string_text=" + q;
+      }else{
+        if(params['cid'] != ''){
+            //this.localStorage.addItem('cid','cid');
+            paramSearch += "category_parent=" + cid;
+        }
       }
+
       
-      if(params['q']){
-          paramSearch += "string_text=" + params['q'];
-      }
+
+      console.log(paramSearch);
 
       this.ServiciosService.searchDefault(paramSearch).subscribe( 
         data => {
           this.resultados = data;
+          console.log(data);
         },
         error => {
           console.log(<any>error);
