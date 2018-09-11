@@ -72,6 +72,12 @@ constructor(private http: HttpClient) {  }
   buscarExperiencia(query:string):Observable<any>{
     return this.http.get(url+'core/api/subcategory/?string_text='+query);
   }
+
+
+  //buscar experiencia
+  searchDefault(query:string):Observable<any>{
+    return this.http.get(url+'core/api/subcategory/' + query);
+  }
  
 
 

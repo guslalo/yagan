@@ -58,8 +58,8 @@
 
       <!--categorias descubre-->
       <div class="row categorias">
-        <div *ngFor="let item of CategoryFilter" class="col-6 col-sm-6 col-md-4 categoria" (click)="captureId(item.id)">
-          <a [routerLink]="['/rutas-experiencias', item.id]">
+        <div *ngFor="let item of CategoryFilter" class="col-6 col-sm-6 col-md-4 categoria">
+          <a [routerLink]="['/rutas-experiencias', {cid: item.id }]">
             <figure>
               <div *ngIf="item.image == null; else otro">
                   <img src="assets/img/default-thumb.png"/>

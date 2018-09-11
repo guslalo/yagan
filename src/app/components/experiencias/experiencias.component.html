@@ -42,7 +42,7 @@
         <ul>
           <li class="title">Categorías</li>
           <li><a routerLink="/rutas-experiencias">Todas</a></li>
-          <li *ngFor="let item of CategoryFilter" id="{{item.id}}"><a [routerLink]="['/rutas-experiencias', item.id]" routerLinkActive="active">{{item.name}}</a></li>    
+          <li *ngFor="let item of CategoryFilter" id="{{item.id}}"><a [routerLink]="['/rutas-experiencias', {cid: item.id }]" routerLinkActive="active">{{item.name}}</a></li>    
         </ul>
       </form>
       </div><!--/box menu  (idCategoryOutput)="captureId($event)"-->
