@@ -101,7 +101,7 @@
               <!--masRutas-->
               <div class="row experiencias masTours">
                 <div *ngFor="let item of masRutas | slice:0:4; let i=index" class="col-6 col-md-3 categoria">
-                  <a [routerLink]="['/ruta', item.id]" (click)="scrollTop();">
+                  <a [routerLink]="['/route', item.id]" (click)="scrollTop();">
                     <figure >
                       <img [src]="item.image">
                     </figure>

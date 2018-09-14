@@ -115,22 +115,33 @@ constructor( private http : HttpClient,
       let strTemp : string;
       let q : string;
       let cid : string;
+      let rg : string;
+      let dc : string;
 
-      q = (localStorage.getItem('q')=='') ? params['q'] : localStorage.getItem('q');
-      cid = (localStorage.getItem('cid')=='') ? params['cid'] : localStorage.getItem('q');
+      // q = (localStorage.getItem('q')=='') ? params['q'] : localStorage.getItem('q');
+      // cid = (localStorage.getItem('cid')=='') ? params['cid'] : localStorage.getItem('q');
+
+      q =  (params['q'])? params['q']:'';
+      cid = (params['cid'])? params['cid']:'';
+      rg = (params['rg'])? params['rg']:'';
+      dc = (params['dc'])? params['dc']:'';
+
       paramSearch = "?";
 
-      if(params['q'] != ''){
-        //this.localStorage.addItem('q','');
+      console.log('q =>' + q);
+      if(q != ''){
         paramSearch += "string_text=" + q;
       }else{
-        if(params['cid'] != ''){
-            //this.localStorage.addItem('cid','cid');
-            paramSearch += "category_parent=" + cid;
+        if(cid != ''){
+          paramSearch += "category_parent=" + cid;
+        }
+        if(rg != ''){
+          paramSearch += "region=" + rg;
+        }
+        if(dc != ''){
+          paramSearch += "duration=" + dc;
         }
       }
-
-      
 
       console.log(paramSearch);
 

@@ -44,10 +44,10 @@ const router: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'rutas-experiencias',component: ExperienciasComponent},
   { path: 'rutas-experiencias/:id', component: ExperienciasComponent },
-  { path: 'ruta', component: RutaDosComponent},
-  { path: 'ruta/:id', component: RutaDosComponent },
-  { path: 'experiencias', component: MejorSandwichComponent},
-  { path: 'experiencias/:id', component: MejorSandwichComponent},
+  { path: 'route', component: RutaDosComponent},
+  { path: 'route/:id', component: RutaDosComponent },
+  { path: 'subcategory', component: MejorSandwichComponent},
+  { path: 'subcategory/:id', component: MejorSandwichComponent},
   { path: '**', redirectTo:'home', data: { title: 'Yagan' }   }
 ];
 

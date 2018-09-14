@@ -11,7 +11,7 @@
           <!--rutas item -->
           <div class="row experiencias">
             <div *ngFor="let item of SubCategory | slice:0:8; let i=index" id="{{item.id}}" class="col-6 col-sm-6 col-md-3 categoria" (click)="captureId(item.id)"><!-- -->
-              <a [routerLink]="['/ruta', item.id]">
+              <a [routerLink]="['/'+item.type, item.id]">
                 <figure>
                   <img [src]="item.image"/>
                 </figure>
