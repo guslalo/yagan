@@ -44,59 +44,15 @@ constructor( private http : HttpClient,
 
 //@Input(JSON.parse(localStorage.getItem('buscador'))) busqueda: any;
 
-
-//changes: SimpleChanges
-
   ngOnChanges(){
     console.log(this.storageService.getBusqueda());
     console.log(JSON.parse(localStorage.getItem('resultados')));
-
-    /*if (changes['busqueda']) {
-     
-    }/*
-
-    this.ServiciosService.buscarExperiencia(JSON.parse(localStorage.getItem('buscador')).buscar).subscribe( 
-      data => {
-        this.resultados = data;
-        //localStorage.setItem('resultados', JSON.stringify(this.resultados));
-        //console.log(JSON.parse(localStorage.getItem('resultados')));
-      },
-      error => {
-        console.log(<any>error);
-      }
-    );
-   
-    
-    /*this.resultados = JSON.parse(localStorage.getItem('resultados'));
-    this.query = JSON.parse(localStorage.getItem('buscador')).buscar;
-    this.ServiciosService.buscarExperiencia(this.query).subscribe( 
-      data => {
-        this.resultados = data;
-        localStorage.setItem('resultados', JSON.stringify(this.resultados));
-        //console.log(JSON.parse(localStorage.getItem('resultados')));
-      },
-      error => {
-        console.log(<any>error);
-      }
-    );/**/
   }
-
-
-
  
-  buscarExperiencia2(){
-    
-  }
-
-
   ngAfterViewInit(){
     $("#btnbuscar").click(function(){
-      console.log("boton buscar click");
-      //console.log(JSON.parse(localStorage.getItem('resultados')));
-      //location.reload();
-     
+      console.log("boton buscar click");   
    });
-
   }
 
   ngOnInit() {
@@ -110,7 +66,6 @@ constructor( private http : HttpClient,
 
     // get service
     this.route.params.subscribe(params => {
-
       let paramSearch : string;
       let strTemp : string;
       let q : string;
@@ -154,27 +109,7 @@ constructor( private http : HttpClient,
           console.log(<any>error);
         }
       ); 
-
-      /*this.id = params['id'];
-      if(!this.id){
-        this.getsubCategory();
-      }else{
-        
-        {
-          this.id = +params['id'];// (+) converts string 'id' to a number
-          this.getSubCategoryFilter();
-        } 
-      }*/
-
     });
-
-    
-    //console.log(this.route.snapshot.queryParams["q"]);
-    /*this.localStorage.getItem('buscador').subscribe( data => { 
-      //return data;
-      console.log(data);
-    
-     });*/
 
     //get categorias  
     this.ServiciosService.getCategory().subscribe( 
@@ -239,11 +174,7 @@ constructor( private http : HttpClient,
         } 
       }
     });    */
-
   }
-
-  
-
 
   //get getSubCategoryFilter  
   getSubCategoryFilter(){
@@ -269,7 +200,6 @@ constructor( private http : HttpClient,
     ); 
   }
 
- 
 
 }
 
