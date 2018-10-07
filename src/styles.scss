@@ -111,6 +111,11 @@ header {
         text-align: center;
     }
 }
+.modal-dialog {
+    .modal-content{
+        background: rgba(255,255,255, 0.85)
+    }
+}
 #exampleModal2 {
     .modal-dialog{
         max-width:650px;
@@ -535,6 +540,13 @@ owl-carousel {
 }
 
 .resena{
+    overflow: scroll;
+
+    overflow-x: scroll;
+
+height: 300px;
+
+overflow-x: hidden;
     .textos {
         h6 {
             font-weight: bold;

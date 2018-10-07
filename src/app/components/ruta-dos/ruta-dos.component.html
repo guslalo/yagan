@@ -82,8 +82,8 @@
                     <div class="col-9 col-md-4 card cd-timeline__content js-cd-content"  (click)="captureId(item.id)">
                       <img class="card-img-top" [src]="item.image" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
                       <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
-                      <div [innerHTML]="item.description | truncate : 190" class="card-text "></div> 
-                      <a href="javascript:;" class="btn"  data-toggle="modal" data-target="#modalVerMas" (click)="verMas(item)">+ Ver más</a>
+                      <div [innerHTML]="item.description" class="card-text "></div> 
+                      <!--<a href="javascript:;" class="btn"  data-toggle="modal" data-target="#modalVerMas" (click)="verMas(item)">+ Ver más</a>-->
                     </div> <!-- cd-timeline__content -->
                   </div><!--card -->
                 </div><!--/ruta item -->

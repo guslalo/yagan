@@ -54,6 +54,7 @@ Vertical Timeline - by CodyHouse.co
     height: 100%;
     width: 4px;
     background: #1759d8;
+    
 }
 @media only screen and (min-width: 1170px) {
     .cd-timeline {
@@ -179,7 +180,7 @@ Vertical Timeline - by CodyHouse.co
     border-radius: 0.25em;
     -webkit-box-shadow: 0 3px 0 #d7e4ed;
     box-shadow: 0 3px 0 #d7e4ed;
-    padding: 20px;
+    padding:10px;
     .btn {
         text-align: left;
         padding-left: 0px;
@@ -192,6 +193,7 @@ Vertical Timeline - by CodyHouse.co
         max-height:195px;
         min-height: 55px;
         overflow: hidden;
+        overflow-y: scroll;
         p:first-child{
             font-weight: bold
         }
@@ -212,7 +214,7 @@ Vertical Timeline - by CodyHouse.co
     height: 0;
     width: 0;
     border: 7px solid transparent;
-    border-right: 7px solid white;
+
 }
 .cd-timeline__content h2 {
     color: #303e49;
@@ -253,10 +255,15 @@ Vertical Timeline - by CodyHouse.co
     
     }
 }
+@media only screen and (max-width:480px) {
+    .cd-timeline__content::before {
+        //border-right: 140px solid white;
+    }
+}
 @media only screen and (min-width: 1170px) {
     .cd-timeline__content {
         margin-left: 0;
-        padding: 20px;
+        padding: 10px;
         min-height: 53px;
         width: 45%;
         /* Force Hardware Acceleration */
@@ -269,6 +276,9 @@ Vertical Timeline - by CodyHouse.co
         left: 100%;
         border-color: transparent;
         border-left-color: white;
+        z-index: -1;
+        border-right: 0px;
+        border-left: 140px solid white;
     }
     .cd-timeline__read-more {
         float: left;
@@ -282,6 +292,10 @@ Vertical Timeline - by CodyHouse.co
     }
     .cd-timeline__block:nth-child(even) .cd-timeline__content {
         float: right;
+        &::before {
+            border-right: 140px solid white;
+        }
+
     }
     .cd-timeline__block:nth-child(even) .cd-timeline__content::before {
         top: 24px;
