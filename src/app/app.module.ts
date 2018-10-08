@@ -34,6 +34,8 @@ import { OwlModule } from 'ngx-owl-carousel';
 
 import { DetalleItemExperienciaComponent } from './components/mejor-sandwich/detalle-item-experiencia/detalle-item-experiencia.component';
 import { VerMasComponent } from './components/ruta-dos/ver-mas/ver-mas.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 
@@ -85,7 +87,8 @@ export const routing: ModuleWithProviders = RouterModule.forRoot(router);
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDziIQaJhEYq3IRQ7TuNJo5Q9RIuDOQenc'
     }),
-    AgmDirectionModule      
+    AgmDirectionModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })      
  
   ],
   providers: [ServiciosService, StorageService, appRouters],
