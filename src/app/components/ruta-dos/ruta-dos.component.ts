@@ -16,26 +16,29 @@ import { InfoWindow } from '@agm/core/services/google-maps-types' // option
   styleUrls: ['./ruta-dos.component.scss'],
   providers:[ServiciosService]
 })
-//encapsulation: ViewEncapsulation.None,
+// encapsulation: ViewEncapsulation.None,
 export class RutaDosComponent implements OnInit, OnDestroy  {
 
   @Input() public idExpecienciaRecibida:any;
+
+  categoryActive: Category;
+  imageBanner: string;
 
   idExperiencia = "NULL"
   idRecibido(id){
     this.idExperiencia = id;
   }
 
-   //constructor
+   // constructor
    constructor(
-    private http : HttpClient,  
-    private ServiciosService: ServiciosService, 
-    private router: Router, 
+    private http: HttpClient,
+    private serviciosService: ServiciosService,
+    private router: Router,
     private route: ActivatedRoute,
     private titleService: Title
   ){ }
 
-  //Arrays Experiences and Category
+  // Arrays Experiences and Category
   Experiences: Experience[] = [];
   rutaId: Ruta[] = [];
   rutas: Ruta[] = [];
@@ -131,21 +134,19 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
 
 
 
-  ngOnInit() {  
+  ngOnInit() {
     this.idItem2 = {};
+    this.imageBanner = '';
 
-    //title
+    // title
     this.titleService.setTitle('Rutas | Yagan');  
-    //scrollTop
+    // scrollTop
     window.scrollTo(0, 0);
-     
-     
-      /**/
-    
+
     this.sub = this.route.params.subscribe(params => { 
       this.id = +params['id']; // (+) converts string 'id' to a number
-      //getRuta ID
-      this.ServiciosService.getRuta(this.id).subscribe( 
+      // getRuta ID
+      this.serviciosService.getRuta(this.id).subscribe( 
         data => { 
           this.regionRutaId = data.id;    
           this.RutaItem = [];
@@ -207,8 +208,15 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
           //console.log(this.waypoints);          
           //console.log(this.allMarkers); 
 
-          //get getRuta misma region  
-          this.ServiciosService.subcategoria().subscribe( 
+          this.serviciosService.getExperienceId(data.category).subscribe(
+            data => { 
+              this.categoryActive = data;
+              this.imageBanner = this.categoryActive.image_banner;
+            }
+          );
+
+          // get getRuta misma region  
+          this.serviciosService.subcategoria().subscribe( 
             data => {
               for(let item of data.filter(r=> r.type == 'route')){
                 if(item.id != this.regionRutaId ){

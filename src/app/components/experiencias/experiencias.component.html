@@ -8,9 +8,10 @@
     </ol>
     <div class="carousel-inner">
       <div  class="carousel-item active">
-        <img src="assets/img/cores/experiencias.png">
+        <!--<img src="{{ categoryActive.image_banner }}">-->
+        <img [src]="categoryActive.image_banner !== null ? categoryActive.image_banner : 'assets/img/cores/experiencias.png'">
         <div class="carousel-caption d-none d-md-block">
-          <h4>Experiencias</h4> 
+          <h4>{{ categoryActive.name }}</h4> 
         </div>
       </div>
     </div>

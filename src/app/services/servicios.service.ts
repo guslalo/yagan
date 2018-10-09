@@ -52,7 +52,7 @@ constructor(private http: HttpClient) {  }
     return this.http.get(url+'experience/api/experience/');
   }
 
-  //Observable caregoria parametro ID
+  // Observable caregoria parametro ID
   getExperienceId(id:any): Observable<any>{
     return this.http.get(url+'core/api/category/'+id+'/');
   }

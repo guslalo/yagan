@@ -1,17 +1,18 @@
-export class Category{
-  id:number;
+export class Category {
+  id: number;
   image: string;
+  image_banner: string;
   name: string;
   category_parent: any;
 }
 
-export class subCategory{
-  id:number;
+export class subCategory {
+  id: number;
   name: string;
   category_parent: any;
   image: string;
   date: Date;
-  type:string; 
+  type: string; 
 }
 
 export class Region{
@@ -20,16 +21,16 @@ export class Region{
 }
 
 export class Duracion{
-  id:number;
-  name:string;
+  id: number;
+  name: string;
 }
 
 export class Ubicaciones {
   ruta:rutaMapa;
 }
 export class rutaMapa{
-  latitude:string;
-  longitude:string;
+  latitude: string;
+  longitude: string;
 }
 
 
