@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Rx';
 
 
 //const url = 'http://yagan.dev21.cl/'
-const url = 'http://administrator.yagan.world/' 
+const url = 'https://administrator.yagan.world/' 
 
 @Injectable()
 export class ServiciosService {
