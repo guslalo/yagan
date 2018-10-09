@@ -8,6 +8,9 @@ import { HttpClientModule, HttpHeaders } from "@angular/common/http";
 import { ServiciosService } from './services/servicios.service';
 import { StorageService } from './services/storage.service';
 
+//modulos terceros
+import { DisqusModule } from 'ngx-disqus';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -43,7 +46,7 @@ import { environment } from '../environments/environment';
 
 const router: Routes = [
 
-  { path: 'home', component: HomeComponent},
+  { path: '', component: HomeComponent},
   { path: 'rutas-experiencias',component: ExperienciasComponent},
   { path: 'rutas-experiencias/:id', component: ExperienciasComponent },
   { path: 'route', component: RutaDosComponent},
@@ -84,6 +87,7 @@ export const routing: ModuleWithProviders = RouterModule.forRoot(router);
     NgxTypeaheadModule,
     routing,
     BarRatingModule,
+    DisqusModule.forRoot('yagan'),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDziIQaJhEYq3IRQ7TuNJo5Q9RIuDOQenc'
     }),

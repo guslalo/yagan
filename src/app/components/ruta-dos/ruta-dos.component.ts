@@ -130,7 +130,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   }
 
 
-
+  pageId = '/route';
   ngOnInit() {  
     this.idItem2 = {};
 
