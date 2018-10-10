@@ -123,15 +123,18 @@
             [zoomControl]="true"
             [usePanning]="true"
             (mapClick)="mapClicked($event)">
+
+            <agm-marker  *ngFor="let data of waypoints; let i = index" [latitude]="data.location.lat" [longitude]="data.location.lng">
+            </agm-marker>
            
             <agm-direction
-            [waypoints]="waypoints" 
-            [markerOptions]="markerOptions"
-            [optimizeWaypoints]="optimizeWaypoints" 
-            *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination">
-          </agm-direction>
-
-          </agm-map> 
+              [waypoints]="waypoints" 
+              [renderOptions]="renderOptions" 
+              [markerOptions]="markerOptions" 
+              [travelMode]="travelMode"
+              *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination">
+            </agm-direction>
+          </agm-map>
           <div class="container aportar pb-5">
             <div class="row pt-5">
               <div class="col-12">

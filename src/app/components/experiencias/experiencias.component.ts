@@ -142,39 +142,6 @@ constructor( private http: HttpClient,
         console.log(<any>error);
       }
     );
-
-
-    /**/
-    // recibe por ruting parametro ID
-    /*this.sub = this.route.params.subscribe(params => {
-      //localStorage.removeItem('resultados');
-      this.id = params['id'];
-      if(!this.id){
-        this.getsubCategory();
-      }else{
-        if(this.id === 'resultado'){
-          this.resultados = JSON.parse(localStorage.getItem('resultados'));
-          this.query = JSON.parse(localStorage.getItem('buscador')).buscar;
-          console.log(this.resultados);
-
-          this.ServiciosService.buscarExperiencia(this.query).subscribe( 
-            data => {
-              this.resultados = data;
-              localStorage.setItem('resultados', JSON.stringify(this.resultados));
-              //console.log(JSON.parse(localStorage.getItem('resultados')));
-            },
-            error => {
-              console.log(<any>error);
-            }
-          );
-
-        }else
-        {
-          this.id = +params['id'];// (+) converts string 'id' to a number
-          this.getSubCategoryFilter();
-        } 
-      }
-    });    */
   }
 
   // get getSubCategoryFilter

@@ -1,34 +1,79 @@
 import { Component, OnInit, Input, Output, OnDestroy, ViewEncapsulation  } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, ParamMap  } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { HttpClient} from "@angular/common/http";
+import { HttpClient} from '@angular/common/http';
 import { ServiciosService } from '../../services/servicios.service';
-import { Observable } from 'rxjs/Rx';
 import { Experience, Category, Ruta, RutaItem, Marker, ItemDetail, subCategory } from '../../models/models';
 import { MouseEvent } from '@agm/core';
-import { InfoWindow } from '@agm/core/services/google-maps-types' // option
-
+import { InfoWindow } from '@agm/core/services/google-maps-types';
 
 @Component({
   selector: 'app-ruta-dos',
   templateUrl: './ruta-dos.component.html',
   styleUrls: ['./ruta-dos.component.scss'],
-  providers:[ServiciosService]
+  providers: [ServiciosService]
 })
 // encapsulation: ViewEncapsulation.None,
 export class RutaDosComponent implements OnInit, OnDestroy  {
 
-  @Input() public idExpecienciaRecibida:any;
+  @Input() public idExpecienciaRecibida: any;
 
   categoryActive: Category;
   imageBanner: string;
+  Experiences: Experience[] = [];
+  rutaId: Ruta[] = [];
+  rutas: Ruta[] = [];
+  RutaItemDetail: ItemDetail[] = [];
+  ruta: Ruta[] = [];
+  rutaName: Ruta[] = [];
+  lugar: Marker[] = [];
+  lat2: any;
+  long2: any;
+  id: number;
+  private sub: any;
+  Category: Category[] = [];
+  RutaItem: RutaItem[] = [];
+  RutaItemClick: RutaItem[] = [];
+  item: any;
+  subCategoryRuta: subCategory[] = [];
+  regionRutaId: string;
+  markers: Marker[] = [];
+  public zoom = '8';
+  masRutas: Category[] = [];
+  allMarkers: Marker[] = [];
+  // maps variables
+  latitude2: number; // =  -27.360043;
+  longitude2: number; // = -70.343646;
+  private changeLat: number;
+  private changeLng: number;
+  dir = undefined;
+  dir2 = undefined;
+  public marcadores: any;
+  public waypoints: any = [];
+  public waypointsItem: any = [];
+  public optimizeWaypoints: boolean;
+  public renderOptions: any;
+  // public markerOptions: any = {};
+  public infoWindow: InfoWindow = undefined;
+  public travelMode = 'WALKING';
+  public titles: any = [];
+  // ver mas
+  public idRutaItemRecibida = null;
+  public idItem = null;
+  public idItem2 = null;
+  public markerOptions: {
+    origin: {
+        icon: 'https://yagan.world/assets/img/pin.png',
+    },
+    destination: {
+        icon: 'https://yagan.world/assets/img/pin.png',
+    },
+  };
 
-  idExperiencia = "NULL"
-  idRecibido(id){
+  idExperiencia = 'NULL';
+  idRecibido(id) {
     this.idExperiencia = id;
   }
-
    // constructor
    constructor(
     private http: HttpClient,
@@ -36,233 +81,146 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
     private router: Router,
     private route: ActivatedRoute,
     private titleService: Title
-  ){ }
-
-  // Arrays Experiences and Category
-  Experiences: Experience[] = [];
-  rutaId: Ruta[] = [];
-  rutas: Ruta[] = [];
-  RutaItemDetail: ItemDetail[] = [];
-
-  ruta: Ruta[] = [];
-  rutaName: Ruta[] = [];
-
-  lugar: Marker[] = [];
-
-  lat2:any;
-  long2:any;
-
-  id: number;
-  private sub: any;
-  
-  Category: Category[] = [];
-  RutaItem: RutaItem[] = [];
-  RutaItemClick: RutaItem[] = [];
-  item:any;
-  subCategoryRuta: subCategory[] = [];
-
-  regionRutaId:string;
-  
-  //markers:any;
-  markers: Marker[] = [];
-  /*markers: Marker[] = [
-  	  {
-		  latitude: -27.360043,
-		  longitude: -70.343646,
-		  label: 'A',
-		  draggable: true
-	  },
-	  {
-		  latitude: -27.361572,
-		  longitude: -70.344672,
-		  label: 'C',
-		  draggable: true
-    }]*/
-
-  //google maps zoom level
-  zoom: number;
-  
+  ) { }
 
   clickedMarker(label: string, index: number) {
-    console.log(`clicked the marker: ${label || index}`)
+    // console.log(`clicked the marker: ${label || index}`)
   }
- 
+
   markerDragEnd(m: Marker, $event: MouseEvent) {
-    console.log('dragEnd', m, $event);
+    // console.log('dragEnd', m, $event);
   }
- 
-  /*
-  mapClicked($event: MouseEvent) {
-    this.markers.push({
-      lat: $event.coords.lat,
-      lng: $event.coords.lng,
-      draggable: true
-    });
-  }*/
 
-  //url:string = 'ruta/';
-  masRutas: Category[] = [];
-  allMarkers: Marker[] = [];
-
-  scrollTop(){
+  scrollTop() {
     window.scrollTo(0, 0);
   }
-  
-  
-  // initial center position for the m
-
-  
-  latitude2: number; //=  -27.360043;
-  longitude2: number;// = -70.343646;
-
-  private changeLat: number;
-  private changeLng: number;
-  dir = undefined;
-  dir2 = undefined;
-  public marcadores:any;
-  public waypoints: any = [];
-  public waypointsItem: any = [];
-  public optimizeWaypoints: boolean = false;
-  public renderOptions: any = {};
-  public markerOptions: any = {};
-  public infoWindow: InfoWindow = undefined;
-  public titles:any = [];
 
   public change(event: any) {
     this.waypoints = event.request.waypoints;
   }
 
-
-
   ngOnInit() {
+    this.zoom = '9';
+    // supress icons
+    this.renderOptions = {
+      suppressMarkers: false,
+      markerOptions: { // effect all markers
+        icon: 'https://cdn4.iconfinder.com/data/icons/6x16-free-application-icons/16/Flag.png',
+    },
+    };
+
+
+    this.optimizeWaypoints = false;
     this.idItem2 = {};
     this.imageBanner = '';
-
     // title
-    this.titleService.setTitle('Rutas | Yagan');  
+    this.titleService.setTitle('Rutas | Yagan');
     // scrollTop
     window.scrollTo(0, 0);
 
-    this.sub = this.route.params.subscribe(params => { 
+    this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
       // getRuta ID
-      this.serviciosService.getRuta(this.id).subscribe( 
-        data => { 
-          this.regionRutaId = data.id;    
+      this.serviciosService.getRuta(this.id).subscribe(
+        data => {
+          this.regionRutaId = data.id;
           this.RutaItem = [];
           this.ruta = [];
           this.masRutas = [];
           this.allMarkers = [];
-          this.zoom == 15;  
           this.ruta.push(data);
 
         // console.log(data.route_item);
-         for(let item of data.route_item)  {
-            item.latitude = +item.latitude
-            item.longitude = +item.longitude
-            this.latitude2= item.latitude
-            this.longitude2= item.longitude
-           
-            this.waypoints.push({ 
-              location: { lat: + item.latitude, lng: +item.longitude }, 
+         for (const item of data.route_item)  {
+            item.latitude = +item.latitude;
+            item.longitude = +item.longitude;
+            this.latitude2 = item.latitude;
+            this.longitude2 = item.longitude;
+
+            this.waypoints.push({
+              location: { lat: item.latitude, lng: item.longitude },
               stopover: true,
             });
 
             this.titles.push(item.title);
-            console.log(this.titles);   
-            this.waypointsItem.push({
-              icon:'http://yagan.world/assets/img/pin.png',
+            console.log(this.titles);
+            /* this.waypointsItem.push({
+              icon: 'http://yagan.world/assets/img/pin.png',
               infoWindow: `
                 <h4>HOLA ITEM<h4>
                 <a href='http://www-e.ntust.edu.tw/home.php' target='_blank'>Chile Tech</a>
                 `,
                 label: 'Hola'
-            });       
-          }   
+            }); */
+          }
 
-         
-  
-          for(let i=0; i<data.route_item.length; i++) {             
+          for (let i = 0; i < data.route_item.length; i++) {
             this.RutaItem.push(data.route_item[i]);
-            this.allMarkers.push(data.route_item[i]);  
-          } 
+            this.allMarkers.push(data.route_item[i]);
+          }
 
-          
-          this.markerOptions = {
-            
+          /*this.markerOptions = {
            waypoints: this.waypointsItem
-            
-           } 
+          };*/
+
           this.dir = {
-            origin: { 
-              lat: +data.route_item[0].latitude, 
-              lng: +data.route_item[0].longitude,             
+            origin: {
+              lat: data.route_item[0].latitude,
+              lng: data.route_item[0].longitude,
             },
-            destination: { 
-              lat: +data.route_item[data.route_item.length-1].latitude,
-               lng: +data.route_item[data.route_item.length-1].longitude
+            destination: {
+              lat: data.route_item[data.route_item.length - 1 ].latitude,
+              lng: data.route_item[data.route_item.length - 1 ].longitude
             },
-            waypoints: this.waypointsItem
-          }         
-          console.log(this.dir);                   
-          //console.log(this.waypoints);          
-          //console.log(this.allMarkers); 
+          };
+          console.log(this.dir);
+          // console.log(this.waypoints);
+          // console.log(this.allMarkers);
 
           this.serviciosService.getExperienceId(data.category).subscribe(
-            data => { 
-              this.categoryActive = data;
+            d => {
+              this.categoryActive = d;
               this.imageBanner = this.categoryActive.image_banner;
             }
           );
 
-          // get getRuta misma region  
-          this.serviciosService.subcategoria().subscribe( 
-            data => {
-              for(let item of data.filter(r=> r.type == 'route')){
-                if(item.id != this.regionRutaId ){
-                  //this.router.navigate([url]);   
+          // get getRuta misma region
+          this.serviciosService.subcategoria().subscribe(
+            d => {
+              for (const item of d.filter(r => r.type === 'route')) {
+                if (item.id !== this.regionRutaId) {
                   this.masRutas.push(item);
-                  this.scrollTop();  
+                  this.scrollTop();
                 }
               }
             },
             error => {
               console.log(<any>error);
             }
-          );  
+          );
+
         },
         error => {
           console.log(<any>error);
         }
-      ); 
+      );
     });
   }
 
-/*
-  centerChange(event: any) {
-    if (event) {
-      this.changeLat = event.lat;
-      this.changeLng = event.lng;
-    }
-  }*/
-  public idRutaItemRecibida = null;
-  public idItem = null;
-  public idItem2 = null;
-  captureId(id){
+
+
+  captureId(id) {
     this.idRutaItemRecibida = id;
     this.idItem = id;
-    /*this.idCategoryOutput.emit(this.idCategory);*/
-    //console.log("ruta item", id);
   }
-  verMas(id){ 
+
+  verMas(id) {
     this.idItem2 = id;
-    //console.log(this.idItem2);
+    // console.log(this.idItem2);
   }
-  
 
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
-  
 }
 
