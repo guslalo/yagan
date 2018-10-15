@@ -3,6 +3,7 @@ import { HeaderComponent } from './components/header/header.component';
 import * as $ from 'jquery';
 import { ExperienciasComponent } from './components/experiencias/experiencias.component';
 
+
 import { Observable } from 'rxjs';
 //import 'rxjs/add/observable/fromEvent';
 //import * as owlCarousel from 'owl.carousel2';
