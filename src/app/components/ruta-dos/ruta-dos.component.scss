@@ -188,6 +188,7 @@ Vertical Timeline - by CodyHouse.co
     }
     .card-img-top {
         margin-bottom: 13px;
+        cursor: pointer;
     }
     .card-text {
         max-height:195px;
@@ -256,8 +257,14 @@ Vertical Timeline - by CodyHouse.co
     }
 }
 @media only screen and (max-width:480px) {
+    #carrusel-home img {
+        width: 600px;
+    }
     .cd-timeline__content::before {
         //border-right: 140px solid white;
+    }
+    .cd-timeline__content{
+        margin-left: 50px;
     }
 }
 @media only screen and (min-width: 1170px) {
