@@ -8,6 +8,9 @@ import { HttpClientModule, HttpHeaders } from "@angular/common/http";
 import { ServiciosService } from './services/servicios.service';
 import { StorageService } from './services/storage.service';
 
+//modulos terceros
+import { DisqusModule } from 'ngx-disqus';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -34,6 +37,8 @@ import { OwlModule } from 'ngx-owl-carousel';
 
 import { DetalleItemExperienciaComponent } from './components/mejor-sandwich/detalle-item-experiencia/detalle-item-experiencia.component';
 import { VerMasComponent } from './components/ruta-dos/ver-mas/ver-mas.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 
@@ -41,7 +46,7 @@ import { VerMasComponent } from './components/ruta-dos/ver-mas/ver-mas.component
 
 const router: Routes = [
 
-  { path: 'home', component: HomeComponent},
+  { path: '', component: HomeComponent},
   { path: 'rutas-experiencias',component: ExperienciasComponent},
   { path: 'rutas-experiencias/:id', component: ExperienciasComponent },
   { path: 'route', component: RutaDosComponent},
@@ -82,10 +87,12 @@ export const routing: ModuleWithProviders = RouterModule.forRoot(router);
     NgxTypeaheadModule,
     routing,
     BarRatingModule,
+    DisqusModule.forRoot('yagan'),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDziIQaJhEYq3IRQ7TuNJo5Q9RIuDOQenc'
     }),
-    AgmDirectionModule      
+    AgmDirectionModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })      
  
   ],
   providers: [ServiciosService, StorageService, appRouters],
