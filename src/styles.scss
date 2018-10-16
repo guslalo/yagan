@@ -924,3 +924,21 @@ overflow-x: hidden;
     color:red !important;
 }
 
+.si-content-wrapper {
+    padding: 10px !important;
+    font-size: 9px;
+}
+
+.center-cropped {
+    object-fit: none; /* Do not scale the image */
+    object-position: center; /* Center the image within the element */
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
+
+.si-has-border .si-content-wrapper {
+    border: none !important;
+}
+
+

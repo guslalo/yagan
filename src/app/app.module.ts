@@ -29,6 +29,7 @@ import { ExperienciaDetalleComponent } from './components/experiencias/experienc
 
 import { TruncateModule } from 'ng2-truncate';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 import { OwlModule } from 'ngx-owl-carousel';
 
@@ -42,13 +43,13 @@ import { VerMasComponent } from './components/ruta-dos/ver-mas/ver-mas.component
 const router: Routes = [
 
   { path: 'home', component: HomeComponent},
-  { path: 'rutas-experiencias',component: ExperienciasComponent},
+  { path: 'rutas-experiencias', component: ExperienciasComponent},
   { path: 'rutas-experiencias/:id', component: ExperienciasComponent },
   { path: 'route', component: RutaDosComponent},
   { path: 'route/:id', component: RutaDosComponent },
   { path: 'subcategory', component: MejorSandwichComponent},
   { path: 'subcategory/:id', component: MejorSandwichComponent},
-  { path: '**', redirectTo:'home', data: { title: 'Yagan' }   }
+  { path: '**', redirectTo: 'home', data: { title: 'Yagan' }   }
 ];
 
 export const appRouters: any[] = [];
@@ -85,8 +86,8 @@ export const routing: ModuleWithProviders = RouterModule.forRoot(router);
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDziIQaJhEYq3IRQ7TuNJo5Q9RIuDOQenc'
     }),
-    AgmDirectionModule      
- 
+    AgmDirectionModule,
+    AgmSnazzyInfoWindowModule
   ],
   providers: [ServiciosService, StorageService, appRouters],
   bootstrap: [AppComponent]

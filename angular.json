@@ -23,7 +23,8 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/owl.carousel2/dist/assets/owl.carousel.min.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/snazzy-info-window/dist/snazzy-info-window.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

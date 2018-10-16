@@ -124,8 +124,15 @@
             [usePanning]="true"
             (mapClick)="mapClicked($event)">
 
-            <agm-marker  *ngFor="let data of waypoints; let i = index" [latitude]="data.location.lat" [longitude]="data.location.lng">
-            </agm-marker>
+           
+              <agm-snazzy-info-window  *ngFor="let data of allMarkers; let i = index" [latitude]="data.latitude" [longitude]="data.longitude" [maxWidth]="150" [isOpen]="true" [closeWhenOthersOpen]="false">
+                <ng-template>
+                  {{ data.title }}
+                  <img class="center-cropped" [src]="data.image" style="width:100%">
+                
+                </ng-template>
+              </agm-snazzy-info-window>
+            
            
             <agm-direction
               [waypoints]="waypoints" 

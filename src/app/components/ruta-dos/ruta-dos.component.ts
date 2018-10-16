@@ -38,7 +38,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   subCategoryRuta: subCategory[] = [];
   regionRutaId: string;
   markers: Marker[] = [];
-  public zoom = '8';
+  public zoom = 15;
   masRutas: Category[] = [];
   allMarkers: Marker[] = [];
   // maps variables
@@ -100,7 +100,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   }
 
   ngOnInit() {
-    this.zoom = '9';
+    this.zoom = 15;
     // supress icons
     this.renderOptions = {
       suppressMarkers: false,
