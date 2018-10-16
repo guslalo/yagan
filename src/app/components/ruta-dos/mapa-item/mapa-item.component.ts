@@ -15,7 +15,7 @@ export class MapaItemComponent implements OnInit, OnDestroy, OnChanges {
   MarkersArray: Marker[] = [];
   lat2: any;
   lng2: any;
-  zoom: number = 13;
+  zoom: number = 9;
   
   public currentLocation: {
     latitude: 47.024629,

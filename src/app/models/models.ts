@@ -1,3 +1,5 @@
+import { Title } from "@angular/platform-browser";
+
 export class Category {
   id: number;
   image: string;
@@ -130,9 +132,20 @@ export class Marker {
 /**/
 export class Marker {
   latitude: any;
-  longitude:any;
-	label: string;
+  longitude: any;
+  label: string;
   draggable: boolean;
+  icon: String;
+  title: String;
+}
+
+export class ItemMarker {
+  latitude: any;
+  longitude: any;
+  label: string;
+  draggable: boolean;
+  icon: String;
+  title: String;
 }
 
 

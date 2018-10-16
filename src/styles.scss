@@ -924,21 +924,44 @@ overflow-x: hidden;
     color:red !important;
 }
 
-.si-content-wrapper {
-    padding: 10px !important;
-    font-size: 9px;
+
+.label_marker_map{
+    color: #f1f1f1 !important;
+    text-align: center;
+    width: 100%;
+    padding-top: 2px;
 }
 
-.center-cropped {
-    object-fit: none; /* Do not scale the image */
-    object-position: center; /* Center the image within the element */
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-  }
+.icon_marker_map{
+    width: 50px;
+    height: 25px;
+    border-radius: 2px;
+    background-size: cover;
+}
+
+.si-content-wrapper {
+    padding: 4px !important;
+    font-size: 9px;
+    background-color: #202020 !important;
+    opacity: 0.83;
+}
 
 .si-has-border .si-content-wrapper {
     border: none !important;
 }
+
+.si-pointer-bg-top {
+    border-top-color: #202020 !important;
+    opacity: 0.90;
+    border: none !important;
+}
+
+
+.si-pointer-border-top {
+    bottom: -15px !important;
+    border-top-color: #202020 !important;
+    opacity: 0.90;
+}
+ 
 
 

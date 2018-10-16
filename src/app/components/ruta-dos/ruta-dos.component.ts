@@ -1,11 +1,15 @@
-import { Component, OnInit, Input, Output, OnDestroy, ViewEncapsulation  } from '@angular/core';
+import { Component, OnInit, Input, Output, OnDestroy, ViewEncapsulation, ViewChild  } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, ParamMap  } from '@angular/router';
 import { HttpClient} from '@angular/common/http';
 import { ServiciosService } from '../../services/servicios.service';
-import { Experience, Category, Ruta, RutaItem, Marker, ItemDetail, subCategory } from '../../models/models';
+import { Experience, Category, Ruta, RutaItem, Marker, ItemMarker, ItemDetail, subCategory } from '../../models/models';
 import { MouseEvent } from '@agm/core';
 import { InfoWindow } from '@agm/core/services/google-maps-types';
+import { LatLngBounds } from '@agm/core';
+import { mapTo } from 'rxjs-compat/operator/mapTo';
+
+ declare var google: any;
 
 @Component({
   selector: 'app-ruta-dos',
@@ -38,9 +42,9 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   subCategoryRuta: subCategory[] = [];
   regionRutaId: string;
   markers: Marker[] = [];
-  public zoom = 15;
+  // public zoom = 15;
   masRutas: Category[] = [];
-  allMarkers: Marker[] = [];
+  allMarkers: ItemMarker[] = [];
   // maps variables
   latitude2: number; // =  -27.360043;
   longitude2: number; // = -70.343646;
@@ -61,14 +65,6 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   public idRutaItemRecibida = null;
   public idItem = null;
   public idItem2 = null;
-  public markerOptions: {
-    origin: {
-        icon: 'https://yagan.world/assets/img/pin.png',
-    },
-    destination: {
-        icon: 'https://yagan.world/assets/img/pin.png',
-    },
-  };
 
   idExperiencia = 'NULL';
   idRecibido(id) {
@@ -99,8 +95,23 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
     this.waypoints = event.request.waypoints;
   }
 
+  // tslint:disable-next-line:use-life-cycle-interface
+  onMapReady(map) {
+    console.log('onMapReady');
+      console.log(map);
+      const bounds: LatLngBounds = new google.maps.LatLngBounds();
+      for (const mm of this.allMarkers) {
+        console.log('subscribe for');
+        bounds.extend(new google.maps.LatLng(mm.latitude, mm.longitude));
+      }
+      console.log(bounds);
+      map.fitBounds(bounds);
+      map.panToBounds(bounds);
+      map.zoom = 15;
+      console.log('Zoom: ' + map.zoom);
+  }
+
   ngOnInit() {
-    this.zoom = 15;
     // supress icons
     this.renderOptions = {
       suppressMarkers: false,
@@ -130,52 +141,48 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
           this.allMarkers = [];
           this.ruta.push(data);
 
-        // console.log(data.route_item);
+         console.log(data.route_item);
          for (const item of data.route_item)  {
-            item.latitude = +item.latitude;
-            item.longitude = +item.longitude;
-            this.latitude2 = item.latitude;
-            this.longitude2 = item.longitude;
+
+            this.RutaItem.push(item);
 
             this.waypoints.push({
-              location: { lat: item.latitude, lng: item.longitude },
+              location: { lat: +item.latitude, lng: +item.longitude },
               stopover: true,
             });
 
-            this.titles.push(item.title);
-            console.log(this.titles);
-            /* this.waypointsItem.push({
-              icon: 'http://yagan.world/assets/img/pin.png',
-              infoWindow: `
-                <h4>HOLA ITEM<h4>
-                <a href='http://www-e.ntust.edu.tw/home.php' target='_blank'>Chile Tech</a>
-                `,
-                label: 'Hola'
-            }); */
-          }
+            const maker = new ItemMarker;
+            maker.latitude = +item.latitude;
+            maker.longitude = +item.longitude;
+            maker.icon = item.image;
+            maker.draggable = false;
+            maker.title = item.title;
 
-          for (let i = 0; i < data.route_item.length; i++) {
-            this.RutaItem.push(data.route_item[i]);
-            this.allMarkers.push(data.route_item[i]);
+            this.allMarkers.push(maker);
           }
 
           /*this.markerOptions = {
            waypoints: this.waypointsItem
           };*/
 
+          const origin_lat = +data.route_item[0].latitude;
+          const origin_lng = +data.route_item[0].longitude;
+          const destination_lat = +data.route_item[+data.route_item.length - 1 ].latitude;
+          const destination_lng = +data.route_item[+data.route_item.length - 1 ].longitude;
+
           this.dir = {
             origin: {
-              lat: data.route_item[0].latitude,
-              lng: data.route_item[0].longitude,
+              lat: origin_lat,
+              lng: origin_lng,
             },
             destination: {
-              lat: data.route_item[data.route_item.length - 1 ].latitude,
-              lng: data.route_item[data.route_item.length - 1 ].longitude
+              lat: destination_lat,
+              lng: destination_lng
             },
           };
           console.log(this.dir);
-          // console.log(this.waypoints);
-          // console.log(this.allMarkers);
+          console.log('AllMarkers');
+          console.log(this.allMarkers);
 
           this.serviciosService.getExperienceId(data.category).subscribe(
             d => {
