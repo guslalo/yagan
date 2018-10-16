@@ -12,20 +12,8 @@
   },
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
     "@agm/core": "^1.0.0-beta.5",
     "@agm/snazzy-info-window": "^1.0.0-beta.5",
-    "@angular/animations": "^5.2.0",
-    "@angular/common": "^5.2.0",
-    "@angular/compiler": "^5.2.0",
-    "@angular/core": "^5.2.0",
-    "@angular/forms": "^5.2.0",
-    "@angular/http": "^5.2.0",
-    "@angular/platform-browser": "^5.2.0",
-    "@angular/platform-browser-dynamic": "^5.2.0",
-    "@angular/router": "^5.2.0",
-=======
-    "@agm/core": "^1.0.0-beta.3",
     "@angular/animations": "6.1.9",
     "@angular/common": "6.1.9",
     "@angular/compiler": "6.1.9",
@@ -37,7 +25,6 @@
     "@angular/pwa": "^0.8.4",
     "@angular/router": "6.1.9",
     "@angular/service-worker": "6.1.9",
->>>>>>> 82de3853fa72ca203c6be7bb5e3b0b2f7dd4b239
     "@ngx-pwa/local-storage": "^5.3.0",
     "@ngx-pwa/offline": "^6.0.0",
     "@types/jquery": "^3.3.2",
@@ -55,12 +42,8 @@
     "popper.js": "^1.14.3",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.3.3",
-<<<<<<< HEAD
     "snazzy-info-window": "^1.1.1",
-    "zone.js": "^0.8.19"
-=======
     "zone.js": "^0.8.26"
->>>>>>> 82de3853fa72ca203c6be7bb5e3b0b2f7dd4b239
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.0",
