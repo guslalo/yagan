@@ -8,6 +8,9 @@ import { HttpClientModule, HttpHeaders } from "@angular/common/http";
 import { ServiciosService } from './services/servicios.service';
 import { StorageService } from './services/storage.service';
 
+//modulos terceros
+import { DisqusModule } from 'ngx-disqus';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -35,6 +38,8 @@ import { OwlModule } from 'ngx-owl-carousel';
 
 import { DetalleItemExperienciaComponent } from './components/mejor-sandwich/detalle-item-experiencia/detalle-item-experiencia.component';
 import { VerMasComponent } from './components/ruta-dos/ver-mas/ver-mas.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 
@@ -42,8 +47,13 @@ import { VerMasComponent } from './components/ruta-dos/ver-mas/ver-mas.component
 
 const router: Routes = [
 
+<<<<<<< HEAD
   { path: 'home', component: HomeComponent},
   { path: 'rutas-experiencias', component: ExperienciasComponent},
+=======
+  { path: '', component: HomeComponent},
+  { path: 'rutas-experiencias',component: ExperienciasComponent},
+>>>>>>> 82de3853fa72ca203c6be7bb5e3b0b2f7dd4b239
   { path: 'rutas-experiencias/:id', component: ExperienciasComponent },
   { path: 'route', component: RutaDosComponent},
   { path: 'route/:id', component: RutaDosComponent },
@@ -83,11 +93,17 @@ export const routing: ModuleWithProviders = RouterModule.forRoot(router);
     NgxTypeaheadModule,
     routing,
     BarRatingModule,
+    DisqusModule.forRoot('yagan'),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDziIQaJhEYq3IRQ7TuNJo5Q9RIuDOQenc'
     }),
     AgmDirectionModule,
+<<<<<<< HEAD
     AgmSnazzyInfoWindowModule
+=======
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })      
+ 
+>>>>>>> 82de3853fa72ca203c6be7bb5e3b0b2f7dd4b239
   ],
   providers: [ServiciosService, StorageService, appRouters],
   bootstrap: [AppComponent]

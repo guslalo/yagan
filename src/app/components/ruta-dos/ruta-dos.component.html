@@ -32,7 +32,7 @@
 
       <!--presentacion-->
       <div class="row">
-        <div class="col-12 col-md-3">
+        <div class="col-12 col-md-5">
           <img [src]="item.image" class="img-fluid">
         </div>
         <div class="col pl-4 resena">
@@ -79,7 +79,7 @@
                         location_on
                       </i>
                     </div> <!-- cd-timeline__img -->
-                    <div class="col-9 col-md-4 card cd-timeline__content js-cd-content"  (click)="captureId(item.id)">
+                    <div class="col-10 col-md-4 card cd-timeline__content js-cd-content"  (click)="captureId(item.id)">
                       <img class="card-img-top" [src]="item.image" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
                       <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
                       <div [innerHTML]="item.description" class="card-text "></div> 
@@ -90,7 +90,12 @@
               </section>
             </div>
           </div>
-
+          <div class="container-fluid blanco">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+          <disqus [identifier]="pageId"></disqus></div></div>
+          </div></div>
           <!--masRutas box-->
           <div class="container-fluid blanco">
             <div class="container">
