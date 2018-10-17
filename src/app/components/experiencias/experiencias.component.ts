@@ -29,7 +29,7 @@ export class ExperienciasComponent implements OnInit, OnChanges {
  localStorage: any;
 
  idCategoryActive: number;
- public categoryActive: Category;
+ public categoryActive: Category = new Category;
  public banner: string;
 
  id: any;
@@ -106,22 +106,24 @@ constructor( private http: HttpClient,
           console.log(<any>error);
         }
       );
-    });
 
-    // get categorias
-    this.serviciosService.getCategory().subscribe(
-      data => {
-        this.CategoryFilter = data.filter(r => r.category_parent == null);
-        for (const item of this.CategoryFilter) {
-          if (item.id === this.idCategoryActive) {
-              this.categoryActive = item;
+      // get categorias
+      this.serviciosService.getCategory().subscribe(
+        data => {
+          console.log('GET CATEGORIES');
+          this.CategoryFilter = data.filter(r => r.category_parent == null);
+          for (const item of this.CategoryFilter) {
+            if (item.id === this.idCategoryActive) {
+                this.categoryActive = item;
+            }
           }
+        },
+        error => {
+          console.log(<any>error);
         }
-      },
-      error => {
-        console.log(<any>error);
-      }
-    );
+      );
+
+    });
 
      // get regiones
     this.serviciosService.getRegiones().subscribe(

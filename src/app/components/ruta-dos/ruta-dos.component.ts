@@ -23,7 +23,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   @Input() public idExpecienciaRecibida: any;
 
   categoryActive: Category;
-  imageBanner: string;
+  public imageBanner = '';
   Experiences: Experience[] = [];
   rutaId: Ruta[] = [];
   rutas: Ruta[] = [];
@@ -65,6 +65,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   public idRutaItemRecibida = null;
   public idItem = null;
   public idItem2 = null;
+  public zoom = 15;
 
   idExperiencia = 'NULL';
   idRecibido(id) {
@@ -97,18 +98,18 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
 
   // tslint:disable-next-line:use-life-cycle-interface
   onMapReady(map) {
-    console.log('onMapReady');
-      console.log(map);
+      // console.log('onMapReady');
+      // console.log(map);
       const bounds: LatLngBounds = new google.maps.LatLngBounds();
       for (const mm of this.allMarkers) {
         console.log('subscribe for');
         bounds.extend(new google.maps.LatLng(mm.latitude, mm.longitude));
       }
-      console.log(bounds);
+      // console.log(bounds);
       map.fitBounds(bounds);
       map.panToBounds(bounds);
-      map.zoom = 15;
-      console.log('Zoom: ' + map.zoom);
+      // map.zoom = 15;
+      // console.log('Zoom: ' + map.zoom);
   }
 
   ngOnInit() {
@@ -117,7 +118,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
       suppressMarkers: false,
       markerOptions: { // effect all markers
         icon: 'https://cdn4.iconfinder.com/data/icons/6x16-free-application-icons/16/Flag.png',
-    },
+      },
     };
 
 
@@ -141,7 +142,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
           this.allMarkers = [];
           this.ruta.push(data);
 
-         console.log(data.route_item);
+         // console.log(data.route_item);
          for (const item of data.route_item)  {
 
             this.RutaItem.push(item);
@@ -180,12 +181,14 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
               lng: destination_lng
             },
           };
-          console.log(this.dir);
-          console.log('AllMarkers');
-          console.log(this.allMarkers);
+          // console.log(this.dir);
+          // console.log('AllMarkers');
+          // console.log(this.allMarkers);
 
           this.serviciosService.getExperienceId(data.category).subscribe(
             d => {
+              console.log('Category');
+              console.log(d);
               this.categoryActive = d;
               this.imageBanner = this.categoryActive.image_banner;
             }
