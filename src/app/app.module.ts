@@ -90,7 +90,7 @@ export const routing: ModuleWithProviders = RouterModule.forRoot(router);
     }),
     AgmDirectionModule,
     AgmSnazzyInfoWindowModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ServiciosService, StorageService, appRouters],
   bootstrap: [AppComponent]
