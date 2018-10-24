@@ -956,12 +956,28 @@ overflow-x: hidden;
     border: none !important;
 }
 
-
 .si-pointer-border-top {
     bottom: -15px !important;
     border-top-color: #202020 !important;
     opacity: 0.90;
 }
+
+#placement-bottom {
+    display: none !important;
+}
+
+#disqus_thread {
+    position: relative;
+}
+#disqus_thread:after {
+    content: "";
+    display: block;
+    height: 55px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background: white;
+}/**/
  
 
 

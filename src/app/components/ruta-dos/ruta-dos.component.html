@@ -144,8 +144,31 @@
             </agm-direction>
           </agm-map>
           <div class="container aportar pb-5">
-            <div class="row pt-5">
+            <div class="row pt-5"><owl-carousel
+              [options]="{
+                items: 4, 
+                loop:true,
+                dots: true, 
+                nav:true,
+                autoplay:false,
+                navText : ['','']
+                }" 
+              [items]="RutaItem" 
+              [carouselClasses]="['owl-theme', 'sliding']">
+              <div class="item" *ngFor="let item of RutaItem" style="overflow: hidden;">
+                  <div class="col-10 col-md-12"  (click)="captureId(item.id)">
+                      <img class="card-img-top" [src]="item.image" alt="Card image cap">
+                      <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
+                      <div [innerHTML]="item.description" class="card-text "></div> 
+                      <!--<a href="javascript:;" class="btn"  data-toggle="modal" data-target="#modalVerMas" (click)="verMas(item)">+ Ver más</a>-->
+                    </div> <!-- cd-timeline__content -->
+              </div>
+            </owl-carousel>  
+
               <div class="col-12">
+
+
+
                 <p class="text-center font-weigth-bold">¿Quieres aportar a esta ruta?</p>
               </div>
               <div class="col-12"> 
