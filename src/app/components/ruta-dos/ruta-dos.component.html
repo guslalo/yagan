@@ -143,9 +143,10 @@
               *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination">
             </agm-direction>
           </agm-map>
-          <div class="container aportar pb-5">
+          <div class="container-fluid aportar pb-5">
             <div class="row pt-5"><owl-carousel
               [options]="{
+                center: true,
                 items: 4, 
                 loop:true,
                 dots: true, 
@@ -156,25 +157,25 @@
               [items]="RutaItem" 
               [carouselClasses]="['owl-theme', 'sliding']">
               <div class="item" *ngFor="let item of RutaItem" style="overflow: hidden;">
-                  <div class="col-10 col-md-12"  (click)="captureId(item.id)">
-                      <img class="card-img-top" [src]="item.image" alt="Card image cap">
+                  <div class="col-10 col-md-12 hito p-0"  (click)="captureId(item.id)">
+                      <img class="img card-img-top" [src]="item.image" alt="Card image cap">
                       <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
                       <div [innerHTML]="item.description" class="card-text "></div> 
                     </div> 
               </div>
             </owl-carousel>  
 
-              <div class="col-12">
+              <div class="col-12" style="display:none;">
 
 
 
                 <p class="text-center font-weigth-bold">¿Quieres aportar a esta ruta?</p>
               </div>
-              <div class="col-12"> 
+              <div class="col-12" style="display:none;"> 
                 <p  class="text-center">Escríbenos y envíanos tus aportes, comentarios o lugares que faltan </p> 
               </div>
             </div>
-            <div class="row justify-content-md-center">
+            <div class="row justify-content-md-center " style="display:none;">
               <div class="col-12 col-md-4">
                 <form>
                   <div class="form-group">

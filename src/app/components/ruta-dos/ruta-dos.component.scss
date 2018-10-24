@@ -325,6 +325,26 @@ Vertical Timeline - by CodyHouse.co
         animation: cd-bounce-2 0.6s;
     }
 }
+
+.hito {
+    height: 340px;
+    overflow: hidden;
+    background: #ffffff;
+    margin: 0 10px 100px;
+    img {
+        width: auto;
+        height:160px;
+    }
+    .card-text {
+        padding: 10px 10px;
+        height: 200px;
+        width: 94%;
+        margin: 0 auto;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+}
+
 @media only screen and (min-width: 1170px) {
     /* inverse bounce effect on even content blocks */
     .cd-timeline__block:nth-child(even) .cd-timeline__content.cd-timeline__content--bounce-in {
