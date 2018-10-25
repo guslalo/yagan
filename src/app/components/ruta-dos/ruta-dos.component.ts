@@ -70,6 +70,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   public idItem = null;
   public idItem2 = null;
   public zoom = 15;
+  public pageId: any;
 
   public showButton = false;
 
@@ -120,6 +121,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
 
   ngOnInit() {
     // supress icons
+    this.pageId = this.id;
     this.renderOptions = {
       suppressMarkers: false,
       markerOptions: { // effect all markers
@@ -143,6 +145,8 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
 
       this.serviciosService.getRuta(this.id).subscribe(
         data => {
+          this.pageId = data.id;
+
           this.regionRutaId = data.id;
           this.RutaItem = [];
           this.masRutas = [];

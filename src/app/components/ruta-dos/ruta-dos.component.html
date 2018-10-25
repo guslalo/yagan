@@ -44,7 +44,7 @@
             <div [innerHTML]="ruta.description"></div>
           </div>
           <div class="web">
-            <a href="j{{ruta.web_site}}" target="_blank">{{ruta.web_site}}</a>
+            <!-- <a href="j{{ruta.web_site}}" target="_blank">{{ruta.web_site}}</a> -->
           </div>
         </div>
       </div><!--presentacion-->
@@ -82,7 +82,7 @@
                 <!--ruta item -->
                 <div class="cd-timeline__container">
                   <div *ngFor="let item of RutaItem" id="{{item.id}}" class="cd-timeline__block js-cd-block">
-                    <div class="cd-timeline__img cd-timeline__img--picture js-cd-img" data-toggle="modal" data-target="#exampleModal2"  (click)="captureId(item)">
+                    <div class="cd-timeline__img cd-timeline__img--picture js-cd-img" data-toggle="modal" data-target="#exampleModal2"  (mapReady)="onMapReady($event)">
                       <i class="material-icons">
                         location_on
                       </i>

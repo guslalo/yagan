@@ -67,6 +67,7 @@ export class Ruta{
   region:  string;
   entry_date:Date;
   category: number;
+  web_site: string;
   duration_days: number;
   organization: number;
   route_item:RutaItem[];
