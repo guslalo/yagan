@@ -10,12 +10,15 @@ import { Experience, Category, Ruta, RutaItem, Marker } from '../../../models/mo
   styleUrls: ['./mapa-item.component.scss']
 })
 export class MapaItemComponent implements OnInit, OnDestroy, OnChanges {
-  @Input() public idRutaItemRecibida:any;
+  
+  @Input() public rutaItemSelected: RutaItem;
   RutaItem: RutaItem[] = [];
   MarkersArray: Marker[] = [];
-  lat2: any;
-  lng2: any;
-  zoom: number = 9;
+  lat2 = 47.024629;
+  lng2 = 28.832407;
+  zoom: number = 14;
+  icon: any;
+  title: any;
   
   public currentLocation: {
     latitude: 47.024629,
@@ -26,8 +29,8 @@ export class MapaItemComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnInit() {
        //get ruta item 
-     
-    
+       this.icon = '';
+       this.title = '';
   }
  
   ngOnDestroy() {
@@ -35,25 +38,17 @@ export class MapaItemComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges() {
-    this.ServiciosService.getERutaItem().subscribe( 
-      data => {
-       
+
+    this.zoom = 14;
     
-      this.RutaItem = data.filter(r => r.id == this.idRutaItemRecibida);
-      // console.log( data.id )
-        for(let item of this.RutaItem){ 
-          //console.log(item.id);
-         // this.MarkersArray.push(this.lat2 , this.lng2);
-          this.lat2 =  + item.latitude;
-          this.lng2 =  + item.longitude;
-          //this.zoom = 1;
-          //console.log(  this.lat2 , this.lng2 );
-        } 
-      },
-      error => {
-        console.log(<any>error);
-      }
-    ); 
+    if(this.rutaItemSelected){
+      // console.log(this.rutaItemSelected);
+      this.lat2 =  + this.rutaItemSelected.latitude;
+      this.lng2 =  + this.rutaItemSelected.longitude;
+      this.icon = this.rutaItemSelected.image;
+      this.title = this.rutaItemSelected.title;
+      // console.log('Title: ' + this.rutaItemSelected.title);
+    }
   }
 
 }

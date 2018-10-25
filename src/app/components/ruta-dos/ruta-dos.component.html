@@ -1,4 +1,4 @@
-<div *ngFor="let item of ruta" id="ruta{{item.id}}" class="container-fluid p-0 h-100">
+<div  id="ruta{{ruta.id}}" class="container-fluid p-0 h-100">
   <!--banner principal-->
   <div id="carrusel-home" class="carousel slide" data-ride="carousel" >
     <ol class="carousel-indicators" style="display:none;" >
@@ -9,7 +9,7 @@
       <div class="carousel-item active">
         <img src="{{ imageBanner }}">
         <div class="carousel-caption d-md-block">
-          <h4>{{item.name}}</h4> 
+          <h4>{{ruta.name}}</h4> 
         </div>
       </div>
     </div>
@@ -24,7 +24,7 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="/">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page"><a href="javascript:;">{{item.name}}</a></li>
+              <li class="breadcrumb-item active" aria-current="page"><a href="javascript:;">{{ruta.name}}</a></li>
             </ol>         
           </nav>
         </div>
@@ -33,18 +33,18 @@
       <!--presentacion-->
       <div class="row">
         <div class="col-12 col-md-5">
-          <img [src]="item.image" class="img-fluid">
+          <img [src]="ruta.image ? ruta.image : ''" class="img-fluid">
         </div>
         <div class="col pl-4 resena">
           <div class="col-12 pl-0" style="display: none;">
             <img src="assets/img/turismo.png"> 
           </div><!-- {{idExperiencia}} -->
           <div class="textos">
-            <h6>{{item.name}}</h6>
-            <div [innerHTML]="item.description"></div>
+            <h6>{{ruta.name}}</h6>
+            <div [innerHTML]="ruta.description"></div>
           </div>
           <div class="web">
-            <a href="j{{item.web_site}}" target="_blank">{{item.web_site}}</a>
+            <a href="j{{ruta.web_site}}" target="_blank">{{ruta.web_site}}</a>
           </div>
         </div>
       </div><!--presentacion-->
@@ -55,31 +55,39 @@
     <div class="barraVerde justify-content-md-center">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Ruta</a>
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
+            <p><i class="inline-icon material-icons">timeline</i>Ruta</p>
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Mapa</a>
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
+              <p><i class="inline-icon material-icons">map</i>Mapa</p>
+          </a>
         </li>
       </ul>
     </div>
-    
     <!--box tabs-->
+
+    <!-- ### TAB ROUTE ITEMS ### -->
     <div class="container-fluid p-0  ruta">
       <div class="tab-content" id="myTabContent">
         <!--tab-->
         <div class="tab-pane fade show active pt-5 pb-0" id="home" role="tabpanel" aria-labelledby="home-tab">
           <div class="container pb-5">
+              <div *ngIf="showButton" class="btn_container">
+                  <a  href="{{ ruta.url_button }}" target="_blank" _ngcontent-c8="" class="btn btn-secondary btn-sm rounded">{{ruta.text_button}}</a>
+              </div>
             <div class="row">
               <section class="cd-timeline js-cd-timeline">
                 <!--ruta item -->
                 <div class="cd-timeline__container">
                   <div *ngFor="let item of RutaItem" id="{{item.id}}" class="cd-timeline__block js-cd-block">
-                    <div class="cd-timeline__img cd-timeline__img--picture js-cd-img" data-toggle="modal" data-target="#exampleModal2"  (click)="captureId(item.id)">
+                    <div class="cd-timeline__img cd-timeline__img--picture js-cd-img" data-toggle="modal" data-target="#exampleModal2"  (click)="captureId(item)">
                       <i class="material-icons">
                         location_on
                       </i>
                     </div> <!-- cd-timeline__img -->
-                    <div class="col-10 col-md-4 card cd-timeline__content js-cd-content"  (click)="captureId(item.id)">
+                    <div class="col-10 col-md-4 card cd-timeline__content js-cd-content"  (click)="captureId(item)">
                       <img class="card-img-top" [src]="item.image" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
                       <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
                       <div [innerHTML]="item.description" class="card-text "></div> 
@@ -88,6 +96,9 @@
                   </div><!--card -->
                 </div><!--/ruta item -->
               </section>
+            </div>
+            <div *ngIf="showButton" class="btn_container">
+                <a  href="{{ ruta.url_button }}" target="_blank" _ngcontent-c8="" class="btn btn-secondary btn-sm rounded">{{ruta.text_button}}</a>
             </div>
           </div>
           <div class="container-fluid blanco">
@@ -118,6 +129,9 @@
           </div><!--/masRutas box-->
         </div><!--/tab-->
         <!--tab-->
+        <!-- END TAB ROUTE ITEMS -->
+
+        <!-- ### TAB MAPS ### -->
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
           
           <agm-map 
@@ -157,17 +171,15 @@
               [items]="RutaItem" 
               [carouselClasses]="['owl-theme', 'sliding']">
               <div class="item" *ngFor="let item of RutaItem" style="overflow: hidden;">
-                  <div class="col-10 col-md-12 hito p-0"  (click)="captureId(item.id)">
+                  <div class="col-10 col-md-12 hito p-0"  (click)="captureId(item)">
                       <img class="img card-img-top" [src]="item.image" alt="Card image cap">
                       <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
                       <div [innerHTML]="item.description" class="card-text "></div> 
                     </div> 
               </div>
             </owl-carousel>  
-
+            <!-- END TAB MAPS -->
               <div class="col-12" style="display:none;">
-
-
 
                 <p class="text-center font-weigth-bold">¿Quieres aportar a esta ruta?</p>
               </div>
@@ -201,10 +213,10 @@
 </div>
 
  <!-- Modal mapa -->
- <app-mapa-item [idRutaItemRecibida]="idRutaItemRecibida"></app-mapa-item><!-- /Modal mapa -->
+ <app-mapa-item [rutaItemSelected]="rutaItemSelected"></app-mapa-item><!-- /Modal mapa -->
 
  <!-- Modal detalle item -->
- <app-detalle-item [idItem]="idItem"></app-detalle-item><!-- /Modal detalle item -->
+ <app-detalle-item [rutaItemSelected]="rutaItemSelected"></app-detalle-item><!-- /Modal detalle item -->
 
 <!-- ver mas -->
 <app-ver-mas [idItem2]="idItem2"></app-ver-mas>

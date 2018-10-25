@@ -608,6 +608,15 @@ overflow-x: hidden;
     z-index: 3;
     padding: 50px 0px;
 }
+.btn_container{
+    text-align: center
+}
+
+.inline-icon {
+    vertical-align: middle;
+    padding-right: 6px;
+ }
+
 .masTours {
     h3 {
         width: 100%;
@@ -626,6 +635,7 @@ overflow-x: hidden;
 
     .modal-dialog{
         max-width: 650px;
+        max-height: 583px;
     }
     h2{
         width: 100%;

@@ -7,8 +7,6 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Category, subCategory } from '../../models/models';
 import { Network } from '@ngx-pwa/offline';
 
-
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,8 +20,6 @@ export class HomeComponent implements OnInit {
   public slideHome:any;
   public safeURL:SafeResourceUrl;
 
-
-
   idRecibido(id){
     this.idExperiencia = id;
   }
@@ -36,16 +32,10 @@ export class HomeComponent implements OnInit {
     private titleService: Title,
     public sanitizer:DomSanitizer,
     protected network: Network
-  ){ 
-    
-      
-   
-  }
+  ){}
+
   onItemSelect(carouselItem:any):void{
   }
-
-
-
   //Arrays Experiences and Category
   subCategory: subCategory[] = [];
   Category: Category[] = [];

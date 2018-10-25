@@ -8,6 +8,7 @@ import { MouseEvent } from '@agm/core';
 import { InfoWindow } from '@agm/core/services/google-maps-types';
 import { LatLngBounds } from '@agm/core';
 import { mapTo } from 'rxjs-compat/operator/mapTo';
+import { TouchSequence } from 'selenium-webdriver';
 
  declare var google: any;
 
@@ -17,6 +18,8 @@ import { mapTo } from 'rxjs-compat/operator/mapTo';
   styleUrls: ['./ruta-dos.component.scss'],
   providers: [ServiciosService]
 })
+
+
 // encapsulation: ViewEncapsulation.None,
 export class RutaDosComponent implements OnInit, OnDestroy  {
 
@@ -28,7 +31,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   rutaId: Ruta[] = [];
   rutas: Ruta[] = [];
   RutaItemDetail: ItemDetail[] = [];
-  ruta: Ruta[] = [];
+  ruta: Ruta;
   rutaName: Ruta[] = [];
   lugar: Marker[] = [];
   lat2: any;
@@ -63,9 +66,12 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   public titles: any = [];
   // ver mas
   public idRutaItemRecibida = null;
+  public rutaItemSelected: RutaItem;
   public idItem = null;
   public idItem2 = null;
   public zoom = 15;
+
+  public showButton = false;
 
   idExperiencia = 'NULL';
   idRecibido(id) {
@@ -102,7 +108,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
       // console.log(map);
       const bounds: LatLngBounds = new google.maps.LatLngBounds();
       for (const mm of this.allMarkers) {
-        console.log('subscribe for');
+        // console.log('subscribe for');
         bounds.extend(new google.maps.LatLng(mm.latitude, mm.longitude));
       }
       // console.log(bounds);
@@ -133,16 +139,23 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
       // getRuta ID
+      this.ruta = new Ruta;
+
       this.serviciosService.getRuta(this.id).subscribe(
         data => {
           this.regionRutaId = data.id;
           this.RutaItem = [];
-          this.ruta = [];
           this.masRutas = [];
           this.allMarkers = [];
-          this.ruta.push(data);
+          this.ruta = data;
+          
+          this.showButton = false;
+          if(this.ruta.text_button){
+            if(this.ruta.text_button.toString().trim()){
+              this.showButton = true;
+            }
+          }
 
-         // console.log(data.route_item);
          for (const item of data.route_item)  {
 
             this.RutaItem.push(item);
@@ -187,8 +200,8 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
 
           this.serviciosService.getExperienceId(data.category).subscribe(
             d => {
-              console.log('Category');
-              console.log(d);
+              //console.log('Category');
+              //console.log(d);
               this.categoryActive = d;
               this.imageBanner = this.categoryActive.image_banner;
             }
@@ -219,9 +232,10 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
 
 
 
-  captureId(id) {
-    this.idRutaItemRecibida = id;
-    this.idItem = id;
+  captureId(item) {
+    this.rutaItemSelected = item;
+    //console.log(this.rutaItemSelected );
+    // this.idItem = id;
   }
 
   verMas(id) {

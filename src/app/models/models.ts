@@ -1,4 +1,4 @@
-import { Title } from "@angular/platform-browser";
+import { Title, SafeResourceUrl } from "@angular/platform-browser";
 
 export class Category {
   id: number;
@@ -70,7 +70,8 @@ export class Ruta{
   duration_days: number;
   organization: number;
   route_item:RutaItem[];
- 
+  text_button: string;
+  url_button: string;
 }
 
 export class RutaItem{
@@ -86,6 +87,7 @@ export class RutaItem{
   draggable: boolean;
   entry_date: String;
   route:number;
+  title: String;
   route_item_detail:ItemDetail[];
 }
 
@@ -99,6 +101,7 @@ export class ItemDetail {
   description: string;
   route_item: number;
   video_url:string;
+  videoSafeURL:SafeResourceUrl;
 }
 
 /*

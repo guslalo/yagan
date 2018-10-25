@@ -23,11 +23,11 @@
                 autoplay:false,
                 navText : ['','']
                 }" 
-              [items]="itemsDetails[0]" 
+              [items]="itemsDetails" 
               [carouselClasses]="['owl-theme', 'sliding']">
-              <div class="item" *ngFor="let item of itemsDetails[0]" style="overflow: hidden;">
+              <div class="item" *ngFor="let item of itemsDetails" style="overflow: hidden;">
                 <div *ngIf="item.image == null; else image">
-                  <iframe class="iframeVideo" width="100%" height="400" [src]='safeURL' frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                  <iframe class="iframeVideo" width="100%" height="400" [src]='item.videoSafeURL' frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                   <h5>{{item.name}}</h5>
                 </div>
                 <ng-template #image>
