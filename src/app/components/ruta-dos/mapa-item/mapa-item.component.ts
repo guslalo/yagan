@@ -3,6 +3,7 @@ import { HttpClient} from "@angular/common/http";
 import { ServiciosService } from '../../../services/servicios.service';
 import { Observable } from 'rxjs/Rx';
 import { Experience, Category, Ruta, RutaItem, Marker } from '../../../models/models';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-mapa-item',
@@ -19,13 +20,14 @@ export class MapaItemComponent implements OnInit, OnDestroy, OnChanges {
   zoom: number = 14;
   icon: any;
   title: any;
+  hrefSafeURL:SafeResourceUrl;
   
   public currentLocation: {
     latitude: 47.024629,
     longitude: 28.832407
   };
 
-  constructor(  private http : HttpClient, private ServiciosService: ServiciosService) { }
+  constructor(  public sanitizer:DomSanitizer, private http : HttpClient, private ServiciosService: ServiciosService) { }
 
   ngOnInit() {
        //get ruta item 
@@ -42,7 +44,11 @@ export class MapaItemComponent implements OnInit, OnDestroy, OnChanges {
     this.zoom = 14;
     
     if(this.rutaItemSelected){
-      // console.log(this.rutaItemSelected);
+      let query = '?q=';
+      let href_native = 'geo:0,0?q=' + this.rutaItemSelected.latitude + ',' + this.rutaItemSelected.longitude + '(' + this.rutaItemSelected.title + ')';
+      this.hrefSafeURL = this.sanitizer.bypassSecurityTrustResourceUrl(href_native);
+
+      console.log(this.hrefSafeURL);
       this.lat2 =  + this.rutaItemSelected.latitude;
       this.lng2 =  + this.rutaItemSelected.longitude;
       this.icon = this.rutaItemSelected.image;

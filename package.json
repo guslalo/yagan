@@ -30,6 +30,7 @@
     "@types/jquery": "^3.3.2",
     "@types/owl.carousel": "^2.3.0",
     "agm-direction": "^0.6.0",
+    "angulartics2": "^7.0.2",
     "bootstrap": "^4.1.1",
     "core-js": "^2.4.1",
     "jquery": "^3.3.1",

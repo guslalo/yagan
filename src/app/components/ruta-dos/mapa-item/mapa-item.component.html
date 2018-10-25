@@ -15,12 +15,14 @@
       </div>
       <div class="modal-body"><!-- *ngFor="let item of RutaItem"--> 
         
-        <agm-map [latitude]="lat2" [longitude]="lng2" [zoom]="zoom">
+        <agm-map [latitude]="lat2" [longitude]="lng2" [zoom]="zoom" [mapTypeControl]="true">
           <!-- <agm-marker [latitude]="lat2" [longitude]="lng2"></agm-marker> -->
           <agm-snazzy-info-window  [latitude]="lat2" [longitude]="lng2" [maxWidth]="150" [isOpen]="true" [closeWhenOthersOpen]="false">
             <ng-template>
-              <div class="icon_marker_map" [style.backgroundImage]="'url('+ icon +')'"></div>
-              <div class="label_marker_map">{{ title }}</div>
+              <a [href]=" hrefSafeURL " target="_system">
+                <div class="icon_marker_map" [style.backgroundImage]="'url('+ icon +')'"></div>
+                <div class="label_marker_map">{{ title }}</div>
+              </a>
             </ng-template>
           </agm-snazzy-info-window>
 

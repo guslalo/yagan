@@ -2,7 +2,7 @@ import { Component, OnInit,ViewChild, Input, EventEmitter, AfterViewInit   } fro
 import { HeaderComponent } from './components/header/header.component';
 import * as $ from 'jquery';
 import { ExperienciasComponent } from './components/experiencias/experiencias.component';
-
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 import { Observable } from 'rxjs';
 //import 'rxjs/add/observable/fromEvent';
@@ -18,6 +18,10 @@ declare var owlCarousel:any;
 export class AppComponent implements OnInit {
   title = 'app';
   variable: string;
+
+  constructor(angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics) {
+    angulartics2GoogleAnalytics.startTracking();
+  }
 
   @ViewChild('header') childOne:HeaderComponent;
   @ViewChild('resultadoComponent') childTwo:ExperienciasComponent;

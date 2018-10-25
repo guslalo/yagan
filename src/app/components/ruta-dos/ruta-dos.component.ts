@@ -86,13 +86,13 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
     private titleService: Title
   ) { }
 
-  clickedMarker(label: string, index: number) {
-    // console.log(`clicked the marker: ${label || index}`)
-  }
+  // clickedMarker(label: string, index: number) {
+  //   // console.log(`clicked the marker: ${label || index}`)
+  // }
 
-  markerDragEnd(m: Marker, $event: MouseEvent) {
-    // console.log('dragEnd', m, $event);
-  }
+  // markerDragEnd(m: Marker, $event: MouseEvent) {
+  //   // console.log('dragEnd', m, $event);
+  // }
 
   scrollTop() {
     window.scrollTo(0, 0);

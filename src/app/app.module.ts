@@ -40,6 +40,8 @@ import { DetalleItemExperienciaComponent } from './components/mejor-sandwich/det
 import { VerMasComponent } from './components/ruta-dos/ver-mas/ver-mas.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 const router: Routes = [
 
@@ -84,6 +86,7 @@ export const routing: ModuleWithProviders = RouterModule.forRoot(router);
     NgxTypeaheadModule,
     routing,
     BarRatingModule,
+    Angulartics2Module.forRoot(),
     DisqusModule.forRoot('yagan'),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDziIQaJhEYq3IRQ7TuNJo5Q9RIuDOQenc'
