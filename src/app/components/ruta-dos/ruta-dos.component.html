@@ -82,7 +82,7 @@
                 <!--ruta item -->
                 <div class="cd-timeline__container">
                   <div *ngFor="let item of RutaItem" id="{{item.id}}" class="cd-timeline__block js-cd-block">
-                    <div class="cd-timeline__img cd-timeline__img--picture js-cd-img" data-toggle="modal" data-target="#exampleModal2"  (mapReady)="onMapReady($event)">
+                    <div class="cd-timeline__img cd-timeline__img--picture js-cd-img" data-toggle="modal" data-target="#exampleModal2"  (click)="captureId(item)">
                       <i class="material-icons">
                         location_on
                       </i>

@@ -42,7 +42,7 @@ export class MapaItemComponent implements OnInit, OnDestroy, OnChanges {
   ngOnChanges() {
 
     this.zoom = 14;
-    
+    console.log(this.rutaItemSelected);
     if(this.rutaItemSelected){
       let query = '?q=';
       let href_native = 'geo:0,0?q=' + this.rutaItemSelected.latitude + ',' + this.rutaItemSelected.longitude + '(' + this.rutaItemSelected.title + ')';

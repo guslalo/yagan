@@ -121,7 +121,8 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
 
   ngOnInit() {
     // supress icons
-    this.pageId = this.id;
+    //this.pageId = this.id;
+    this.pageId = '/route';
     this.renderOptions = {
       suppressMarkers: false,
       markerOptions: { // effect all markers
@@ -141,12 +142,13 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
       // getRuta ID
+    
       this.ruta = new Ruta;
 
       this.serviciosService.getRuta(this.id).subscribe(
         data => {
-          this.pageId = data.id;
-
+          // this.pageId = data.id;
+          //this.rutaItemSelected = data;
           this.regionRutaId = data.id;
           this.RutaItem = [];
           this.masRutas = [];
