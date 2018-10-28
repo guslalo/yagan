@@ -6,6 +6,7 @@ import { ServiciosService } from '../../services/servicios.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Category, subCategory } from '../../models/models';
 import { Network } from '@ngx-pwa/offline';
+import { catchOffline } from '@ngx-pwa/offline';
 
 @Component({
   selector: 'app-home',

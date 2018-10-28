@@ -3,6 +3,7 @@ import { HeaderComponent } from './components/header/header.component';
 import * as $ from 'jquery';
 import { ExperienciasComponent } from './components/experiencias/experiencias.component';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { Network } from '@ngx-pwa/offline';
 
 import { Observable } from 'rxjs';
 //import 'rxjs/add/observable/fromEvent';
@@ -19,7 +20,7 @@ export class AppComponent implements OnInit {
   title = 'app';
   variable: string;
 
-  constructor(angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics) {
+  constructor(angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics, protected network: Network) {
     angulartics2GoogleAnalytics.startTracking();
   }
 
