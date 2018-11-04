@@ -793,7 +793,14 @@ overflow-x: hidden;
     owl-carousel h5 {
         font-size: 15px;
     }
+
     .owl-carousel .owl-item img {
+        width: auto;
+        height: 300px;
+        
+    }
+  
+    .modal-content .owl-carousel .owl-item img {
         width: 100%;
         height: auto;
         
