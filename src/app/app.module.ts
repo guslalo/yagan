@@ -31,17 +31,19 @@ import { DetalleItemComponent } from './components/ruta-dos/detalle-item/detalle
 import { ExperienciaDetalleComponent } from './components/experiencias/experiencia-detalle/experiencia-detalle.component';
 
 import { TruncateModule } from 'ng2-truncate';
-import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 import { OwlModule } from 'ngx-owl-carousel';
 
 import { DetalleItemExperienciaComponent } from './components/mejor-sandwich/detalle-item-experiencia/detalle-item-experiencia.component';
 import { VerMasComponent } from './components/ruta-dos/ver-mas/ver-mas.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+
+
 
 const router: Routes = [
 
@@ -57,6 +59,7 @@ const router: Routes = [
 
 export const appRouters: any[] = [];
 export const routing: ModuleWithProviders = RouterModule.forRoot(router);
+
 
 @NgModule({
   declarations: [
@@ -98,4 +101,8 @@ export const routing: ModuleWithProviders = RouterModule.forRoot(router);
   providers: [ServiciosService, StorageService, appRouters],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule { 
+
+  
+}

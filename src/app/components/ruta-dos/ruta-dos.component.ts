@@ -146,7 +146,8 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
 
       this.serviciosService.getRuta(this.id).subscribe(
         data => {
-          this.pageId = '/route_' + data.id;
+          this.pageId = '/route/'+data.id;
+          console.log(this.pageId);
           // this.pageId = data.id;
           //this.rutaItemSelected = data;
           this.regionRutaId = data.id;

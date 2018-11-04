@@ -19,6 +19,8 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
+              "src/manifest.json",
+              "src/manifest.json",
               "src/manifest.json"
             ],
             "styles": [
@@ -31,9 +33,7 @@
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "src/assets/js/timeline.js",
-              "node_modules/owl.carousel2/dist/owl.carousel.min.js",
-              "src/assets/js/funciones.js"
+              "node_modules/owl.carousel2/dist/owl.carousel.min.js"
             ]
           },
           "configurations": {
@@ -85,9 +85,7 @@
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "src/assets/js/timeline.js",
-              "node_modules/owl.carousel2/dist/owl.carousel.min.js",
-              "src/assets/js/funciones.js"
+              "node_modules/owl.carousel2/dist/owl.carousel.min.js"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -97,6 +95,8 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
+              "src/manifest.json",
+              "src/manifest.json",
               "src/manifest.json"
             ]
           }

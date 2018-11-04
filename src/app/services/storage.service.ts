@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
-import { LocalStorage } from '@ngx-pwa/local-storage';
+//npm uninstall @ngx-pwa/local-storage
 
 @Injectable()
 export class StorageService {

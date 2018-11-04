@@ -5,8 +5,7 @@ import { HttpClient} from "@angular/common/http";
 import { ServiciosService } from '../../services/servicios.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Category, subCategory } from '../../models/models';
-import { Network } from '@ngx-pwa/offline';
-import { catchOffline } from '@ngx-pwa/offline';
+
 
 @Component({
   selector: 'app-home',
@@ -31,8 +30,7 @@ export class HomeComponent implements OnInit {
     private ServiciosService: ServiciosService, 
     private router: Router, 
     private titleService: Title,
-    public sanitizer:DomSanitizer,
-    protected network: Network
+    public sanitizer:DomSanitizer
   ){}
 
   onItemSelect(carouselItem:any):void{
