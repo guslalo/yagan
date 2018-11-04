@@ -794,8 +794,13 @@ overflow-x: hidden;
         font-size: 15px;
     }
     .owl-carousel .owl-item img {
+        width: 100%;
+        height: auto;
+        
+    }
+    .aportar .owl-carousel .owl-item img {
         width: auto;
-        height: 300px;
+        height: auto;
         
     }
     
