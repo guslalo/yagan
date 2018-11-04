@@ -28,7 +28,7 @@
         "name": "yagan api",
         "urls": ["https://administrator.yagan.world/**"],
         "cacheConfig": {
-            "maxSize": 100,
+            "maxSize": 300,
             "maxAge": "7d",
             "strategy": "freshness"
         }
