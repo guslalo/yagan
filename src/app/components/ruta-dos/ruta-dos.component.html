@@ -37,7 +37,7 @@
         </div>
         <div class="col pl-4 resena">
           <div class="col-12 pl-0" style="display: none;">
-            <img src="assets/img/turismo.png"> 
+            <img src=""> 
           </div><!-- {{idExperiencia}} -->
           <div class="textos">
             <h6>{{ruta.name}}</h6>
@@ -165,12 +165,16 @@
                 dots: true, 
                 nav:true,
                 autoplay:false,
-                navText : ['','']
+                navText : ['',''],
+                responsive: {       '0': {  items: 1.2, margin: 0 },
+                        '480': { items: 2,  margin: 5 },
+			'640': { items: 3, margin: 5 }
+                   } 
                 }" 
               [items]="RutaItem" 
               [carouselClasses]="['owl-theme', 'sliding']">
               <div class="item" *ngFor="let item of RutaItem" style="overflow: hidden;">
-                  <div class="col-10 col-md-12 hito p-0"  (click)="captureId(item)">
+                  <div class="col-12 col-md-12 hito p-0"  (click)="captureId(item)">
                       <img class="img card-img-top" [src]="item.image" alt="Card image cap">
                       <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
                       <div [innerHTML]="item.description" class="card-text "></div> 

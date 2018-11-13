@@ -4,6 +4,8 @@ import * as $ from 'jquery';
 import { ExperienciasComponent } from './components/experiencias/experiencias.component';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
+//declare var $: any;
+
 
 import { Observable } from 'rxjs';
 //import 'rxjs/add/observable/fromEvent';
@@ -11,6 +13,7 @@ import { Observable } from 'rxjs';
 
 
 declare var owlCarousel:any;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -39,14 +42,14 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    //document.addEventListener('touchstart', onTouchStart, {passive: true});
     
   }
   enviarImfo() {
 
   }
   ngAfterViewInit() {
-    console.log("this.extraIngredient"); // mayo
+    //console.log("this.extraIngredient"); // mayo
   }
 
  

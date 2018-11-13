@@ -5,7 +5,7 @@
               <h2 class="h2">Rutas y experiencias</h2>
             </div>
             <div class="col">
-              <h2 class="h2 text-right"><a routerLink="/rutas-experiencias">Ver todo</a></h2>
+              <h2 class="h2 text-right"><a routerLink="/rutas-experiencias" aria-label="ver todas las rutas y experiencias">Ver todo</a></h2>
             </div> 
           </div>
           <!--rutas item -->
@@ -13,7 +13,7 @@
             <div *ngFor="let item of SubCategory | slice:0:8; let i=index" id="{{item.id}}" class="col-6 col-sm-6 col-md-3 categoria" (click)="captureId(item.id)"><!-- -->
               <a [routerLink]="['/'+item.type, item.id]">
                 <figure>
-                  <img [src]="item.image"/>
+                  <img [src]="item.image"  alt=""/>
                 </figure>
                 <h3>{{item.name}}</h3>
              </a>
