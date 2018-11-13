@@ -14,7 +14,7 @@
     [carouselClasses]="['owl-theme', 'sliding']">
     <div class="item" *ngFor="let item of slideHome" style="overflow: hidden;">
       <div class="imagen-carrusel" *ngIf="item.image != null; else video">
-          <img [src]="item.image">
+          <img [src]="item.image"  alt="">
           <h4 class="textoh4" [innerHTML]="item.description"></h4>
       </div> 
       <ng-template #video>
@@ -62,9 +62,9 @@
           <a [routerLink]="['/rutas-experiencias', {cid: item.id }]">
             <figure>
               <div *ngIf="item.image == null; else otro">
-                  <img src="assets/img/default-thumb.png"/>
+                  <img src="assets/img/default-thumb.png"  alt=""/>
               </div>
-              <ng-template #otro> <img [src]="item.image"/></ng-template>
+              <ng-template #otro> <img [src]="item.image"  alt=""/></ng-template>
               <h3>{{item.name}}</h3>
             </figure>
           </a> 
@@ -80,20 +80,20 @@
       <div class="owl-carousel">
         <div class="row recomendados">
           <div class="col-12 col-md-4 mt-3 mt-md-0">
-            <div class="img"><img src="assets/img/alfonso.png" class="img-fluid"></div>
+            <div class="img"><img src="assets/img/alfonso.png" class="img-fluid"  alt=""></div>
             <div class="textos">
               <h3>Sorpréndete con<br> con Atacama Suites</h3>
               <button class="btn btn-secondary rounded">¡Reserva YA!</button>
             </div>
           </div>
           <div class="col-12 col-md-4 mt-3 mt-md-0">
-              <div class="img"><img src=""></div>
+              <div class="img"><img src=""  alt=""></div>
               <div class="textos">
               <button class="btn btn-secondary rounded">COMPRA YA!</button>
             </div>
           </div>
           <div class="col-12 col-md-4 mt-3 mt-md-0">
-              <div class="img"><img src=""></div>
+              <div class="img"><img src=""  alt=""></div>
               <div class="textos">
               <button class="btn btn-secondary rounded">COMPRA YA!</button>
             </div>
@@ -107,7 +107,7 @@
   <div id="carrusel-home2" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="assets/img/jumbotron_rutero.png">
+        <img src="assets/img/jumbotron_rutero.png"  alt="">
         <div class="carousel-caption d-md-block">
           <h4>Conviértete en rutero</h4>
           <p>Envíanos los imperdibles de tu ciudad<br> y comparte los mejores lugares</p>
