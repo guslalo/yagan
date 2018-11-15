@@ -1,9 +1,3 @@
 $(document).ready(function(){
-
-	setTimeout(function(){ 
-	//menusidebar
-	//console.log("listo");
-	
-	},500);
-	
-  });
+	document.addEventListener('touchstart', onTouchStart, {passive: true});
+});
