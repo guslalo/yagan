@@ -31,8 +31,7 @@
       <li data-target="#carrusel-home" data-slide-to="1"></li>
     </ol>
     <div class="carousel-inner">
-      <div class="carousel-item active" *ngFor="let item of slide">       
-        
+      <div class="carousel-item active" *ngFor="let item of slide">         
         <div class="carousel-caption d-none d-md-block">
           <h4 [innerHTML]="item.description"></h4>
         </div>
@@ -62,9 +61,9 @@
           <a [routerLink]="['/rutas-experiencias', {cid: item.id }]">
             <figure>
               <div *ngIf="item.image == null; else otro">
-                  <img src="assets/img/default-thumb.png"  alt=""/>
+                  <img src="assets/img/default-thumb.png"  alt="{{item.name}}"/>
               </div>
-              <ng-template #otro> <img [src]="item.image"  alt=""/></ng-template>
+              <ng-template #otro> <img [src]="item.image"  alt="{{item.name}}"/></ng-template>
               <h3>{{item.name}}</h3>
             </figure>
           </a> 
@@ -107,7 +106,7 @@
   <div id="carrusel-home2" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="assets/img/jumbotron_rutero.png"  alt="">
+        <img src="assets/img/jumbotron_rutero.jpg"  alt="Envíanos tu ruta">
         <div class="carousel-caption d-md-block">
           <h4>Conviértete en rutero</h4>
           <p>Envíanos los imperdibles de tu ciudad<br> y comparte los mejores lugares</p>
