@@ -58,10 +58,10 @@
       <!--categorias descubre-->
       <div class="row categorias">
         <div *ngFor="let item of CategoryFilter" class="col-6 col-sm-6 col-md-4 categoria">
-          <a [routerLink]="['/rutas-experiencias', {cid: item.id }]">
+          <a [routerLink]="['/rutas-experiencias', {cid: item.id }]" aria-label="item.name">
             <figure>
               <div *ngIf="item.image == null; else otro">
-                  <img src="assets/img/default-thumb.png"  alt="{{item.name}}"/>
+                <img src="assets/img/default-thumb.png"  alt="{{item.name}}"/>
               </div>
               <ng-template #otro> <img [src]="item.image"  alt="{{item.name}}"/></ng-template>
               <h3>{{item.name}}</h3>
@@ -86,8 +86,8 @@
             </div>
           </div>
           <div class="col-12 col-md-4 mt-3 mt-md-0">
-              <div class="img"><img src=""  alt=""></div>
-              <div class="textos">
+            <div class="img"><img src=""  alt=""></div>
+            <div class="textos">
               <button class="btn btn-secondary rounded">COMPRA YA!</button>
             </div>
           </div>
