@@ -87,7 +87,7 @@
                         location_on
                       </i>
                     </div> <!-- cd-timeline__img -->
-                    <div class="col-10 col-md-4 card cd-timeline__content js-cd-content"  (click)="captureId(item)">
+                    <div class="col-10 col-md-4 card cd-timeline__content js-cd-content imgHito"  (click)="captureId(item)">
                       <img class="card-img-top" [src]="item.image" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
                       <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
                       <div [innerHTML]="item.description" class="card-text "></div> 
@@ -98,15 +98,18 @@
               </section>
             </div>
             <div *ngIf="showButton" class="btn_container">
-                <a  href="{{ ruta.url_button }}" target="_blank" _ngcontent-c8="" class="btn btn-secondary btn-sm rounded">{{ruta.text_button}}</a>
+              <a  href="{{ ruta.url_button }}" target="_blank" _ngcontent-c8="" class="btn btn-secondary btn-sm rounded">{{ruta.text_button}}</a>
             </div>
           </div>
           <div class="container-fluid blanco">
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-          <disqus [identifier]="pageId"></disqus></div></div>
-          </div></div>
+              <div class="row">
+                <div class="col-12">
+                  <disqus [identifier]="pageId"></disqus>
+                </div>
+              </div>
+            </div>
+          </div>
           <!--masRutas box-->
           <div class="container-fluid blanco">
             <div class="container">
@@ -156,6 +159,7 @@
               *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination">
             </agm-direction>
           </agm-map>
+
           <div class="container-fluid aportar pb-5">
             <div class="row pt-2"><owl-carousel
               [options]="{
@@ -174,16 +178,15 @@
               [items]="RutaItem" 
               [carouselClasses]="['owl-theme', 'sliding']">
               <div class="item" *ngFor="let item of RutaItem" style="overflow: hidden;">
-                  <div class="col-12 col-md-12 hito p-0"  (click)="captureId(item)">
-                      <img class="img card-img-top" [src]="item.image" alt="Card image cap">
-                      <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
-                      <div [innerHTML]="item.description" class="card-text "></div> 
-                    </div> 
+                <div class="col-12 col-md-12 hito p-0"  (click)="captureId(item)">
+                  <img class="img card-img-top" [src]="item.image" alt="Card image cap">
+                  <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
+                  <div [innerHTML]="item.description" class="card-text "></div> 
+                </div> 
               </div>
             </owl-carousel>  
             <!-- END TAB MAPS -->
               <div class="col-12" style="display:none;">
-
                 <p class="text-center font-weigth-bold">¿Quieres aportar a esta ruta?</p>
               </div>
               <div class="col-12" style="display:none;"> 
@@ -215,11 +218,11 @@
 
 </div>
 
- <!-- Modal mapa -->
- <app-mapa-item [rutaItemSelected]="rutaItemSelected"></app-mapa-item><!-- /Modal mapa -->
+<!-- Modal mapa -->
+<app-mapa-item [rutaItemSelected]="rutaItemSelected"></app-mapa-item><!-- /Modal mapa -->
 
- <!-- Modal detalle item -->
- <app-detalle-item [rutaItemSelected]="rutaItemSelected"></app-detalle-item><!-- /Modal detalle item -->
+<!-- Modal detalle item -->
+<app-detalle-item [rutaItemSelected]="rutaItemSelected"></app-detalle-item><!-- /Modal detalle item -->
 
 <!-- ver mas -->
 <app-ver-mas [idItem2]="idItem2"></app-ver-mas>

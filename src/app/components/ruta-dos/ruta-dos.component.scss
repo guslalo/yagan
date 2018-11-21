@@ -472,3 +472,18 @@ Vertical Timeline - by CodyHouse.co
     padding: 5px !important;
     color:red !important;
 }
+
+.imgHito {
+    position: relative;
+    &::after{
+        position: absolute;
+        z-index: 99;
+        font-family: 'Material Icons';
+        content:"\e3b6";
+        right: 15px;
+        top: 10px;
+        color: #ffffff;
+        font-size: 25px;
+    }
+}
+ 
