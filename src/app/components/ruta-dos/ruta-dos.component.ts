@@ -9,8 +9,10 @@ import { InfoWindow } from '@agm/core/services/google-maps-types';
 import { LatLngBounds } from '@agm/core';
 import { mapTo } from 'rxjs-compat/operator/mapTo';
 import { TouchSequence } from 'selenium-webdriver';
+import {OwlCarousel} from 'ngx-owl-carousel';
 
  declare var google: any;
+ 
 
 @Component({
   selector: 'app-ruta-dos',
@@ -22,7 +24,7 @@ import { TouchSequence } from 'selenium-webdriver';
 
 // encapsulation: ViewEncapsulation.None,
 export class RutaDosComponent implements OnInit, OnDestroy  {
-
+  @ViewChild('owlElement') owlElement: OwlCarousel
   @Input() public idExpecienciaRecibida: any;
 
   categoryActive: Category;
@@ -46,7 +48,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   regionRutaId: string;
   markers: Marker[] = [];
   // public zoom = 15;
-  masRutas: Category[] = [];
+  masRutas = [];
   allMarkers: ItemMarker[] = [];
   // maps variables
   latitude2: number; // =  -27.360043;
@@ -69,10 +71,11 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   public rutaItemSelected: RutaItem;
   public idItem = null;
   public idItem2 = null;
-  public zoom = 15;
+  public zoom = 10;
   public pageId: any;
 
   public showButton = false;
+  public statusAgmDirection = false;
 
   idExperiencia = 'NULL';
   idRecibido(id) {
@@ -99,24 +102,55 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
     window.scrollTo(0, 0);
   }
 
+  clickMarker(data){
+    console.log('clickMarker');
+    console.log(data);
+    this.owlElement.to([data])
+  }
+
+  goMapNative(data){
+    console.log('goMapNative');
+    console.log(data);
+  }
+
   public change(event: any) {
     this.waypoints = event.request.waypoints;
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
-  onMapReady(map) {
-      // console.log('onMapReady');
-      // console.log(map);
-      const bounds: LatLngBounds = new google.maps.LatLngBounds();
-      for (const mm of this.allMarkers) {
-        // console.log('subscribe for');
-        bounds.extend(new google.maps.LatLng(mm.latitude, mm.longitude));
-      }
-      // console.log(bounds);
-      map.fitBounds(bounds);
-      map.panToBounds(bounds);
-      // map.zoom = 15;
-      // console.log('Zoom: ' + map.zoom);
+  // onMapReady(map) {
+  //      console.log('onMapReady');
+  //     // console.log(map);
+  //     const bounds: LatLngBounds = new google.maps.LatLngBounds();
+  //     for (const mm of this.allMarkers) {
+  //       // console.log('subscribe for');
+  //       bounds.extend(new google.maps.LatLng(mm.latitude, mm.longitude));
+  //     }
+  //     // console.log(bounds);
+  //     map.fitBounds(bounds);
+  //     map.panToBounds(bounds);
+  //     // map.zoom = 15;
+  //     // console.log('Zoom: ' + map.zoom);
+  // }
+
+  mapClicked(map){
+    console.log('mapClicked');
+  }
+
+  zoomin(){
+    console.log("zoomin");
+    this.statusAgmDirection = false;
+    this.zoom = 15;
+    setTimeout(() => 
+    {
+      this.statusAgmDirection = true;
+    },
+    500);
+  }
+
+  protected mapLoad(map){
+    console.log('mapLoad');
+    //this.zoomin();
   }
 
   ngOnInit() {
@@ -129,10 +163,11 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
       },
     };
 
-
     this.optimizeWaypoints = false;
     this.idItem2 = {};
     this.imageBanner = '';
+    this.statusAgmDirection = false;
+    this.zoom = 10;
     // title
     this.titleService.setTitle('Rutas | Yagan');
     // scrollTop
@@ -141,21 +176,16 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
       // getRuta ID
-    
       this.ruta = new Ruta;
-
       this.serviciosService.getRuta(this.id).subscribe(
         data => {
           this.pageId = '/route/'+data.id;
           console.log(this.pageId);
-          // this.pageId = data.id;
-          //this.rutaItemSelected = data;
           this.regionRutaId = data.id;
           this.RutaItem = [];
-          this.masRutas = [];
           this.allMarkers = [];
+          this.waypoints = [];
           this.ruta = data;
-          
           this.showButton = false;
           if(this.ruta.text_button){
             if(this.ruta.text_button.toString().trim()){
@@ -166,7 +196,6 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
          for (const item of data.route_item)  {
 
             this.RutaItem.push(item);
-
             this.waypoints.push({
               location: { lat: +item.latitude, lng: +item.longitude },
               stopover: true,
@@ -182,9 +211,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
             this.allMarkers.push(maker);
           }
 
-          /*this.markerOptions = {
-           waypoints: this.waypointsItem
-          };*/
+          console.log(this.waypoints);
 
           const origin_lat = +data.route_item[0].latitude;
           const origin_lng = +data.route_item[0].longitude;
@@ -201,14 +228,9 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
               lng: destination_lng
             },
           };
-          // console.log(this.dir);
-          // console.log('AllMarkers');
-          // console.log(this.allMarkers);
 
           this.serviciosService.getExperienceId(data.category).subscribe(
             d => {
-              //console.log('Category');
-              //console.log(d);
               this.categoryActive = d;
               this.imageBanner = this.categoryActive.image_banner;
             }
@@ -236,8 +258,6 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
       );
     });
   }
-
-
 
   captureId(item) {
     this.rutaItemSelected = item;

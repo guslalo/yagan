@@ -809,8 +809,19 @@ overflow-x: hidden;
     .aportar .owl-carousel .owl-item img {
         width: auto;
         height: auto;
-        
     }
+
+    .content-img {
+        position: relative;
+    }
+
+    .iconimg span img{
+        position: absolute;
+        top:10px;
+        right: 10px;
+    }
+
+   
     
 
     .cd-timeline__img {
@@ -947,20 +958,25 @@ overflow-x: hidden;
     color:red !important;
 }
 
-
+/* marker map */
+.content_marker{
+    cursor: pointer;
+    max-width: 60px;
+    max-height: 60px;
+}
+.icon_marker_map{
+    width: 100%;
+    height: 25px;
+    border-radius: 2px;
+    background-size: cover;
+}
 .label_marker_map{
     color: #f1f1f1 !important;
     text-align: center;
     width: 100%;
     padding-top: 2px;
 }
-
-.icon_marker_map{
-    width: 50px;
-    height: 25px;
-    border-radius: 2px;
-    background-size: cover;
-}
+/* -- */
 
 .si-content-wrapper {
     padding: 4px !important;
