@@ -77,18 +77,15 @@ export class HomeComponent implements OnInit {
         for(let item of this.slide){
           this.slideHome = item.banner_set;
           //console.log(this.slideHome);
-
           for(let item2 of  this.slideHome){
             if(item2.url_video != null){
               let rutaCompleta = item2.url_video;
               let codigo = rutaCompleta.split("=");
-              console.log(codigo[1]);
+              //console.log(codigo[1]);
               this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/'+codigo[1]+'?rel=0&amp;controls=0&amp;showinfo=0');
             }
           }
-     
         }
- 
       },
       error => {
         console.log(<any>error);

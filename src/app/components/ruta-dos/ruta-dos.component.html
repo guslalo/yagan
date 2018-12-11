@@ -59,7 +59,7 @@
             <p><i class="inline-icon material-icons">timeline</i>Ruta</p>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" (click)="zoomin()">
           <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
             <p><i class="inline-icon material-icons">map</i>Mapa</p>
           </a>
@@ -87,8 +87,8 @@
                         location_on
                       </i>
                     </div> <!-- cd-timeline__img -->
-                    <div class="col-10 col-md-4 card cd-timeline__content js-cd-content"  (click)="captureId(item)">
-                      <img class="card-img-top" [src]="item.image" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
+                    <div class="col-10 col-md-4 card cd-timeline__content js-cd-content imgHito"  (click)="captureId(item)">
+                      <img class="card-img-top" [src]="item.image ? item.image : 'assets/img/default-thumb.png'" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
                       <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
                       <div [innerHTML]="item.description" class="card-text "></div> 
                       <!--<a href="javascript:;" class="btn"  data-toggle="modal" data-target="#modalVerMas" (click)="verMas(item)">+ Ver más</a>-->
@@ -98,15 +98,18 @@
               </section>
             </div>
             <div *ngIf="showButton" class="btn_container">
-                <a  href="{{ ruta.url_button }}" target="_blank" _ngcontent-c8="" class="btn btn-secondary btn-sm rounded">{{ruta.text_button}}</a>
+              <a  href="{{ ruta.url_button }}" target="_blank" _ngcontent-c8="" class="btn btn-secondary btn-sm rounded">{{ruta.text_button}}</a>
             </div>
           </div>
           <div class="container-fluid blanco">
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-          <disqus [identifier]="pageId"></disqus></div></div>
-          </div></div>
+              <div class="row">
+                <div class="col-12">
+                  <disqus [identifier]="pageId"></disqus>
+                </div>
+              </div>
+            </div>
+          </div>
           <!--masRutas box-->
           <div class="container-fluid blanco">
             <div class="container">
@@ -135,55 +138,59 @@
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <!-- (mapReady)="onMapReady($event)" -->
           <agm-map 
+            (mapReady)="mapLoad($event)"
+            (mapClick)="mapClicked($event)"
             [disableDefaultUI]="false"
-            [zoom]="zoom"
-            [zoomControl]="true">
-
-              <agm-snazzy-info-window  *ngFor="let data of allMarkers; let i = index" [latitude]="data.latitude" [longitude]="data.longitude" [maxWidth]="150" [isOpen]="true" [closeWhenOthersOpen]="false">
+            [zoomControl]="true"
+            *ngIf="dir" [latitude]="dir.origin.lat" [longitude]="dir.origin.lng">
+            
+              <agm-snazzy-info-window  *ngFor="let data of allMarkers; let i = index" [latitude]="data.latitude" [longitude]="data.longitude" [maxWidth]="150" [isOpen]="true" [closeWhenOthersOpen]="false" [showCloseButton]="false" >
                 <ng-template>
-                 
+                 <div class="content_marker" (click)="clickMarker(i)">
                   <div class="icon_marker_map" [style.backgroundImage]="'url('+ data.icon +')'"></div>
                   <div class="label_marker_map">{{ data.title }}</div>
+                </div>
                 </ng-template>
               </agm-snazzy-info-window>
-            
            
             <agm-direction
-              [waypoints]="waypoints" 
-              [renderOptions]="renderOptions" 
-              [markerOptions]="markerOptions" 
-              [travelMode]="travelMode"
-              *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination">
+              *ngIf="statusAgmDirection" [waypoints]="waypoints"  [renderOptions]="renderOptions"  [markerOptions]="markerOptions" [travelMode]="travelMode"   [origin]="dir.origin" [destination]="dir.destination">
             </agm-direction>
           </agm-map>
+
           <div class="container-fluid aportar pb-5">
-            <div class="row pt-2"><owl-carousel
+            <div class="row pt-2"><owl-carousel #owlElement
               [options]="{
                 center: true,
-                items: 4, 
+                items: 8, 
                 loop:true,
                 dots: true, 
                 nav:true,
                 autoplay:false,
                 navText : ['',''],
-                responsive: {       '0': {  items: 1.2, margin: 0 },
-                        '480': { items: 2,  margin: 5 },
-			'640': { items: 3, margin: 5 }
-                   } 
-                }" 
+                responsive: {   
+                  '0': {  items: 1.3, margin: 0 },
+                  '600': { items: 2.1,  margin: 5 },
+                  '1000': { items: 3.3, margin: 5 },
+                  '1500': { items: 5, margin: 5 },
+                  '2000': { items: 8, margin: 5 }
+                } 
+              }" 
               [items]="RutaItem" 
               [carouselClasses]="['owl-theme', 'sliding']">
               <div class="item" *ngFor="let item of RutaItem" style="overflow: hidden;">
-                  <div class="col-12 col-md-12 hito p-0"  (click)="captureId(item)">
-                      <img class="img card-img-top" [src]="item.image" alt="Card image cap">
-                      <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
-                      <div [innerHTML]="item.description" class="card-text "></div> 
-                    </div> 
+                <div class="col-12 col-md-12 hito p-0"  (click)="goMapNative(item)">
+                  <div class="content-img">
+                      <!-- <span><i class="inline-icon material-icons">map</i></span>  -->
+                      <img class="img  card-img-top" [src]="item.image" alt="Card image cap">
+                  </div>
+                  <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
+                  <div [innerHTML]="item.description" class="card-text "></div> 
+                </div> 
               </div>
             </owl-carousel>  
             <!-- END TAB MAPS -->
               <div class="col-12" style="display:none;">
-
                 <p class="text-center font-weigth-bold">¿Quieres aportar a esta ruta?</p>
               </div>
               <div class="col-12" style="display:none;"> 
@@ -215,11 +222,11 @@
 
 </div>
 
- <!-- Modal mapa -->
- <app-mapa-item [rutaItemSelected]="rutaItemSelected"></app-mapa-item><!-- /Modal mapa -->
+<!-- Modal mapa -->
+<app-mapa-item [rutaItemSelected]="rutaItemSelected"></app-mapa-item><!-- /Modal mapa -->
 
- <!-- Modal detalle item -->
- <app-detalle-item [rutaItemSelected]="rutaItemSelected"></app-detalle-item><!-- /Modal detalle item -->
+<!-- Modal detalle item -->
+<app-detalle-item [rutaItemSelected]="rutaItemSelected"></app-detalle-item><!-- /Modal detalle item -->
 
 <!-- ver mas -->
 <app-ver-mas [idItem2]="idItem2"></app-ver-mas>
