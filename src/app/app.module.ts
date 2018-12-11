@@ -10,7 +10,10 @@ import { StorageService } from './services/storage.service';
 
 //modulos terceros
 import { DisqusModule } from 'ngx-disqus';
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
 
+//componentes
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -60,7 +63,24 @@ const router: Routes = [
 export const appRouters: any[] = [];
 export const routing: ModuleWithProviders = RouterModule.forRoot(router);
 
+const config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('703164878237-u5j52iiecvtktlsp0as6u3iklu0etc22.apps.googleusercontent.com')
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider('217446569157422')
+  },
+  {
+    id: LinkedInLoginProvider.PROVIDER_ID,
+    provider: new LinkedInLoginProvider('78iqy5cu2e1fgr')
+  }
+]);
 
+export function provideConfig() {
+  return config;
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -96,9 +116,18 @@ export const routing: ModuleWithProviders = RouterModule.forRoot(router);
     }),
     AgmDirectionModule,
     AgmSnazzyInfoWindowModule,
+    SocialLoginModule
     //ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [ServiciosService, StorageService, appRouters],
+  providers: [
+    ServiciosService, 
+    StorageService, 
+    appRouters,
+    {
+      provide: AuthServiceConfig,   
+      useFactory: provideConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 

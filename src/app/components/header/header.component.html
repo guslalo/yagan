@@ -10,7 +10,7 @@
         menu
       </i>
     </div>
-    <div class="col-12 col-md-6 order-1 order-md-2 mt-3"><!--form buscador-->
+    <div class="col-12 col-md-4 order-1 order-md-2 mt-3"><!--form buscador-->
       <form (ngSubmit)="buscar()">
         <div class="input-group">
           <input aria-label="buscador" type="text" id="buscador" class="form-control" placeholder="Buscar" name="buscador" [(ngModel)]="model.buscar">
@@ -22,8 +22,37 @@
     <div class="col-12 col-md order-md-3 menu">
       <ul class="pl-0 pl-md">
         <li><a>Acerca de</a></li>
-        <li><a class="participa rounded">Participa</a></li>
+        <li><a class="participa rounded d-none">Participa</a></li>
+        <li>
+            <a class="participa rounded dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Login
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" *ngIf="!user">
+              <button class="dropdown-item" (click)="signInWithGoogle()">google</button>
+              <button class="dropdown-item" (click)="signInWithFB()">facebook</button>
+            </div>
+         </li>
+         <li *ngIf="user">
+       
+            <div class="logueado">
+              <div class="img">
+                <img class="img-responsive img-circle" src="{{ user.photoUrl }}">
+              </div>
+              <div class="">
+                <p class="name">{{ user.name }}</p>
+                <p class="d-none">{{ user.email }}</p>
+              </div>
+              <a class="salir" (click)="signOut()"
+              ><i class="material-icons">
+                  power_settings_new
+                  </i></a>
+            </div>    
+             
+         </li>
       </ul>
+   
     </div>
+ 
+   
   </div>
 </header>

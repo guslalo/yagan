@@ -7,6 +7,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Category, subCategory } from '../../models/models';
 
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -33,6 +34,8 @@ export class HomeComponent implements OnInit {
     public sanitizer:DomSanitizer
   ){}
 
+
+
   onItemSelect(carouselItem:any):void{
   }
   //Arrays Experiences and Category
@@ -40,8 +43,12 @@ export class HomeComponent implements OnInit {
   Category: Category[] = [];
   CategoryFilter: Category[] = [];
 
+
+
+  
   ngOnInit() {
    
+
     //scrollTop
     window.scrollTo(0, 0);
 
@@ -68,10 +75,12 @@ export class HomeComponent implements OnInit {
       }
     ); 
 
+    
 
     //get categorias  
     this.ServiciosService.getSlide().subscribe( 
       data => {
+        
         let slideGeneral =  data;
         this.slide = slideGeneral.filter(r => r.name == "SlideHome");
         for(let item of this.slide){

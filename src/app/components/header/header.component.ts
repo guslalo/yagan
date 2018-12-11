@@ -5,6 +5,10 @@ import { StorageService } from '../../services/storage.service';
 import { HttpClient} from "@angular/common/http";
 import { subCategory } from '../../models/models';
 
+import { AuthService } from 'angularx-social-login';
+import { SocialUser } from 'angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider } from 'angularx-social-login';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -15,10 +19,12 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router,  private http : HttpClient,  
     private ServiciosService: ServiciosService,
     protected StorageService: ServiciosService,
+    private authService: AuthService
   ) { }
 
   @Output() busqueda = new EventEmitter();
-
+  public user: SocialUser;
+  public loggedIn: boolean;
   public url = 'http://administrator.yagan.world/core/api/subcategory/?string_text=';
   public api = 'http';
   public params = {
@@ -30,6 +36,9 @@ export class HeaderComponent implements OnInit {
     this.query = result.name;
     //console.log(this.query);
   }
+
+
+
 
   @Output() salida = new EventEmitter();
 
@@ -91,7 +100,11 @@ ngOnInit() {
   $(".iconMenu").click(function(){
     $(".menu").slideToggle("fast");
   });
-
+  this.authService.authState.subscribe((user) => {
+    this.user = user;
+    this.loggedIn = (user != null);
+  });
+  
 
  /*
   this.route.queryParams.subscribe(params => {
@@ -101,6 +114,22 @@ ngOnInit() {
         this.params = params['param2'];
   });*/
   
+}
+
+signInWithGoogle(): void {
+  this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+}
+
+signInWithFB(): void {
+  this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+}
+
+signInWithLinkedIn(): void {
+  this.authService.signIn(LinkedInLoginProvider.PROVIDER_ID);
+}
+
+signOut(): void {
+  this.authService.signOut();
 }
 
 }
