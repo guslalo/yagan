@@ -199,7 +199,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
          for (const item of data.route_item)  {
 
           
-            let href_native = 'geo:0,0?q=' + item.latitude + ',' + item.longitude + '( Ruta Yagan - ' + item.title + ')';
+            let href_native = 'geo:0,0?q=' + item.latitude + ',' + item.longitude + '(Ruta Yagan - ' + item.title + ')';
             this.hrefSafeURL = this.sanitizer.bypassSecurityTrustResourceUrl(href_native);
             item.gps = this.hrefSafeURL
             this.RutaItem.push(item);
