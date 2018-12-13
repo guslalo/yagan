@@ -71,7 +71,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   public rutaItemSelected: RutaItem;
   public idItem = null;
   public idItem2 = null;
-  public zoom = 10;
+  public zoom = 12;
   public pageId: any;
 
   public showButton = false;
@@ -140,7 +140,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   zoomin(){
     console.log("zoomin");
     this.statusAgmDirection = false;
-    this.zoom = 15;
+    
     setTimeout(() => 
     {
       this.statusAgmDirection = true;
