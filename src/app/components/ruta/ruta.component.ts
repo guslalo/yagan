@@ -155,6 +155,12 @@ export class RutaComponent implements OnInit, OnDestroy  {
 
   ngOnInit() {
     // supress icons
+    var scene = document.getElementById('scene');
+    /*var parallaxInstance = new Parallax(scene, {
+      relativeInput: true
+    });*/
+
+
     //this.pageId = this.id;
     this.renderOptions = {
       suppressMarkers: false,

@@ -284,6 +284,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', e
 
 footer {
     background: rgba(0, 0, 0, 1);
+    position: relative;
     height: auto;
     padding-top:60px;
     z-index: 2;;
@@ -1120,6 +1121,7 @@ z-index: -2;
     img {
         width: 100%;
         min-height: 100vh;
+        position: fixed;
     }
 
     .degrade {

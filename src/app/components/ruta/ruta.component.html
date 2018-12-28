@@ -1,12 +1,13 @@
 <div  id="ruta{{ruta.id}}" class="container-fluid p-0 h-100">
   <!--banner principal-->
-  <div class="imagenCore">
+  <div class="imagenCore" id="scene">
       <div class="degrade">
         <h6>{{ruta.name}}</h6>
       </div>
-      <img [src]="ruta.image ? ruta.image : ''">
+      <img  [src]="ruta.image ? ruta.image : ''">
+      
   
-  </div><!--/banner principal-->
+  </div><!--/banner principal data-depth="0.6" data-parallax="scroll"-->
 
   <!--box body 
   <div class="container-fluid">
