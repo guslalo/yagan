@@ -12,6 +12,7 @@ import { TouchSequence } from 'selenium-webdriver';
 import {OwlCarousel} from 'ngx-owl-carousel';
 
  declare var google: any;
+ declare var $: any;
  
 
 @Component({
@@ -156,6 +157,7 @@ export class RutaComponent implements OnInit, OnDestroy  {
   ngOnInit() {
     // supress icons
     var scene = document.getElementById('scene');
+    $('body').scrollspy({ target: '#barraAzul' });
     /*var parallaxInstance = new Parallax(scene, {
       relativeInput: true
     });*/

@@ -1,30 +1,64 @@
 <div  id="ruta{{ruta.id}}" class="container-fluid p-0 h-100">
   <!--banner principal-->
-  <div class="imagenCore" id="scene">
-      <div class="degrade">
-        <h6>{{ruta.name}}</h6>
+  <div id="carrusel-home" class="carousel slide parallax" data-ride="carousel" >
+      <div class="degrade"></div>
+    <ol class="carousel-indicators" style="display:none;" >
+      <li data-target="#carrusel-home" data-slide-to="0" class="active"></li>
+      <li data-target="#carrusel-home" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        
+        <img src="{{ imageBanner }}">
+        <div class="carousel-caption d-md-block">
+          <h4>{{ruta.name}}</h4> 
+        </div>
       </div>
-      <img  [src]="ruta.image ? ruta.image : ''">
-      
-  
-  </div><!--/banner principal data-depth="0.6" data-parallax="scroll"-->
+    </div>
+  </div><!--/banner principal-->
 
-  <!--box body 
+  <!--box body -->
   <div class="container-fluid">
     <div class="container">
-      
-    
+      <!--breadcrums-->
+      <div class="row">
+        <div class="col-12">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page"><a href="javascript:;">{{ruta.name}}</a></li>
+            </ol>         
+          </nav>
+        </div>
+      </div><!--/breadcrums-->
+
+      <!--presentacion-->
+      <div class="row">
+        <div class="col-12 col-md-5">
+          <img [src]="ruta.image ? ruta.image : ''" class="img-fluid">
+        </div>
+        <div class="col pl-4 resena">
+          <div class="col-12 pl-0" style="display: none;">
+            <img src=""> 
+          </div><!-- {{idExperiencia}} -->
+          <div class="textos">
+            <h6>{{ruta.name}}</h6>
+            <div [innerHTML]="ruta.description"></div>
+          </div>
+          <div class="web">
+            <!-- <a href="j{{ruta.web_site}}" target="_blank">{{ruta.web_site}}</a> -->
+          </div>
+        </div>
+      </div><!--presentacion-->
     </div>
-  </div>--><!--/box body -->
+  </div><!--/box body -->
 
   <div class="container-fluid gris2 p-0 ">
     <div class="barraVerde justify-content-md-center">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" id="home-tab2" data-toggle="tab" href="#home2" role="tab" aria-controls="home2" aria-selected="true">
-            <p><i class="inline-icon material-icons">
-                format_align_left
-                </i>Descripción</p>
+          <a class="nav-link active" id="home-tab2" data-toggle="tab" href="#descp" role="tab" aria-controls="home" aria-selected="true">
+            <p><i class="inline-icon material-icons">timeline</i>Descripción</p>
           </a>
         </li>
         <li class="nav-item">
@@ -44,68 +78,68 @@
     <!-- ### TAB ROUTE ITEMS ### -->
     <div class="container-fluid p-0  ruta">
       <div class="tab-content" id="myTabContent">
-        <!--tab pt-5-->
-        <div class="tab-pane fade show active  pb-0" id="home2" role="tabpanel" aria-labelledby="home-tab2">
-      
-            <div class="container-fluid blanco">
-              <div class="container">
-                <!--breadcrums
-                <div class="row">
-                  <div class="col-12">
-                    <nav aria-label="breadcrumb">
-                      <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><a href="javascript:;">{{ruta.name}}</a></li>
-                      </ol>         
-                    </nav>
-                  </div>
-                </div>--><!--/breadcrums-->
-                <!--presentacion-->
-                <div class="row">
-                  <div class="col pl-4"><!-- {{idExperiencia}} -->
-                    <div class="textos">
-                      <h6>{{ruta.name}}</h6>
-                      <div [innerHTML]="ruta.description"></div>
-                    </div>
-                    <div class="web">
-                      <!-- <a href="j{{ruta.web_site}}" target="_blank">{{ruta.web_site}}</a> -->
-                    </div>
-                  </div>
-                </div><!--presentacion-->
-                <div class="container-fluid blanco">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-12">
-                        <disqus [identifier]="pageId"></disqus>
-                      </div>
-                    </div>
-                  </div>
+        <!--tab-->
+        <div class="tab-pane fade show active pt-5 pb-0" id="descp" role="tabpanel" aria-labelledby="home-tab2">
+            <div class="container pb-5">
+                <div *ngIf="showButton" class="btn_container">
+                  <a  href="{{ ruta.url_button }}" target="_blank" _ngcontent-c8="" class="btn btn-secondary btn-sm rounded">{{ruta.text_button}}</a>
                 </div>
-                 <!--masRutas box-->
-                <div class="container-fluid blanco">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-12">
-                      <h2 class="h2 text-center">Otras rutas por descubrir</h2></div>
-                    </div>
-                    <!--masRutas-->
-                    <div class="row experiencias masTours">
-                      <div *ngFor="let item of masRutas | slice:0:4; let i=index" class="col-6 col-md-3 categoria">
-                        <a [routerLink]="['/route', item.id]" (click)="scrollTop();">
-                          <figure >
-                            <img [src]="item.image">
-                          </figure>
-                          <h3 class="text-center">{{item.name}}</h3>
-                        </a>
-                      </div>    
-                    </div><!--/masRutas-->  
-                  </div>
-                </div><!--/masRutas box-->
+              <div class="row">
+                <section class="cd-timeline js-cd-timeline">
+                  <!--ruta item -->
+                  <div class="cd-timeline__container">
+                    <div *ngFor="let item of RutaItem" id="{{item.id}}" class="cd-timeline__block js-cd-block">
+                      <div class="cd-timeline__img cd-timeline__img--picture js-cd-img" data-toggle="modal" data-target="#exampleModal2"  (click)="captureId(item)">
+                        <i class="material-icons">
+                          location_on
+                        </i>
+                      </div> <!-- cd-timeline__img -->
+                      <div class="col-10 col-md-4 card cd-timeline__content js-cd-content imgHito"  (click)="captureId(item)">
+                        <img class="card-img-top" [src]="item.image ? item.image : 'assets/img/default-thumb.png'" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
+                        <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
+                        <div [innerHTML]="item.description" class="card-text "></div> 
+                        <!--<a href="javascript:;" class="btn"  data-toggle="modal" data-target="#modalVerMas" (click)="verMas(item)">+ Ver más</a>-->
+                      </div> <!-- cd-timeline__content -->
+                    </div><!--card -->
+                  </div><!--/ruta item -->
+                </section>
+              </div>
+              <div *ngIf="showButton" class="btn_container">
+                <a  href="{{ ruta.url_button }}" target="_blank" _ngcontent-c8="" class="btn btn-secondary btn-sm rounded">{{ruta.text_button}}</a>
               </div>
             </div>
-        </div><!--/tab-->
+            <div class="container-fluid blanco">
+              <div class="container">
+                <div class="row">
+                  <div class="col-12">
+                    <disqus [identifier]="pageId"></disqus>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--masRutas box-->
+            <div class="container-fluid blanco">
+              <div class="container">
+                <div class="row">
+                  <div class="col-12">
+                  <h2 class="h2 text-center">Otras rutas por descubrir</h2></div>
+                </div>
+                <!--masRutas-->
+                <div class="row experiencias masTours">
+                  <div *ngFor="let item of masRutas | slice:0:4; let i=index" class="col-6 col-md-3 categoria">
+                    <a [routerLink]="['/route', item.id]" (click)="scrollTop();">
+                      <figure >
+                        <img [src]="item.image">
+                      </figure>
+                      <h3 class="text-center">{{item.name}}</h3>
+                    </a>
+                  </div>    
+                </div><!--/masRutas-->  
+              </div>
+            </div><!--/masRutas box-->
+          </div><!--/tab-->
         <!--tab-->
-        <div class="tab-pane fade show  pt-5 pb-0" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="tab-pane fade show active pt-5 pb-0" id="home" role="tabpanel" aria-labelledby="home-tab">
           <div class="container pb-5">
               <div *ngIf="showButton" class="btn_container">
                 <a  href="{{ ruta.url_button }}" target="_blank" _ngcontent-c8="" class="btn btn-secondary btn-sm rounded">{{ruta.text_button}}</a>
@@ -134,13 +168,40 @@
               <a  href="{{ ruta.url_button }}" target="_blank" _ngcontent-c8="" class="btn btn-secondary btn-sm rounded">{{ruta.text_button}}</a>
             </div>
           </div>
-          
-         
+          <div class="container-fluid blanco">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <disqus [identifier]="pageId"></disqus>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--masRutas box-->
+          <div class="container-fluid blanco">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                <h2 class="h2 text-center">Otras rutas por descubrir</h2></div>
+              </div>
+              <!--masRutas-->
+              <div class="row experiencias masTours">
+                <div *ngFor="let item of masRutas | slice:0:4; let i=index" class="col-6 col-md-3 categoria">
+                  <a [routerLink]="['/route', item.id]" (click)="scrollTop();">
+                    <figure >
+                      <img [src]="item.image">
+                    </figure>
+                    <h3 class="text-center">{{item.name}}</h3>
+                  </a>
+                </div>    
+              </div><!--/masRutas-->  
+            </div>
+          </div><!--/masRutas box-->
         </div><!--/tab-->
         <!--tab-->
         <!-- END TAB ROUTE ITEMS -->
 
-        <!-- ### TAB MAPS ### -->
+        <!-- ### TAB MAPS ### -->
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <!-- (mapReady)="onMapReady($event)" -->
           <agm-map 
@@ -154,7 +215,7 @@
                 <ng-template>
                  <div class="content_marker" (click)="clickMarker(i)">
                   <div class="icon_marker_map" [style.backgroundImage]="'url('+ data.icon +')'"></div>
-                  <div class="label_marker_map">{{ data.title }}</div>
+                  <div class="label_marker_map">{{ data.title }}</div>
                 </div>
                 </ng-template>
               </agm-snazzy-info-window>
@@ -227,3 +288,17 @@
   </div>
 
 </div>
+
+<!-- Modal mapa -->
+<app-mapa-item [rutaItemSelected]="rutaItemSelected"></app-mapa-item><!-- /Modal mapa -->
+
+<!-- Modal detalle item -->
+<app-detalle-item [rutaItemSelected]="rutaItemSelected"></app-detalle-item><!-- /Modal detalle item -->
+
+<!-- ver mas -->
+<app-ver-mas [idItem2]="idItem2"></app-ver-mas>
+
+
+
+
+

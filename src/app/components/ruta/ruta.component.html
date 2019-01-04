@@ -13,7 +13,6 @@
   <div class="container-fluid">
     <div class="container">
       
-
     
     </div>
   </div>--><!--/box body -->
@@ -141,7 +140,7 @@
         <!--tab-->
         <!-- END TAB ROUTE ITEMS -->
 
-        <!-- ### TAB MAPS ### -->
+        <!-- ### TAB MAPS ### -->
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <!-- (mapReady)="onMapReady($event)" -->
           <agm-map 
@@ -155,7 +154,7 @@
                 <ng-template>
                  <div class="content_marker" (click)="clickMarker(i)">
                   <div class="icon_marker_map" [style.backgroundImage]="'url('+ data.icon +')'"></div>
-                  <div class="label_marker_map">{{ data.title }}</div>
+                  <div class="label_marker_map">{{ data.title }}</div>
                 </div>
                 </ng-template>
               </agm-snazzy-info-window>
@@ -228,6 +227,3 @@
   </div>
 
 </div>
-
-
-
