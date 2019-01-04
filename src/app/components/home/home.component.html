@@ -13,6 +13,7 @@
     [items]="slideHome" 
     [carouselClasses]="['owl-theme', 'sliding']">
     <div class="item" *ngFor="let item of slideHome" style="overflow: hidden;">
+        <div class="degrade2"></div>
       <div class="imagen-carrusel" *ngIf="item.image != null; else video">
           <img [src]="item.image"  alt="">
           <h4 class="textoh4" [innerHTML]="item.description"></h4>

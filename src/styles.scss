@@ -55,6 +55,9 @@ ul{
 header {
     padding-top:25px;
     padding-bottom: 25px;
+    position: relative;
+    z-index: 1;
+    color: #fff;
     ul{
         float: right;
         li{
@@ -75,6 +78,20 @@ header {
     }
 }
 
+#btnbuscar{
+    background: none;
+    border: none;
+    right: 40px;
+    position: relative;
+    i {
+        margin: 0px;
+line-height: 0px;
+color: #ffffff;
+position: absolute;
+
+    }
+}
+
 .btn-primary {
     background-color: $primaryColor;
 }
@@ -86,8 +103,30 @@ header {
         opacity:0.88;
     }   
 }
-
+.degrade2 {
+    h6{
+        z-index: 3;
+position: absolute;
+top: 43%;
+color: #ffffff;
+font-size: 54px;
+width: 100%;
+text-align: center;
+    }
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+31,000000+100&0.8+0,0.76+29,0+89 */
+background: -moz-linear-gradient(top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.76) 29%, rgba(0,0,0,0.73) 31%, rgba(0,0,0,0) 89%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.76) 29%,rgba(0,0,0,0.73) 31%,rgba(0,0,0,0) 89%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.76) 29%,rgba(0,0,0,0.73) 31%,rgba(0,0,0,0) 89%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+}
 #carrusel-home {
+  
     img {
         width: 100%;
     }
@@ -253,12 +292,18 @@ header {
 }
 
 
-
+#buscador {
+    background: rgba(102, 102, 102,0.4);
+    border: none;
+    color: #e7ecef;
+    height: 50px;
+}
 
 
 
 footer {
     background: rgba(0, 0, 0, 1);
+    position: relative;
     height: auto;
     padding-top:60px;
     z-index: 2;;
@@ -498,7 +543,7 @@ owl-carousel {
     position: relative;
     .textoh4{
         position: absolute;
-        z-index: 2;
+        z-index: 9;
         top: 0px;
         color: #fff;
         width: 100%;
@@ -564,7 +609,7 @@ overflow-x: hidden;
 .barraVerde{
     background: #1759d8;
     text-align: center;
-    margin-top: 50px;
+    //margin-top: 50px;
 }
 
 .nav-tabs {
@@ -1065,6 +1110,83 @@ overflow-x: hidden;
         top: 6px;
     }
 }
+
+/*
+app-ruta {
+    top: -101px;
+    position: relative;
+    z-index: -5;
+    #carrusel-home{
+        height: 100vh;
+        
+    }
+} */
+.generalBody {
+    
+margin-top: -101px;
+z-index: 0;
+position: relative;
+}
+
+.imagenCore {
+    position: relative;
+
+height: 100vh;
+
+overflow: hidden;
+
+margin-top: -101px;
+z-index: -2;
+
+    img {
+        width: 100%;
+        min-height: 100vh;
+        position: fixed;
+    }
+
+    .degrade {
+        h6{
+                        z-index: 3;
+            position: absolute;
+            top: 43%;
+            color: #ffffff;
+            font-size: 54px;
+            width: 100%;
+            text-align: center;
+        }
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100vh;
+        z-index: 9;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+31,000000+100&0.8+0,0.76+29,0+89 */
+background: -moz-linear-gradient(top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.76) 29%, rgba(0,0,0,0.73) 31%, rgba(0,0,0,0) 70%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.76) 29%,rgba(0,0,0,0.73) 31%,rgba(0,0,0,0) 70%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.76) 29%,rgba(0,0,0,0.73) 31%,rgba(0,0,0,0) 70%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+    }
+}
+
+.parallax {
+    
+    height: 100vh;
+    /*overflow-x: hidden;
+    overflow-y: auto;perspective: 1px;*/
+  }
+  .parallax__layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  .parallax__layer--base {
+    transform: translateZ(0);
+  }
+  .parallax__layer--back {
+    transform: translateZ(-1px);
+  }
 
 
 

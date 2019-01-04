@@ -33,7 +33,8 @@
               "node_modules/popper.js/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "node_modules/owl.carousel2/dist/owl.carousel.min.js", 
-              "src/assets/js/funciones.js"
+              "src/assets/js/funciones.js",
+              "src/assets/js/parallax.js"
             ]
           },
           "configurations": {

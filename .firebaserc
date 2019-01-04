@@ -1,5 +1,6 @@
 {
   "projects": {
-    "yagan": "yagan-project"
+    "yagan": "yagan-project",
+    "developYagan": "develop-yagan"
   }
 }
