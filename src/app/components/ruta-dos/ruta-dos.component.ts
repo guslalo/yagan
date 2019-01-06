@@ -10,6 +10,7 @@ import { LatLngBounds } from '@agm/core';
 import { mapTo } from 'rxjs-compat/operator/mapTo';
 import { TouchSequence } from 'selenium-webdriver';
 import {OwlCarousel} from 'ngx-owl-carousel';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
  declare var google: any;
  
@@ -71,11 +72,12 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   public rutaItemSelected: RutaItem;
   public idItem = null;
   public idItem2 = null;
-  public zoom = 10;
+  public zoom = 12;
   public pageId: any;
 
   public showButton = false;
   public statusAgmDirection = false;
+  public hrefSafeURL:SafeResourceUrl;
 
   idExperiencia = 'NULL';
   idRecibido(id) {
@@ -83,6 +85,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   }
    // constructor
    constructor(
+    public sanitizer:DomSanitizer,
     private http: HttpClient,
     private serviciosService: ServiciosService,
     private router: Router,
@@ -143,7 +146,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   zoomin(){
     console.log("zoomin");
     this.statusAgmDirection = false;
-    this.zoom = 15;
+    
     setTimeout(() => 
     {
       this.statusAgmDirection = true;
@@ -198,6 +201,10 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
 
          for (const item of data.route_item)  {
 
+          
+            let href_native = 'geo:0,0?q=' + item.latitude + ',' + item.longitude + '(' + item.title + ')';
+            this.hrefSafeURL = this.sanitizer.bypassSecurityTrustResourceUrl(href_native);
+            item.gps = this.hrefSafeURL
             this.RutaItem.push(item);
             this.waypoints.push({
               location: { lat: +item.latitude, lng: +item.longitude },

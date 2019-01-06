@@ -146,6 +146,8 @@
           <agm-map 
             (mapReady)="mapLoad($event)"
             (mapClick)="mapClicked($event)"
+            [gestureHandling]="'cooperative'"
+            [scrollwheel]="null"
             [disableDefaultUI]="false"
             [zoomControl]="true"
             *ngIf="dir" [latitude]="dir.origin.lat" [longitude]="dir.origin.lng">
@@ -168,27 +170,32 @@
             <div class="row pt-2"><owl-carousel #owlElement
               [options]="{
                 center: true,
-                items: 8, 
+                items: 1, 
                 loop:true,
                 dots: true, 
                 nav:true,
                 autoplay:false,
                 navText : ['',''],
                 responsive: {   
-                  '0': {  items: 1.3, margin: 0 },
-                  '600': { items: 2.1,  margin: 5 },
-                  '1000': { items: 3.3, margin: 5 },
-                  '1500': { items: 5, margin: 5 },
-                  '2000': { items: 8, margin: 5 }
+                  '0': {  items: 1, margin: 0 },
+                  '400': { items: 1, margin: 0 },
+                  '600': { items: 2, margin: 0 },
+                  '700': { items: 3, margin: 0 },
+                  '1000': { items: 4, margin: 0 },
+                  '1400': { items: 5, margin: 0 },
+                  '1600': { items: 6, margin: 0 },
+                  '2000': { items: 7, margin: 0 }
                 } 
               }" 
               [items]="RutaItem" 
               [carouselClasses]="['owl-theme', 'sliding']">
               <div class="item" *ngFor="let item of RutaItem" style="overflow: hidden;">
-                <div class="col-12 col-md-12 hito p-0"  (click)="goMapNative(item)">
+                <div class="col-12 col-md-12 hito p-0">
                   <div class="content-img">
                       <!-- <span><i class="inline-icon material-icons">map</i></span>  -->
-                      <img class="img  card-img-top" [src]="item.image" alt="Card image cap">
+                      <a [href]="item.gps" target="_system">
+                        <img class="img  card-img-top" [src]="item.image" alt="Card image cap">
+                      </a>
                   </div>
                   <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
                   <div [innerHTML]="item.description" class="card-text "></div> 
