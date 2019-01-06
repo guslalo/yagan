@@ -615,6 +615,10 @@ overflow-x: hidden;
 .nav-tabs {
     display: inline-block;
     width: auto;
+    border-bottom: 0px;
+    .nav-link{
+        border:none;
+    }
   
     li {
         display: inline-block;
@@ -636,11 +640,12 @@ overflow-x: hidden;
 }
 
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-    background-color:transparent;
+    background-color:#ffffff;
     border:none;
     border-bottom:5px solid #fff;
     outline: none;
-    color:#fff;
+    color: #1759d8;
+    border-radius: 0px;
 }
 .aportar {
     .font-weigth-bold{
@@ -1130,7 +1135,7 @@ position: relative;
 .imagenCore {
     position: relative;
 
-height: 100vh;
+height: 93.6vh;
 
 overflow: hidden;
 
