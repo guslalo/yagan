@@ -1010,14 +1010,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', e
     .menu {
         padding:0px;
         background:#1759d8;
-        margin:15px 0px;
+        margin:33px 0px 0px 0px;
         display: none;
+        position: absolute;
+        z-index: 3;
         ul {
             width: 100%;
             margin-bottom: 0px;
             li{
                 width: 100%;
-                border-bottom: 1px solid #ffffff; 
+                border-bottom: 1px solid #1759d8; 
                 position: relative;
                 a {
                     display: block;

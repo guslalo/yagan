@@ -25,7 +25,7 @@
     <div class="col-12 col-md order-md-3 menu">
       <ul class="pl-0 pl-md">
         <li><a>Acerca de</a></li>
-        <li><a class="participa rounded d-none">Participa</a></li>
+        <li class="d-sm-none"><a class="participa rounded d-none">Participa</a></li>
         <li>
             <a class="participa rounded dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Login
@@ -45,8 +45,7 @@
                 <p class="name">{{ user.name }}</p>
                 <p class="d-none">{{ user.email }}</p>
               </div>
-              <a class="salir" (click)="signOut()"
-              ><i class="material-icons">
+              <a class="salir" (click)="signOut()"><i class="material-icons">
                   power_settings_new
                   </i></a>
             </div>    
