@@ -22,7 +22,6 @@ import { ExperienciasComponent } from './components/experiencias/experiencias.co
 import { MejorSandwichComponent } from './components/mejor-sandwich/mejor-sandwich.component';
 import { BarRatingModule  } from "ngx-bar-rating";
 import { RutaDosComponent } from './components/ruta-dos/ruta-dos.component';
-import { RutaComponent } from './components/ruta/ruta.component';
 import { SandwichComponent } from './components/experiencias/sandwich/sandwich.component';
 import { ListaExperienciasComponent } from './components/lista-experiencias/lista-experiencias.component';
 import { ExperienciasDelMesComponent } from './components/experiencias-del-mes/experiencias-del-mes.component';
@@ -55,8 +54,6 @@ const router: Routes = [
   { path: 'rutas-experiencias',component: ExperienciasComponent},
   { path: 'rutas-experiencias/:id', component: ExperienciasComponent },
   { path: 'route', component: RutaDosComponent},
-  // { path: 'ruta', component: RutaComponent},
-  // { path: 'ruta/:id', component: RutaComponent},
   { path: 'route/:id', component: RutaDosComponent },
   { path: 'subcategory', component: MejorSandwichComponent},
   { path: 'subcategory/:id', component: MejorSandwichComponent},
