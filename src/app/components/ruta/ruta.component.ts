@@ -269,7 +269,7 @@ export class RutaComponent implements OnInit, OnDestroy  {
 
   captureId(item) {
     this.rutaItemSelected = item;
-    //console.log(this.rutaItemSelected );
+    console.log(this.rutaItemSelected );
     // this.idItem = id;
   }
 

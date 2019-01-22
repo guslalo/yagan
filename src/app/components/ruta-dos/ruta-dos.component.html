@@ -121,7 +121,7 @@
                       </i>
                     </div> <!-- cd-timeline__img -->
                     <div class="col-10 col-md-4 card cd-timeline__content js-cd-content imgHito"  (click)="captureId(item)">
-                      <img class="card-img-top" [src]="item.image ? item.image : 'assets/img/default-thumb.png'" alt="Card image cap" data-toggle="modal" data-target="#exampleModal3">
+                      <img class="card-img-top" [src]="item.image ? item.image : 'assets/img/default-thumb.png'" alt="Card image cap" (click)="captureId(item)" data-toggle="modal" data-target="#exampleModal3">
                       <h5 class="card-title" style="display: none;">Lorem ipsum dolor sit amet </h5>
                       <div [innerHTML]="item.description" class="card-text "></div> 
                       <!--<a href="javascript:;" class="btn"  data-toggle="modal" data-target="#modalVerMas" (click)="verMas(item)">+ Ver más</a>-->
@@ -234,3 +234,11 @@
   </div>
 
 </div>
+<!-- Modal mapa -->
+<app-mapa-item [rutaItemSelected]="rutaItemSelected"></app-mapa-item><!-- /Modal mapa -->
+
+<!-- Modal detalle item -->
+<app-detalle-item [rutaItemSelected]="rutaItemSelected"></app-detalle-item><!-- /Modal detalle item -->
+
+<!-- ver mas -->
+<app-ver-mas [idItem2]="idItem2"></app-ver-mas>
