@@ -93,7 +93,6 @@ export function provideConfig() {
     ExperienciasComponent,
     MejorSandwichComponent,
     RutaDosComponent,
-    RutaComponent,
     SandwichComponent,
     ListaExperienciasComponent,
     ExperienciasDelMesComponent,
