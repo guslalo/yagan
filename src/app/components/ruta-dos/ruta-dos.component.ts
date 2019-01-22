@@ -104,6 +104,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   scrollTop() {
     window.scrollTo(0, 0);
   }
+  
   scrollToVh() {
     window.scrollTo(100, 0);
   }

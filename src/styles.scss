@@ -332,7 +332,7 @@ footer {
 
 }
 agm-map {
-    height:94vh;
+    height:50vh;
   }
 .experiencias{
     .categoria{
@@ -980,9 +980,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', e
     }
     .imagenCore {
         height: 93vh;
-        width: 200%;
+        width: 100%;
         .degrade h6 {
-            top: 30%;
+            top: 40%;
+        }
+        img {
+            width: 200%;
         }
     }
     .nav-tabs {
