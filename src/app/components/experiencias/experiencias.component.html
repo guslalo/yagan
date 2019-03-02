@@ -33,18 +33,20 @@
         <form>
         <ul>
           <li class="title">Región</li>
-          <li><a routerLink="/rutas-experiencias">Todas</a></li>
-          <li *ngFor="let item of region"><a [routerLink]="['/rutas-experiencias', {rg: item.code }]">{{ item.code}} - {{item.name}}</a></li>
+          <li><a (click)="setUrl('rg', '')"><i *ngIf="rg_all;" class="material-icons">arrow_right</i>Todas</a></li>
+          <li *ngFor="let item of region">
+              <a (click)="setUrl('rg', item.code)"><i *ngIf="item.status;" class="material-icons">arrow_right</i>{{ item.code}} - {{item.name}}</a>
+          </li>
         </ul>
         <ul>
           <li class="title">Duración</li>
-          <li><a routerLink="/rutas-experiencias">Todas</a></li>
-          <li *ngFor="let item of duracion"><a [routerLink]="['/rutas-experiencias', {dc: item.id }]" id="{{item.id}}">{{ item.name}}</a></li>
+          <li><a (click)="setUrl('dc', '')"><i *ngIf="dc_all;" class="material-icons">arrow_right</i>Todas</a></li>
+          <li *ngFor="let item of duracion"><a (click)="setUrl('dc', item.id)"><i *ngIf="item.status;" class="material-icons">arrow_right</i>{{ item.name}}</a></li>
         </ul>
         <ul>
           <li class="title">Categorías</li>
-          <li><a routerLink="/rutas-experiencias">Todas</a></li>
-          <li *ngFor="let item of CategoryFilter" id="{{item.id}}"><a [routerLink]="['/rutas-experiencias', {cid: item.id }]">{{item.name}}</a></li>    
+          <li><a (click)="setUrl('cid', '')"><i *ngIf="cid_all;" class="material-icons">arrow_right</i>Todas</a></li>
+          <li *ngFor="let item of CategoryFilter" id="{{item.id}}"><a (click)="setUrl('cid', item.id)"><i *ngIf="item.status;" class="material-icons">arrow_right</i>{{item.name}}</a></li>    
         </ul>
       </form>
       </div><!--/box menu  (idCategoryOutput)="captureId($event)"-->
