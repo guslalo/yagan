@@ -6,6 +6,7 @@ export class Category {
   image_banner: string;
   name: string;
   category_parent: any;
+  status: boolean;
 }
 
 export class subCategory {
@@ -14,17 +15,20 @@ export class subCategory {
   category_parent: any;
   image: string;
   date: Date;
-  type: string; 
+  type: string;
+  status: boolean;
 }
 
 export class Region{
-  code:string;
-  name:string;
+  code: string;
+  name: string;
+  status: boolean;
 }
 
 export class Duracion{
   id: number;
   name: string;
+  status: boolean;
 }
 
 export class Ubicaciones {

@@ -19,6 +19,15 @@ body {
     font-family: 'Roboto', sans-serif;
     height: 100%;
 }
+
+st_true{
+    color: #CCCCCC !important;
+}
+
+st_{
+    color: #000099 !important;
+}
+
 html {
     font-size:0.95rem;
     height: 100%;
@@ -583,6 +592,7 @@ owl-carousel {
             }
         }
     }
+    
 }
 
 .resena{

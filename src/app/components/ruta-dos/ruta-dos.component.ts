@@ -77,7 +77,8 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
 
   public showButton = false;
   public statusAgmDirection = false;
-  public hrefSafeURL:SafeResourceUrl;
+  public hrefSafeURL: SafeResourceUrl;
+  public hrefSafeURL2: SafeResourceUrl;
 
   idExperiencia = 'NULL';
   idRecibido(id) {
@@ -140,29 +141,27 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   //     // console.log('Zoom: ' + map.zoom);
   // }
 
-  mapClicked(map){
+  mapClicked(map) {
     console.log('mapClicked');
   }
 
-  zoomin(){
-    console.log("zoomin");
+  zoomin() {
+    console.log('zoomin');
     this.statusAgmDirection = false;
-    
-    setTimeout(() => 
-    {
+    setTimeout(() => {
       this.statusAgmDirection = true;
     },
     500);
   }
 
-  protected mapLoad(map){
+  protected mapLoad(map) {
     console.log('mapLoad');
-    //this.zoomin();
+    // this.zoomin();
   }
 
   ngOnInit() {
     // supress icons
-    //this.pageId = this.id;
+    // this.pageId = this.id;
     this.renderOptions = {
       suppressMarkers: false,
       markerOptions: { // effect all markers
@@ -186,7 +185,7 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
       this.ruta = new Ruta;
       this.serviciosService.getRuta(this.id).subscribe(
         data => {
-          this.pageId = '/route/'+data.id;
+          this.pageId = '/route/' + data.id;
           console.log(this.pageId);
           this.regionRutaId = data.id;
           this.RutaItem = [];
@@ -194,18 +193,21 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
           this.waypoints = [];
           this.ruta = data;
           this.showButton = false;
-          if(this.ruta.text_button){
-            if(this.ruta.text_button.toString().trim()){
+          if (this.ruta.text_button) {
+            if (this.ruta.text_button.toString().trim()) {
               this.showButton = true;
             }
           }
 
          for (const item of data.route_item)  {
 
-          
-            let href_native = 'geo:0,0?q=' + item.latitude + ',' + item.longitude + '(' + item.title + ')';
-            this.hrefSafeURL = this.sanitizer.bypassSecurityTrustResourceUrl(href_native);
-            item.gps = this.hrefSafeURL
+             const href_native = 'geo:0,0?q=' + item.latitude + ',' + item.longitude + '(' + item.title + ')';
+            const href_native1 = 'bingmaps:?cp=' + item.latitude + '~' + item.longitude;
+            const href_native2 = 'http://maps.apple.com/maps?q=' + item.latitude + ', ' + item.longitude;
+            this.hrefSafeURL = this.sanitizer.bypassSecurityTrustResourceUrl(href_native1);
+            this.hrefSafeURL2 = this.sanitizer.bypassSecurityTrustResourceUrl(href_native2);
+            item.gps = this.hrefSafeURL;
+            item.gps2 = this.hrefSafeURL2;
             this.RutaItem.push(item);
             this.waypoints.push({
               location: { lat: +item.latitude, lng: +item.longitude },
