@@ -1,11 +1,17 @@
 <div  id="ruta{{ruta.id}}" class="container-fluid p-0 h-100">
+  
   <!--banner principal-->
   <div class="imagenCore" id="scene">
       <div class="degrade">
         <h6>{{ruta.name}}</h6>
-      </div>
-      <img  [src]="ruta.image ? ruta.image : ''">
       
+      </div>
+      <div class="flechaAncla">
+          <a pageScroll [pageScrollDuration]="500" href="#contentAncla">
+            <i class="material-icons">keyboard_arrow_down</i>
+          </a> 
+        </div>
+      <img  [src]="ruta.image ? ruta.image : ''">
   
   </div><!--/banner principal data-depth="0.6" data-parallax="scroll"-->
 
@@ -18,7 +24,7 @@
   </div>--><!--/box body -->
 
   <div class="container-fluid gris2 p-0 ">
-    <div class="barraVerde justify-content-md-center">
+    <div class="barraVerde justify-content-md-center" id="contentAncla">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
           <a class="nav-link" id="home-tab2" data-toggle="tab" href="#home2" role="tab" aria-controls="home2" aria-selected="true">

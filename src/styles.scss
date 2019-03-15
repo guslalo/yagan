@@ -582,6 +582,12 @@ owl-carousel {
             color: #ffffff;
             a {
                 color: #ffffff;
+                position: relative;
+                i {
+                    position: relative;
+                    top: 5px;
+                }
+              
                 &.active {
                     color: #000180;
                     text-decoration: underline;
@@ -715,6 +721,8 @@ overflow-x: hidden;
 }
 .ruta {
     overflow: hidden;
+    position: relative;
+    background:#e7ecef;
     /*padding-bottom:150px !important;*/
     .fila {
         height:300px;
@@ -916,12 +924,12 @@ position: relative;
 .imagenCore {
     position: relative;
 
-height: 93.6vh;
+height: 100.9vh;
 
 overflow: hidden;
 
 margin-top: -101px;
-z-index: -2;
+z-index: 0;
 
     img {
         width: 100%;
@@ -1240,7 +1248,39 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', e
          
 
 }
+#contentAncla{
+    position: relative;
+    /*
+    &::before{
+        font-family: "Material Icons";
+        content: "\e5cc";
+        position: absolute;
+        font-size: 50px;
+        color: #ffffff;
+        top: -130%;
+        cursor: pointer;
+    }*/
+}
 
+.imgModificada {
+    width: auto;
+height: 300px;
+}
 
-
+.flechaAncla {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    z-index: 9999;
+    position: absolute;
+    bottom:0%;
+    a {
+        i {
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 70px;
+        }
+    }
+   
+}
 

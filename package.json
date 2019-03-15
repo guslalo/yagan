@@ -38,6 +38,8 @@
     "ngx-bar-rating": "^1.1.0",
     "ngx-disqus": "^2.4.2",
     "ngx-owl-carousel": "^2.0.7",
+    "ngx-page-scroll": "^6.0.0-beta.1",
+    "ngx-page-scroll-core": "^6.0.0-beta.1",
     "node-sass": "^4.11.0",
     "owl.carousel2": "^2.2.1",
     "popper.js": "^1.14.3",

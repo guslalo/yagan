@@ -160,6 +160,11 @@ export class RutaDosComponent implements OnInit, OnDestroy  {
   }
 
   ngOnInit() {
+
+    $("#flechaAncla a").click(function(){
+      console.log("click");
+    });
+
     // supress icons
     // this.pageId = this.id;
     this.renderOptions = {

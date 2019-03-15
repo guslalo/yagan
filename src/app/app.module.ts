@@ -9,6 +9,7 @@ import { ServiciosService } from './services/servicios.service';
 import { StorageService } from './services/storage.service';
 
 //modulos terceros
+import { NgxPageScrollModule  } from 'ngx-page-scroll';
 import { DisqusModule } from 'ngx-disqus';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
@@ -116,7 +117,8 @@ export function provideConfig() {
     }),
     AgmDirectionModule,
     AgmSnazzyInfoWindowModule,
-    SocialLoginModule
+    SocialLoginModule,
+    NgxPageScrollModule
     //ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
