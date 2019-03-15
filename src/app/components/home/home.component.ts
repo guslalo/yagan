@@ -91,7 +91,7 @@ export class HomeComponent implements OnInit {
               let rutaCompleta = item2.url_video;
               let codigo = rutaCompleta.split("=");
               //console.log(codigo[1]);
-              this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/'+codigo[1]+'?rel=0&amp;controls=0&amp;showinfo=0');
+              this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/'+codigo[1]+'?modestbranding=1&rel=0&autoplay=1&controls=1&mute=1&enablejsapi=1&showinfo=0&iv_load_policy=3&cc_load_policy=0&fs=0&autohide=0');
             }
           }
         }
