@@ -1,6 +1,12 @@
 /* Estilos Globales*/
 @import '~ngx-bar-rating/themes/br-default-theme.css';
- 
+ app-header{
+    padding-top: 20px;
+
+    display: inline-block;
+    
+    width: 100%;
+ }
 .content-img{
     position: relative;
     .imgEncima {
@@ -992,8 +998,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', e
   .parallax__layer--back {
     transform: translateZ(-1px);
   }
+  video {
+      width: 100%;
+  }
 
   @media only screen and ( min-width:320px ) and (max-width:480px){
+    .owl-carousel .owl-nav .owl-prev::before {
+        top: 43%;
+    }
+    .owl-carousel .owl-nav .owl-next::after {
+        top: 43%;
+
+    }
     .general {
         padding-bottom: 5px;
     }
@@ -1015,7 +1031,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', e
             top: 40%;
         }
         img {
-            width: 200%;
+            width: 300%;
         }
     }
     .nav-tabs {
@@ -1073,8 +1089,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', e
         min-height: 300px;
         width: 100%;
     }
+   
     .imagen-carrusel .textoh4 {
-        top: 37%;
+        top: 50%;
         font-size: 22px;
     }
     #carrusel-home .carousel-caption h4 {
@@ -1089,6 +1106,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', e
         right: 10px;
         top:15px;
         cursor: pointer;
+        z-index: 2;
         i {
             color:#1759d8;
         }
@@ -1250,7 +1268,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', e
             .btn.rounded {
                 padding:5px 25px;
                 font-size: 20px;
-                margin-top: 5px;
+                margin-top: 25px;
             }
         }
     }

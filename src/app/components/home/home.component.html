@@ -14,13 +14,18 @@
     [carouselClasses]="['owl-theme', 'sliding']">
     <div class="item" *ngFor="let item of slideHome" style="overflow: hidden;">
         <div class="degrade2"></div>
-      <div class="imagen-carrusel" *ngIf="item.image != null; else video">
+       
+      <div class="imagen-carrusel d-none" *ngIf="item.image != null; else video">
           <img [src]="item.image"  alt="">
           <h4 class="textoh4" [innerHTML]="item.description"></h4>
       </div> 
       <ng-template #video>
-          <iframe width="100%" height="400" [src]="safeURL" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe width="100%" height="400" [src]="safeURL" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </ng-template>
+      <video autoplay loop>
+          <source src="assets/video/video-yagan.mp4" type="video/mp4" >
+          Tu navegador no implementa el elemento <code>video</code>.
+        </video>
     </div>
   </owl-carousel> 
   </div>
