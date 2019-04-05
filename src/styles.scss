@@ -1029,6 +1029,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', e
   }
 
   @media only screen and ( min-width:320px ) and (max-width:480px){
+    app-header {
+        padding-top: 0px;
+    }
     .owl-carousel .owl-nav .owl-prev::before {
         top: 43%;
     }

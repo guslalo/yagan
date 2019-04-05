@@ -1,6 +1,7 @@
 {
   "projects": {
     "yagan": "yagan-project",
-    "developYagan": "develop-yagan"
+    "developYagan": "develop-yagan",
+    "default": "sucursal-virtual-45bf7"
   }
 }
