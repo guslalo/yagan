@@ -10,8 +10,6 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Observable } from 'rxjs';
 //import 'rxjs/add/observable/fromEvent';
 //import * as owlCarousel from 'owl.carousel2';
-
-
 declare var owlCarousel:any;
 
 @Component({
