@@ -7,7 +7,7 @@
           <div class="row">
              
               <div class="col-6">
-                  <span>Ingresar votación </span> <bar-rating [(rate)]="rate" [max]="5" ></bar-rating>
+                  <span>Ingresar valoración </span> <bar-rating [(rate)]="rate" [max]="5"  (rateChange)="updateRate(item.id ,$event)"></bar-rating>
               </div>
               <div class="col-6">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -38,7 +38,7 @@
                     <div class="row">
                         <div class="col-4">
                             <p class="text-center">
-                              <a href="javascript:;" target="_blank">{{item.web_site}}</a>
+                              <a href="{{item.web_site}}" target="_blank">Ver Sitio Web</a>
                             </p>
                           </div>
                           <div class="col-4">
@@ -49,8 +49,6 @@
                                 <a href="https://maps.googleapis.com/maps/api/staticmap?center={{item.latitude}},{{item.longitude}}&zoom=14&size=400x400&key=AIzaSyBHhDk4ne3ozg09umm3jSXSlc0MEeuBBUc" target="_blank">Ver ubicación</a>
                               </p>
                             </div>
-
-
                     </div>
                   </div>
                   

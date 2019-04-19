@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,6 +14,8 @@ import { NgxPageScrollModule  } from 'ngx-page-scroll';
 import { DisqusModule } from 'ngx-disqus';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
+import { ToastrManager, ToastrModule } from 'ng6-toastr-notifications'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //componentes
 import { AppComponent } from './app.component';
@@ -118,7 +121,10 @@ export function provideConfig() {
     AgmDirectionModule,
     AgmSnazzyInfoWindowModule,
     SocialLoginModule,
-    NgxPageScrollModule
+    NgxPageScrollModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot(),
+    NgbModule
     //ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [

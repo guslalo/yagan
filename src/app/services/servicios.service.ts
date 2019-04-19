@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 
 
 
-//const url = 'http://yagan.dev21.cl/'
-const url = 'https://administrator.yagan.world/' 
+ const url = 'http://localhost:8001/'
+// const url = 'https://administrator.yagan.world/' 
 
 @Injectable()
 export class ServiciosService {
@@ -67,41 +67,28 @@ constructor(private http: HttpClient) {  }
     return this.http.get(url+'cms/api/slide/');
   }
 
-
-
   //buscar experiencia
   buscarExperiencia(query:string):Observable<any>{
     return this.http.get(url+'core/api/subcategory/?string_text='+query);
   }
-
 
   //buscar experiencia
   searchDefault(query:string):Observable<any>{
     return this.http.get(url+'core/api/subcategory/' + query);
   }
  
-
-
-
-
-
-
-
-
-
-
-  
-
-
   getRutas(): Observable<any>{
     return this.http.get(url+'route/api/route/');
   }
 
- 
-
   //experienciaClick
   getERutaItem(): Observable<any>{
     return this.http.get(url+'route/api/route_item/');
+  }
+
+  // valoration experience
+  setValoration(params): Observable<any>{
+    return this.http.post(url+'experience/api/experience_evaluation/', params);
   }
 
  

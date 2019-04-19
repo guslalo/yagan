@@ -479,7 +479,7 @@ agm-map {
         position: relative;
         margin-bottom:35px;
         width: 356px;
-        height:250px;
+        height:260px;
         overflow: hidden;
         img{
             position: relative;
@@ -523,7 +523,7 @@ owl-carousel {
     display: inline-block;
     width: 100%;
     img{
-        height: 400px;
+        height: 500px;
         width: auto;
         min-width: 100%;
     }
@@ -1279,7 +1279,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', e
 
     #carrusel-home2 {
         img {
-            height: 426px;
+            height: 550px;
             left: -110%;
             position: relative;
             width: auto;
@@ -1342,4 +1342,13 @@ height: 300px;
     }
    
 }
+
+// Valoración de experiencias
+.br-content{
+    margin: 8px;
+    .br-default .br-unit {
+        font-size: 18px;
+    }
+}
+
 

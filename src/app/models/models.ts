@@ -39,9 +39,6 @@ export class rutaMapa{
   longitude: string;
 }
 
-
-
-
 export class Experience{
   id: number;
   created: Date;
@@ -57,6 +54,11 @@ export class Experience{
   image: string;
   category: number;
   organization: number;
+  evaluated: Evaluated;
+}
+
+export class Evaluated {
+  avg: number
 }
 
 export class Ruta{ 
@@ -108,6 +110,7 @@ export class ItemDetail {
   video_url:string;
   videoSafeURL:SafeResourceUrl;
 }
+
 
 /*
 

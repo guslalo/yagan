@@ -85,7 +85,7 @@ export class HomeComponent implements OnInit {
         this.slide = slideGeneral.filter(r => r.name == "SlideHome");
         for(let item of this.slide){
           this.slideHome = item.banner_set;
-          //console.log(this.slideHome);
+          console.log(this.slideHome);
           for(let item2 of  this.slideHome){
             if(item2.url_video != null){
               let rutaCompleta = item2.url_video;

@@ -11,7 +11,7 @@
             <!--<img src="{{ categoryActive.image_banner }}">-->
             <img class="imgModificada" src="https://administrator.yagan.world/media/images/2018/08/orig/torres_3-min.jpg">
             <div class="carousel-caption d-none d-md-block">
-              <h4>{{ categoryActive.name }}</h4> 
+              <!-- <h4>{{ categoryActive.name }}</h4>  -->
             </div>
           </div>
         </div>
@@ -28,7 +28,7 @@
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="/">Home</a></li>
-                  <li class="breadcrumb-item"><a href="javascript:;">Aventura</a></li>
+                  <li class="breadcrumb-item"><a href="javascript:;">Experiencias</a></li>
                   <li class="breadcrumb-item active" aria-current="page">{{item.name}}</li>
                 </ol>         
               </nav>
@@ -45,6 +45,7 @@
                 <div class="row experienciasComida">
                   <!--item --> 
                   <div *ngFor="let item2 of item.experiences" class="col-12 col-md-3 categoria" (click)="captureId(item2.id)">
+                      
                     <figure data-toggle="modal" data-target="#exampleModal2">
                       <img [src]="item2.image" />
                     </figure>
@@ -54,12 +55,25 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-6">
+                      <!-- <div class="col-6">
                         <span>{{item2.region}}</span>
+                        
+                      </div> -->
+                      
+                      <div class="col-12">
+                          <ngb-rating [(rate)]="item2.evaluated.avg" [readonly]="true" max="5">
+                            
+                              <!--  
+                              <ng-template let-fill="fill">
+                                    <span class="star" [class.full]="fill === 100">
+                                      <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
+                                    </span>
+                                </ng-template>
+                               -->
+                            </ngb-rating>
+                            <i>({{item2.evaluated.avg}})</i>
                       </div>
-                      <div class="col-6">
-                        <bar-rating [(rate)]="rate" [max]="5" disabled></bar-rating>
-                      </div>
+                      
                     </div>
                     <!-- Button trigger modal -->
                   </div><!--/item-->
@@ -71,30 +85,6 @@
                     <h2 class="h2"> Recomendados </h2>
                   </div>
                 </div>
-
-                <!-- -->
-                <div class="row experienciasComida" style="display: none;"> 
-                  <div class="col-12 col-md-3 categoria">
-                    <figure data-toggle="modal" data-target="#exampleModal2">
-                      <img src="assets/img/sandwich/4.png" />
-                    </figure>
-                    <div class="row">
-                      <div class="col-12">
-                        <h3> La Burguesía </h3>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-6">
-                        <span>Santiago</span>
-                      </div>
-                      <div class="col-6">
-                        <bar-rating [(rate)]="rate" [max]="5" ></bar-rating>
-                      </div>
-                    </div>
-                    
-                  </div>
-                </div> <!--categorias -->
-            <!-- -->
           </div>      
 
       </div><!--/box body -->
