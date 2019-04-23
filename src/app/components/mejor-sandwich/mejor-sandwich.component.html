@@ -61,17 +61,17 @@
                       </div> -->
                       
                       <div class="col-12">
-                          <ngb-rating [(rate)]="item2.evaluated.avg" [readonly]="true" max="5">
+                          <ngb-rating [(rate)]="evaluated" [readonly]="true" max="5">
                             
                               <!--  
                               <ng-template let-fill="fill">
                                     <span class="star" [class.full]="fill === 100">
                                       <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
                                     </span>
-                                </ng-template>
+                                </ng-template> 
                                -->
                             </ngb-rating>
-                            <i>({{item2.evaluated.avg}})</i>
+                            <i>({{item2.evaluated.avg | number:'1.0-1'}})</i>
                       </div>
                       
                     </div>

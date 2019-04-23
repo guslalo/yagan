@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 
 
 
- const url = 'http://localhost:8001/'
-// const url = 'https://administrator.yagan.world/' 
+// const url = 'http://localhost:8001/'
+ const url = 'https://administrator.yagan.world/' 
 
 @Injectable()
 export class ServiciosService {

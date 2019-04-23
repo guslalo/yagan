@@ -45,9 +45,10 @@
     "node-sass": "^4.11.0",
     "owl.carousel2": "^2.2.1",
     "popper.js": "^1.14.3",
-    "rxjs": "^6.3.3",
+    "rxjs": "^6.4.0",
     "rxjs-compat": "^6.3.3",
     "snazzy-info-window": "^1.1.1",
+    "webpack": "^4.30.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
@@ -72,7 +73,6 @@
     "rxjs-tslint": "^0.1.5",
     "ts-node": "~4.1.0",
     "tslint": "^5.11.0",
-    "typescript": "^3.1.6",
-    "webpack": "^4.24.0"
+    "typescript": "^3.1.6"
   }
 }

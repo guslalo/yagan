@@ -6,6 +6,7 @@ import { ServiciosService } from '../../services/servicios.service';
 import { Observable } from 'rxjs/Rx';
 import { Category, subCategory, Ruta, Experience } from '../../models/models';
 import {NgbRating, } from '@ng-bootstrap/ng-bootstrap';
+import {DecimalPipe} from '@angular/common';
 
 
 @Component({
@@ -44,6 +45,7 @@ export class MejorSandwichComponent implements OnInit {
   faoRated = false;
   currentRate = 3.5;
   rate:any;
+  public evaluated:any;
 
   onFaoRate(e) {
     this.faoRated = true;
@@ -59,7 +61,8 @@ export class MejorSandwichComponent implements OnInit {
     private ServiciosService: ServiciosService, 
     private router: Router, 
     private route: ActivatedRoute,
-    private titleService: Title
+    private titleService: Title,
+    private dp: DecimalPipe
   ){ }
 
     
@@ -80,12 +83,20 @@ export class MejorSandwichComponent implements OnInit {
 
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id'];
-      console.log(this.id);
       //getExperienceId
       this.ServiciosService.getExperienceId(this.id).subscribe( 
         data => {
           console.log(data);   
+          //item2.evaluated.avg
           this.experiencia.push(data);
+          for(let item3 of data.experiences){
+            console.log(item3.evaluated.avg);
+            //this.evaluated.push(item3.evaluated.avg);
+           
+            this.evaluated =  Math.round(item3.evaluated.avg * 100) / 100;
+           
+          }
+          
         },
         error => {
           console.log(<any>error);

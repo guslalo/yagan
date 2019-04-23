@@ -55,6 +55,7 @@ export class Experience{
   category: number;
   organization: number;
   evaluated: Evaluated;
+  experience:Experience;
 }
 
 export class Evaluated {

@@ -50,6 +50,8 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
+import {DecimalPipe} from '@angular/common';
+
 
 
 const router: Routes = [
@@ -129,7 +131,8 @@ export function provideConfig() {
   ],
   providers: [
     ServiciosService, 
-    StorageService, 
+    StorageService,
+    DecimalPipe,
     appRouters,
     {
       provide: AuthServiceConfig,   
